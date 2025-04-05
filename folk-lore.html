@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Lanka</title>
+
+    <!-- Google Font: Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            color: white;
+            text-align: center;
+        }
+        header {
+            background: #170269;
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .main-content {
+            padding: 30px;
+            margin: 30px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            color: #ffffff;
+            font-size: 36px;
+        }
+        .folklore-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .folklore-item {
+            background: #2C2C2C;
+            border: 2px solid #fa4f00;
+            border-radius: 10px;
+            padding: 15px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+        .folklore-item:hover {
+            transform: scale(1.05);
+        }
+        .folklore-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .folklore-description {
+            font-size: 16px;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+        .btn {
+            background: #d3d0ca;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            transition: all 0.3s ease-in-out;
+        }
+        .btn:hover {
+            background: #fa4f00;
+            color: white;
+        }
+        .footer {
+            background: #0c3e72;
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .nav {
+            background: #00A8FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px 12px;
+        }
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            padding: 10px;
+        }
+        .content {
+            width: 80%;
+            margin: 20px auto;
+            background: black;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #00A8FF;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .nav-links a {
+                padding: 10px;
+                display: block;
+                margin: 5px 0;
+            }
+            .show { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Everything Lanka</h1>
+    </header>
+
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="EYWK.html">Everything You Wanna Know</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="districts.html">Districts</a>
+        <a href="what-s new.html">What's New</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="main-content">
+        <h1>Choose a Folklore to Read</h1>
+        <div class="folklore-container">
+            <div class="folklore-item">
+                <div class="folklore-title">Mahasona</div>
+                <div class="folklore-description">A demon who was once human...</div>
+                <a class="btn" href="mahasona.html">Read More</a>
+            </div>
+            <div class="folklore-item">
+                <div class="folklore-title">Rabbit of the Moon</div>
+                <div class="folklore-description">How the rabbit appeared on the Moon...</div>
+                <a class="btn" href="rabbit.html">Read More</a>
+            </div>
+            <div class="folklore-item">
+                <div class="folklore-title">The Queen of the Ocean</div>
+                <div class="folklore-description">A tale of a mermaid queen who protects the seas...</div>
+                <a class="btn" href="queen-of-the-ocean.html">Read More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy;  Everything Lanka. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector(".nav-links");
+            navLinks.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>

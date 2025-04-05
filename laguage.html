@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Lanka</title>
+    
+    <!-- Google Font: Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>          
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            text-align: center;
+        }
+        header {
+            background: #170269;
+            color: rgb(255, 255, 255);
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            padding: 30px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        h1, h2 {
+            color: #3d951c;
+            font-size: 36px;
+        }
+        p {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #ddd;
+        }
+        .phrase-card {
+            background: #333;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 8px solid #3d951c;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .phrase-card:hover {
+            transform: scale(1.05);
+        }
+        .phrase-title {
+            font-size: 30px;
+            color: #ffcc00;
+            font-weight: bold;
+        }
+        .spell {
+            font-size: 28px;
+            color: #ff5733;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        audio {
+            margin-top: 10px;
+        }
+        .footer {
+            color: white;
+            font-size: 14px;
+            margin-top: 20px;
+            padding: 10px;
+        }
+        .nav {
+            background: #00A8FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px 12px;
+        }
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            padding: 10px;
+        }
+        .content {
+            width: 80%;
+            margin: 20px auto;
+            background: black;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #00A8FF;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .nav-links a {
+                padding: 10px;
+                display: block;
+                margin: 5px 0;
+            }
+            .show { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color: white;"><i>Everything Lanka</i></h1>
+    </header>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="EYWK.html">Everything You Wanna Know</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="districts.html">Districts</a>
+        <a href="what-s new.html">What's New</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="container">
+        <h1>Languages of Sri Lanka</h1>
+        <p>
+            Sri Lanka has three major languages: **Sinhala**, **Tamil**, and **English**. 
+            Sinhala is the most widely spoken, followed by Tamil.  
+            Here are some essential **Sinhala phrases** that will be useful for travelers.
+        </p>
+
+        <div class="phrase-card">
+            <div class="phrase-title">Welcome (Hello) = ආයුබෝවන්</div>
+            <div class="spell">ayu-bo-van</div>
+            <audio controls>
+                <source src="Ayubovan.m4a">
+            </audio>
+        </div>
+
+        <div class="phrase-card">
+            <div class="phrase-title">Good Morning = සුභ උදෑසනක්</div>
+            <div class="spell">suba-udasanak</div>
+            <audio controls>
+                <source src="morning.m4a">
+            </audio>
+        </div>
+
+        <div class="phrase-card">
+            <div class="phrase-title">Good Night = සුභ රාත්‍රියක්</div>
+            <div class="spell">suba-rathriyak</div>
+            <audio controls>
+                <source src="night.m4a">
+            </audio>
+        </div>
+
+        <div class="phrase-card">
+            <div class="phrase-title">Thank You = ස්තුතියි</div>
+            <div class="spell">es-thu-thi</div>
+            <audio controls>
+                <source src="Estuti.m4a">
+            </audio>
+        </div>
+
+        <div class="phrase-card">
+            <div class="phrase-title">Yes = ඔව්</div>
+            <div class="spell">o-w</div>
+            <audio controls>
+                <source src="Ow.m4a">
+            </audio>
+        </div>
+
+        <div class="phrase-card">
+            <div class="phrase-title">No = නෑ</div>
+            <div class="spell">n-a</div>
+            <audio controls>
+                <source src="Na.m4a">
+            </audio>
+        </div>
+
+        <div class="phrase-card">
+            <div class="phrase-title">How much? (Price) = කීයද</div>
+            <div class="spell">ki-ya-da</div>
+            <audio controls>
+                <source src="Kiyada.m4a">
+            </audio>
+        </div>
+
+        <div class="phrase-card">
+            <div class="phrase-title">Sorry = සමාවෙන්න</div>
+            <div class="spell">sama-venna</div>
+            <audio controls>
+                <source src="Samavenna.m4a">
+            </audio>
+        </div>
+
+        
+        <div class="phrase-card">
+            <div class="phrase-title">Do you know English = ඔයාට ඉංග්‍රීසි පුලුවන්ද?</div>
+            <div class="spell">oya-ingrisi-dannavada</div>
+            <audio controls>
+                <source src="english.m4a">
+            </audio>
+        </div>
+
+        <div class="phrase-card">
+            <div class="phrase-title">Help = උදව් කරන්න!</div>
+            <div class="spell">udavu-karanna</div>
+            <audio controls>
+                <source src="help.m4a">
+            </audio>
+        </div>
+
+        <div class="phrase-card">
+            <div class="phrase-title">Too Expensive = ගණන වැඩියි!</div>
+            <div class="spell">gana-vadi</div>
+            <audio controls>
+                <source src="expensive.m4a">
+            </audio>
+        </div>
+
+        <div class="phrase-card">
+            <div class="phrase-title">Spicy = සැරයි</div>
+            <div class="spell">sa-rai</div>
+            <audio controls>
+                <source src="sarai.m4a">
+            </audio>
+        </div>
+
+        
+        <div class="phrase-card">
+            <div class="phrase-title">Beautiful = ලස්සනයි</div>
+            <div class="spell">lassa-nai</div>
+            <audio controls>
+                <source src="beau.m4a">
+            </audio>
+        </div>
+
+        
+        <div class="phrase-card">
+            <div class="phrase-title">water = වතුර</div>
+            <div class="spell">wa-tura</div>
+            <audio controls>
+                <source src="water.m4a">
+            </audio>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Discover Sri Lanka | All Rights Reserved</p>
+        <p>Background image sourced from <a href="https://unsplash.com" style="color: #ffcc00;">Unsplash</a> (Free to use, no attribution required)</p>
+        <p>Font: <a href="https://fonts.google.com/specimen/Open+Sans" style="color: #ffcc00;">Open Sans</a> (Licensed under Open Font License)</p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector(".nav-links");
+            navLinks.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
+
+
