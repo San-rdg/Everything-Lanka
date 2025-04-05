@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Lanka</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            text-align: center;
+        }
+        header {
+            background: #170269;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .nav {
+            background: #1E6091;
+            padding: 15px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background: #0c3e72;
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+        }
+        .content {
+            width: 80%;
+            margin: 20px auto;
+            background: black;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 30px;
+        }
+        .tit {
+            font-size: 5ch;
+            color: white;
+            font-family: Arial;
+            background-color: #3d951c;
+        }
+        /* Floating Buttons Container */
+        .floating-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        /* Buttons */
+        .budget-btn, .news-btn {
+            color: white;
+            padding: 15px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+        .budget-btn {
+            background: #FFA500;
+        }
+        .budget-btn:hover {
+            background: #FF8C00;
+        }
+        .news-btn {
+            background: #ff0800;
+        }
+        .news-btn:hover {
+            background: #c22915;
+        }
+        .elephant-icon {
+            width: 50px;
+            height: 50px;
+            animation: bounce 1.5s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><b>Everything Lanka</b></h1>
+        <caption><i>Offering you the best insider knowledge...</i></caption>
+    </header>
+    
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="budget.html" class="budget-btn">Make Your Budget for Your Trip</a>
+        <a href="news.html" class="news-btn">News!</a>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="EYWK.html">Everything You Wanna Know</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="districts.html">Districts</a>
+        <a href="what-s new.html">What's New</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="row">
+        <div class="column">
+          <img src="Ever.gif" alt="im" style="width:100%">
+          <p>GIF by [Author/Source Name]. Used under [License or Fair Use]</p>
+        </div>
+    </div>
+
+    <div class="content">
+        <p>Welcome to Sri Lanka, the Pearl of the Indian Ocean. We assure you that you will have the time of your life in paradise. <br>
+        This website is here to help you know everything there is to know when traveling in Sri Lanka.<br>
+        We hope to assist you and make your visit unforgettable!</p>
+    </div>
+
+    <div class="tit">
+        <u>Experience the Beauty</u>
+    </div>
+
+    <div class="row">
+        <div class="column">
+          <img src="2.jpg" alt="Bridge" style="width:100%">
+          <p>Image by [Author/Source Name]. Used under [License or Fair Use]</p>
+        </div>
+        <div class="column">
+          <img src="3.jpg" alt="Train" style="width:100%">
+          <p>Image by [Author/Source Name]. Used under [License or Fair Use]</p>
+        </div>
+        <div class="column">
+            <img src="4.jpg" alt="Beach" style="width:100%">
+            <p>Image by [Author/Source Name]. Used under [License or Fair Use]</p>
+        </div>
+        <div class="column">
+            <img src="5.jpg" alt="Bridge" style="width:100%">
+            <p>Image by [Author/Source Name]. Used under [License or Fair Use]</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+          <img src="beach.jpg" alt="Beach" style="width:100%">
+          <p>Image by [Tomáš Malík/Pexels]. Used under [License or Fair Use]</p>
+        </div>
+        <div class="column">
+          <img src="9arch.jpg" alt="Bridge" style="width:100%">
+          <p>Image by [Genine Alyssa Pedreno-Andrada/Pexels]. Used under [License or Fair Use]</p>
+        </div>
+        <div class="column">
+          <img src="train.jpg" alt="Train" style="width:100%">
+          <p>Image by [Genine Alyssa Pedreno-Andrada/Pexels]. Used under [License or Fair Use]</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Discover Sri Lanka. All Rights Reserved. | Designed with love by Your Name</p>
+        <p>Image and GIF credits:</p>
+        <p>Images: [Author/Source Name]. Used under [License or Fair Use].</p>
+        <p>GIF: [Author/Source Name]. Used under [License or Fair Use].</p>
+    </div>
+</body>
+</html>
+
+
+

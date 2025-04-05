@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Lanka</title>
+    <style>          
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            text-align: center;
+        }
+        header {
+            background:  #170269;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .part {
+            background:#e6e2e2;
+            padding: 10px;
+        }
+        .banner {
+            background: url('https://source.unsplash.com/1600x900/?sri-lanka') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .section {
+            padding: 40px;
+        }
+        .footer {
+            background: #0c3e72;
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+        }
+        .clock {
+            font-size: 60px;
+            color: white;
+            background-color: #1b0fc8;
+            padding: 20px 40px;
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .weather-container {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            margin: 20px auto;
+            background: white;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .nav {
+            background: #00A8FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px 12px;
+        }
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            padding: 10px;
+        }
+        .main-content {
+            padding: 30px;
+            margin: 30px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        }
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .content {
+            width: 80%;
+            margin: 20px auto;
+            background: black;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #00A8FF;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .nav-links a {
+                padding: 10px;
+                display: block;
+                margin: 5px 0;
+            }
+            .show { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i>Everything Lanka</i></h1>
+    </header>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="EYWK.html">Everthing You Wanna know</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="districts.html">Districts</a>
+        <a href="what-s new.html">What's New</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+    
+    <div class="clock" id="clock"></div>
+    
+    <div class="weather-container">
+        <h2>Weather in Sri Lanka</h2>
+        <label for="districts">Select a Sri Lankan District:</label>
+        <select id="districts">
+            <option value="Colombo">Colombo</option>
+            <option value="Kandy">Kandy</option>
+            <option value="Galle">Galle</option>
+            <option value="Jaffna">Jaffna</option>
+            <option value="Anuradhapura">Anuradhapura</option>
+            <option value="Ratnapura">Ratnapura</option>
+            <option value="Kurunegala">Kurunegala</option>
+            <option value="Trincomalee">Trincomalee</option>
+            <option value="Nuwara Eliya">Nuwara Eliya</option>
+            <option value="Gampaha">Gampaha</option>
+            <option value="Badulla">Badulla</option>
+            <option value="Puttalama">Puttalama</option>
+            <option value="Kalutara">Kalutara</option>
+            <option value="Kilinochchi">Kilinochchi</option>
+            <option value="Mullativu">Mullativu</option>
+            <option value="Mannar">Mannar</option>
+            <option value="Pollonaruwa">Pollonaruwa</option>
+            <option value="Matale">Matale</option>
+            <option value="Batticaloa">Batticaloa</option>
+            <option value="Ampara">Ampara</option>
+            <option value="Kegalle">Kegalle</option>
+            <option value="Moneragala">Moneragala</option>
+            <option value="Hambantota">Hambantota</option>
+            <option value="Matara">Matara</option>
+            <option value="Vavuniya">Vavuniya</option>
+            
+
+
+        </select>
+        <button onclick="getWeather()">Get Weather</button>
+    </div>
+
+    <script>
+        function getWeather() {
+            const city = document.getElementById("districts").value;
+            const googleWeatherUrl = `https://www.google.com/search?q=weather+${city}+Sri+Lanka`;
+            window.open(googleWeatherUrl, '_blank');
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();  
+    </script>
+<br>
+    <div class="main-content">
+    <p style="color: white;"> Weather in Sri Lanka is quite unique as you may find it to be rather hot and warm on the months from January to May. 
+    After which it cools down a bit and rain can be expected in the months that follow, from June to November. Then in true seasonal fashion it gets much cooler.
+    Please note that the weather and the overall temperature which change according to the district and the amount of wind. But you can always stay updated abou the weather in different districts by using the our website.
+    </p>
+    <br>
+    <p style="color: white;"> an instance districts suchs as Nuwara Eliya is normaly quite cold whole year around, which it is famous for. Being also reffered to as "Little England" Nuwara Eliya a phenominal and sensational, experience thanks to its 
+        chilli weather amongst the hot weather in other districts. If you want to see more about Nuwara Eliya we recommend that you check out our <a href="destinations.html">Destinations</a>page.
+    </p>
+    </div>
+
+        <div class="footer">
+            &copy; 2025 Discover Sri Lanka | All Rights Reserved
+        </div>
+    
+        <script>
+            function toggleMenu() {
+                const navLinks = document.querySelector(".nav-links");
+                navLinks.classList.toggle("show");
+            }
+        </script>
+    
+</body>
+</html>

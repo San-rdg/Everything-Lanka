@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Trip Budget Planner - Sri Lanka</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            text-align: center;
+            color: #e6e2e2;
+        }
+        header {
+            background: #170269;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            background: #e6e2e2;
+            color: black;
+            width: 60%;
+            border-radius: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #1E6091;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0c3e72;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .result a {
+            display: block;
+            margin: 5px 0;
+            color: #1E6091;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .result a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background: #0c3e72;
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            height: 20px;
+            margin-top: 20px;
+        }
+        .progress-bar-inner {
+            height: 100%;
+            background-color: #1E6091;
+        }
+        .footer {
+            background: #0c3e72;
+            color: white;
+            padding: 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .nav {
+            background: #00A8FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px 12px;
+        }
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            padding: 10px;
+        }
+        .content {
+            width: 80%;
+            margin: 20px auto;
+            background: black;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #00A8FF;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .nav-links a {
+                padding: 10px;
+                display: block;
+                margin: 5px 0;
+            }
+            .show { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><i>Everything Lanka</i></h1>
+    </header>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="EYWK.html">Everything You Wanna Know</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="districts.html">Districts</a>
+        <a href="whats-new.html">What's New</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <h2 style="color: azure;">Please be aware that this is a beta version.
+        The prices will not add up perfectly.
+        This is a rough calculation according to your budget.
+    </h2>
+
+    <div class="container">
+        <h2>Plan Your Budget</h2>
+        <label for="budget">Enter Your Total Budget:</label>
+        <input type="number" id="budget" placeholder="e.g. 1000" required>
+        
+        <label for="currency">Select Your Currency:</label>
+        <select id="currency">
+            <option value="USD" selected>USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="LKR">LKR (රු)</option>
+            <option value="AUD">AUD (A$)</option>
+            <option value="INR">INR (₹)</option>
+        </select>
+
+        <label for="days">Number of Days:</label>
+        <input type="number" id="days" placeholder="e.g. 7" required>
+
+        <h3>Set Your Budget Distribution (in percentages):</h3>
+        <label for="accommodation-percent">Accommodation (%):</label>
+        <input type="number" id="accommodation-percent" value="30" min="0" max="100" required>
+
+        <label for="transportation-percent">Transportation (%):</label>
+        <input type="number" id="transportation-percent" value="20" min="0" max="100" required>
+
+        <label for="food-percent">Food (%):</label>
+        <input type="number" id="food-percent" value="25" min="0" max="100" required>
+
+        <label for="activities-percent">Activities (%):</label>
+        <input type="number" id="activities-percent" value="25" min="0" max="100" required>
+        
+        <button onclick="calculateBudget()">Calculate</button>
+
+        <div class="result" id="result"></div>
+        
+        <div class="progress-bar">
+            <div class="progress-bar-inner" id="progress-bar"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 Everything Sri Lanka. All Rights Reserved.
+    </div>
+
+    <script>
+        function calculateBudget() {
+            let budget = parseFloat(document.getElementById('budget').value);
+            let days = parseInt(document.getElementById('days').value);
+            let accommodationPercent = parseFloat(document.getElementById('accommodation-percent').value);
+            let transportationPercent = parseFloat(document.getElementById('transportation-percent').value);
+            let foodPercent = parseFloat(document.getElementById('food-percent').value);
+            let activitiesPercent = parseFloat(document.getElementById('activities-percent').value);
+            let currency = document.getElementById('currency').value;
+
+            // Basic validation
+            if (isNaN(budget) || isNaN(days)) {
+                alert("Please fill in all the fields with valid values.");
+                return;
+            }
+
+            // Check if percentages add up to 100
+            let totalPercent = accommodationPercent + transportationPercent + foodPercent + activitiesPercent;
+            if (totalPercent !== 100) {
+                alert("The percentages must add up to 100.");
+                return;
+            }
+
+            // Calculate allocation per category
+            let accommodation = (budget * accommodationPercent) / 100;
+            let transportation = (budget * transportationPercent) / 100;
+            let food = (budget * foodPercent) / 100;
+            let activities = (budget * activitiesPercent) / 100;
+
+            let totalSpending = accommodation + transportation + food + activities;
+            let remainingBudget = budget - totalSpending;
+            let dailyBudget = remainingBudget / days;
+
+            let progress = (totalSpending / budget) * 100;
+            document.getElementById('progress-bar').style.width = progress + "%";
+
+            let resultHtml = `
+                <h3>Budget Breakdown</h3>
+                <p><strong>Total Budget:</strong> ${budget} ${currency}</p>
+                <p><strong>Accommodation:</strong> ${accommodation.toFixed(2)} ${currency} (${accommodationPercent}%)</p>
+                <p><strong>Transportation:</strong> ${transportation.toFixed(2)} ${currency} (${transportationPercent}%)</p>
+                <p><strong>Food:</strong> ${food.toFixed(2)} ${currency} (${foodPercent}%)</p>
+                <p><strong>Activities:</strong> ${activities.toFixed(2)} ${currency} (${activitiesPercent}%)</p>
+                <p><strong>Remaining Budget:</strong> ${remainingBudget.toFixed(2)} ${currency}</p>
+                <p><strong>Remaining Budget per Day:</strong> ${dailyBudget.toFixed(2)} ${currency}</p>
+            `;
+
+            document.getElementById('result').innerHTML = resultHtml;
+        }
+    </script>
+
+<div class="footer">
+    &copy; 2025 Everything Lanka | All Rights Reserved
+</div>
+
+<script>
+    function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("show");
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

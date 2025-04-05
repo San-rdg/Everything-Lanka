@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Lanka - Transportation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            color: white;
+            text-align: center;
+        }
+        header {
+            background: #170269;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .content {
+            width: 80%;
+            margin: 20px auto;
+            background: black;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .transport-section {
+            margin: 30px 0;
+        }
+        .transport-section h2 {
+            color: #ffcc00;
+        }
+        .footer {
+            background: #0c3e72;
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .nav {
+            background: #00A8FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px 12px;
+        }
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            padding: 10px;
+        }
+        .content {
+            width: 80%;
+            margin: 20px auto;
+            background: black;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #00A8FF;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .nav-links a {
+                padding: 10px;
+                display: block;
+                margin: 5px 0;
+            }
+            .show { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Everything Lanka - Transportation</h1>
+    </header>
+    
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="EYWK.html">Everything You Wanna Know</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="districts.html">Districts</a>
+        <a href="what-s new.html">What's New</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="content">
+        <div class="transport-section">
+            <h2>Public Transport</h2>
+            <p>Sri Lanka offers various public transport options including trains and buses that provide affordable and scenic travel.</p>
+        </div>
+        <div class="transport-section">
+            <h2>Private & Rental Options</h2>
+            <p>Tuk-tuks, taxis, and rental cars are popular among travelers looking for more flexibility.</p>
+        </div>
+        <div class="transport-section">
+            <h2>Domestic Flights & Helicopter Services</h2>
+            <p>For long-distance travel, domestic flights and helicopter charters are available.</p>
+        </div>
+        <div class="transport-section">
+            <h2>Tips for Travelers</h2>
+            <p>Be aware of local transport pricing, always negotiate with tuk-tuk drivers, and book train tickets in advance.</p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        &copy; 2025 Discover Sri Lanka | All Rights Reserved
+    </div>
+
+    
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector(".nav-links");
+            navLinks.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>

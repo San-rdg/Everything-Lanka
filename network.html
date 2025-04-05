@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Lanka</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            text-align: center;
+        }
+        header {
+            background: #31720c;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .banner {
+            background: url('https://source.unsplash.com/1600x900/?sri-lanka') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .section {
+            padding: 40px;
+        }
+        .footer {
+            background: #0c3e72;
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+        }
+        .signal-container {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            color: black;
+            border-radius: 10px;
+            display: inline-block;
+            text-align: center;
+        }
+        .signal-bars {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .bar {
+            width: 10px;
+            height: 20px;
+            background: gray;
+            border-radius: 3px;
+            transition: background 0.3s, height 0.3s;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .nav {
+            background: #00A8FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px 12px;
+        }
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            padding: 10px;
+        }
+        .content {
+            width: 80%;
+            margin: 20px auto;
+            background: black;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #00A8FF;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .nav-links a {
+                padding: 10px;
+                display: block;
+                margin: 5px 0;
+            }
+            .show { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i>Everything Lanka</i></h1>
+    </header>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="EYWK.html">Everthing You Wanna Know</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="districts.html">Districts</a>
+        <a href="what-s new.html">What's New</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="section">
+        <div class="signal-container">
+            <h2>Check Your Network Signal Strength</h2>
+            <button onclick="getSignalStrength()">Check Signal</button>
+            <p id="strength">Signal Strength: N/A</p>
+            <div class="signal-bars">
+                <div class="bar" id="bar1"></div>
+                <div class="bar" id="bar2"></div>
+                <div class="bar" id="bar3"></div>
+                <div class="bar" id="bar4"></div>
+                <div class="bar" id="bar5"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getSignalStrength() {
+            if ('connection' in navigator) {
+                let connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                if (connection) {
+                    let strength = connection.downlink;
+                    document.getElementById("strength").innerText = "Signal Strength: " + strength + " Mbps";
+                    updateSignalBars(strength);
+                } else {
+                    document.getElementById("strength").innerText = "Signal strength not supported in your browser.";
+                }
+            } else {
+                document.getElementById("strength").innerText = "Network Information API not available.";
+            }
+        }
+        
+        function updateSignalBars(strength) {
+            let bars = document.querySelectorAll(".bar");
+            bars.forEach(bar => bar.style.background = "gray");
+            
+            if (strength > 0) bars[0].style.background = "green";
+            if (strength > 2) bars[1].style.background = "green";
+            if (strength > 5) bars[2].style.background = "green";
+            if (strength > 10) bars[3].style.background = "green";
+            if (strength > 20) bars[4].style.background = "green";
+        }
+    </script>
+
+    <!-- Insert this just above the closing </body> tag in your existing HTML -->
+
+<div class="section" style="background-color: #1e1e1e; color: white;">
+    <h2>Mobile Network Coverage in Sri Lanka</h2>
+    <p>Check out mobile signal availability across the island. Ideal for planning trips to remote areas.</p>
+    <iframe src="https://www.dialog.lk/coverage-map" width="100%" height="400px" style="border:0; border-radius: 10px;"></iframe>
+</div>
+
+<div class="section" style="background-color: #2c2c2c; color: white;">
+    <h2>Test Your Internet Speed</h2>
+    <p>Use this tool to test your current download and upload speeds:</p>
+    <iframe src="https://embed.speedtestcustom.com" height="300" width="100%" frameborder="0" style="border-radius: 10px;"></iframe>
+</div>
+
+<div class="section" style="background-color: #1e1e1e; color: white;">
+    <h2>Compare Sri Lankan Mobile Providers</h2>
+    <div style="overflow-x: auto;">
+        <table style="margin: auto; border-collapse: collapse; width: 90%; color: white;">
+            <tr style="background-color: #00A8FF;">
+                <th style="padding: 10px;">Provider</th>
+                <th>4G Coverage</th>
+                <th>Tourist SIM</th>
+                <th>Popular Data Package</th>
+                <th>Website</th>
+            </tr>
+            <tr>
+                <td>Dialog</td>
+                <td>Excellent</td>
+                <td>Yes</td>
+                <td>50GB for LKR 997</td>
+                <td><a href="https://www.dialog.lk/" target="_blank" style="color: #00A8FF;">Visit</a></td>
+            </tr>
+            <tr style="background-color: #2c2c2c;">
+                <td>Mobitel</td>
+                <td>Great</td>
+                <td>Yes</td>
+                <td>40GB for LKR 888</td>
+                <td><a href="https://www.mobitel.lk/" target="_blank" style="color: #00A8FF;">Visit</a></td>
+            </tr>
+            <tr>
+                <td>Hutch</td>
+                <td>Moderate</td>
+                <td>Yes</td>
+                <td>30GB for LKR 699</td>
+                <td><a href="https://www.hutch.lk/" target="_blank" style="color: #00A8FF;">Visit</a></td>
+            </tr>
+            <tr style="background-color: #2c2c2c;">
+                <td>Airtel</td>
+                <td>Limited</td>
+                <td>Yes</td>
+                <td>25GB for LKR 599</td>
+                <td><a href="https://www.airtel.lk/" target="_blank" style="color: #00A8FF;">Visit</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="section" style="background-color: #2c2c2c; color: white;">
+    <h2>Tourist SIM Cards – What You Need to Know</h2>
+    <p>Getting connected in Sri Lanka is easy. Tourist SIMs are available at the airport and in most towns. Bring your passport to register.</p>
+    <ul style="list-style: none; padding-left: 0;">
+        <li>📱 Dialog: Tourist plans with 50GB and local call minutes</li>
+        <li>📱 Mobitel: Tourist SIM with unlimited social media access</li>
+        <li>🔌 Top-up at supermarkets, mobile stores, or online</li>
+    </ul>
+</div>
+
+<div class="section" style="background-color: #1e1e1e; color: white;">
+    <h2>Signal Troubleshooting Tips</h2>
+    <ul style="text-align: left; max-width: 800px; margin: auto;">
+        <li>🔄 Switch to airplane mode and back again to refresh signal</li>
+        <li>🌐 In rural areas, switch to 3G for more stable connectivity</li>
+        <li>⚙️ Try manual network selection if automatic mode is unstable</li>
+        <li>📶 Use Wi-Fi calling when indoors with weak mobile signal</li>
+    </ul>
+</div>
+
+<div class="section" style="background-color: #2c2c2c; color: white;">
+    <h2>Useful Telecom Apps for Tourists</h2>
+    <p>Scan the QR codes below to download telecom apps that help you manage your data, reload, and check usage.</p>
+    <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+        <div>
+            <p><strong>Dialog SelfCare</strong></p>
+            <img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://play.google.com/store/apps/details?id=lk.dialog.mega" alt="Dialog QR">
+        </div>
+        <div>
+            <p><strong>Mobitel SelfCare</strong></p>
+            <img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://play.google.com/store/apps/details?id=com.mobitel.smartselfcare" alt="Mobitel QR">
+        </div>
+        <div>
+            <p><strong>Hutch App</strong></p>
+            <img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://play.google.com/store/apps/details?id=com.cs.hutch.hutchapp" alt="Hutch QR">
+        </div>
+    </div>
+</div>
+
+<div class="section" style="background-color: #1e1e1e; color: white;">
+    <h2>📡 Note on Weather & Signal Strength</h2>
+    <p>Signal may drop during heavy rains, especially in highlands and coastal areas. Stay near windows or move outdoors for better reception during storms.</p>
+</div>
+
+
+    
+<div class="footer">
+    &copy; 2025 Discover Sri Lanka | All Rights Reserved
+</div>
+
+<script>
+    function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("show");
+    }
+</script>
+</body>
+</html>
+

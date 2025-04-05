@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Every Thing Sri Lanka</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            text-align: center;
+            color: white;
+        }
+        header {
+            background: #170269;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .nav {
+            background: #1E6091;
+            padding: 15px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .seg a {
+            color: rgb(0, 0, 0);
+            text-decoration:none;
+            margin: 10px;
+            font-size: 18px;
+        }
+        .calendar-container {
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+        .day {
+            padding: 15px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+        }
+        .event-day {
+            background: #c10101;
+            color: white;
+            position: relative;
+            cursor: pointer;
+        }
+        .event-day:hover::after {
+            content: attr(data-event);
+            position: absolute;
+            background: black;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+        .month-navigation {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .month-navigation button {
+            padding: 10px;
+            margin: 5px;
+            background: #31720c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    
+        .event-table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #e6e2e2;
+            color: black;
+        }
+        .event-table th, .event-table td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        .event-table th {
+            background: #31720c;
+            color: white;
+        }
+        .footer {
+            background: #0c3e72;
+            color: white;
+            padding: 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i>Everything Lanka</i></h1>
+    </header>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="EYWK.html">Everything You Wanna Know</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="districts.html">Districts</a>
+        <a href="what-s new.html">What's New</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+    <h1 style="color: aliceblue;">Duruthu Poya Day</h1>
+    <br>
+    <justify><h2><p  style="color: aliceblue;">Falling on the 13<sup>th</sup>of January Duruthu Poya day is holiday significant to the Sri Lankan
+    Buddhist community.<br> This is considered as a public and bank holiday.</p></h2></justify>
+
+    <div class="footer">
+        &copy; 2025 Everything Lanka | All Rights Reserved
+    </div>
+</body>
+</html>

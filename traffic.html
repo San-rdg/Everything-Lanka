@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Lanka</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            text-align: center;
+            color: white;
+        }
+        header {
+            background: #170269;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .traffic-container {
+            margin: 20px auto;
+            width: 50%;
+            background: black;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        select, button {
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .traffic-level {
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .footer {
+            background: #0c3e72;
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+        }
+        .low {
+            color: green;
+        }
+        .moderate {
+            color: orange;
+        }
+        .high {
+            color: red;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C2C2C;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .nav {
+            background: #00A8FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px 12px;
+        }
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            padding: 10px;
+        }
+        .content {
+            width: 80%;
+            margin: 20px auto;
+            background: black;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: #00A8FF;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .nav-links a {
+                padding: 10px;
+                display: block;
+                margin: 5px 0;
+            }
+            .show { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><b>Everything Lanka</b></h1>
+        <caption><i>Offering you the best insider knowledge...</i></caption>
+    </header>
+    
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="EYWK.html">Everything You Wanna Know</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="districts.html">Districts</a>
+        <a href="what-s new.html">What's New</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+    
+    <div class="traffic-container">
+        <h2>Check Traffic Level</h2>
+        <select id="district">
+            <option value="colombo">Colombo</option>
+            <option value="gampaha">Gampaha</option>
+            <option value="kalutara">Kalutara</option>
+            <option value="kandy">Kandy</option>
+            <option value="matale">Matale</option>
+            <option value="nuwara-eliya">Nuwara Eliya</option>
+            <option value="galle">Galle</option>
+            <option value="matara">Matara</option>
+            <option value="hambantota">Hambantota</option>
+            <option value="jaffna">Jaffna</option>
+            <option value="kilinochchi">Kilinochchi</option>
+            <option value="mannar">Mannar</option>
+            <option value="vavuniya">Vavuniya</option>
+            <option value="mullaitivu">Mullaitivu</option>
+            <option value="batticaloa">Batticaloa</option>
+            <option value="ampara">Ampara</option>
+            <option value="trincomalee">Trincomalee</option>
+            <option value="kurunegala">Kurunegala</option>
+            <option value="puttalam">Puttalam</option>
+            <option value="anuradhapura">Anuradhapura</option>
+            <option value="polonnaruwa">Polonnaruwa</option>
+            <option value="badulla">Badulla</option>
+            <option value="monaragala">Monaragala</option>
+            <option value="ratnapura">Ratnapura</option>
+            <option value="kegalle">Kegalle</option>
+        </select>
+        <button onclick="checkTraffic()">Check</button>
+        <div id="traffic-result" class="traffic-level"></div>
+    </div>
+    
+    <script>
+  const trafficData = {
+    "colombo": ["High", "Moderate", "Severe"],
+    "gampaha": ["Moderate", "Moderate", "High"],
+    "kalutara": ["Low", "Moderate", "High"],
+    "kandy": ["Moderate", "High", "Moderate"],
+    "matale": ["Low", "Moderate", "Moderate"],
+    "nuwara-eliya": ["Low", "Low", "Moderate"],
+    "galle": ["Low", "Moderate", "Moderate"],
+    "matara": ["Low", "Moderate", "Moderate"],
+    "hambantota": ["Low", "Low", "Low"],
+    "jaffna": ["Low", "Low", "Moderate"],
+    "kilinochchi": ["Low", "Low", "Low"],
+    "mannar": ["Low", "Low", "Low"],
+    "vavuniya": ["Low", "Moderate", "Low"],
+    "mullaitivu": ["Low", "Low", "Low"],
+    "batticaloa": ["Low", "Moderate", "Moderate"],
+    "ampara": ["Low", "Low", "Moderate"],
+    "trincomalee": ["Low", "Moderate", "Moderate"],
+    "kurunegala": ["Moderate", "High", "High"],
+    "puttalam": ["Moderate", "Moderate", "High"],
+    "anuradhapura": ["Low", "Low", "Low"],
+    "polonnaruwa": ["Low", "Low", "Moderate"],
+    "badulla": ["Low", "Moderate", "Low"],
+    "monaragala": ["Low", "Low", "Low"],
+    "ratnapura": ["Moderate", "Moderate", "High"],
+    "kegalle": ["Moderate", "Moderate", "Moderate"]
+};
+
+
+        function getColorClass(level) {
+            if (level === "Low") return "low";
+            if (level === "Moderate") return "moderate";
+            if (level === "High" || level === "Severe") return "high";
+            return "";
+        }
+
+        function checkTraffic() {
+            const district = document.getElementById("district").value;
+            const data = trafficData[district] || ["Unknown", "Unknown", "Unknown"];
+            document.getElementById("traffic-result").innerHTML = `
+                <p><strong>Morning:</strong> <span class="${getColorClass(data[0])}">${data[0]}</span></p>
+                <p><strong>Afternoon:</strong> <span class="${getColorClass(data[1])}">${data[1]}</span></p>
+                <p><strong>Evening:</strong> <span class="${getColorClass(data[2])}">${data[2]}</span></p>`;
+        }
+    </script>
+
+    <div class="content">
+        Sri Lankan roads are rather busy. Because of both public and private transportaion services being on the road
+        and students travelling to school and people travelling to offices, the roads tend to be full of traffic. They are 
+        mainly busy around 8.30 in the morning and at 1.30 & 3.30 in the afteroon.
+        <br>
+        The above traffic finder will give you a basic idea of the traffic level based on pre recorded data.
+    </div>
+
+<div class="footer">
+    &copy; 2025 Discover Sri Lanka | All Rights Reserved
+</div>
+
+<script>
+    function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("show");
+    }
+</script>
+</body>
+</html>
+
