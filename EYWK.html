@@ -232,34 +232,37 @@
     .destination-buttons a:hover {
       background-color: #0c3e72;
     }
-        @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                align-items: center;
-                padding: 10px;
-            }
-            .menu-icon {
-                display: block;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                background: #00A8FF;
-                position: absolute;
-                top: 50px;
-                left: 0;
-                text-align: center;
-                padding: 10px 0;
-            }
-            .nav-links a {
-                padding: 10px;
-                display: block;
-                margin: 5px 0;
-            }
-            .show { display: flex; }
-        }
+    .menu-toggle {
+      display: none;
+      background: #00A8FF;
+      color: white;
+      font-size: 28px;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      width: 100%;
+      text-align: right;
+    }
+
+    .menu-toggle:focus {
+      outline: none;
+    }
+    @media (max-width: 768px) {
+      .nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .nav.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
     </style>
 </head>
 <body>
@@ -309,10 +312,10 @@
 
     <script>
         function toggleMenu() {
-            const navLinks = document.querySelector(".nav-links");
-            navLinks.classList.toggle("show");
+          const nav = document.getElementById('navMenu');
+          nav.classList.toggle('show');
         }
-    </script>
+      </script>
 </body>
 </html>
 
