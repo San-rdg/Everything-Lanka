@@ -182,6 +182,30 @@
             font-size: 22px;
             font-weight: bold;
         }
+            .destination-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .destination-buttons a {
+      background-color: #1E6091;
+      color: white;
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .destination-buttons a:hover {
+      background-color: #0c3e72;
+    }
         @media (max-width: 768px) {
             .nav {
                 flex-direction: column;
@@ -254,7 +278,7 @@
         <div class="tit">
             <h1>Everything You Wanna Know</h1>
         </div>
-        <div class="button-container">
+        <div class="destination-buttons">
             <a href="en.html" class="btn">Emergency Numbers</a>
             <a href="food.html" class="btn">Food</a>
             <a href="str.html" class="btn">Story Travel Routes</a>
