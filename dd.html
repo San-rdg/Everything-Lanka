@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,50 +114,22 @@
             font-size: 22px;
             font-weight: bold;
         }
-        @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                align-items: center;
-                padding: 10px;
-            }
-            .menu-icon {
-                display: block;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                background: #00A8FF;
-                position: absolute;
-                top: 50px;
-                left: 0;
-                text-align: center;
-                padding: 10px 0;
-            }
-            .nav-links a {
-                padding: 10px;
-                display: block;
-                margin: 5px 0;
-            }
-            .show { display: flex; }
-        }
+        .donts-list li::before {
+    content: "❌";
+    margin-right: 10px;
+    }
+    a {
+        color: white;
+        text-decoration: none;
+    }
+
     </style>
 </head>
 <body>
     <header>
-        <h1>Everything Lanka</h1>
+        <h1><a href="index.html">Everything Lanka</a></h1>
     </header>
 
-    <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="EYWK.html">Everything You Wanna Know</a>
-        <a href="destinations.html">Destinations</a>
-        <a href="districts.html">Districts</a>
-        <a href="what-s new.html">What's New</a>
-        <a href="events.html">Events</a>
-        <a href="contact.html">Contact Us</a>
-    </div>
 
     <div class="main-content">
         <div class="tit">Do's</div>
@@ -179,12 +152,23 @@
 
     <div class="main-content">
         <div class="tit">Don'ts</div>
-        <ul>
-            <li></li>
+        <ul class="donts-list">
+            <li>Do not touch or climb on statues of Lord Buddha — it's considered deeply disrespectful.</li>
+            <li>Do not take selfies or group photos with your back turned to religious icons.</li>
+            <li>Do not display public affection, especially near religious or sacred sites.</li>
+            <li>Do not litter — keep beaches, forests, and streets clean.</li>
+            <li>Do not enter temples with revealing or inappropriate clothing.</li>
+            <li>Do not point feet at religious objects or people — it's viewed as disrespectful.</li>
+            <li>Do not consume alcohol or smoke in public areas.</li>
+            <li>Do not feed or touch stray animals — they may carry diseases or act unpredictably.</li>
+            <li>Do not bargain aggressively at markets — polite negotiation is appreciated.</li>
+            <li>Do not use drones without permission, especially near temples or government buildings.</li>
+            <li>Do not photograph people without asking — especially monks, children, or those at prayer.</li>
+            <li>Do not bring or use illegal substances — Sri Lanka has strict laws on drugs.</li>
         </ul>
-
     </div>
-
+    
+    
     <div class="footer">
         <p>&copy; 2025 Everything Lanka. All Rights Reserved.</p>
     </div>
