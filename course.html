@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Learn Sinhala - Everything Lanka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #2C2C2C;
+      color: white;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: #1a1a1a;
+      width: 220px;
+      min-height: 100vh;
+      padding: 20px;
+      position: fixed;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      color: #ffa500;
+      margin-bottom: 15px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 10px 0;
+    }
+
+    .sidebar ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .main-content {
+      margin-left: 240px;
+      width: 100%;
+    }
+
+    header {
+      background: #170269;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    header p {
+      color: #ccc;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #ffa500;
+      font-size: 26px;
+      margin-top: 40px;
+    }
+
+    .module-intro {
+      font-size: 16px;
+      color: #ccc;
+      margin-top: 10px;
+    }
+
+    .flashcards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+      cursor: pointer;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      backface-visibility: hidden;
+      background: #1E6091;
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      padding: 15px;
+      height: 100%;
+      width: 100%;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: #0c3e72;
+    }
+
+    .quiz-section {
+      margin-top: 50px;
+      text-align: left;
+    }
+
+    .quiz-section h3 {
+      color: #00aaff;
+      margin-bottom: 15px;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question label {
+      display: block;
+      margin: 5px 0;
+    }
+
+    .submit-btn {
+      margin-top: 10px;
+      background: #ffa500;
+      color: black;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #ff8c00;
+    }
+
+    .result {
+      font-weight: bold;
+      margin-top: 15px;
+      color: #00ff88;
+    }
+
+    footer {
+      background: #0c3e72;
+      padding: 15px;
+      color: white;
+      margin-top: 50px;
+      text-align: center;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>📚 Modules</h2>
+    <ul>
+      <li><a href="#greetings">Basic Greetings</a></li>
+      <li><a href="#travel">Travel Essentials</a></li>
+      <li><a href="#numbers">Numbers</a></li>
+      <li><a href="#food">Food & Drink</a></li>
+      <li><a href="#directions">Asking Directions</a></li>
+      <li><a href="#quiz">Final Quiz</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1><a href="index.html">Everythig Lanka</a></h1>
+    </header>
+
+    <div class="container">
+
+      <h2 id="greetings">🔤 Basic Greetings</h2>
+      <p class="module-intro">Learn how to greet locals and make a friendly first impression.</p>
+      <div class="flashcards">
+        <div class="card"><div class="card-inner"><div class="card-front">Hello</div><div class="card-back">ආයුබෝවන් (Ayubowan)</div></div></div>
+        <div class="card"><div class="card-inner"><div class="card-front">Goodbye</div><div class="card-back">ගිහින් එන්නම් (Gihin Ennam)</div></div></div>
+        <div class="card"><div class="card-inner"><div class="card-front">Thank you</div><div class="card-back">ස්තුතියි (Istuti)</div></div></div>
+      </div>
+
+      <h2 id="travel">🌍 Travel Essentials</h2>
+      <p class="module-intro">Common words you’ll need while navigating the island.</p>
+      <div class="flashcards">
+        <div class="card"><div class="card-inner"><div class="card-front">Yes</div><div class="card-back">ඔව් (Ow)</div></div></div>
+        <div class="card"><div class="card-inner"><div class="card-front">No</div><div class="card-back">නැහැ (Næhæ)</div></div></div>
+        <div class="card"><div class="card-inner"><div class="card-front">Please</div><div class="card-back">කරුණාකර (Karunakara)</div></div></div>
+      </div>
+
+      <h2 id="numbers">🔢 Numbers (1–3)</h2>
+      <p class="module-intro">Start counting in Sinhala with the first few basics.</p>
+      <div class="flashcards">
+        <div class="card"><div class="card-inner"><div class="card-front">One</div><div class="card-back">එක (Eka)</div></div></div>
+        <div class="card"><div class="card-inner"><div class="card-front">Two</div><div class="card-back">දෙක (Deka)</div></div></div>
+        <div class="card"><div class="card-inner"><div class="card-front">Three</div><div class="card-back">තුන (Tuna)</div></div></div>
+      </div>
+
+      <h2 id="food">🍛 Food & Drink</h2>
+      <p class="module-intro">Useful phrases when ordering or eating local cuisine.</p>
+      <div class="flashcards">
+        <div class="card"><div class="card-inner"><div class="card-front">Water</div><div class="card-back">වතුර (Wathura)</div></div></div>
+        <div class="card"><div class="card-inner"><div class="card-front">Tea</div><div class="card-back">තේ (Thé)</div></div></div>
+        <div class="card"><div class="card-inner"><div class="card-front">Rice</div><div class="card-back">බත් (Bath)</div></div></div>
+      </div>
+
+      <h2 id="directions">🧭 Asking Directions</h2>
+      <p class="module-intro">Never get lost—ask the right way in Sinhala!</p>
+      <div class="flashcards">
+        <div class="card"><div class="card-inner"><div class="card-front">Where is the toilet?</div><div class="card-back">නානා කාමරය කොහෙද? (Naana kaamaraya koheda?)</div></div></div>
+        <div class="card"><div class="card-inner"><div class="card-front">How much is this?</div><div class="card-back">මේක කීයද? (Meeka kiyeda?)</div></div></div>
+        <div class="card"><div class="card-inner"><div class="card-front">I need help</div><div class="card-back">මට උදව්වක් ඕනේ (Mata udauwvak oney)</div></div></div>
+      </div>
+
+      <!-- Quiz Section -->
+      <div class="quiz-section" id="quiz">
+        <h2>🧠 Final Quiz</h2>
+
+        <div class="question">
+          <h3>1. What is "Thank You" in Sinhala?</h3>
+          <label><input type="radio" name="q1" value="wrong1"> Suba Udesanak</label>
+          <label><input type="radio" name="q1" value="correct"> Istuti</label>
+          <label><input type="radio" name="q1" value="wrong2"> Wathura</label>
+        </div>
+
+        <div class="question">
+          <h3>2. How do you say "Two" in Sinhala?</h3>
+          <label><input type="radio" name="q2" value="wrong1"> Tuna</label>
+          <label><input type="radio" name="q2" value="correct"> Deka</label>
+          <label><input type="radio" name="q2" value="wrong2"> Eka</label>
+        </div>
+
+        <button class="submit-btn" onclick="checkQuiz()">Submit Answers</button>
+        <div id="quiz-result" class="result"></div>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2025 Everything Lanka | Learn Sinhala with Love 💙
+    </footer>
+  </div>
+
+  <script>
+    function checkQuiz() {
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "correct") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "correct") score++;
+      document.getElementById("quiz-result").innerText = `You got ${score}/2 correct!`;
+    }
+  </script>
+</body>
+</html>
+
+
