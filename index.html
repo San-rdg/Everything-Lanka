@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Everything Lanka</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
     <style>
+        /* All your CSS remains the same */
         header {
             background: #170269;
             color: white;
             padding: 20px;
             font-size: 24px;
         }
-            .launch-banner {
+        .launch-banner {
             background: #ffcc00;
             color: black;
             font-size: 18px;
@@ -35,7 +37,8 @@
             padding: 20px;
             border-radius: 5px;
             text-align: center;
-            font-size: 30px;
+            font-size: 22px;
+            font-weight: bold;
         }
         .tit {
             font-size: 5ch;
@@ -43,7 +46,6 @@
             font-family: Arial;
             background-color: #6783de;
         }
-        /* Floating Buttons Container */
         .floating-buttons {
             position: fixed;
             top: 20px;
@@ -53,7 +55,6 @@
             align-items: flex-end;
             gap: 10px;
         }
-        /* Buttons */
         .budget-btn, .news-btn {
             color: white;
             padding: 15px 20px;
@@ -86,7 +87,6 @@
                 transform: translateY(-10px);
             }
         }
-        /* Credit text under images */
         .image-credit {
             font-size: 12px;
             color: white;
@@ -116,7 +116,6 @@
             height: auto;
             border-radius: 10px;
         }
-    
         h1 {
             color: #ffffff;
             font-size: 36px;
@@ -144,7 +143,6 @@
             background: #ffcc00;
             transform: scale(1.05);
         }
-
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -180,41 +178,28 @@
             color: white;
             padding: 10px;
         }
-        .content {
-            width: 80%;
-            margin: 20px auto;
-            background: black;
-            color: white;
+        .destination-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
             padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-            .destination-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .destination-buttons a {
-      background-color: #1E6091;
-      color: white;
-      padding: 15px;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 5px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      transition: background 0.3s ease;
-    }
-
-    .destination-buttons a:hover {
-      background-color: #0c3e72;
-    }
+        .destination-buttons a {
+            background-color: #1E6091;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+        .destination-buttons a:hover {
+            background-color: #0c3e72;
+        }
         @media (max-width: 768px) {
             .nav {
                 flex-direction: column;
@@ -243,71 +228,70 @@
             }
             .show { display: flex; }
         }
-
-          <link rel="icon" type="image/png" href="/favicon.png" />
-        <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Everything Lanka",
-  "url": "https://everythinglanka.wiki/",
-  "logo": "https://everythinglanka.wiki/assets/everything-lanka-logo.png",
-  "sameAs": [
-    "https://www.instagram.com/everything_lanka.wiki/"
-  ]
-}
-</script>
-
-
-        <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is Everything Lanka?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Everything Lanka is a travel guide platform offering insider knowledge, destinations, local culture, and tips to help tourists explore Sri Lanka with ease."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I plan my trip on Everything Lanka?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! Use our Trip Planner, Budget Maker, and Weather tools to organize your travel across Sri Lanka with helpful recommendations."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Everything Lanka updated regularly?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We update our content weekly and also have a 'What's New' section to keep you informed on events, news, and updates from across Sri Lanka."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does Everything Lanka provide emergency contact numbers?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, we have a dedicated page with emergency numbers including police, ambulance, and tourist helplines for your safety while traveling."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are there cultural tips and customs included?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Absolutely. We provide insights into Sri Lankan customs, traditions, etiquette, and local behaviors so you can travel respectfully and comfortably."
-      }
-    }
-  ]
-}
-</script>
     </style>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Everything Lanka",
+      "url": "https://everythinglanka.wiki/",
+      "logo": "https://everythinglanka.wiki/assets/everything-lanka-logo.png",
+      "sameAs": [
+        "https://www.instagram.com/everything_lanka.wiki/"
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Everything Lanka?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Everything Lanka is a travel guide platform offering insider knowledge, destinations, local culture, and tips to help tourists explore Sri Lanka with ease."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I plan my trip on Everything Lanka?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Use our Trip Planner, Budget Maker, and Weather tools to organize your travel across Sri Lanka with helpful recommendations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Everything Lanka updated regularly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We update our content weekly and also have a 'What's New' section to keep you informed on events, news, and updates from across Sri Lanka."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Everything Lanka provide emergency contact numbers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we have a dedicated page with emergency numbers including police, ambulance, and tourist helplines for your safety while traveling."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there cultural tips and customs included?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. We provide insights into Sri Lankan customs, traditions, etiquette, and local behaviors so you can travel respectfully and comfortably."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <header>
@@ -412,14 +396,15 @@
         &copy; 2025 Everything Lanka | All Rights Reserved
     </div>
 
-    <script>
-        function toggleMenu() {
-            const navLinks = document.querySelector(".nav-links");
-            navLinks.classList.toggle("show");
-        }
-    </script>
+<script>
+    function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("show");
+    }
+</script>
 </body>
 </html>
+
 
 
 
