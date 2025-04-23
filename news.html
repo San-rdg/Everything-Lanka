@@ -3,25 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Latest Lanka News - Everything Lanka</title>
+  <title>Latest News - Everything Lanka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Open Sans', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #2C2C2C;
-      text-align: center;
-      color: white;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #f1f1f1;
+      animation: fadeIn 1.2s ease-in;
     }
     header {
       background: #170269;
       color: white;
       padding: 20px;
-      font-size: 24px;
+      font-size: 26px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    header a {
+      color: white;
+      text-decoration: none;
     }
     .nav {
       background: #1E6091;
       padding: 15px;
+      text-align: center;
     }
     .nav a {
       color: white;
@@ -34,78 +42,102 @@
       text-decoration: underline;
     }
     .news-container {
-      width: 80%;
-      margin: 20px auto;
+      width: 90%;
+      max-width: 1000px;
+      margin: 30px auto;
     }
     .news-item {
-      background: #333;
-      padding: 15px;
-      margin: 15px 0;
-      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 12px;
       text-align: left;
+      box-shadow: 0 0 25px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .news-item:hover {
+      background: rgba(255,255,255,0.08);
+      transform: scale(1.02);
     }
     .news-item h2 {
-      color: rgb(228, 70, 70);
+      color: #ffdd57;
+      margin-bottom: 10px;
+    }
+    .news-item p {
+      line-height: 1.6;
     }
     .news-item a {
-      color: lightblue;
+      color: #fbbc04;
       text-decoration: none;
     }
     .news-item a:hover {
       text-decoration: underline;
     }
-    a {
+    .footer {
+      background: #0c3e72;
       color: white;
-      text-decoration: none;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 40px;
+      text-align: center;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      .nav a {
+        display: block;
+        margin: 10px 0;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1><a href="index.html">Latest News - Everything Lanka</a></h1>
+    <h1><a href="index.html">Everything Lanka</a></h1>
   </header>
+
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="news.html">News</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
   <div class="news-container">
     <h1>Latest News Updates</h1>
 
-        <div class="news-item">
-      <h2>📰 Pope Francis has passed away...</h2>
-      <p>Pope Francis who was born in 1936 has passed away at the age of 88 on the 21<sup>st</sup>of April, 2025.</p>
+    <div class="news-item">
+      <h2>📈 Sri Lanka's Economy Projected to Grow 3.5% in 2025</h2>
+      <p>The World Bank forecasts a 3.5% economic growth rate for Sri Lanka in 2025, despite pressure from U.S. tariffs and lingering effects from its financial crisis. Last year’s 5% growth was largely supported by a $2.9 billion IMF bailout package.</p>
+      <p><strong>Date:</strong> April 23, 2025</p>
+      <a href="https://www.reuters.com/world/asia-pacific/sri-lanka-grow-35-2025-despite-tariff-headwinds-says-world-bank-2025-04-23/" target="_blank">Read More</a>
+    </div>
+
+    <div class="news-item">
+      <h2>🛬 Russian Charter Flights Suspended for Off-Season</h2>
+      <p>Russian charter flights to Sri Lanka are paused for the summer off-season due to low demand, raising concerns about tourism revenue and market competition from other destinations.</p>
+      <p><strong>Date:</strong> April 23, 2025</p>
+      <a href="https://www.travelandtourworld.com/news/article/sri-lanka-faces-major-setback-as-russian-charter-flights-pause-due-to-diminished-demand-and-lack-of-summer-promotions-jeopardizing-tourism-growth/" target="_blank">Read More</a>
+    </div>
+
+    <div class="news-item">
+      <h2>🕊️ Vatican Honors Easter Sunday Victims</h2>
+      <p>The Vatican has recognized 167 Sri Lankan Catholics killed in the 2019 Easter bombings as 'Witnesses of Faith' at a memorial led by Cardinal Malcolm Ranjith, renewing calls for a full investigation into the attacks.</p>
       <p><strong>Date:</strong> April 21, 2025</p>
-      <a href="https://www.bbc.com/news/live/crknlnzlrzdt">Read More</a>
-    </div>
-
-    <div class="news-item">
-      <h2>📰 Vatican Honors Easter Sunday Victims as “Witnesses of Faith”</h2>
-      <p>On the sixth anniversary of the 2019 Easter Sunday bombings, the Vatican officially recognized 167 Sri Lankan Catholics killed in the attacks as “witnesses of faith.” Seven non-Catholic victims were also honored. The Church continues to call for justice amid new allegations suggesting political motives behind the attacks.</p>
-      <p><strong>Date:</strong> April 21, 2025</p>
-      <a href="https://apnews.com/article/2b24e619870a400b4bda32f478037875?utm_source=chatgpt.com">Read More</a>
-    </div>
-
-    <div class="news-item">
-      <h2>📰 IMF Engages in Fourth Review of Sri Lanka’s Bailout Program</h2>
-      <p>The IMF is conducting its fourth review of the $2.9 billion bailout package. Discussions center on reform needs like tax exemptions, foreign reserves, and power pricing, especially after U.S. tariff pressures. A successful review will unlock another $334 million in aid.</p>
-      <p><strong>Date:</strong> April 11, 2025</p>
-      <a href="https://www.reuters.com/world/asia-pacific/imf-says-discussions-continue-with-sri-lanka-fourth-review-2025-04-11/?utm_source=chatgpt.com">Read More</a>
-    </div>
-
-    <div class="news-item">
-      <h2>📰 India and UAE to Develop Energy Hub in Trincomalee</h2>
-      <p>India and the UAE are collaborating on an ambitious energy hub project in Trincomalee. The development includes a pipeline system and reactivation of fuel tank infrastructure, enhancing regional ties while balancing geopolitical influences in Sri Lanka.</p>
-      <p><strong>Date:</strong> April 5, 2025</p>
-      <a href="https://www.reuters.com/world/asia-pacific/india-uae-develop-sri-lanka-energy-hub-delhi-competes-with-china-influence-2025-04-05/?utm_source=chatgpt.com">Read More</a>
-    </div>
-
-    <div class="news-item">
-      <h2>📰 U.S. Aid Review Threatens Sri Lanka’s Landmine Clearance Goal</h2>
-      <p>Sri Lanka’s goal to be landmine-free by 2028 is in jeopardy. The U.S., a leading supporter of clearance programs, is reassessing its aid, potentially affecting thousands of workers and delaying efforts in war-affected regions.</p>
-      <p><strong>Date:</strong> April 10, 2025</p>
-      <a href="https://apnews.com/article/ce9a6506463fdd2701df38498ff7dac6?utm_source=chatgpt.com">Read More</a>
+      <a href="https://apnews.com/article/2b24e619870a400b4bda32f478037875?utm_source=chatgpt.com" target="_blank">Read More</a>
     </div>
 
   </div>
+
+  <div class="footer">
+    © 2025 Everything Lanka | Designed with ❤️
+  </div>
+
 </body>
 </html>
+
 
 
 
