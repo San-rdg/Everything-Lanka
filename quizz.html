@@ -118,6 +118,30 @@
       cursor: pointer;
       font-weight: 700;
     }
+        .destination-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .destination-buttons a {
+      background-color: #1E6091;
+      color: white;
+      padding: 18px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .destination-buttons a:hover {
+      background-color: #0c3e72;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -186,7 +210,9 @@
 <div class="main-content">
   <p>What's your score?</p>
   <p>Make sure to DM us your score to be featured on the front page </p>
-  <div class="button">DM Us</div>
+  <div class="destination-buttons">
+    <a href="https://www.instagram.com/everything_lanka.wiki/reels/">DM Us</a>
+  </div>
 </div>
 
   <button type="submit">Submit Quiz</button>
