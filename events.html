@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Everything Lanka – Discover Sri Lanka's best destinations, cultural wonders, travel tips, and local insights. Plan your perfect island adventure today!">
-<meta name="keywords" content="Sri Lanka travel, Sri Lanka tourism, destinations in Sri Lanka, cultural sites, travel tips, Sinhala language, Tamil translation, island adventure">
-<meta name="author" content="Everything Lanka">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="UTF-8">
-    <title>Sri Lankan event/holiday calendar | Travel in Sri Lanka</title>
+    <title>Every Thing Sri Lanka</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #2C2C2C;
-            text-align: center;
-            color: white;
-        }
-        header {
-            background: #170269;
-            color: white;
-            padding: 20px;
-            font-size: 24px;
-        }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #f1f1f1;
+      animation: fadeIn 1s ease-in;
+    }
+
+    header {
+      background: #170269;
+      color: white;
+      padding: 20px;
+      font-size: 26px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
         .seg a {
             color: rgb(0, 0, 0);
             text-decoration:none;
@@ -112,52 +110,29 @@
             font-size: 14px;
             text-align: center;
         }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #2C2C2C;
-            text-align: center;
-            overflow-x: hidden;
-        }
         .nav {
-            background: #00A8FF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-            flex-wrap: wrap;
-        }
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 8px 12px;
-        }
-        .nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-        }
-        .menu-icon {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            padding: 10px;
-        }
-        .content {
-            width: 80%;
-            margin: 20px auto;
-            background: black;
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-        }
+      background: #1E6091;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 18px;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
     .menu-toggle {
       display: none;
       background: #00A8FF;
@@ -173,12 +148,12 @@
     .menu-toggle:focus {
       outline: none;
     }
+
     @media (max-width: 768px) {
       .nav {
         display: none;
         flex-direction: column;
         align-items: center;
-        width: 100%;
       }
 
       .nav.show {
@@ -189,25 +164,82 @@
         display: block;
       }
     }
+
+    .main-content {
+      padding: 30px;
+      margin: 30px auto;
+      background: #1a1a1a;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+      max-width: 1100px;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    .tit h1 {
+      font-size: 48px;
+      color: #ffdd57;
+      margin-bottom: 20px;
+      
+    }
+
+    .destination-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .destination-buttons a {
+      background-color: #1E6091;
+      color: white;
+      padding: 18px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .destination-buttons a:hover {
+      background-color: #0c3e72;
+      transform: scale(1.05);
+    }
+
+    .footer {
+      background: #0c3e72;
+      color: white;
+      padding: 12px;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
     </style>
 </head>
 <body>
     <header>
         <h1>Everything Lanka</h1>
     </header>
-<div class="nav-container">
-    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
-    <div class="nav" id="navMenu">
-      <a href="index.html">Home</a>
-      <a href="EYWK.html">Everything You Wanna Know</a>
-      <a href="destinations.html">Destinations</a>
-      <a href="districts.html">Districts</a>
-      <a href="what-s new.html">What's New</a>
-      <a href="events.html">Events</a>
-      <a href="contact.html">Contact Us</a>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="EYWK.html">Everything You Wanna Know</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="districts.html">Districts</a>
+        <a href="what-s new.html">What's New</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
     </div>
-  </div>
-
     
     <div class="tit">Event Calendar</div>
     <div class="calendar-container">
@@ -279,7 +311,9 @@
 
         generateCalendar(currentYear, currentMonth);
     </script>
-     <h1>Event Calendar</h1>
+    <div class="tit">
+     <h1>Event Table</h1>
+    </div>
      <table class="event-table">
          <tr>
              <th>Date</th>
@@ -287,55 +321,55 @@
          </tr>
          <tr>
             <td>January 13, 2025</td>
-            <td><div class="seg a">Duruthu Full Moon Poya Day</td></div>
+            <td><div class="seg a"><a href="duruthu.html">Duruthu Full Moon Poya Day</a></td></div>
         </tr>
         <tr>
             <td>January 14, 2025</td>
-            <td><div class="seg a">Tamil Thai Pongal Day</td></div>
+            <td><div class="seg a"><a href="tpd.html">Tamil Thai Pongal Day</a></td></div>
         </tr>
         <tr>
             <td>February 4, 2025</td>
-            <td><div class="seg a">Independence Day</td></div>
+            <td><div class="seg a"><a href="iday.html">Independence Day</a></td></div>
         </tr>
         <tr>
             <td>February 12, 2025</td>
-            <td><div class="seg a">Navam Full Moon Poya Day</td></div>
+            <td><div class="seg a"><a href="npd.html">Navam Full Moon Poya Day</a></td></div>
         </tr>
         <tr>
             <td>February 26, 2025</td>
-            <td><div class="seg a">Maha Shivarathi</td></div>
+            <td><div class="seg a"><a href="ms.html">Maha Shivarathi</a></td></div>
         </tr>
         <tr>
             <td>March 13, 2025</td>
-            <td><div class="seg a">Madin Full Moon Poya Day</td></div>
+            <td><div class="seg a"><a href="mpd.html">Madin Full Poya Day</a></td></div>
         </tr>
         <tr>
             <td>April 14, 2025</td>
-            <td><div class="seg a">Sinhala and Tamil New Year Day</td></div>
+            <td><div class="seg a"><a href="stny.html">Sinhala and Tamil New Year Day</a></td></div>
         </tr>
         <tr>
             <td>May 1, 2025</td>
-            <td><div class="seg a">Labour Day</td></div>
+            <td><div class="seg a"><a href="ld.html">Labour Day</a></td></div>
         </tr>
          <tr>
              <td>May 12, 2025</td>
-             <td><div class="seg a">Vesak Poya Day</td></div>
+             <td><div class="seg a"><a href="vesak.html">Vesak Poya Day</a></td></div>
          </tr>
          <tr>
             <td>July 10, 2025</td>
-            <td><div class="seg a">Esala Poya Day</td></div>
+            <td><div class="seg a"><a href="epd.html">Esala Poya Day</a></td></div>
         </tr>
         <tr>
             <td>July 30, 2025</td>
-            <td><div class="seg a">Esala Perehara Day</td></div>
+            <td><div class="seg a"><a href="epd.html">Esala Perehara Day</a></td></div>
         </tr>
         <tr>
             <td>November 11, 2025</td>
-            <td><div class="seg a">Remembrance Day (Vetrans Day)</td></div>
+            <td><div class="seg a"><a href="rd.html">Remembrance Day (Vetrans Day)</a></td></div>
         </tr>
         <tr>
             <td>December 25, 2025</td>
-            <td><div class="seg a">Christmas Day</td></div>
+            <td><div class="seg a"><a href="cd.html">Christmas Day</a></td></div>
         </tr>
      </table>
      <div class="footer">
@@ -344,9 +378,9 @@
 
     <script>
         function toggleMenu() {
-          const nav = document.getElementById('navMenu');
-          nav.classList.toggle('show');
+            const navLinks = document.querySelector(".nav-links");
+            navLinks.classList.toggle("show");
         }
-      </script>
+    </script>
 </body>
 </html>
