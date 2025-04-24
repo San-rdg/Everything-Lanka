@@ -3,118 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Everything Lanka – Discover Sri Lanka's best destinations, cultural wonders, travel tips, and local insights. Plan your perfect island adventure today!">
-<meta name="keywords" content="Sri Lanka travel, Sri Lanka tourism, destinations in Sri Lanka, cultural sites, travel tips, Sinhala language, Tamil translation, island adventure">
-<meta name="author" content="Everything Lanka">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="UTF-8">
-
-    <title>Contact Us - Contact Everything Lanka Team/Sri Lanka</title>
+    <title>Contact Us - Everything Lanka</title>
 
     <!-- Google Font: Open Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #2C2C2C;
-            color: white;
-            text-align: center;
-        }
-        header {
-            background: #170269;
-            color: white;
-            padding: 20px;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .main-content {
-            padding: 40px;
-            margin: 30px auto;
-            max-width: 800px;
-            background: #1a1a1a;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-        }
-        h1 {
-            font-size: 36px;
-            color: #f7f3f2;
-        }
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .contact-info {
-            margin-top: 20px;
-            font-size: 20px;
-            background: #0c3e72;
-            padding: 15px;
-            border-radius: 10px;
-            display: inline-block;
-        }
-        .contact-info a {
-            color: #ffcc00;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-        .footer {
-            background: #0c3e72;
-            color: white;
-            padding: 10px;
-            font-size: 14px;
-            margin-top: 30px;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #2C2C2C;
-            text-align: center;
-            overflow-x: hidden;
-        }
-        .nav {
-            background: #00A8FF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-            flex-wrap: wrap;
-        }
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 8px 12px;
-        }
-        .nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-        }
-        .menu-icon {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            padding: 10px;
-        }
-        .content {
-            width: 80%;
-            margin: 20px auto;
-            background: black;
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-        }
+     body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #f1f1f1;
+      animation: fadeIn 1s ease-in;
+    }
+
+    header {
+      background: #170269;
+      color: white;
+      padding: 20px;
+      font-size: 26px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .nav {
+      background: #1E6091;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 18px;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
     .menu-toggle {
       display: none;
       background: #00A8FF;
@@ -130,12 +65,12 @@
     .menu-toggle:focus {
       outline: none;
     }
+
     @media (max-width: 768px) {
       .nav {
         display: none;
         flex-direction: column;
         align-items: center;
-        width: 100%;
       }
 
       .nav.show {
@@ -146,31 +81,99 @@
         display: block;
       }
     }
-    </style>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-    
+    .main-content {
+      padding: 30px;
+      margin: 30px auto;
+      background: #1a1a1a;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+      max-width: 1100px;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    .tit h1 {
+      font-size: 48px;
+      color: #ffdd57;
+      margin-bottom: 20px;
+      
+    }
+
+    .destination-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .destination-buttons a {
+      background-color: #1E6091;
+      color: white;
+      padding: 18px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .destination-buttons a:hover {
+      background-color: #0c3e72;
+      transform: scale(1.05);
+    }
+
+    .footer {
+      background: #0c3e72;
+      color: white;
+      padding: 12px;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+    .contact-info {
+            margin-top: 20px;
+            font-size: 20px;
+            background: #0c3e72;
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .contact-info a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Everything Lanka</h1>
     </header>
 
-<div class="nav-container">
-    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
-    <div class="nav" id="navMenu">
-      <a href="index.html">Home</a>
-      <a href="EYWK.html">Everything You Wanna Know</a>
-      <a href="destinations.html">Destinations</a>
-      <a href="districts.html">Districts</a>
-      <a href="what-s new.html">What's New</a>
-      <a href="events.html">Events</a>
-      <a href="contact.html">Contact Us</a>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="EYWK.html">Everything You Wanna Know</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="districts.html">Districts</a>
+        <a href="what-s new.html">What's New</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
     </div>
-  </div>
 
     <div class="main-content">
         <h1>Contact Us</h1>
@@ -185,7 +188,7 @@
     <div class="main-content">
 
         <p>Website designer - Everything Lanka</p>
-        <p>Photos - Pexels / Neha</p>
+        <p>Photos - Pexels / Neha Thirumavalawan</p>
         <P>Birth Place - Sri Lanka</P>
     </div>
 
@@ -199,9 +202,9 @@
 
     <script>
         function toggleMenu() {
-          const nav = document.getElementById('navMenu');
-          nav.classList.toggle('show');
+            const navLinks = document.querySelector(".nav-links");
+            navLinks.classList.toggle("show");
         }
-      </script>
+    </script>
 </body>
 </html>
