@@ -3,56 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <meta name="description" content="Everything Lanka – Discover Sri Lanka's best destinations, cultural wonders, travel tips, and local insights. Plan your perfect island adventure today!">
-<meta name="keywords" content="Sri Lanka travel, Sri Lanka tourism, destinations in Sri Lanka, cultural sites, travel tips, Sinhala language, Tamil translation, island adventure">
-<meta name="author" content="Everything Lanka">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="UTF-8">
-  
-  <title>Find Hidden Gems & Best Destinations | Discover Sri Lanka</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
+  <meta name="description" content="Everything Lanka – Discover Sri Lanka's best destinations, cultural wonders, travel tips, and local insights. Plan your perfect island adventure today!">
+  <meta name="keywords" content="Sri Lanka travel, Sri Lanka tourism, destinations in Sri Lanka, cultural sites, travel tips, Sinhala language, Tamil translation, island adventure">
+  <meta name="author" content="Everything Lanka">
+  <title>Discover Sri Lanka - Destinations | Everything Lanka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
     body {
       font-family: 'Open Sans', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #2C2C2C;
-      color: white;
-      text-align: center;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #f1f1f1;
+      animation: fadeIn 1s ease-in;
     }
 
     header {
       background: #170269;
       color: white;
       padding: 20px;
-      font-size: 32px;
+      font-size: 26px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
-    /* Navigation styles */
-    .nav-container {
-      background: #00A8FF;
+    .floating-buttons {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+
+    .floating-buttons a {
+      padding: 14px 20px;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+
+    .budget-btn {
+      background: #FFA500;
+    }
+
+    .budget-btn:hover {
+      background: #FF8C00;
     }
 
     .nav {
+      background: #1E6091;
       display: flex;
-      justify-content: center;
-      align-items: center;
       flex-wrap: wrap;
+      justify-content: center;
       padding: 10px 0;
     }
 
     .nav a {
       color: white;
       text-decoration: none;
-      margin: 10px 20px;
-      font-size: 16px;
+      margin: 8px 18px;
+      font-size: 18px;
       font-weight: bold;
       padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
     }
 
     .nav a:hover {
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 5px;
+      background: rgba(255,255,255,0.2);
     }
 
     .menu-toggle {
@@ -76,126 +99,124 @@
         display: none;
         flex-direction: column;
         align-items: center;
-        width: 100%;
       }
-
       .nav.show {
         display: flex;
       }
-
       .menu-toggle {
         display: block;
       }
     }
 
-    .tit {
-      font-size: 36px;
-      background-color: #FAAB00;
-      padding: 15px;
-      border-radius: 5px;
-      margin: 20px auto;
-      width: fit-content;
+    .main-content {
+      padding: 30px;
+      margin: 30px auto;
+      background: #1a1a1a;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+      max-width: 1100px;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    .tit h1 {
+      font-size: 48px;
+      color: #ffdd57;
+      margin-bottom: 20px;
     }
 
     .destination-buttons {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
       padding: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
     }
 
     .destination-buttons a {
       background-color: #1E6091;
       color: white;
-      padding: 15px;
+      padding: 18px;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
-      border-radius: 5px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      transition: background 0.3s ease;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
     }
 
     .destination-buttons a:hover {
       background-color: #0c3e72;
-    }
-
-    .content {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-      background-color: #333;
-      border-radius: 10px;
-      font-size: 18px;
-      text-align: left;
-      line-height: 1.6;
+      transform: scale(1.05);
     }
 
     .footer {
       background: #0c3e72;
       color: white;
-      padding: 20px;
+      padding: 12px;
       font-size: 14px;
       text-align: center;
+      margin-top: 50px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to   { opacity: 1; transform: translateY(0);}
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Everything Lanka</h1>
+  <h1><b>Everything Lanka</b></h1>
 </header>
 
-<div class="nav-container">
-  <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
-  <div class="nav" id="navMenu">
-    <a href="index.html">Home</a>
-    <a href="EYWK.html">Everything You Wanna Know</a>
-    <a href="destinations.html">Destinations</a>
-    <a href="districts.html">Districts</a>
-    <a href="what-s new.html">What's New</a>
-    <a href="events.html">Events</a>
-    <a href="contact.html">Contact Us</a>
+<div class="floating-buttons">
+  <a href="budget.html" class="budget-btn">Make Your Budget</a>
+  <a href="4test.html" class="budget-btn">Wildlife Tracker!</a>
+</div>
+
+<button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+<div class="nav" id="navMenu">
+  <a href="index.html">Home</a>
+  <a href="EYWK.html">Everything You Wanna Know</a>
+  <a href="destinations.html">Destinations</a>
+  <a href="districts.html">Districts</a>
+  <a href="what-s new.html">What's New</a>
+  <a href="events.html">Events</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<div class="main-content">
+  <div class="tit">
+    <h1>Popular Destinations</h1>
   </div>
-</div>
 
-<div class="tit">Popular Destinations</div>
+  <div class="destination-buttons">
+    <a href="NineArchBridge.html">Nine Arch Bridge</a>
+    <a href="Ella.html">Ella</a>
+    <a href="Sigiriya.html">Sigiriya</a>
+    <a href="Yala.html">Yala</a>
+    <a href="Nuwaraeliya.html">Nuwara Eliya</a>
+    <a href="GalleFort.html">Galle Fort</a>
+    <a href="Richmond.html">Richmond Castle</a>
+    <a href="Jungle.html">Jungle Beach</a>
+    <a href="Hor.html">Horton Plains</a>
+    <a href="Boto.html">Gampaha Botanical Garden</a>
+    <a href="Hali.html">Badulla, Haliela</a>
+    <a href="Knu.html">Knuckles</a>
+  </div>
 
-<div class="destination-buttons">
-  <a href="NineArchBridge.html">Nine Arch Bridge</a>
-  <a href="Ella.html">Ella</a>
-  <a href="Sigiriya.html">Sigiriya</a>
-  <a href="Yala.html">Yala</a>
-  <a href="Nuwaraeliya.html">Nuwara Eliya</a>
-  <a href="GalleFort.html">Galle Fort</a>
-  <a href="Richmond.html">Richmond Castle</a>
-  <a href="Jungle.html">Jungle Beach</a>
-  <a href="Hor.html">Horton Plains</a>
-  <a href="Boto.html">Gampaha, Botanical Garden</a>
-  <a href="Hali.html">Badulla, Haliela</a>
-  <a href="Knu.html">Knuckles</a>
-</div>
-
-  <div class="tit">Hot Destinations</div>
+  <div class="tit">
+    <h1>Hot Destinations</h1>
+  </div>
 
   <div class="destination-buttons">
     <a href="10.html">Top 10 Shopping Destinations</a>
   </div>
-
-<h1 style="margin-top: 50px;"><u>Destinations</u></h1>
-
-<div class="content">
-  <p>When you are in Sri Lanka, there are many amazing destinations to explore. These locations are renowned worldwide for their breathtaking beauty, rich history, and unique charm. We have carefully curated a list of must-visit places in Sri Lanka for an unforgettable experience.</p>
-
-  <p>Sri Lanka is a land of immense geographical and cultural diversity. From the misty hills of Nuwara Eliya to the golden beaches of Mirissa, the island offers a stunning variety of landscapes. Ancient cities like Anuradhapura and Polonnaruwa take you back in time, while modern hubs like Colombo provide a vibrant urban experience.</p>
-
-  <p>Whether you seek adventure in the jungles of Yala, tranquility in the temples of Kandy, or the charm of Dutch-era architecture in Galle Fort, Sri Lanka has something for everyone. The island’s compact size allows visitors to explore multiple destinations within a short span, making every journey filled with new discoveries.</p>
 </div>
 
 <div class="footer">
-  &copy; 2025 Everything Lanka | All Rights Reserved
+  &copy; 2025 Everything Lanka | Designed with ❤️
 </div>
 
 <script>
@@ -207,6 +228,7 @@
 
 </body>
 </html>
+
 
 
 
