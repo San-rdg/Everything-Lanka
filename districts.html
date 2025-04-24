@@ -1,121 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Everything Lanka – Discover Sri Lanka's best destinations, cultural wonders, travel tips, and local insights. Plan your perfect island adventure today!">
-<meta name="keywords" content="Sri Lanka travel, Sri Lanka tourism, destinations in Sri Lanka, cultural sites, travel tips, Sinhala language, Tamil translation, island adventure">
-<meta name="author" content="Everything Lanka">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="UTF-8">
-    <title>All disticts of Lanka | Travel Sri Lanka</title>
-    <!-- Leaflet.js CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>          
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #2C2C2C;
-            text-align: center;
-        }
-        header {
-            background: #170269;
-            color: white;
-            padding: 20px;
-            font-size: 24px;
-        }
-        .tit {
-            font-size: 5ch;
-            color: white;
-            font-family: 'Open Sans', sans-serif;
-            background-color: #FAAB00;
-            padding: 15px;
-        }
-        .districts-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            justify-items: center;
-            margin-top: 20px;
-        }
-        .district-button {
-            background-color: #1E6091;
-            color: white;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        .district-button:hover {
-            background-color: #0c3e72;
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-        }
-        /* Styling for map container */
-        #map {
-            height: 400px;
-            width: 100%;
-            margin-top: 20px;
-        }
-        .footer {
-            background: #0c3e72;
-            color: white;
-            padding: 20px;
-            font-size: 14px;
-            text-align: center;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #2C2C2C;
-            text-align: center;
-            overflow-x: hidden;
-        }
-        .nav {
-            background: #00A8FF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-            flex-wrap: wrap;
-        }
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 8px 12px;
-        }
-        .nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-        }
-        .menu-icon {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            padding: 10px;
-        }
-        .content {
-            width: 80%;
-            margin: 20px auto;
-            background: black;
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-       }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Everything Lanka – Discover Sri Lanka's best destinations, cultural wonders, travel tips, and local insights. Plan your perfect island adventure today!">
+  <meta name="keywords" content="Sri Lanka travel, Sri Lanka tourism, destinations in Sri Lanka, cultural sites, travel tips, Sinhala language, Tamil translation, island adventure">
+  <meta name="author" content="Everything Lanka">
+  <title>Districts - Everything Lanka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #f1f1f1;
+      animation: fadeIn 1s ease-in;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #170269;
+      color: white;
+      padding: 20px;
+      font-size: 26px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .floating-buttons {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+
+    .floating-buttons a {
+      padding: 14px 20px;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+
+    .budget-btn {
+      background: #FFA500;
+    }
+
+    .budget-btn:hover {
+      background: #FF8C00;
+    }
+
+    .nav {
+      background: #1E6091;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 18px;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
     .menu-toggle {
       display: none;
       background: #00A8FF;
@@ -131,12 +95,12 @@
     .menu-toggle:focus {
       outline: none;
     }
+
     @media (max-width: 768px) {
       .nav {
         display: none;
         flex-direction: column;
         align-items: center;
-        width: 100%;
       }
 
       .nav.show {
@@ -147,14 +111,82 @@
         display: block;
       }
     }
-    </style>
+
+    .main-content {
+      padding: 30px;
+      margin: 30px auto;
+      background: #1a1a1a;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(255,255,255,0.15);
+      max-width: 1100px;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    .tit h1 {
+      font-size: 48px;
+      color: #ffdd57;
+      margin-bottom: 20px;
+    }
+
+    .destination-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .destination-buttons a {
+      background-color: #1E6091;
+      color: white;
+      padding: 18px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .destination-buttons a:hover {
+      background-color: #0c3e72;
+      transform: scale(1.05);
+    }
+
+    #map {
+      height: 400px;
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .footer {
+      background: #0c3e72;
+      color: white;
+      padding: 12px;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Everything Lanka</h1>
-    </header>
-<!-- Toggleable Navigation Menu -->
-<div class="nav-container">
+
+  <header>
+    <h1><b>Everything Lanka</b></h1>
+  </header>
+
+  <div class="floating-buttons">
+    <a href="budget.html" class="budget-btn">Make Your Budget</a>
+    <a href="4test.html" class="budget-btn">Wildlife Tracker!</a>
+  </div>
+
   <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
   <div class="nav" id="navMenu">
     <a href="index.html">Home</a>
@@ -165,71 +197,59 @@
     <a href="events.html">Events</a>
     <a href="contact.html">Contact Us</a>
   </div>
-</div>
-    
+
+  <div class="main-content">
     <div class="tit">
-        Districts
+      <h1>Districts of Sri Lanka</h1>
     </div>
-        <!-- Map Container -->
-        <div id="map"></div>
-    
-        <div class="districts-list">
-            <a href="Ampara.html" class="district-button">Ampara</a>
-            <a href="Anuradhapura.html" class="district-button">Anuradhapura</a>
-            <a href="Badulla.html" class="district-button">Badulla</a>
-            <a href="Batticaloa.html" class="district-button">Batticaloa</a>
-            <a href="Colombo.html" class="district-button">Colombo</a>
-            <a href="Galle.html" class="district-button">Galle</a>
-            <a href="Gampaha.html" class="district-button">Gampaha</a>
-            <a href="Hambanthota.html" class="district-button">Hambanthota</a>
-            <a href="Jaffna.html" class="district-button">Jaffna</a>
-            <a href="Kalutara.html" class="district-button">Kalutara</a>
-            <a href="Kandy.html" class="district-button">Kandy</a>
-            <a href="Kegalle.html" class="district-button">Kegalle</a>
-            <a href="Kilinochchi.html" class="district-button">Kilinochchi</a>
-            <a href="Kurunagala.html" class="district-button">Kurunagala</a>
-            <a href="Mannarama.html" class="district-button">Mannarama</a>
-            <a href="Matale.html" class="district-button">Matale</a>
-            <a href="Mathara.html" class="district-button">Mathara</a>
-            <a href="Monaragala.html" class="district-button">Monaragala</a>
-            <a href="Mullativu.html" class="district-button">Mullativu</a>
-            <a href="NuwaraEliya.html" class="district-button">Nuwara Eliya</a>
-            <a href="Polonnaruwa.html" class="district-button">Polonnaruwa</a>
-            <a href="Puttalama.html" class="district-button">Puttalama</a>
-            <a href="Rathnapura.html" class="district-button">Rathnapura</a>
-            <a href="Trincomalee.html" class="district-button">Trincomalee</a>
-            <a href="Vavuniyava.html" class="district-button">Vavuniyava</a>
-        </div>
 
-            <!-- Leaflet.js Library -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        // Initialize the map
-        var map = L.map('map').setView([7.8731, 80.7718], 7); // Coordinates for Sri Lanka
+    <div id="map"></div>
 
-        // Add Tile Layer (OpenStreetMap)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-    </script>
+    <div class="destination-buttons">
+      <a href="Ampara.html">Ampara</a>
+      <a href="Anuradhapura.html">Anuradhapura</a>
+      <a href="Badulla.html">Badulla</a>
+      <a href="Batticaloa.html">Batticaloa</a>
+      <a href="Colombo.html">Colombo</a>
+      <a href="Galle.html">Galle</a>
+      <a href="Gampaha.html">Gampaha</a>
+      <a href="Hambanthota.html">Hambanthota</a>
+      <a href="Jaffna.html">Jaffna</a>
+      <a href="Kalutara.html">Kalutara</a>
+      <a href="Kandy.html">Kandy</a>
+      <a href="Kegalle.html">Kegalle</a>
+      <a href="Kilinochchi.html">Kilinochchi</a>
+      <a href="Kurunagala.html">Kurunagala</a>
+      <a href="Mannarama.html">Mannarama</a>
+      <a href="Matale.html">Matale</a>
+      <a href="Mathara.html">Mathara</a>
+      <a href="Monaragala.html">Monaragala</a>
+      <a href="Mullativu.html">Mullativu</a>
+      <a href="NuwaraEliya.html">Nuwara Eliya</a>
+      <a href="Polonnaruwa.html">Polonnaruwa</a>
+      <a href="Puttalama.html">Puttalama</a>
+      <a href="Rathnapura.html">Rathnapura</a>
+      <a href="Trincomalee.html">Trincomalee</a>
+      <a href="Vavuniyava.html">Vavuniyava</a>
+    </div>
+  </div>
 
+  <div class="footer">
+    &copy; 2025 Everything Lanka | Designed with ❤️
+  </div>
 
-    <br>
-    <img src="Districts.png" alt="Districts" width="900" height="1200">
-    
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map').setView([7.8731, 80.7718], 7);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
 
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('show');
+    }
+  </script>
 
-<div class="footer">
-    &copy; 2025 Everything Lanka | All Rights Reserved
-</div>
-
-
-   <script>
-        function toggleMenu() {
-          const nav = document.getElementById('navMenu');
-          nav.classList.toggle('show');
-        }
-      </script>
 </body>
 </html>
 
