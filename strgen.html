@@ -105,8 +105,8 @@
       margin-top: 50px;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px);}
-      to   { opacity: 1; transform: translateY(0);}
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     .story-generator {
       text-align: center;
@@ -186,6 +186,9 @@
       <option value="mystic forest">Mystic Forest</option>
       <option value="hidden beach">Hidden Beach</option>
       <option value="ancient kingdom">Ancient Kingdom</option>
+      <option value="desert exploration">Desert Exploration</option>
+      <option value="mountain trek">Mountain Trek</option>
+      <option value="cultural journey">Cultural Journey</option>
     </select>
     <button onclick="generateStory()">Reveal My Story</button>
 
@@ -216,11 +219,17 @@ function generateStory() {
 
   let story = "";
   if (vibe === "mystic forest") {
-    story = `✨ ${name}, you stepped into the heart of the Mystic Forest. The trees whispered ancient secrets, and a gentle glow led you to a hidden waterfall where you discovered a shimmering amulet. Your courage earned you the title of Forest Guardian! 🌿`;
+    story = `✨ ${name}, you stepped into the heart of the Mystic Forest. The trees whispered ancient secrets, and a gentle glow led you to a hidden waterfall near Ella, where you discovered a shimmering amulet. Your courage earned you the title of Forest Guardian! 🌿`;
   } else if (vibe === "hidden beach") {
-    story = `🏝️ ${name}, you found a secret beach untouched by time. As the golden sun set, you uncovered a message in a bottle from a long-lost sailor. Your kindness and curiosity earned you the honorary title of Wave Whisperer! 🌊`;
+    story = `🏝️ ${name}, you found a secret beach untouched by time, near the shores of Nilaveli. As the golden sun set, you uncovered a message in a bottle from a long-lost sailor. Your kindness and curiosity earned you the honorary title of Wave Whisperer! 🌊`;
   } else if (vibe === "ancient kingdom") {
-    story = `🏰 ${name}, you wandered through the ruins of an Ancient Kingdom. There, you solved a forgotten riddle and awakened a guardian spirit. Your wisdom crowned you the Keeper of Legends! 🏹`;
+    story = `🏰 ${name}, you wandered through the ruins of an Ancient Kingdom in Polonnaruwa. There, you solved a forgotten riddle and awakened a guardian spirit. Your wisdom crowned you the Keeper of Legends! 🏹`;
+  } else if (vibe === "desert exploration") {
+    story = `🏜️ ${name}, you ventured into the arid landscapes of the Hambantota desert, uncovering ancient petroglyphs carved into rocks. Your exploration earned you the title of Desert Voyager! 🌵`;
+  } else if (vibe === "mountain trek") {
+    story = `⛰️ ${name}, you climbed the towering peaks of the Knuckles Mountain Range. The view from the summit was breathtaking, and you found an ancient shrine hidden among the rocks. Your endurance made you the Mountain Sage! 🏞️`;
+  } else if (vibe === "cultural journey") {
+    story = `🌍 ${name}, you journeyed through Sri Lanka's cultural heart in Kandy. You learned traditional dance, visited sacred temples, and uncovered ancient stories from the locals. Your respect for the culture crowned you the Cultural Ambassador! 🎭`;
   }
 
   resultDiv.style.display = 'block';
@@ -231,6 +240,7 @@ function generateStory() {
 
 </body>
 </html>
+
 
 
 
