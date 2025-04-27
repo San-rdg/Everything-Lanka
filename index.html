@@ -215,6 +215,16 @@
         .destination-buttons a:hover {
             background-color: #0c3e72;
         }
+            .update-indicator {
+      position: absolute;
+      top: 5px;
+      right: -8px;
+      width: 10px;
+      height: 10px;
+      background-color: #FFA500;
+      border-radius: 50%;
+      animation: bounce 1.2s infinite;
+    }
         @media (max-width: 768px) {
             .nav {
                 flex-direction: column;
@@ -339,7 +349,9 @@
             <a href="EYWK.html">Everything You Wanna Know</a>
             <a href="destinations.html">Destinations</a>
             <a href="districts.html">Districts</a>
-            <a href="what-s new.html">What's New</a>
+            <a href="what-s new.html">What's New
+            <span class="update-indicator"></span>
+            </a>
             <a href="events.html">Events</a>
             <a href="contact.html">Contact Us</a>
         </div>
