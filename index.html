@@ -28,6 +28,8 @@
             color: white;
             padding: 20px;
             font-size: 24px;
+            text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
         .launch-banner {
             background: #ffcc00;
@@ -39,10 +41,12 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
         .footer {
-            background: #0c3e72;
-            color: white;
-            padding: 10px;
-            font-size: 14px;
+          background: #0c3e72;
+      color: white;
+      padding: 12px;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 50px;
         }
         .content {
             width: 80%;
@@ -62,14 +66,23 @@
             background-color: #6783de;
         }
         .floating-buttons {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
+          position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
         }
+        .floating-buttons a {
+      padding: 14px 20px;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
         .budget-btn, .news-btn {
             color: white;
             padding: 15px 20px;
@@ -108,11 +121,13 @@
             margin-top: 5px;
         }
         .main-content {
-            padding: 30px;
-            margin: 30px;
-            background: #1a1a1a;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+          padding: 30px;
+      margin: 30px auto;
+      background: #1a1a1a;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+      max-width: 1100px;
+      animation: fadeIn 1.2s ease-in;
         }
         .row {
             display: flex;
@@ -159,28 +174,31 @@
             transform: scale(1.05);
         }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Open Sans', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #2C2C2C;
             text-align: center;
             overflow-x: hidden;
+            background: linear-gradient(to right, #141e30, #243b55);
+      color: #f1f1f1;
+      animation: fadeIn 1s ease-in;
         }
         .nav {
-            background: #00A8FF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-            flex-wrap: wrap;
-        }
+      background: #1E6091;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 0;
+    }
         .nav a {
-            color: white;
-            text-decoration: none;
-            margin: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 8px 12px;
+          color: white;
+      text-decoration: none;
+      margin: 8px 18px;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
         }
         .nav a:hover {
             background: rgba(255, 255, 255, 0.2);
@@ -193,28 +211,31 @@
             color: white;
             padding: 10px;
         }
+
         .destination-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .destination-buttons a {
-            background-color: #1E6091;
-            color: white;
-            padding: 15px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease;
-        }
-        .destination-buttons a:hover {
-            background-color: #0c3e72;
-        }
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .destination-buttons a {
+      background-color: #1E6091;
+      color: white;
+      padding: 18px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .destination-buttons a:hover {
+      background-color: #0c3e72;
+      transform: scale(1.05);
+    }
             .update-indicator {
       position: absolute;
       top: 5px;
@@ -258,6 +279,15 @@
             }
             .show { display: flex; }
         }
+        @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
     </style>
 
     <script type="application/ld+json">
