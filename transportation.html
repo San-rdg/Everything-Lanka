@@ -1,171 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Everything Lanka – Discover Sri Lanka's best destinations, cultural wonders, travel tips, and local insights. Plan your perfect island adventure today!">
-  <meta name="keywords" content="Sri Lanka travel, Sri Lanka tourism, destinations in Sri Lanka, cultural sites, travel tips, Sinhala language, Tamil translation, island adventure">
-  <meta name="author" content="Everything Lanka">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2S823WWMZ9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transportation - Everything Lanka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #f1f1f1;
+      animation: fadeIn 1s ease-in;
+    }
 
-  gtag('config', 'G-2S823WWMZ9');
-</script>
-    <title>Everything Lanka - Transportation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #2C2C2C;
-            color: white;
-            text-align: center;
-        }
-        header {
-            background: #170269;
-            color: white;
-            padding: 20px;
-            font-size: 24px;
-        }
-        .content {
-            width: 80%;
-            margin: 20px auto;
-            background: black;
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-        }
-        .transport-section {
-            margin: 30px 0;
-        }
-        .transport-section h2 {
-            color: #ffcc00;
-        }
-        .footer {
-            background: #0c3e72;
-            color: white;
-            padding: 10px;
-            font-size: 14px;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #2C2C2C;
-            text-align: center;
-            overflow-x: hidden;
-        }
-        .nav {
-            background: #00A8FF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-            flex-wrap: wrap;
-        }
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 8px 12px;
-        }
-        .nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-        }
-        .menu-icon {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            padding: 10px;
-        }
-        .content {
-            width: 80%;
-            margin: 20px auto;
-            background: black;
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-        }
-        a {
-            color: white;
-            text-decoration: none;
-        }
-        @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                align-items: center;
-                padding: 10px;
-            }
-            .menu-icon {
-                display: block;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                background: #00A8FF;
-                position: absolute;
-                top: 50px;
-                left: 0;
-                text-align: center;
-                padding: 10px 0;
-            }
-            .nav-links a {
-                padding: 10px;
-                display: block;
-                margin: 5px 0;
-            }
-            .show { display: flex; }
-        }
-    </style>
+    header {
+      background: #170269;
+      color: white;
+      padding: 20px;
+      font-size: 26px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .nav {
+      background: #1E6091;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 18px;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: #00A8FF;
+      color: white;
+      font-size: 28px;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      width: 100%;
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+      }
+      .nav.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    .main-content {
+      padding: 30px;
+      margin: 30px auto;
+      background: #1a1a1a;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+      max-width: 1100px;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    .main-content h1 {
+      font-size: 44px;
+      color: #ffdd57;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .transport-section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #202020;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .transport-section h2 {
+      color: #FFA500;
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .transport-section p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .footer {
+      background: #0c3e72;
+      color: white;
+      padding: 12px;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1><a href="index.html">Everything Lanka</a></h1>
-    </header>
 
-    <div class="content">
-        <div class="transport-section">
-            <h2>Public Transport</h2>
-            <p>Sri Lanka offers various public transport options including trains and buses that provide affordable and scenic travel.</p>
-        </div>
-        <div class="transport-section">
-            <h2>Private & Rental Options</h2>
-            <p>Tuk-tuks, taxis, and rental cars are popular among travelers looking for more flexibility.</p>
-        </div>
-        <div class="transport-section">
-            <h2>Domestic Flights & Helicopter Services</h2>
-            <p>For long-distance travel, domestic flights and helicopter charters are available.</p>
-        </div>
-        <div class="transport-section">
-            <h2>Tips for Travelers</h2>
-            <p>Be aware of local transport pricing, always negotiate with tuk-tuk drivers, and book train tickets in advance.</p>
-        </div>
-    </div>
-    
-    <div class="footer">
-        &copy; 2025 Discover Sri Lanka | All Rights Reserved
-    </div>
+<header>
+  <h1>Everything Lanka - Transportation</h1>
+</header>
 
-    
-    <script>
-        function toggleMenu() {
-            const navLinks = document.querySelector(".nav-links");
-            navLinks.classList.toggle("show");
-        }
-    </script>
+<button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+<div class="nav" id="navMenu">
+  <a href="index.html">Home</a>
+  <a href="EYWK.html">Everything You Wanna Know</a>
+  <a href="destinations.html">Destinations</a>
+  <a href="districts.html">Districts</a>
+  <a href="what-s new.html">What's New</a>
+  <a href="events.html">Events</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<div class="main-content">
+  <h1>Getting Around in Sri Lanka</h1>
+
+  <div class="transport-section">
+    <h2>Public Transport</h2>
+    <p>Sri Lanka boasts an extensive network of buses and trains. The <b>blue Sri Lanka Railways trains</b> are famed for their scenic journeys through misty mountains and lush tea fields. Long-distance intercity express buses and local minibuses (called 'CTB' or 'Private') cover almost every corner of the island.</p>
+    <p><b>Tip:</b> Book your train tickets in advance, especially for the popular Kandy-Ella route!</p>
+  </div>
+
+  <div class="transport-section">
+    <h2>Tuk-Tuks & Taxis</h2>
+    <p>The most charming way to get around town! <b>Tuk-tuks</b> are everywhere — always negotiate a fair price before the ride, unless there's a working meter. App-based taxis like <b>PickMe</b> and <b>Uber</b> are available in most cities and are often cheaper and safer than hailing a random vehicle.</p>
+  </div>
+
+  <div class="transport-section">
+    <h2>Rental Options</h2>
+    <p>If you want to explore freely, rent a car or a scooter. <b>International Driving Permit (IDP)</b> with local validation is required to legally drive in Sri Lanka. Be cautious: roads can be narrow and chaotic.</p>
+  </div>
+
+  <div class="transport-section">
+    <h2>Domestic Flights & Helicopters</h2>
+    <p>For travelers short on time, <b>domestic flights</b> from Colombo to major cities like Jaffna and Trincomalee are available. Private <b>heli charters</b> also offer spectacular aerial views and quick getaways.</p>
+  </div>
+
+  <div class="transport-section">
+    <h2>Traveler Essentials</h2>
+    <p><b>✔️ Carry small change</b> for buses and tuk-tuks.<br>
+       <b>✔️ Avoid rush hours</b> in Colombo (7:30-9:00am, 4:30-6:30pm).<br>
+       <b>✔️ Use ride-hailing apps</b> whenever possible for better rates.<br>
+       <b>✔️ Double-check transport schedules</b> on official websites or stations.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  &copy; 2025 Everything Lanka | Designed with ❤️
+</div>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('navMenu');
+    nav.classList.toggle('show');
+  }
+</script>
+
 </body>
 </html>
+
