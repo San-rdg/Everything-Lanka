@@ -266,6 +266,35 @@
       border-radius: 50%;
       animation: bounce 1.2s infinite;
     }
+        .image-slider {
+      padding: 10px;
+    }
+
+    .image-slider img {
+      width: 80%;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      transition: opacity 1.5s ease-in-out;
+    }
+
+  .main-content {
+    text-align: center;
+  }
+
+  .destination-buttons a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #1E6091;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+  }
+
+  .destination-buttons a:hover {
+    background-color: #0c3e72;
+  }
             @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50%      { transform: translateY(-3px); }
@@ -387,7 +416,7 @@
 
      <!-- Launch Banner -->
     <div class="launch-banner">
-        ✨ <strong> Email your contributions to luminaofficial206@gmail.com!</strong> 
+        ✨ <strong> Email your contributions to lumina206@gmail.com!</strong> 
     </div>
     
     <!-- Floating Buttons -->
@@ -425,9 +454,14 @@
         We hope to assist you and make your visit unforgettable!</p>
     </div>
 
-    <div class="tit"><h1>Featured</h1></div>
-    <div class="main-content">
-    <img src="myfood.png" alt="featured" style="width: 50%;"> 
+    <div class="tit">
+  <h1>Featured</h1>
+</div>
+
+<div class="main-content">
+<section class="image-slider">
+    <img id="sliderImage" src="images/food1.png" alt="Sri Lankan Dish">
+  </section>
 
        <p>Learn to cook authentic Sri Lanka food from the experts. Join and book your reservation today 
         at "Organic cooking class sigiriya (kumara & family)" to have  the ultimate Sri Lankan cooking experience
@@ -435,10 +469,7 @@
        <div class="destination-buttons">
         <a href="https://g.co/kgs/oq85Nku">Book Your Experience Now</a>
        </div>
-    
-    </div>
-    
-    </div>
+</div>
 
     <div class="main-content">
         <div class="tit">
@@ -501,6 +532,28 @@
         &copy; 2025 Everything Lanka | All Rights Reserved
         
     </div>
+
+      <script>
+    // Image paths array
+    const images = [
+      'myfood.png',
+      'myfood2.png',
+    ];
+
+    let currentIndex = 0;
+    const sliderImage = document.getElementById('sliderImage');
+
+    // Function to change image with fade effect
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % images.length;
+      sliderImage.style.opacity = 0;
+
+      setTimeout(() => {
+        sliderImage.src = images[currentIndex];
+        sliderImage.style.opacity = 1;
+      }, 300); // should match CSS transition duration
+    }, 1500);
+  </script>
 
 <script>
     function toggleMenu() {
