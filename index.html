@@ -266,17 +266,68 @@
       border-radius: 50%;
       animation: bounce 1.2s infinite;
     }
-        .image-slider {
-      padding: 10px;
-    }
+.featured-section {
+  background: linear-gradient(135deg, #1E6091, #0c3e72);
+  color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  text-align: center;
+  margin: 30px 0;
+  animation: fadeInUp 1s ease;
+}
 
-    .image-slider img {
-      width: 80%;
-      max-width: 400px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-      transition: opacity 1.5s ease-in-out;
-    }
+.featured-title h1 {
+  font-size: 2.5rem;
+  color: #ffdd57;
+  margin-bottom: 20px;
+}
+
+.image-slider img {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  margin: 20px 0;
+}
+
+.featured-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #ffdd57;
+}
+
+.featured-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.featured-buttons .book-btn {
+  background: #ffdd57;
+  color: #1E6091;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.featured-buttons .book-btn:hover {
+  background: #ffd500;
+  transform: scale(1.05);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
   .main-content {
     text-align: center;
