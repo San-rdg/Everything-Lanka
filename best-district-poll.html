@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sri Lanka Best District Poll | Everything Lanka</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: linear-gradient(to right, #141e30, #243b55);
+      font-family: 'Open Sans', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      background: #170269;
+      padding: 20px;
+      margin: 0;
+      font-size: 28px;
+    }
+    .poll {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 30px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      animation: fadeIn 1s ease;
+    }
+    .poll button {
+      background: #ffdd57;
+      border: none;
+      padding: 14px 28px;
+      margin: 12px 8px;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .poll button:hover {
+      background: #fbbc04;
+      transform: scale(1.05);
+    }
+    .poll button:disabled {
+      background: #999;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+    .bar {
+      height: 22px;
+      background: linear-gradient(90deg, #ffdd57, #fbbc04);
+      border-radius: 8px;
+      margin: 5px 0 15px;
+      width: 0;
+      transition: width 1s ease;
+    }
+    .result {
+      text-align: left;
+      margin-top: 30px;
+      animation: fadeIn 1s ease;
+    }
+    .thankyou {
+      font-size: 22px;
+      color: #ffdd57;
+      margin-bottom: 20px;
+      text-shadow: 0 0 8px #ffdd57;
+      animation: glow 1s infinite alternate;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #ffdd57; }
+      to   { text-shadow: 0 0 20px #ffdd57; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Vote for the Best District in Sri Lanka!</h1>
+  <div class="poll" id="poll">
+    <p style="font-size:20px;margin-bottom:20px;"><strong>Pick your favourite district:</strong></p>
+    <div id="buttons"></div>
+    <div id="results" class="result"></div>
+  </div>
+
+<script>
+  const districts = [
+    "Colombo", "Gampaha", "Kalutara", "Kandy", "Matale", "Nuwara Eliya",
+    "Galle", "Matara", "Hambantota", "Jaffna", "Kilinochchi", "Mannar",
+    "Vavuniya", "Mullaitivu", "Batticaloa", "Ampara", "Trincomalee",
+    "Kurunegala", "Puttalam", "Anuradhapura", "Polonnaruwa", "Badulla",
+    "Monaragala", "Ratnapura", "Kegalle"
+  ];
+
+  let votes = JSON.parse(localStorage.getItem('votes')) || Array(districts.length).fill(0);
+  let voted = localStorage.getItem('hasVoted') || false;
+
+  const buttonsDiv = document.getElementById("buttons");
+  const resultsDiv = document.getElementById("results");
+
+  // Create voting buttons
+  districts.forEach((district, index) => {
+    let btn = document.createElement("button");
+    btn.textContent = district;
+    btn.onclick = () => castVote(index);
+    btn.disabled = voted;
+    buttonsDiv.appendChild(btn);
+  });
+
+  // Cast vote
+  function castVote(index) {
+    if (voted) {
+      alert("You’ve already voted!");
+      return;
+    }
+    votes[index]++;
+    localStorage.setItem('votes', JSON.stringify(votes));
+    localStorage.setItem('hasVoted', true);
+    showResults();
+  }
+
+  // Show animated results
+  function showResults() {
+    voted = true;
+    buttonsDiv.innerHTML = "<div class='thankyou'>✅ Thank you for voting!</div>";
+    resultsDiv.innerHTML = "";
+
+    let totalVotes = votes.reduce((a, b) => a + b, 0);
+    districts.forEach((district, index) => {
+      let percent = totalVotes ? Math.round((votes[index] / totalVotes) * 100) : 0;
+      let barContainer = document.createElement("div");
+      let label = document.createElement("p");
+      label.innerHTML = `<strong>${district}:</strong> ${percent}% (${votes[index]} votes)`;
+      let bar = document.createElement("div");
+      bar.className = "bar";
+      bar.style.width = "0%";
+      setTimeout(() => {
+        bar.style.width = percent + "%";
+      }, 100);
+      barContainer.appendChild(label);
+      barContainer.appendChild(bar);
+      resultsDiv.appendChild(barContainer);
+    });
+  }
+
+  // If already voted, show results
+  if (voted) {
+    showResults();
+  }
+</script>
+
+</body>
+</html>
+
+
