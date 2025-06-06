@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Sri Lanka Best District Poll | Everything Lanka</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
@@ -95,81 +95,104 @@
 </div>
 
 <script>
-// Initialize Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyCpkdQq3w24la2ft-Yet5HaBVMm_58gpho",
-  authDomain: "everything-lanka-poll.firebaseapp.com",
-  databaseURL: "https://everything-lanka-poll-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "everything-lanka-poll",
-  storageBucket: "everything-lanka-poll.appspot.com",
-  messagingSenderId: "794780226133",
-  appId: "1:794780226133:web:31021a07171b4c4de7fadc"
-};
+  // Firebase config and initialization
+  const firebaseConfig = {
+    apiKey: "AIzaSyCpkdQq3w24la2ft-Yet5HaBVMm_58gpho",
+    authDomain: "everything-lanka-poll.firebaseapp.com",
+    databaseURL: "https://everything-lanka-poll-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "everything-lanka-poll",
+    storageBucket: "everything-lanka-poll.appspot.com",
+    messagingSenderId: "794780226133",
+    appId: "1:794780226133:web:31021a07171b4c4de7fadc"
+  };
 
-const app = firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
 
-// District list
-const districts = [
-  "Colombo", "Gampaha", "Kalutara", "Kandy", "Matale", "Nuwara Eliya",
-  "Galle", "Matara", "Hambantota", "Jaffna", "Kilinochchi", "Mannar",
-  "Vavuniya", "Mullaitivu", "Batticaloa", "Ampara", "Trincomalee",
-  "Kurunegala", "Puttalam", "Anuradhapura", "Polonnaruwa", "Badulla",
-  "Monaragala", "Ratnapura", "Kegalle"
-];
+  // District list
+  const districts = [
+    "Colombo", "Gampaha", "Kalutara", "Kandy", "Matale", "Nuwara Eliya",
+    "Galle", "Matara", "Hambantota", "Jaffna", "Kilinochchi", "Mannar",
+    "Vavuniya", "Mullaitivu", "Batticaloa", "Ampara", "Trincomalee",
+    "Kurunegala", "Puttalam", "Anuradhapura", "Polonnaruwa", "Badulla",
+    "Monaragala", "Ratnapura", "Kegalle"
+  ];
 
-const buttonsDiv = document.getElementById("buttons");
-const resultsDiv = document.getElementById("results");
+  const buttonsDiv = document.getElementById("buttons");
+  const resultsDiv = document.getElementById("results");
+  const thankyouDiv = document.getElementById("thankyou");
 
-// Create voting buttons
-districts.forEach(district => {
-  let btn = document.createElement("button");
-  btn.textContent = district;
-  btn.onclick = () => castVote(district);
-  buttonsDiv.appendChild(btn);
-});
+  // Check if user has already voted
+  const hasVoted = localStorage.getItem('hasVoted');
 
-// Cast vote function
-function castVote(district) {
-  const voteRef = db.ref("votes/" + district);
-  voteRef.transaction(current => (current || 0) + 1);
-  showResults(); // show results immediately after voting
-}
-
-// Show live results
-function showResults() {
-  db.ref("votes").once("value").then(snapshot => {
-    const votes = snapshot.val() || {};
-    let totalVotes = Object.values(votes).reduce((a, b) => a + b, 0);
-
-    resultsDiv.innerHTML = "";
-
-    districts.forEach(district => {
-      let count = votes[district] || 0;
-      let percent = totalVotes ? Math.round((count / totalVotes) * 100) : 0;
-
-      let barContainer = document.createElement("div");
-      let label = document.createElement("p");
-      label.innerHTML = `<strong>${district}:</strong> ${percent}% (${count} votes)`;
-
-      let bar = document.createElement("div");
-      bar.className = "bar";
-      bar.style.width = percent + "%";
-
-      barContainer.appendChild(label);
-      barContainer.appendChild(bar);
-      resultsDiv.appendChild(barContainer);
-    });
+  // Create voting buttons and disable if voted
+  districts.forEach(district => {
+    const btn = document.createElement("button");
+    btn.textContent = district;
+    btn.disabled = hasVoted === 'true';
+    btn.onclick = () => castVote(district);
+    buttonsDiv.appendChild(btn);
   });
-}
 
-// Optionally, load live results on page load
-showResults();
+  if (hasVoted === 'true') {
+    thankyouDiv.innerHTML = '<p class="thankyou">Thank you for voting!</p>';
+  }
 
+  // Cast vote function
+  function castVote(district) {
+    if (localStorage.getItem('hasVoted') === 'true') {
+      return; // Prevent double voting
+    }
+
+    const voteRef = db.ref("votes/" + district);
+    voteRef.transaction(current => (current || 0) + 1).then(() => {
+      localStorage.setItem('hasVoted', 'true');
+
+      // Disable all buttons
+      Array.from(buttonsDiv.children).forEach(button => {
+        button.disabled = true;
+      });
+
+      thankyouDiv.innerHTML = '<p class="thankyou">Thank you for voting!</p>';
+
+      showResults();
+    });
+  }
+
+  // Show live results
+  function showResults() {
+    db.ref("votes").once("value").then(snapshot => {
+      const votes = snapshot.val() || {};
+      const totalVotes = Object.values(votes).reduce((a, b) => a + b, 0);
+
+      resultsDiv.innerHTML = "";
+
+      districts.forEach(district => {
+        const count = votes[district] || 0;
+        const percent = totalVotes ? Math.round((count / totalVotes) * 100) : 0;
+
+        const barContainer = document.createElement("div");
+        const label = document.createElement("p");
+        label.innerHTML = `<strong>${district}:</strong> ${percent}% (${count} votes)`;
+
+        const bar = document.createElement("div");
+        bar.className = "bar";
+        bar.style.width = percent + "%";
+
+        barContainer.appendChild(label);
+        barContainer.appendChild(bar);
+        resultsDiv.appendChild(barContainer);
+      });
+    });
+  }
+
+  // Show results on page load
+  showResults();
 </script>
 
 </body>
 </html>
+
 
 
 
