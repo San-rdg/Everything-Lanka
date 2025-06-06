@@ -5,6 +5,7 @@
 
 <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-database-compat.js"></script>
+
   
   <!-- Open Graph / Facebook -->
 <meta property="og:title" content="Best District in Sri Lanka | Poll | Everything Lanka">
@@ -98,29 +99,21 @@
   </div>
 
 <script>
-// Import the functions you need from the SDKs you need
-// Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCpkdQq3w24la2ft-Yet5HaBVMm_58gpho",
   authDomain: "everything-lanka-poll.firebaseapp.com",
   databaseURL: "https://everything-lanka-poll-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "everything-lanka-poll",
-  storageBucket: "everything-lanka-poll.firebasestorage.app",
+  storageBucket: "everything-lanka-poll.appspot.com",
   messagingSenderId: "794780226133",
   appId: "1:794780226133:web:31021a07171b4c4de7fadc",
   measurementId: "G-PMDC3DG7FN"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
 // Districts list
 const districts = [
@@ -149,7 +142,7 @@ function castVote(district) {
 }
 
 // Listen for votes and display results live
-database.ref("votes").on("value", snapshot => { ... });
+database.ref("votes").on("value", snapshot => {
   const votes = snapshot.val() || {};
   let totalVotes = Object.values(votes).reduce((a, b) => a + b, 0);
 
@@ -173,11 +166,6 @@ database.ref("votes").on("value", snapshot => { ... });
   });
 });
 
-
-  // If already voted, show results
-  if (voted) {
-    showResults();
-  }
 </script>
 
 </body>
