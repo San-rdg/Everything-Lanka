@@ -100,8 +100,10 @@
 
 <script>
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -144,12 +146,12 @@ districts.forEach(district => {
 
 // Cast vote
 function castVote(district) {
-  const voteRef = db.ref("votes/" + district);
+  const voteRef = database.ref("votes/" + district);
   voteRef.transaction(current => (current || 0) + 1);
 }
 
 // Listen for votes and display results live
-db.ref("votes").on("value", snapshot => {
+database.ref("votes").on("value", snapshot => { ... });
   const votes = snapshot.val() || {};
   let totalVotes = Object.values(votes).reduce((a, b) => a + b, 0);
 
