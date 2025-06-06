@@ -95,84 +95,77 @@
 </div>
 
 <script>
-  // Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyCpkdQq3w24la2ft-Yet5HaBVMm_58gpho",
-    authDomain: "everything-lanka-poll.firebaseapp.com",
-    databaseURL: "https://everything-lanka-poll-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "everything-lanka-poll",
-    storageBucket: "everything-lanka-poll.appspot.com",
-    messagingSenderId: "794780226133",
-    appId: "1:794780226133:web:31021a07171b4c4de7fadc",
-    measurementId: "G-PMDC3DG7FN"
-  };
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyCpkdQq3w24la2ft-Yet5HaBVMm_58gpho",
+  authDomain: "everything-lanka-poll.firebaseapp.com",
+  databaseURL: "https://everything-lanka-poll-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "everything-lanka-poll",
+  storageBucket: "everything-lanka-poll.appspot.com",
+  messagingSenderId: "794780226133",
+  appId: "1:794780226133:web:31021a07171b4c4de7fadc"
+};
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  const database = firebase.database();
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
 
-  const districts = [
-    "Colombo", "Gampaha", "Kalutara", "Kandy", "Matale", "Nuwara Eliya",
-    "Galle", "Matara", "Hambantota", "Jaffna", "Kilinochchi", "Mannar",
-    "Vavuniya", "Mullaitivu", "Batticaloa", "Ampara", "Trincomalee",
-    "Kurunegala", "Puttalam", "Anuradhapura", "Polonnaruwa", "Badulla",
-    "Monaragala", "Ratnapura", "Kegalle"
-  ];
+// District list
+const districts = [
+  "Colombo", "Gampaha", "Kalutara", "Kandy", "Matale", "Nuwara Eliya",
+  "Galle", "Matara", "Hambantota", "Jaffna", "Kilinochchi", "Mannar",
+  "Vavuniya", "Mullaitivu", "Batticaloa", "Ampara", "Trincomalee",
+  "Kurunegala", "Puttalam", "Anuradhapura", "Polonnaruwa", "Badulla",
+  "Monaragala", "Ratnapura", "Kegalle"
+];
 
-  const buttonsDiv = document.getElementById("buttons");
-  const resultsDiv = document.getElementById("results");
-  const thankyouDiv = document.getElementById("thankyou");
+const buttonsDiv = document.getElementById("buttons");
+const resultsDiv = document.getElementById("results");
 
-  // Create buttons
-  districts.forEach(district => {
-    let btn = document.createElement("button");
-    btn.textContent = district;
-    btn.onclick = () => castVote(district);
-    buttonsDiv.appendChild(btn);
-  });
+// Create voting buttons
+districts.forEach(district => {
+  let btn = document.createElement("button");
+  btn.textContent = district;
+  btn.onclick = () => castVote(district);
+  buttonsDiv.appendChild(btn);
+});
 
-  // Cast vote
-  function castVote(district) {
-    const voteRef = database.ref("votes/" + district);
-    voteRef.transaction(current => (current || 0) + 1);
+// Cast vote function
+function castVote(district) {
+  const voteRef = db.ref("votes/" + district);
+  voteRef.transaction(current => (current || 0) + 1);
+  showResults(); // show results immediately after voting
+}
 
-    // Disable buttons
-    const allButtons = document.querySelectorAll("#buttons button");
-    allButtons.forEach(btn => btn.disabled = true);
+// Show live results
+function showResults() {
+  db.ref("votes").once("value").then(snapshot => {
+    const votes = snapshot.val() || {};
+    let totalVotes = Object.values(votes).reduce((a, b) => a + b, 0);
 
-    // Show thank you
-    thankyouDiv.innerHTML = `<div class="thankyou">✨ Thanks for voting! Here are the live results ✨</div>`;
+    resultsDiv.innerHTML = "";
 
-    // Show results
-    showResults();
-  }
+    districts.forEach(district => {
+      let count = votes[district] || 0;
+      let percent = totalVotes ? Math.round((count / totalVotes) * 100) : 0;
 
-  // Show results
-  function showResults() {
-    database.ref("votes").on("value", snapshot => {
-      const votes = snapshot.val() || {};
-      let totalVotes = Object.values(votes).reduce((a, b) => a + b, 0);
+      let barContainer = document.createElement("div");
+      let label = document.createElement("p");
+      label.innerHTML = `<strong>${district}:</strong> ${percent}% (${count} votes)`;
 
-      resultsDiv.innerHTML = "";
+      let bar = document.createElement("div");
+      bar.className = "bar";
+      bar.style.width = percent + "%";
 
-      districts.forEach(district => {
-        let count = votes[district] || 0;
-        let percent = totalVotes ? Math.round((count / totalVotes) * 100) : 0;
-
-        let barContainer = document.createElement("div");
-        let label = document.createElement("p");
-        label.innerHTML = `<strong>${district}:</strong> ${percent}% (${count} votes)`;
-
-        let bar = document.createElement("div");
-        bar.className = "bar";
-        setTimeout(() => { bar.style.width = percent + "%"; }, 50);
-
-        barContainer.appendChild(label);
-        barContainer.appendChild(bar);
-        resultsDiv.appendChild(barContainer);
-      });
+      barContainer.appendChild(label);
+      barContainer.appendChild(bar);
+      resultsDiv.appendChild(barContainer);
     });
-  }
+  });
+}
+
+// Optionally, load live results on page load
+showResults();
+
 </script>
 
 </body>
