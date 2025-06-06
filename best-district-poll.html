@@ -2,20 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-<script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-database-compat.js"></script>
-
-  
-  <!-- Open Graph / Facebook -->
-<meta property="og:title" content="Best District in Sri Lanka | Poll | Everything Lanka">
-<meta property="og:description" content="Vote on what you think is the best district in Sri Lanka.">
-<meta property="og:image" content="https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/poll%3Dimage.png"> <!-- replace with your actual OG image -->
-<meta property="og:url" content="https://everythinglanka.wiki/best-district-poll.html">
-<meta property="og:type" content="website">
-  
   <title>Sri Lanka Best District Poll | Everything Lanka</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-database-compat.js"></script>
+
   <style>
     body {
       background: linear-gradient(to right, #141e30, #243b55);
@@ -74,9 +67,9 @@
       animation: fadeIn 1s ease;
     }
     .thankyou {
-      font-size: 22px;
+      font-size: 24px;
       color: #ffdd57;
-      margin-bottom: 20px;
+      margin: 20px 0;
       text-shadow: 0 0 8px #ffdd57;
       animation: glow 1s infinite alternate;
     }
@@ -91,84 +84,99 @@
   </style>
 </head>
 <body>
-  <h1>Vote for the Best District in Sri Lanka!</h1>
-  <div class="poll" id="poll">
-    <p style="font-size:20px;margin-bottom:20px;"><strong>Pick your favourite district:</strong></p>
-    <div id="buttons"></div>
-    <div id="results" class="result"></div>
-  </div>
+
+<h1>Vote for the Best District in Sri Lanka!</h1>
+
+<div class="poll" id="poll">
+  <p style="font-size:20px;margin-bottom:20px;"><strong>Pick your favourite district:</strong></p>
+  <div id="buttons"></div>
+  <div id="thankyou"></div>
+  <div id="results" class="result"></div>
+</div>
 
 <script>
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCpkdQq3w24la2ft-Yet5HaBVMm_58gpho",
-  authDomain: "everything-lanka-poll.firebaseapp.com",
-  databaseURL: "https://everything-lanka-poll-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "everything-lanka-poll",
-  storageBucket: "everything-lanka-poll.appspot.com",
-  messagingSenderId: "794780226133",
-  appId: "1:794780226133:web:31021a07171b4c4de7fadc",
-  measurementId: "G-PMDC3DG7FN"
-};
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyCpkdQq3w24la2ft-Yet5HaBVMm_58gpho",
+    authDomain: "everything-lanka-poll.firebaseapp.com",
+    databaseURL: "https://everything-lanka-poll-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "everything-lanka-poll",
+    storageBucket: "everything-lanka-poll.appspot.com",
+    messagingSenderId: "794780226133",
+    appId: "1:794780226133:web:31021a07171b4c4de7fadc",
+    measurementId: "G-PMDC3DG7FN"
+  };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
 
-// Districts list
-const districts = [
-  "Colombo", "Gampaha", "Kalutara", "Kandy", "Matale", "Nuwara Eliya",
-  "Galle", "Matara", "Hambantota", "Jaffna", "Kilinochchi", "Mannar",
-  "Vavuniya", "Mullaitivu", "Batticaloa", "Ampara", "Trincomalee",
-  "Kurunegala", "Puttalam", "Anuradhapura", "Polonnaruwa", "Badulla",
-  "Monaragala", "Ratnapura", "Kegalle"
-];
+  const districts = [
+    "Colombo", "Gampaha", "Kalutara", "Kandy", "Matale", "Nuwara Eliya",
+    "Galle", "Matara", "Hambantota", "Jaffna", "Kilinochchi", "Mannar",
+    "Vavuniya", "Mullaitivu", "Batticaloa", "Ampara", "Trincomalee",
+    "Kurunegala", "Puttalam", "Anuradhapura", "Polonnaruwa", "Badulla",
+    "Monaragala", "Ratnapura", "Kegalle"
+  ];
 
-const buttonsDiv = document.getElementById("buttons");
-const resultsDiv = document.getElementById("results");
+  const buttonsDiv = document.getElementById("buttons");
+  const resultsDiv = document.getElementById("results");
+  const thankyouDiv = document.getElementById("thankyou");
 
-// Create voting buttons
-districts.forEach(district => {
-  let btn = document.createElement("button");
-  btn.textContent = district;
-  btn.onclick = () => castVote(district);
-  buttonsDiv.appendChild(btn);
-});
-
-// Cast vote
-function castVote(district) {
-  const voteRef = database.ref("votes/" + district);
-  voteRef.transaction(current => (current || 0) + 1);
-}
-
-// Listen for votes and display results live
-database.ref("votes").on("value", snapshot => {
-  const votes = snapshot.val() || {};
-  let totalVotes = Object.values(votes).reduce((a, b) => a + b, 0);
-
-  resultsDiv.innerHTML = "";
-
+  // Create buttons
   districts.forEach(district => {
-    let count = votes[district] || 0;
-    let percent = totalVotes ? Math.round((count / totalVotes) * 100) : 0;
-
-    let barContainer = document.createElement("div");
-    let label = document.createElement("p");
-    label.innerHTML = `<strong>${district}:</strong> ${percent}% (${count} votes)`;
-
-    let bar = document.createElement("div");
-    bar.className = "bar";
-    bar.style.width = percent + "%";
-
-    barContainer.appendChild(label);
-    barContainer.appendChild(bar);
-    resultsDiv.appendChild(barContainer);
+    let btn = document.createElement("button");
+    btn.textContent = district;
+    btn.onclick = () => castVote(district);
+    buttonsDiv.appendChild(btn);
   });
-});
 
+  // Cast vote
+  function castVote(district) {
+    const voteRef = database.ref("votes/" + district);
+    voteRef.transaction(current => (current || 0) + 1);
+
+    // Disable buttons
+    const allButtons = document.querySelectorAll("#buttons button");
+    allButtons.forEach(btn => btn.disabled = true);
+
+    // Show thank you
+    thankyouDiv.innerHTML = `<div class="thankyou">✨ Thanks for voting! Here are the live results ✨</div>`;
+
+    // Show results
+    showResults();
+  }
+
+  // Show results
+  function showResults() {
+    database.ref("votes").on("value", snapshot => {
+      const votes = snapshot.val() || {};
+      let totalVotes = Object.values(votes).reduce((a, b) => a + b, 0);
+
+      resultsDiv.innerHTML = "";
+
+      districts.forEach(district => {
+        let count = votes[district] || 0;
+        let percent = totalVotes ? Math.round((count / totalVotes) * 100) : 0;
+
+        let barContainer = document.createElement("div");
+        let label = document.createElement("p");
+        label.innerHTML = `<strong>${district}:</strong> ${percent}% (${count} votes)`;
+
+        let bar = document.createElement("div");
+        bar.className = "bar";
+        setTimeout(() => { bar.style.width = percent + "%"; }, 50);
+
+        barContainer.appendChild(label);
+        barContainer.appendChild(bar);
+        resultsDiv.appendChild(barContainer);
+      });
+    });
+  }
 </script>
 
 </body>
 </html>
+
 
 
