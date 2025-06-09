@@ -1,254 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Everything Lanka – Discover Sri Lanka's best destinations, cultural wonders, travel tips, and local insights. Plan your perfect island adventure today!">
-  <meta name="keywords" content="Sri Lanka travel, Sri Lanka tourism, destinations in Sri Lanka, cultural sites, travel tips, Sinhala language, Tamil translation, island adventure">
-  <meta name="author" content="Everything Lanka">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2S823WWMZ9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Everything Lanka – Weather</title>
 
-  gtag('config', 'G-2S823WWMZ9');
-</script>
-    <title>Know the Weather | Travel in Sri Lanka</title>
-    <style>          
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #2C2C2C;
-            text-align: center;
-        }
-        header {
-            background:  #170269;
-            color: white;
-            padding: 20px;
-            font-size: 24px;
-        }
-        .part {
-            background:#e6e2e2;
-            padding: 10px;
-        }
-        .banner {
-            background: url('https://source.unsplash.com/1600x900/?sri-lanka') no-repeat center center/cover;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 36px;
-            font-weight: bold;
-        }
-        .section {
-            padding: 40px;
-        }
-        .footer {
-            background: #0c3e72;
-            color: white;
-            padding: 10px;
-            font-size: 14px;
-        }
-        .clock {
-            font-size: 60px;
-            color: white;
-            background-color: #1b0fc8;
-            padding: 20px 40px;
-            position: relative;
-            display: inline-block;
-            margin-top: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-        .weather-container {
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 300px;
-            margin: 20px auto;
-            background: white;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #2C2C2C;
-            text-align: center;
-            overflow-x: hidden;
-        }
-        .nav {
-            background: #00A8FF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-            flex-wrap: wrap;
-        }
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 8px 12px;
-        }
-        .nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-        }
-        .menu-icon {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            padding: 10px;
-        }
-        .main-content {
-            padding: 30px;
-            margin: 30px;
-            background: #1a1a1a;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-        }
-        a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-        .content {
-            width: 80%;
-            margin: 20px auto;
-            background: black;
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-        }
-            a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-        @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                align-items: center;
-                padding: 10px;
-            }
-            .menu-icon {
-                display: block;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                background: #00A8FF;
-                position: absolute;
-                top: 50px;
-                left: 0;
-                text-align: center;
-                padding: 10px 0;
-            }
-            .nav-links a {
-                padding: 10px;
-                display: block;
-                margin: 5px 0;
-            }
-            .show { display: flex; }
-        }
-    </style>
+  <!-- Animate.css for subtle entry animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    /* → Global Styles */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      color: #eee;
+      text-align: center;
+      background: linear-gradient(135deg, #091921, #2c3e50);
+      animation: bgAnimation 15s infinite alternate;
+      overflow-x: hidden;
+    }
+
+    @keyframes bgAnimation {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    header {
+      padding: 20px;
+      background: rgba(23,2,105,0.8);
+      backdrop-filter: blur(5px);
+      font-size: 24px;
+      font-style: italic;
+    }
+
+    .clock {
+      font-size: 4rem;
+      padding: 20px;
+      margin: 20px auto;
+      width: fit-content;
+      background: rgba(27,15,200,0.6);
+      border-radius: 12px;
+      box-shadow: 0 0 20px #1b0fc8;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 10px #1b0fc8; }
+      to { box-shadow: 0 0 30px #ffffff; }
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(0,168,255,0.8);
+      padding: 10px;
+      backdrop-filter: blur(5px);
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 14px;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* → Weather Card */
+    .weather-container {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 360px;
+      margin: 30px auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      animation: fadeInUp 1s ease;
+    }
+
+    .weather-container h2 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .weather-container select,
+    .weather-container button {
+      font-size: 1rem;
+      padding: 8px 12px;
+      margin: 8px;
+      border: none;
+      border-radius: 6px;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .weather-container button {
+      background: #1b0fc8;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .weather-container button:hover {
+      background: #ffffff;
+      color: #1b0fc8;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+    }
+
+    .weather-result {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.15);
+      padding: 12px;
+      border-radius: 8px;
+      animation: fadeInRight 0.8s ease;
+    }
+
+    .weather-result p {
+      margin: 6px 0;
+      font-size: 1.1rem;
+    }
+
+    .weather-result .icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    /* → Content & Footer */
+    .main-content {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 12px;
+      animation: fadeIn 1s ease;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .footer {
+      padding: 12px;
+      background: rgba(12,62,114,0.9);
+      color: #ddd;
+      font-size: 0.9rem;
+    }
+
+    /* → Responsive */
+    @media(max-width: 480px) {
+      .clock { font-size: 3rem; }
+      .weather-container { margin: 20px 12px; }
+    }
+
+  </style>
 </head>
 <body>
-    <header>
-        <h1><a href="index.html">Everything Lanka</a></h1>
-    </header>
-    
-    <div class="clock" id="clock"></div>
-    
-    <div class="weather-container">
-        <h2>Weather in Sri Lanka</h2>
-        <label for="districts">Select a Sri Lankan District:</label>
-        <select id="districts">
-            <option value="Colombo">Colombo</option>
-            <option value="Kandy">Kandy</option>
-            <option value="Galle">Galle</option>
-            <option value="Jaffna">Jaffna</option>
-            <option value="Anuradhapura">Anuradhapura</option>
-            <option value="Ratnapura">Ratnapura</option>
-            <option value="Kurunegala">Kurunegala</option>
-            <option value="Trincomalee">Trincomalee</option>
-            <option value="Nuwara Eliya">Nuwara Eliya</option>
-            <option value="Gampaha">Gampaha</option>
-            <option value="Badulla">Badulla</option>
-            <option value="Puttalama">Puttalama</option>
-            <option value="Kalutara">Kalutara</option>
-            <option value="Kilinochchi">Kilinochchi</option>
-            <option value="Mullativu">Mullativu</option>
-            <option value="Mannar">Mannar</option>
-            <option value="Pollonaruwa">Pollonaruwa</option>
-            <option value="Matale">Matale</option>
-            <option value="Batticaloa">Batticaloa</option>
-            <option value="Ampara">Ampara</option>
-            <option value="Kegalle">Kegalle</option>
-            <option value="Moneragala">Moneragala</option>
-            <option value="Hambantota">Hambantota</option>
-            <option value="Matara">Matara</option>
-            <option value="Vavuniya">Vavuniya</option>
-            
 
+  <header>Everything Lanka</header>
 
-        </select>
-        <button onclick="getWeather()">Get Weather</button>
-    </div>
+  <div class="clock" id="clock"></div>
 
-    <script>
-        function getWeather() {
-            const city = document.getElementById("districts").value;
-            const googleWeatherUrl = `https://www.google.com/search?q=weather+${city}+Sri+Lanka`;
-            window.open(googleWeatherUrl, '_blank');
-        }
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="districts.html">Districts</a>
+    <a href="what-s new.html">What's New</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
 
-        function updateClock() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timeString = `${hours}:${minutes}:${seconds}`;
-            document.getElementById('clock').textContent = timeString;
-        }
+  <div class="weather-container">
+    <h2>Weather in Sri Lanka</h2>
+    <select id="districts">
+      <option disabled selected>Select District</option>
+      <option>Colombo</option><option>Gampaha</option><option>Kalutara</option>
+      <option>Kandy</option><option>Matale</option><option>Nuwara Eliya</option>
+      <option>Galle</option><option>Matara</option><option>Hambantota</option>
+      <option>Jaffna</option><option>Kilinochchi</option><option>Mannar</option>
+      <option>Vavuniya</option><option>Mullaitivu</option><option>Trincomalee</option>
+      <option>Batticaloa</option><option>Ampara</option><option>Monaragala</option>
+      <option>Badulla</option><option>Ratnapura</option><option>Kegalle</option>
+      <option>Anuradhapura</option><option>Polonnaruwa</option><option>Puttalam</option>
+      <option>Kurunegala</option>
+    </select>
+    <button onclick="getWeather()">Get Weather</button>
+    <div id="weatherResult" class="weather-result"></div>
+  </div>
 
-        setInterval(updateClock, 1000);
-        updateClock();  
-    </script>
-<br>
-    <div class="main-content">
-    <p style="color: white;"> Weather in Sri Lanka is quite unique as you may find it to be rather hot and warm on the months from January to May. 
-    After which it cools down a bit and rain can be expected in the months that follow, from June to November. Then in true seasonal fashion it gets much cooler.
-    Please note that the weather and the overall temperature which change according to the district and the amount of wind. But you can always stay updated abou the weather in different districts by using the our website.
-    </p>
-    <br>
-    <p style="color: white;"> an instance districts suchs as Nuwara Eliya is normaly quite cold whole year around, which it is famous for. Being also reffered to as "Little England" Nuwara Eliya a phenominal and sensational, experience thanks to its 
-        chilli weather amongst the hot weather in other districts. If you want to see more about Nuwara Eliya we recommend that you check out our <a href="destinations.html">Destinations</a>page.
-    </p>
-    </div>
+  <div class="main-content">
+    <p>Experience Sri Lanka’s diverse climate, from tropical coastal heat to the crisp highland air of Nuwara Eliya. Our site updates live weather data for all 25 districts — just choose your district and explore.</p>
+    <p>Let the patterns of wind, rain, and sunshine enhance your journey — from the historic heart of Anuradhapura to the seaside calm of Galle.</p>
+  </div>
 
-        <div class="footer">
-            &copy; 2025 Discover Sri Lanka | All Rights Reserved
-        </div>
-    
-        <script>
-            function toggleMenu() {
-                const navLinks = document.querySelector(".nav-links");
-                navLinks.classList.toggle("show");
-            }
-        </script>
-    
+  <div class="footer">&copy; 2025 Discover Sri Lanka | All Rights Reserved</div>
+
+  <script>
+    // → Live Clock
+    function updateClock() {
+      const now = new Date();
+      const hrs = String(now.getHours()).padStart(2,'0'),
+            mins = String(now.getMinutes()).padStart(2,'0'),
+            secs = String(now.getSeconds()).padStart(2,'0');
+      document.getElementById('clock').textContent = `${hrs}:${mins}:${secs}`;
+    }
+    setInterval(updateClock,1000);
+    updateClock();
+
+    // → Weather Fetcher
+    function getWeather() {
+      const sel = document.getElementById('districts');
+      const city = sel.value;
+      if (!city) return;
+
+      const url = `https://wttr.in/${city}?format=j1`;
+
+      fetch(url)
+        .then(r => r.json())
+        .then(data => {
+          const c = data.current_condition[0];
+          document.getElementById('weatherResult').innerHTML = `
+            <div class="icon">🌤️</div>
+            <p><strong>${city}</strong></p>
+            <p>${c.weatherDesc[0].value}</p>
+            <p>🌡️ ${c.temp_C}°C</p>
+            <p>💨 ${c.windspeedKmph} km/h</p>
+            <p>💧 Humidity: ${c.humidity}%</p>
+          `;
+        })
+        .catch(err => {
+          document.getElementById('weatherResult').innerHTML =
+            '<p>🚫 Could not load weather. Try again.</p>';
+        });
+    }
+  </script>
+
 </body>
 </html>
