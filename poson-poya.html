@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Poson Lantern Night</title>
+  <title>Poson Lantern Night (Live)</title>
   <style>
     body {
       margin: 0;
@@ -13,144 +13,59 @@
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
     }
-
-    .moon {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle, #fffef2 0%, #ffe97d 60%, #f6d743 100%);
-      border-radius: 50%;
-      transform: translateX(-50%);
-      animation: rise 10s ease-out forwards;
-      box-shadow: 0 0 60px #fffef2;
-    }
-
-    @keyframes rise {
-      to { top: 30px; }
-    }
-
     .lantern {
       position: absolute;
       bottom: -50px;
-      width: 20px;
-      height: 30px;
-      background: #ffdd57;
+      width: 30px;
+      height: 45px;
       border-radius: 5px;
-      box-shadow: 0 0 10px #ffdd57;
-      animation: floatUp 15s linear infinite;
+      box-shadow: 0 0 15px;
+      animation: floatUp 20s linear forwards;
     }
-
     @keyframes floatUp {
       to {
         transform: translateY(-130vh) rotate(360deg);
         opacity: 0;
       }
     }
-
-    .message {
-      margin-top: 50vh;
-      font-size: 2rem;
-      opacity: 0;
-      animation: fadeIn 5s ease-in forwards;
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    .wishBox {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 15px 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #fff3;
-    }
-
-    .wishBox input, .wishBox select, .wishBox button {
-      margin: 5px;
-      padding: 8px 10px;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .wishBox input {
-      width: 160px;
-    }
-
-    .wishBox button {
-      background: #ffdd57;
-      cursor: pointer;
-      color: #000;
-      font-weight: bold;
-    }
-
-    .wishBox button:disabled {
-      background: #999;
-      cursor: not-allowed;
-    }
-
-    .wishCount {
-      font-size: 0.9rem;
-      margin-top: 5px;
-      color: #ffdd57;
-    }
-
-    .wishLantern {
-      position: absolute;
-      bottom: -60px;
-      width: 60px;
-      height: 90px;
-      border-radius: 12px;
-      box-shadow: 0 0 30px;
-      animation: floatUpUser 20s ease-out forwards;
-      z-index: 10;
-    }
-
-    @keyframes floatUpUser {
-      to {
-        transform: translateY(-95vh) rotate(360deg);
-        opacity: 1;
-      }
-    }
-
     .wishLabel {
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
       color: #fff;
-      font-size: 1.1rem;
-      font-weight: bold;
-      white-space: nowrap;
+      font-size: 0.7rem;
       text-shadow: 0 0 5px #000;
+      white-space: nowrap;
     }
-
-    .pulse {
-      animation: pulseGlow 1s ease-in-out infinite alternate;
+    .wishBox {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #fff3;
     }
-
-    @keyframes pulseGlow {
-      from { box-shadow: 0 0 30px; }
-      to { box-shadow: 0 0 60px; }
+    .wishBox input, .wishBox select, .wishBox button {
+      margin: 5px;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    .wishCount {
+      font-size: 0.9rem;
+      margin-top: 5px;
+      color: #ffdd57;
     }
   </style>
 </head>
 <body>
 
-<div class="moon"></div>
-
-<div class="message">
-  On this sacred Poson night, may your life be as bright as the full moon.
-</div>
-
-<div class="wishBox" id="wishBox">
-  <input type="text" id="wishInput" placeholder="Your Poson wish">
+<div class="wishBox">
+  <input type="text" id="wishInput" placeholder="Your wish">
   <select id="colorSelect">
     <option value="#ffdd57">Gold</option>
     <option value="#ffffff">White</option>
@@ -158,150 +73,81 @@
     <option value="#80dfff">Blue</option>
     <option value="#ff69b4">Pink</option>
   </select>
-  <button onclick="releaseWish()" id="releaseBtn">Release Lantern</button>
+  <button onclick="releaseLantern()">Release</button>
   <div class="wishCount" id="wishCount">Lanterns released: 0</div>
 </div>
 
-<canvas id="blessingCard" width="600" height="400" style="display:none;"></canvas>
-<a id="downloadLink" style="display:none;"></a>
-
-<!-- Firebase SDKs -->
+<!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
 <script>
-  // Your Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyABCCBJ_2nk0qmHijmQ4MfqWYnaZ9eZzw4",
     authDomain: "poson-poya-day-lantern-project.firebaseapp.com",
+    databaseURL: "https://poson-poya-day-lantern-project-default-rtdb.firebaseio.com",
     projectId: "poson-poya-day-lantern-project",
     storageBucket: "poson-poya-day-lantern-project.appspot.com",
     messagingSenderId: "140912464253",
-    appId: "1:140912464253:web:ebddf3e118d68f417a3c14",
-    measurementId: "G-03NPFEV5X9"
+    appId: "1:140912464253:web:ebddf3e118d68f417a3c14"
   };
 
-  // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
   const countRef = db.ref('lanternCount');
+  const lanternsRef = db.ref('lanterns');
 
+  // Update lantern count display live
   countRef.on('value', snap => {
-    const total = snap.val() || 0;
-    document.getElementById("wishCount").innerText = `Lanterns released: ${total}`;
+    document.getElementById("wishCount").innerText = `Lanterns released: ${snap.val() || 0}`;
   });
 
-  // Disable button if already released
-  if (localStorage.getItem("wishReleased")) {
-    document.getElementById("releaseBtn").disabled = true;
-    document.getElementById("wishInput").disabled = true;
-    document.getElementById("colorSelect").disabled = true;
-  }
+  // Listen for new lanterns from any user
+  lanternsRef.on('child_added', snapshot => {
+    const { text, color, posX } = snapshot.val();
+    showLantern(text, color, posX);
+  });
 
-  // Create background lanterns
-  for (let i = 0; i < 25; i++) {
-    const lantern = document.createElement('div');
-    lantern.className = 'lantern';
-    lantern.style.left = Math.random() * 100 + 'vw';
-    lantern.style.animationDuration = (8 + Math.random() * 12) + 's';
-    document.body.appendChild(lantern);
-  }
-
-  const blessings = [
-    "May your heart be filled with peace and light.",
-    "May kindness and wisdom guide your path.",
-    "May your days be blessed with happiness and calm.",
-    "May you find strength, clarity, and serenity.",
-    "May this Poson night light your way always."
-  ];
-
-  function releaseWish() {
+  function releaseLantern() {
     const wishText = document.getElementById("wishInput").value.trim();
     const color = document.getElementById("colorSelect").value;
-    if (!wishText) return alert("Type your wish first!");
+    if (!wishText) return alert("Type a wish!");
 
+    const posX = Math.random() * 80 + 10; // 10% to 90% of viewport width
+
+    // Push lantern data to database
+    lanternsRef.push({
+      text: wishText,
+      color: color,
+      posX: posX
+    });
+
+    // Increment total count safely
+    countRef.transaction(current => (current || 0) + 1);
+
+    // Optionally clear input
+    document.getElementById("wishInput").value = "";
+  }
+
+  function showLantern(text, color, posX) {
     const lantern = document.createElement('div');
-    lantern.className = 'wishLantern pulse';
-    lantern.style.left = `${Math.random() * 70 + 15}vw`;
+    lantern.className = 'lantern';
+    lantern.style.left = posX + 'vw';
     lantern.style.background = color;
-    lantern.style.boxShadow = `0 0 30px ${color}`;
+    lantern.style.boxShadow = `0 0 20px ${color}`;
 
     const label = document.createElement('div');
     label.className = 'wishLabel';
-    label.innerText = wishText;
+    label.innerText = text;
+
     lantern.appendChild(label);
     document.body.appendChild(lantern);
 
-    countRef.transaction(current => (current || 0) + 1);
-
-    document.getElementById("releaseBtn").disabled = true;
-    document.getElementById("wishInput").disabled = true;
-    document.getElementById("colorSelect").disabled = true;
-    localStorage.setItem("wishReleased", "true");
-
-    setTimeout(() => {
-      generateBlessingCard();
-    }, 5000);
-  }
-
-  function generateBlessingCard() {
-    const canvas = document.getElementById('blessingCard');
-    const ctx = canvas.getContext('2d');
-
-    const gradient = ctx.createLinearGradient(0, 0, 600, 400);
-    gradient.addColorStop(0, "#141e30");
-    gradient.addColorStop(1, "#243b55");
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 600, 400);
-
-    ctx.font = "20px Segoe UI";
-    ctx.fillStyle = "#ffdd57";
-    ctx.fillText("A Poson Blessing from Everything Lanka", 20, 40);
-
-    const blessingMsg = blessings[Math.floor(Math.random() * blessings.length)];
-    ctx.font = "28px Segoe UI";
-    ctx.fillStyle = "#fff";
-    ctx.textAlign = "center";
-    wrapText(ctx, blessingMsg, 300, 200, 560, 36);
-
-    ctx.font = "18px Segoe UI";
-    ctx.fillStyle = "#aaa";
-    ctx.fillText("everythinglanka.lk | Poson Poya 2025", 300, 370);
-
-    const downloadLink = document.getElementById("downloadLink");
-    downloadLink.href = canvas.toDataURL();
-    downloadLink.download = "Poson_Blessing.png";
-    downloadLink.style.display = "block";
-    downloadLink.innerText = "Click for a Surprise Download!";
-    downloadLink.style.position = "absolute";
-    downloadLink.style.top = "80%";
-    downloadLink.style.left = "50%";
-    downloadLink.style.transform = "translateX(-50%)";
-    downloadLink.style.background = "#ffdd57";
-    downloadLink.style.color = "#000";
-    downloadLink.style.padding = "10px 20px";
-    downloadLink.style.borderRadius = "8px";
-    downloadLink.style.fontWeight = "bold";
-    downloadLink.style.textDecoration = "none";
-  }
-
-  function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
-    const words = text.split(' ');
-    let line = '';
-    for (let n = 0; n < words.length; n++) {
-      const testLine = line + words[n] + ' ';
-      const metrics = ctx.measureText(testLine);
-      if (metrics.width > maxWidth && n > 0) {
-        ctx.fillText(line, x, y);
-        line = words[n] + ' ';
-        y += lineHeight;
-      } else {
-        line = testLine;
-      }
-    }
-    ctx.fillText(line, x, y);
+    // Remove after animation (~20s)
+    setTimeout(() => { lantern.remove(); }, 20000);
   }
 </script>
 
 </body>
 </html>
+
