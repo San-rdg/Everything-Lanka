@@ -208,11 +208,14 @@ const db = firebase.database();
 const countRef = db.ref('lanternCount');
 const lanternsRef = db.ref('lanterns');
 
-// Update count live
-countRef.on('value', snap => {
-  const total = snap.val() || 0;
+  const lanternsRef = db.ref('lanterns');
+
+// Real-time live count listener
+lanternsRef.on('value', snapshot => {
+  const total = snapshot.numChildren();
   document.getElementById("wishCount").innerText = `Lanterns released: ${total}`;
 });
+
 
 // Disable button if already released locally
 if (localStorage.getItem("wishReleased")) {
@@ -253,8 +256,6 @@ function releaseWish() {
   // Push this lantern to Firebase
   lanternsRef.push(lanternData);
 
-  // Increment count
-  countRef.transaction(current => (current || 0) + 1);
 
   document.getElementById("releaseBtn").disabled = true;
   document.getElementById("wishInput").disabled = true;
