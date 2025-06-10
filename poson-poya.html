@@ -191,6 +191,14 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
 <script>
+
+  // Generate or get deviceId
+let deviceId = localStorage.getItem("deviceId");
+if (!deviceId) {
+  deviceId = 'device-' + Math.random().toString(36).substr(2, 9);
+  localStorage.setItem("deviceId", deviceId);
+}
+
   // Your Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyABCCBJ_2nk0qmHijmQ4MfqWYnaZ9eZzw4",
@@ -250,7 +258,8 @@
     };
 
     // Push lantern to Firebase
-    lanternsRef.push(lanternData);
+  db.ref('lanterns/' + deviceId).set(lanternData);
+
 
     // Disable user inputs after releasing
     document.getElementById("releaseBtn").disabled = true;
