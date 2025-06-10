@@ -191,162 +191,158 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
 <script>
-// Your Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyABCCBJ_2nk0qmHijmQ4MfqWYnaZ9eZzw4",
-  authDomain: "poson-poya-day-lantern-project.firebaseapp.com",
-  projectId: "poson-poya-day-lantern-project",
-  storageBucket: "poson-poya-day-lantern-project.appspot.com",
-  messagingSenderId: "140912464253",
-  appId: "1:140912464253:web:ebddf3e118d68f417a3c14",
-  measurementId: "G-03NPFEV5X9"
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
-const countRef = db.ref('lanternCount');
-const lanternsRef = db.ref('lanterns');
-
-  const lanternsRef = db.ref('lanterns');
-
-// Real-time live count listener
-lanternsRef.on('value', snapshot => {
-  const total = snapshot.numChildren();
-  document.getElementById("wishCount").innerText = `Lanterns released: ${total}`;
-});
-
-
-// Disable button if already released locally
-if (localStorage.getItem("wishReleased")) {
-  document.getElementById("releaseBtn").disabled = true;
-  document.getElementById("wishInput").disabled = true;
-  document.getElementById("colorSelect").disabled = true;
-}
-
-// Create background lanterns
-for (let i = 0; i < 25; i++) {
-  const lantern = document.createElement('div');
-  lantern.className = 'lantern';
-  lantern.style.left = Math.random() * 100 + 'vw';
-  lantern.style.animationDuration = (8 + Math.random() * 12) + 's';
-  document.body.appendChild(lantern);
-}
-
-const blessings = [
-  "May your heart be filled with peace and light.",
-  "May kindness and wisdom guide your path.",
-  "May your days be blessed with happiness and calm.",
-  "May you find strength, clarity, and serenity.",
-  "May this Poson night light your way always."
-];
-
-function releaseWish() {
-  const wishText = document.getElementById("wishInput").value.trim();
-  const color = document.getElementById("colorSelect").value;
-  if (!wishText) return alert("Type your wish first!");
-
-  const lanternData = {
-    wish: wishText,
-    color: color,
-    left: Math.random() * 70 + 15, // vw position
-    time: Date.now()
+  // Your Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyABCCBJ_2nk0qmHijmQ4MfqWYnaZ9eZzw4",
+    authDomain: "poson-poya-day-lantern-project.firebaseapp.com",
+    projectId: "poson-poya-day-lantern-project",
+    storageBucket: "poson-poya-day-lantern-project.appspot.com",
+    messagingSenderId: "140912464253",
+    appId: "1:140912464253:web:ebddf3e118d68f417a3c14",
+    measurementId: "G-03NPFEV5X9"
   };
 
-  // Push this lantern to Firebase
-  lanternsRef.push(lanternData);
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+  const lanternsRef = db.ref('lanterns');
 
+  // Live real-time count based on number of lanterns
+  lanternsRef.on('value', snapshot => {
+    const total = snapshot.numChildren();
+    document.getElementById("wishCount").innerText = `Lanterns released: ${total}`;
+  });
 
-  document.getElementById("releaseBtn").disabled = true;
-  document.getElementById("wishInput").disabled = true;
-  document.getElementById("colorSelect").disabled = true;
-  localStorage.setItem("wishReleased", "true");
-
-  setTimeout(() => {
-    generateBlessingCard();
-  }, 5000);
-}
-
-// When a new lantern is added to Firebase — show it on screen live for all users
-lanternsRef.on('child_added', snapshot => {
-  const data = snapshot.val();
-  showLantern(data);
-});
-
-function showLantern(data) {
-  const lantern = document.createElement('div');
-  lantern.className = 'wishLantern pulse';
-  lantern.style.left = `${data.left}vw`;
-  lantern.style.background = data.color;
-  lantern.style.boxShadow = `0 0 30px ${data.color}`;
-
-  const label = document.createElement('div');
-  label.className = 'wishLabel';
-  label.innerText = data.wish;
-  lantern.appendChild(label);
-
-  document.body.appendChild(lantern);
-}
-
-function generateBlessingCard() {
-  const canvas = document.getElementById('blessingCard');
-  const ctx = canvas.getContext('2d');
-
-  const gradient = ctx.createLinearGradient(0, 0, 600, 400);
-  gradient.addColorStop(0, "#141e30");
-  gradient.addColorStop(1, "#243b55");
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, 600, 400);
-
-  ctx.font = "20px Segoe UI";
-  ctx.fillStyle = "#ffdd57";
-  ctx.fillText("A Poson Blessing from Everything Lanka", 20, 40);
-
-  const blessingMsg = blessings[Math.floor(Math.random() * blessings.length)];
-  ctx.font = "28px Segoe UI";
-  ctx.fillStyle = "#fff";
-  ctx.textAlign = "center";
-  wrapText(ctx, blessingMsg, 300, 200, 560, 36);
-
-  ctx.font = "18px Segoe UI";
-  ctx.fillStyle = "#aaa";
-  ctx.fillText("everythinglanka.lk | Poson Poya 2025", 300, 370);
-
-  const downloadLink = document.getElementById("downloadLink");
-  downloadLink.href = canvas.toDataURL();
-  downloadLink.download = "Poson_Blessing.png";
-  downloadLink.style.display = "block";
-  downloadLink.innerText = "Click for a Surprise Download!";
-  downloadLink.style.position = "absolute";
-  downloadLink.style.top = "80%";
-  downloadLink.style.left = "50%";
-  downloadLink.style.transform = "translateX(-50%)";
-  downloadLink.style.background = "#ffdd57";
-  downloadLink.style.color = "#000";
-  downloadLink.style.padding = "10px 20px";
-  downloadLink.style.borderRadius = "8px";
-  downloadLink.style.fontWeight = "bold";
-  downloadLink.style.textDecoration = "none";
-}
-
-function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
-  const words = text.split(' ');
-  let line = '';
-  for (let n = 0; n < words.length; n++) {
-    const testLine = line + words[n] + ' ';
-    const metrics = ctx.measureText(testLine);
-    if (metrics.width > maxWidth && n > 0) {
-      ctx.fillText(line, x, y);
-      line = words[n] + ' ';
-      y += lineHeight;
-    } else {
-      line = testLine;
-    }
+  // Disable button if already released locally
+  if (localStorage.getItem("wishReleased")) {
+    document.getElementById("releaseBtn").disabled = true;
+    document.getElementById("wishInput").disabled = true;
+    document.getElementById("colorSelect").disabled = true;
   }
-  ctx.fillText(line, x, y);
-}
 
+  // Create background lanterns
+  for (let i = 0; i < 25; i++) {
+    const lantern = document.createElement('div');
+    lantern.className = 'lantern';
+    lantern.style.left = Math.random() * 100 + 'vw';
+    lantern.style.animationDuration = (8 + Math.random() * 12) + 's';
+    document.body.appendChild(lantern);
+  }
+
+  const blessings = [
+    "May your heart be filled with peace and light.",
+    "May kindness and wisdom guide your path.",
+    "May your days be blessed with happiness and calm.",
+    "May you find strength, clarity, and serenity.",
+    "May this Poson night light your way always."
+  ];
+
+  function releaseWish() {
+    const wishText = document.getElementById("wishInput").value.trim();
+    const color = document.getElementById("colorSelect").value;
+    if (!wishText) return alert("Type your wish first!");
+
+    const lanternData = {
+      wish: wishText,
+      color: color,
+      left: Math.random() * 70 + 15,
+      time: Date.now()
+    };
+
+    // Push lantern to Firebase
+    lanternsRef.push(lanternData);
+
+    // Disable user inputs after releasing
+    document.getElementById("releaseBtn").disabled = true;
+    document.getElementById("wishInput").disabled = true;
+    document.getElementById("colorSelect").disabled = true;
+    localStorage.setItem("wishReleased", "true");
+
+    setTimeout(() => {
+      generateBlessingCard();
+    }, 5000);
+  }
+
+  // Show new lanterns when added to Firebase
+  lanternsRef.on('child_added', snapshot => {
+    const data = snapshot.val();
+    showLantern(data);
+  });
+
+  function showLantern(data) {
+    const lantern = document.createElement('div');
+    lantern.className = 'wishLantern pulse';
+    lantern.style.left = `${data.left}vw`;
+    lantern.style.background = data.color;
+    lantern.style.boxShadow = `0 0 30px ${data.color}`;
+
+    const label = document.createElement('div');
+    label.className = 'wishLabel';
+    label.innerText = data.wish;
+    lantern.appendChild(label);
+
+    document.body.appendChild(lantern);
+  }
+
+  function generateBlessingCard() {
+    const canvas = document.getElementById('blessingCard');
+    const ctx = canvas.getContext('2d');
+
+    const gradient = ctx.createLinearGradient(0, 0, 600, 400);
+    gradient.addColorStop(0, "#141e30");
+    gradient.addColorStop(1, "#243b55");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 600, 400);
+
+    ctx.font = "20px Segoe UI";
+    ctx.fillStyle = "#ffdd57";
+    ctx.fillText("A Poson Blessing from Everything Lanka", 20, 40);
+
+    const blessingMsg = blessings[Math.floor(Math.random() * blessings.length)];
+    ctx.font = "28px Segoe UI";
+    ctx.fillStyle = "#fff";
+    ctx.textAlign = "center";
+    wrapText(ctx, blessingMsg, 300, 200, 560, 36);
+
+    ctx.font = "18px Segoe UI";
+    ctx.fillStyle = "#aaa";
+    ctx.fillText("everythinglanka.lk | Poson Poya 2025", 300, 370);
+
+    const downloadLink = document.getElementById("downloadLink");
+    downloadLink.href = canvas.toDataURL();
+    downloadLink.download = "Poson_Blessing.png";
+    downloadLink.style.display = "block";
+    downloadLink.innerText = "Click for a Surprise Download!";
+    downloadLink.style.position = "absolute";
+    downloadLink.style.top = "80%";
+    downloadLink.style.left = "50%";
+    downloadLink.style.transform = "translateX(-50%)";
+    downloadLink.style.background = "#ffdd57";
+    downloadLink.style.color = "#000";
+    downloadLink.style.padding = "10px 20px";
+    downloadLink.style.borderRadius = "8px";
+    downloadLink.style.fontWeight = "bold";
+    downloadLink.style.textDecoration = "none";
+  }
+
+  function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+    const words = text.split(' ');
+    let line = '';
+    for (let n = 0; n < words.length; n++) {
+      const testLine = line + words[n] + ' ';
+      const metrics = ctx.measureText(testLine);
+      if (metrics.width > maxWidth && n > 0) {
+        ctx.fillText(line, x, y);
+        line = words[n] + ' ';
+        y += lineHeight;
+      } else {
+        line = testLine;
+      }
+    }
+    ctx.fillText(line, x, y);
+  }
 </script>
+
 
 </body>
 </html>
