@@ -210,31 +210,49 @@
     updateClock();
 
     // → Weather Fetcher
-    function getWeather() {
-      const sel = document.getElementById('districts');
-      const city = sel.value;
-      if (!city) return;
+function getWeather() {
+  const sel = document.getElementById('districts');
+  const district = sel.value;
+  if (!district) return;
 
-      const url = `https://wttr.in/${city}?format=j1`;
+  const districtMap = {
+    "Colombo": "Colombo",
+    "Gampaha": "Negombo",
+    "Kalutara": "Kalutara",
+    "Kandy": "Kandy",
+    "Matale": "Matale",
+    "Nuwara Eliya": "Nuwara Eliya",
+    "Galle": "Galle",
+    "Matara": "Matara",
+    "Hambantota": "Hambantota",
+    "Jaffna": "Jaffna",
+    "Kilinochchi": "Kilinochchi",
+    "Mannar": "Mannar",
+    "Vavuniya": "Vavuniya",
+    "Mullaitivu": "Mullaitivu",
+    "Trincomalee": "Trincomalee",
+    "Batticaloa": "Batticaloa",
+    "Ampara": "Ampara",
+    "Monaragala": "Monaragala",
+    "Badulla": "Badulla",
+    "Ratnapura": "Ratnapura",
+    "Kegalle": "Kegalle",
+    "Anuradhapura": "Anuradhapura",
+    "Polonnaruwa": "Polonnaruwa",
+    "Puttalam": "Puttalam",
+    "Kurunegala": "Kurunegala"
+  };
 
-      fetch(url)
-        .then(r => r.json())
-        .then(data => {
-          const c = data.current_condition[0];
-          document.getElementById('weatherResult').innerHTML = `
-            <div class="icon">🌤️</div>
-            <p><strong>${city}</strong></p>
-            <p>${c.weatherDesc[0].value}</p>
-            <p>🌡️ ${c.temp_C}°C</p>
-            <p>💨 ${c.windspeedKmph} km/h</p>
-            <p>💧 Humidity: ${c.humidity}%</p>
-          `;
-        })
-        .catch(err => {
-          document.getElementById('weatherResult').innerHTML =
-            '<p>🚫 Could not load weather. Try again.</p>';
-        });
-    }
+  const city = districtMap[district];
+  if (!city) {
+    alert("District not recognized.");
+    return;
+  }
+
+  const url = `https://wttr.in/${encodeURIComponent(city)}`;
+  window.open(url, '_blank');
+}
+
   </script>
 
 </body>
