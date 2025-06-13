@@ -198,18 +198,18 @@
   <div class="footer">&copy; 2025 Discover Sri Lanka | All Rights Reserved</div>
 
   <script>
-    // → Live Clock
-    function updateClock() {
-      const now = new Date();
-      const hrs = String(now.getHours()).padStart(2,'0'),
-            mins = String(now.getMinutes()).padStart(2,'0'),
-            secs = String(now.getSeconds()).padStart(2,'0');
-      document.getElementById('clock').textContent = `${hrs}:${mins}:${secs}`;
-    }
-    setInterval(updateClock,1000);
-    updateClock();
+// → Live Clock
+function updateClock() {
+  const now = new Date();
+  const hrs = String(now.getHours()).padStart(2,'0'),
+        mins = String(now.getMinutes()).padStart(2,'0'),
+        secs = String(now.getSeconds()).padStart(2,'0');
+  document.getElementById('clock').textContent = `${hrs}:${mins}:${secs}`;
+}
+setInterval(updateClock,1000);
+updateClock();
 
-    // → Weather Fetcher
+// → Weather Fetcher (Inline)
 function getWeather() {
   const sel = document.getElementById('districts');
   const district = sel.value;
@@ -249,9 +249,43 @@ function getWeather() {
     return;
   }
 
-  const url = `https://wttr.in/${encodeURIComponent(city)}`;
-  window.open(url, '_blank');
+  const url = `https://wttr.in/${encodeURIComponent(city)}?format=j1`;
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const condition = data.current_condition[0];
+      const temp = condition.temp_C;
+      const desc = condition.weatherDesc[0].value;
+      const feelsLike = condition.FeelsLikeC;
+      const humidity = condition.humidity;
+      const icon = getWeatherIcon(desc);
+
+      const resultDiv = document.getElementById('weatherResult');
+      resultDiv.innerHTML = `
+        <div class="icon">${icon}</div>
+        <p><strong>${district}</strong></p>
+        <p>${desc}</p>
+        <p>🌡️ Temperature: ${temp}°C (Feels like ${feelsLike}°C)</p>
+        <p>💧 Humidity: ${humidity}%</p>
+      `;
+    })
+    .catch(error => {
+      console.error("Failed to fetch weather data:", error);
+      document.getElementById('weatherResult').innerHTML = "<p>Unable to fetch weather. Please try again.</p>";
+    });
 }
+
+// → Simple Weather Icon Picker based on description
+function getWeatherIcon(desc) {
+  const lower = desc.toLowerCase();
+  if (lower.includes("sun")) return "☀️";
+  if (lower.includes("cloud")) return "☁️";
+  if (lower.includes("rain")) return "🌧️";
+  if (lower.includes("thunder")) return "⛈️";
+  if (lower.includes("mist") || lower.includes("fog")) return "🌫️";
+  return "🌡️";
+}
+
 
   </script>
 
