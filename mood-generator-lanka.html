@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Sri Lankan Vibe Badge Quiz</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
+    color: #3a1c1c;
+    text-align: center;
+    padding: 30px;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  #rarestBadgeInfo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ff1744;
+    margin-bottom: 25px;
+    user-select: none;
+  }
+
+  .question {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  .option {
+    display: block;
+    padding: 12px 25px;
+    margin: 12px auto;
+    background: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    width: 260px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  }
+
+  .option:hover {
+    background: #e05645;
+    transform: scale(1.05);
+  }
+
+  #badgeContainer {
+    display: none;
+    margin-top: 50px;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  #badge {
+    width: 300px;
+    height: 300px;
+    border-radius: 30px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #badge h2 {
+    font-size: 2rem;
+    margin-top: 30px;
+  }
+
+  #badge .vibe {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  #downloadBtn {
+    margin-top: 25px;
+    padding: 14px 30px;
+    font-weight: 700;
+    background: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 6px 12px rgba(224, 122, 95, 0.6);
+    transition: background 0.3s ease;
+  }
+
+  #downloadBtn:hover {
+    background: #e05645;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9);}
+    to { opacity: 1; transform: scale(1);}
+  }
+
+  #rarityBarContainer {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.8s ease;
+    margin-top: 20px;
+  }
+
+  #badgeContainer.showRarity #rarityBarContainer {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .epic-glow {
+    box-shadow: 0 0 25px 10px rgba(255, 23, 68, 0.8),
+                0 0 60px 20px rgba(255, 23, 68, 0.5),
+                0 0 90px 30px rgba(255, 23, 68, 0.3);
+    animation: pulseGlow 1.5s infinite alternate;
+  }
+
+  @keyframes pulseGlow {
+    from {
+      box-shadow: 0 0 20px 10px rgba(255, 23, 68, 0.8),
+                  0 0 40px 20px rgba(255, 23, 68, 0.5),
+                  0 0 60px 30px rgba(255, 23, 68, 0.3);
+    }
+    to {
+      box-shadow: 0 0 35px 15px rgba(255, 23, 68, 1),
+                  0 0 70px 30px rgba(255, 23, 68, 0.7),
+                  0 0 110px 50px rgba(255, 23, 68, 0.4);
+    }
+  }
+
+  canvas {
+    display: none;
+  }
+  #progressBarContainer {
+  background: #ddd;
+  border-radius: 30px;
+  height: 18px;
+  max-width: 300px;
+  margin: 20px auto;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+#progressBar {
+  height: 18px;
+  width: 0%;
+  background: #618bff;
+  transition: width 0.5s ease;
+  border-radius: 30px;
+}
+#pageFooter {
+  margin-top: 60px;
+  padding: 20px;
+  font-size: 0.95rem;
+  color: #3a1c1c;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+@keyframes fadePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#responseText {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-style: italic;
+  transition: all 0.3s ease;
+  min-height: 30px;
+}
+#suspenseText {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 40px;
+  animation: fadeBlink 1.2s infinite;
+}
+
+@keyframes fadeBlink {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+.social-btn {
+  background: #fff;
+  border: none;
+  color: #ff6f61;
+  font-size: 1.3rem;
+  margin: 8px 6px;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.social-btn:hover {
+  background: #ffeae6;
+  transform: scale(1.1);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<h1>✨ Discover Your Lankan Vibe Badge ✨</h1>
+
+<div id="rarestBadgeInfo">
+  Rarest possible badge: <strong>Epic Kimbula Banna King 🐊🎤</strong>
+</div>
+
+<div id="progressBarContainer">
+  <div id="progressBar"></div>
+</div>
+
+<button onclick="toggleMusic()" style="position:fixed;top:20px;right:20px;background:#ff6f61;color:#fff;border:none;border-radius:50%;width:50px;height:50px;font-size:1.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.3);z-index:9999;">🎵</button>
+
+
+<div id="quiz"></div>
+
+<div id="responseText" style="margin-top: 20px; font-size: 1.1rem; font-style: italic;"></div>
+
+<div id="suspenseText" style="display:none;">Revealing your badge…</div>
+
+<div id="badgeContainer">
+  <div id="badge"></div>
+
+  <div id="rarityBarContainer">
+    <div style="background: #ddd; border-radius: 30px; height: 20px; overflow: hidden; max-width: 300px; margin: 0 auto;">
+      <div id="rarityBar" style="height: 20px; width: 0%; background: #ffa726; transition: width 1s ease;"></div>
+    </div>
+    <div id="rarityPercent" style="margin-top: 8px; font-weight: bold; font-size: 1rem;"></div>
+  </div>
+
+  <button id="downloadBtn">📥 Download Badge</button>
+</div>
+
+<div id="socialShare" style="margin-top: 25px;">
+  <span style="font-weight:bold;">Share your badge:</span><br>
+  <button onclick="shareOn('facebook')" class="social-btn"><i class="fab fa-facebook-f"></i></button>
+  <button onclick="shareOn('twitter')" class="social-btn"><i class="fab fa-x-twitter"></i></button>
+  <button onclick="shareOn('whatsapp')" class="social-btn"><i class="fab fa-whatsapp"></i></button>
+</div>
+
+
+<canvas id="confettiCanvas"></canvas>
+
+<!-- Sound Effects -->
+<audio id="commonAudio" src="badge-sound-effect.m4a"></audio>
+<audio id="rareAudio" src="rare-sound.mp3"></audio>
+<audio id="epicAudio" src="epic-sound.mp3"></audio>
+<audio id="clickAudio" src="click-sound.mp3"></audio>
+
+<audio id="themeSong" src="quizz-theme.m4a" loop></audio>
+
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+
+function toggleMusic() {
+  const music = document.getElementById("themeSong");
+  music.muted = !music.muted;
+}
+
+
+
+function toggleFeedback() {
+  const box = document.getElementById('feedbackBox');
+  box.style.display = (box.style.display === 'none' ? 'block' : 'none');
+}
+
+function submitFeedback() {
+  const feedback = document.getElementById('feedbackText').value;
+  if (feedback.trim() === "") {
+    alert("Please type something before sending!");
+    return;
+  }
+
+  fetch("https://formspree.io/f/mzzgaygd", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({ message: feedback })
+  })
+  .then(response => {
+    if (response.ok) {
+      alert("Thank you for your feedback! ❤️");
+      document.getElementById('feedbackText').value = "";
+      document.getElementById('feedbackBox').style.display = 'none';
+    } else {
+      alert("Oops — something went wrong. Please try again.");
+    }
+  })
+  .catch(() => {
+    alert("Unable to send feedback. Please check your connection.");
+  });
+}
+
+
+
+function shareOn(platform) {
+  const url = encodeURIComponent(window.location.href);
+  const text = encodeURIComponent("I just unlocked my Sri Lankan Vibe Badge — check yours!");
+
+  let shareUrl = "";
+  if (platform === "facebook") shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  if (platform === "twitter") shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+  if (platform === "whatsapp") shareUrl = `https://api.whatsapp.com/send?text=${text} ${url}`;
+
+  window.open(shareUrl, '_blank');
+}
+
+
+const responses = {
+  "Isso Wade 🍤": "Crispy pick — nothing beats street Isso Wade by the sea 🌊.",
+  "Kottu 🍛": "Kottu addict alert! 🔥",
+  "Milk Tea 🍵": "Ayy, Lankan classic in a glass 🥃.",
+  "Ella 🌿": "Chill mountain soul 🌿✨.",
+  "Mirissa 🏖️": "Beach baby detected 🏖️.",
+  "Jaffna 🕌": "Northern adventure spirit! 🕌",
+  "Chill & Calm 😌": "Finally, a fellow introvert 😌☁️.",
+  "Hype & Loud 🔥": "Turn up the volume — you're pure hype! 🔥🎶",
+  "Mystical ✨": "You’re giving cosmic Lankan wizardry ✨.",
+  "7": "Lucky seven legend 🍀.",
+  "13": "Ooo daring number — bold move! 😈",
+  "22": "Double twos, double trouble 😉.",
+  "Parippu Wade 🌶️": "Spicy snack boss 🌶️🔥.",
+  "Achcharu 🍍": "Sweet, sour, spicy — you’re a vibe! 🍍💥.",
+  "Kimbula Banis 🐊": "Solid choice! Nothing beats a sweet Kimbula on a rainy day 🍞☕.",
+  "Ravana 🚀": "The ancient OG himself 🚀👑.",
+  "Konde Bandapu Cheena 😂": "Bro Seriously 😂🔥.",
+  "Aliya 🐘": "Gentle giant but lowkey boss move 🐘💪."
+};
+
+
+const gradients = [
+  'linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%)',
+  'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
+  'linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%)',
+  'linear-gradient(135deg, #fddb92 0%, #d1fdff 100%)',
+  'linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%)'
+];
+document.body.style.background = gradients[Math.floor(Math.random() * gradients.length)];
+
+
+const quiz = document.getElementById("quiz");
+const badgeContainer = document.getElementById("badgeContainer");
+const badge = document.getElementById("badge");
+const downloadBtn = document.getElementById("downloadBtn");
+const confettiCanvas = document.getElementById("confettiCanvas");
+
+const audios = {
+  Common: document.getElementById("commonAudio"),
+  Rare: document.getElementById("rareAudio"),
+  Epic: document.getElementById("epicAudio")
+};
+
+const clickAudio = document.getElementById("clickAudio");
+
+let answers = {};
+
+const questions = [
+  { text: "What's your go-to Lankan snack?", options: ["Isso Wade 🍤", "Kottu 🍛", "Milk Tea 🍵"] },
+  { text: "Pick your weekend spot:", options: ["Ella 🌿", "Mirissa 🏖️", "Jaffna 🕌"] },
+  { text: "What's your vibe?", options: ["Chill & Calm 😌", "Hype & Loud 🔥", "Mystical ✨"] },
+  { text: "Your lucky number?", options: ["7", "13", "22"] },
+  { text: "Choose a Sri Lankan street food:", options: ["Parippu Wade 🌶️", "Achcharu 🍍", "Kimbula Banis 🐊"] },
+  { text: "Which Lankan legend would you be?", options: ["Ravana 🚀", "Konde Bandapu Cheena 😂", "Aliya 🐘"] }
+];
+
+const badgeTitles = {
+  Common: ["Island Soul", "Tropical Dreamer", "Sunset Seeker"],
+  Rare: ["Nature Nomad (වානරයා)", "Spice Trailblazer (මිරිස් ි සීන් ඒකෙ)", "Ceylon Whisperer (අරලිය කැරළිය)"],
+  Epic: ["Kimbula Banna King 🐊🎤", "Mythic Lionheart (ගල් ල‌ෙන බිදලා)", "Aliya Boss (අලියා ලේඩර්)"]
+};
+
+const badgeColors = {
+  Common: "#ffa726",
+  Rare: "#4caf50",
+  Epic: "#ff1744"
+};
+
+let currentQuestion = 0;
+
+function showQuestion() {
+
+  // Play theme song if not already playing
+const themeSong = document.getElementById("themeSong");
+if (themeSong.paused) {
+  themeSong.volume = 0.5; // optional: set your desired volume
+  themeSong.play();
+}
+
+
+// Update progress bar
+const progress = (currentQuestion / questions.length) * 100;
+document.getElementById("progressBar").style.width = progress + "%";
+
+
+  if (currentQuestion < questions.length) {
+    const q = questions[currentQuestion];
+    quiz.innerHTML = `<div class="question">${q.text}</div>`;
+    q.options.forEach(option => {
+      const btn = document.createElement("button");
+      btn.textContent = option;
+      btn.className = "option";
+      btn.onclick = () => {
+  clickAudio.currentTime = 0;
+  clickAudio.play();
+  answers[`q${currentQuestion}`] = option;
+
+  // Show response with animation
+  const responseText = document.getElementById("responseText");
+  responseText.textContent = responses[option] || "";
+  responseText.style.animation = "none"; // reset animation
+  void responseText.offsetWidth; // trigger reflow
+  responseText.style.animation = "fadePop 0.8s ease";
+
+  // Delay before next question
+  setTimeout(() => {
+    currentQuestion++;
+    responseText.textContent = "";
+    showQuestion();
+  }, 1300);
+};
+
+
+      quiz.appendChild(btn);
+    });
+  } else {
+    revealBadge();
+  }
+}
+
+function revealBadge() {
+  document.getElementById("progressBar").style.width = "100%";
+  quiz.style.display = 'none';
+
+  // Show suspense text
+  const suspenseText = document.getElementById("suspenseText");
+  suspenseText.style.display = 'block';
+
+  // Wait 1.5 seconds before revealing the badge
+  setTimeout(() => {
+    suspenseText.style.display = 'none';
+
+    let rarity = "Common";
+    if (answers.q0.includes("Wade") && answers.q2.includes("Hype") && answers.q4.includes("Kimbula")) rarity = "Epic";
+    else if (answers.q1.includes("Ella") && answers.q2.includes("Chill")) rarity = "Rare";
+
+    const titles = badgeTitles[rarity];
+    const badgeName = titles[Math.floor(Math.random() * titles.length)];
+
+    badgeContainer.style.display = 'block';
+    badgeContainer.classList.add("showRarity");
+
+    badge.style.background = badgeColors[rarity];
+    badge.innerHTML = `<h2>${badgeName}</h2><div class="vibe">Rarity: ${rarity}</div>`;
+
+    badge.classList.remove("epic-glow");
+    if (rarity === "Epic") badge.classList.add("epic-glow");
+
+    document.getElementById('rarityBar').style.width = (rarity === "Rare" ? 65 : rarity === "Epic" ? 100 : 30) + '%';
+    document.getElementById('rarityBar').style.background = badgeColors[rarity];
+    document.getElementById('rarityPercent').textContent = `Rarity: ${(rarity === "Rare" ? 65 : rarity === "Epic" ? 100 : 30)}% chance`;
+
+    confettiCanvas.style.display = "block";
+    window.confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 } });
+
+    audios[rarity].play();
+  }, 1500);
+}
+
+
+downloadBtn.onclick = () => {
+  html2canvas(badge).then(canvas => {
+    const link = document.createElement('a');
+    link.download = 'sri-lankan-vibe-badge.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+};
+
+showQuestion();
+</script>
+
+<footer id="pageFooter">
+  © 2025 Everything Lanka Wiki. All rights reserved.
+</footer>
+
+<div id="feedbackBox" style="position:fixed;bottom:20px;right:20px;background:#fff;border-radius:20px;box-shadow:0 4px 20px rgba(0,0,0,0.2);padding:20px;width:280px;z-index:9999;display:none;">
+  <h3 style="margin-top:0;font-size:1.1rem;color:#3a1c1c;">Feedback?</h3>
+  <textarea id="feedbackText" placeholder="Tell us what you think..." style="width:100%;height:70px;border:none;padding:8px;border-radius:10px;box-shadow:inset 0 0 5px rgba(0,0,0,0.1);resize:none;"></textarea>
+  <button onclick="submitFeedback()" style="margin-top:10px;background:#ff6f61;color:#fff;border:none;padding:8px 16px;border-radius:30px;cursor:pointer;font-weight:bold;">Send</button>
+</div>
+
+<button onclick="toggleFeedback()" style="position:fixed;bottom:20px;right:20px;background:#ff6f61;color:#fff;border:none;border-radius:50%;width:50px;height:50px;font-size:1.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.3);z-index:9999;">📝</button>
+
+
+</body>
+</html>
+
+
+
+
