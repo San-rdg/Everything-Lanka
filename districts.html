@@ -6,88 +6,11 @@
   <meta name="description" content="Everything Lanka – Discover Sri Lanka's best destinations, cultural wonders, travel tips, and local insights. Plan your perfect island adventure today!">
   <meta name="keywords" content="Sri Lanka travel, Sri Lanka tourism, destinations in Sri Lanka, cultural sites, travel tips, Sinhala language, Tamil translation, island adventure">
   <meta name="author" content="Everything Lanka">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2S823WWMZ9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2S823WWMZ9');
-</script>
   <title>Districts - Everything Lanka</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #141e30, #243b55);
-      color: #f1f1f1;
-      animation: fadeIn 1s ease-in;
-      overflow-x: hidden;
-    }
-
-    header {
-      background: #170269;
-      color: white;
-      padding: 20px;
-      font-size: 26px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-
-    .floating-buttons {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      z-index: 1000;
-    }
-
-    .floating-buttons a {
-      padding: 14px 20px;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: background 0.3s ease;
-    }
-
-    .budget-btn {
-      background: #FFA500;
-    }
-
-    .budget-btn:hover {
-      background: #FF8C00;
-    }
-
-    .nav {
-      background: #1E6091;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px 0;
-    }
-
-    .nav a {
-      color: white;
-      text-decoration: none;
-      margin: 8px 18px;
-      font-size: 18px;
-      font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
-    .nav a:hover {
-      background: rgba(255,255,255,0.2);
-    }
 
     .menu-toggle {
       display: none;
@@ -188,25 +111,18 @@
 <body>
 
   <header>
-    <h1><b>Everything Lanka</b></h1>
-  </header>
-
-  <div class="floating-buttons">
-    <a href="budget.html" class="budget-btn">Make Your Budget</a>
-    <a href="4test.html" class="budget-btn">Wildlife Tracker!</a>
-  </div>
-
-  <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
-  <div class="nav" id="navMenu">
+  <h1>Everything Lanka</h1>
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+</header>
+  <nav>
     <a href="index.html">Home</a>
     <a href="EYWK.html">Everything You Wanna Know</a>
-    <a href="community.html">Community</a>
     <a href="destinations.html">Destinations</a>
     <a href="districts.html">Districts</a>
     <a href="what-s new.html">What's New</a>
     <a href="events.html">Events</a>
     <a href="contact.html">Contact Us</a>
-  </div>
+  </nav>
 
   <div class="main-content">
     <div class="tit">
@@ -255,11 +171,15 @@
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    function toggleMenu() {
-      document.getElementById('navMenu').classList.toggle('show');
-    }
-  </script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+</script>
 
 </body>
 </html>
+
 
