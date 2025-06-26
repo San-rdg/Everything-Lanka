@@ -65,41 +65,41 @@
       color: var(--white);
     }
 
+    .menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Responsive Nav for Mobile */
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    gap: 0;
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  nav a {
+    padding: 1rem;
+    border-top: 1px solid #17466c;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
     .tit {
       color: var(--white);
     }
-       .menu-toggle {
-      display: none;
-      background: #00A8FF;
-      color: white;
-      font-size: 28px;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      width: 100%;
-      text-align: right;
-    }
-
-    .menu-toggle:focus {
-      outline: none;
-    }
-
-    @media (max-width: 768px) {
-      .nav {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .nav.show {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-    }
-
 
     .hero {
       max-width: 900px;
@@ -322,7 +322,7 @@
   color: var(--white);
 }
 
-.
+
 
 .form-heading {
   font-size: 2.25rem;
