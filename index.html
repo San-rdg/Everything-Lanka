@@ -1,615 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Everything Lanka – Discover Sri Lanka's best destinations, cultural wonders, travel tips, and local insights. Plan your perfect island adventure today!">
-<meta name="keywords" content="Sri Lanka travel, Sri Lanka tourism, destinations in Sri Lanka, cultural sites, travel tips, Sinhala language, Tamil translation, island adventure">
-<meta name="author" content="Everything Lanka">
-<!-- Basic Meta Tags -->
-<title>Everything Lanka | Discover Sri Lanka's Wonders</title>
-<meta name="description" content="Explore Sri Lanka like never before! Everything Lanka brings you travel guides, local stories, events, destinations, and cultural insights — your ultimate Sri Lanka tourism companion.">
-<meta name="keywords" content="Sri Lanka tourism, travel Sri Lanka, Sri Lanka destinations, cultural sites Sri Lanka, travel guide Sri Lanka, Everything Lanka, visit Sri Lanka, Sri Lanka events, Sri Lanka history">
-<meta name="author" content="Everything Lanka Team">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Everything Lanka | Discover Sri Lanka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
 
-<!-- Open Graph / Facebook -->
-<meta property="og:title" content="Everything Lanka | Discover Sri Lanka's Wonders">
-<meta property="og:description" content="Your ultimate guide to travel, destinations, events, and local stories from beautiful Sri Lanka. Plan your perfect trip today!"> <!-- replace with your actual image URL -->
-<meta property="og:url" content="https://everythinglanka.wiki/">
-<meta property="og:type" content="website">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Everything Lanka | Discover Sri Lanka's Wonders">
-<meta name="twitter:description" content="Your one-stop travel companion for exploring the beautiful island of Sri Lanka — stories, places, events, and travel insights.">
-<!-- replace with your actual image URL -->
-
-<!-- Viewport & Favicon -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2S823WWMZ9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2S823WWMZ9');
-</script>
-
-    <title> Everything Lanka WiKi - THE BEST TRAVEL GUIDE FOR EXPORING SRI LANKA |</title>
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
-    <style>
-        /* All your CSS remains the same */
-        header {
-            background: #170269;
-            color: white;
-            padding: 20px;
-            font-size: 24px;
-            text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-        .launch-banner {
-            background: #1fd655;
-            color: black;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 15px 10px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-        .footer {
-          background: #0c3e72;
-      color: white;
-      padding: 12px;
-      font-size: 14px;
-      text-align: center;
-      margin-top: 50px;
-        }
-        .content {
-            width: 80%;
-            margin: 20px auto;
-            background: black;
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-        }
-        .tit {
-            font-size: 5ch;
-            color: white;
-            font-family: Arial;
-            background-color: #6783de;
-        }
-.floating-buttons {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 999;
-}
-
-.budget-btn {
-  background-color: #ba2800;
-  color: white;
-  padding: 10px 15px;
-  text-decoration: none;
-  border-radius: 50px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  transition: background 0.3s ease;
-  white-space: nowrap;
-}
-
-.budget-btn:hover {
-  background-color: #0c3e72;
-}
-
-/* Mobile adjustments */
-@media screen and (max-width: 600px) {
-  .floating-buttons {
-    bottom: 10px;
-    right: 10px;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .budget-btn {
-    padding: 8px 12px;
-    font-size: 14px;
-    border-radius: 30px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  }
-}
-
-        .image-credit {
-            font-size: 12px;
-            color: white;
-            margin-top: 5px;
-        }
-        .main-content {
-          padding: 30px;
-      margin: 30px auto;
-      background: #1a1a1a;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
-      max-width: 1100px;
-      animation: fadeIn 1.2s ease-in;
-        }
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        .column {
-            flex: 1 1 calc(33% - 20px);
-            margin-bottom: 20px;
-            box-sizing: border-box;
-        }
-        .column img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        h1 {
-            color: #ffffff;
-            font-size: 36px;
-        }
-        .button-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .btn {
-            background: #d3d0ca;
-            color: black;
-            font-size: 20px;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 15px 25px;
-            border-radius: 10px;
-            display: inline-block;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-        .btn:hover {
-            background: #ffcc00;
-            transform: scale(1.05);
-        }
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            overflow-x: hidden;
-            background: linear-gradient(to right, #141e30, #243b55);
-      color: #f1f1f1;
-      animation: fadeIn 1s ease-in;
-        }
-        .nav {
-      background: #1E6091;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px 0;
-    }
-        .nav a {
-          color: white;
-      text-decoration: none;
-      margin: 8px 18px;
-      font-size: 18px;
-      font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 5px;
-      transition: background 0.3s;
-        }
-        .nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-        }
-        .menu-icon {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            padding: 10px;
-        }
-
-        .destination-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-
-    .destination-buttons a {
-      background-color: #1E6091;
-      color: white;
-      padding: 18px;
-      text-decoration: none;
-      font-size: 20px;
-      font-weight: bold;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
-    }
-
-    .destination-buttons a:hover {
-      background-color: #0c3e72;
-      transform: scale(1.05);
-    }
-            .update-indicator {
-      position: absolute;
-      top: 5px;
-      right: -8px;
-      width: 10px;
-      height: 10px;
-      background-color: #FFA500;
-      border-radius: 50%;
-      animation: bounce 1.2s infinite;
-    }
-.featured-section {
-  background: linear-gradient(135deg, #1E6091, #0c3e72);
-  color: #fff;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-  text-align: center;
-  margin: 30px 0;
-  animation: fadeInUp 1s ease;
-}
-
-.featured-title h1 {
-  font-size: 2.5rem;
-  color: #ffdd57;
-  margin-bottom: 20px;
-}
-
-.image-slider img {
-  width: 90%;
-  max-width: 400px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  margin: 20px 0;
-}
-
-.featured-content h2 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: #ffdd57;
-}
-
-.featured-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.featured-buttons .book-btn {
-  background: #ffdd57;
-  color: #1E6091;
-  padding: 12px 25px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.featured-buttons .book-btn:hover {
-  background: #ffd500;
-  transform: scale(1.05);
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 1;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-  .main-content {
-    text-align: center;
-  }
-
-  .destination-buttons a {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #1E6091;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-  }
-
-  .destination-buttons a:hover {
-    background-color: #0c3e72;
-  }
-            @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-3px); }
-    }
-
-        @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                align-items: center;
-                padding: 10px;
-            }
-            .menu-icon {
-                display: block;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                background: #00A8FF;
-                position: absolute;
-                top: 50px;
-                left: 0;
-                text-align: center;
-                padding: 10px 0;
-            }
-            .nav-links a {
-                padding: 10px;
-                display: block;
-                margin: 5px 0;
-            }
-            .show { display: flex; }
-        }
-        @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px);}
-      to   { opacity: 1; transform: translateY(0);}
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-10px); }
-    }
-    </style>
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Everything Lanka.wiki",
-  "url": "https://everythinglanka.wiki/",
-  "logo": "https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/el%20logo.png"
-}
-</script>
-
-
-
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is Everything Lanka?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Everything Lanka is a travel guide platform offering insider knowledge, destinations, local culture, and tips to help tourists explore Sri Lanka with ease."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I plan my trip on Everything Lanka?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! Use our Trip Planner, Budget Maker, and Weather tools to organize your travel across Sri Lanka with helpful recommendations."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is Everything Lanka updated regularly?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We update our content weekly and also have a 'What's New' section to keep you informed on events, news, and updates from across Sri Lanka."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Everything Lanka provide emergency contact numbers?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, we have a dedicated page with emergency numbers including police, ambulance, and tourist helplines for your safety while traveling."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are there cultural tips and customs included?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Absolutely. We provide insights into Sri Lankan customs, traditions, etiquette, and local behaviors so you can travel respectfully and comfortably."
-          }
-        }
-      ]
-    }
-    </script>
 </head>
 <body>
-    <header>
-        <h1><b>Everything Lanka</b></h1>
-        <caption><i>More than a travel guide...</i></caption>
-        <br>
-         <img src="https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/el%20logo.png">
-    </header>
 
-     <!-- Launch Banner -->
-    <div class="launch-banner">
-        ✨ <strong> Happy World Rainforest Day!</strong> 
-    </div>
-    
-    <!-- Floating Buttons -->
-    <div class="floating-buttons">
-        <a href="mood-generator-lanka.html"  class="budget-btn">BadgeCraft- Find Your Personality</a>
-        <a href="budget.html" class="budget-btn">Make Your Budget for Your Trip</a>
-        <a href="4test.html"  class="budget-btn">Wild Life Tracker!</a>
-        
-    </div>
+  <header>
+    <h1>Everything Lanka</h1>
+  </header>
 
-    <div class="nav">
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="EYWK.html">Everything You Wanna Know</a>
-            <a href="community.html">Community</a>
-            <a href="destinations.html">Destinations</a>
-            <a href="districts.html">Districts</a>
-            <a href="what-s new.html">What's New
-            <span class="update-indicator"></span>
-            </a>
-            <a href="events.html">Events</a>
-            <a href="contact.html">Contact Us</a>
-        </div>
-    </div>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="EYWK.html">Everything You Wanna Know</a>
+  <a href="destinations.html">Destinations</a>
+  <a href="districts.html">Districts</a>
+  <a href="what-s new.html">What's New</a>
+  <a href="events.html">Events</a>
+  <a href="contact.html">Contact Us</a>
+</nav>
 
-       <div class="main-content">
-        <div class="tit">
-            <h1>Everything You Wanna Know</h1>
-        </div>
-        <div class="destination-buttons">
-             <a href="mood-generator-lanka.html"  class="btn">BadgeCraft</a>
-            <a href="en.html" class="btn">Emergency Numbers</a>
-            <a href="str.html" class="btn">Story Travel Routes</a>
-            <a href="price.html" class="btn">Prices</a>
-            <a href="laguage.html" class="btn">Language</a>
-            <a href="trip-planner.html" class="btn">Trip Planner</a>
-            <a href="weather.html" class="btn">Weather</a>
-            <a href="transportation.html" class="btn">Transportation</a>
-            <a href="traffic.html" class="btn">Traffic</a>
-            <a href="networks.html" class="btn">Networks</a>
-            <a href="customs.html" class="btn">Customs/Culture</a>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="column">
-          <img src="Every Thing Sri Lanka.lk.png" alt="im">
-        </div>
-    </div>
-
-    <div class="main-content">
-        <p style="color: white;">Welcome to Sri Lanka, the Pearl of the Indian Ocean. We assure you that you will have the time of your life in paradise. <br>
-        This website is here to help you know everything there is to know when traveling in Sri Lanka.<br>
-        We hope to assist you and make your visit unforgettable!</p>
-    </div>
-
-    <div class="featured-section">
-  <div class="featured-title">
-    <h1>🌟 Featured Experience</h1>
-  </div>
-
-  <section class="image-slider">
-    <img id="sliderImage" src="images/food1.png" alt="Sri Lankan Dish">
+  <section class="hero" role="banner">
+    <h2>Discover Sri Lanka's Best Kept Secrets</h2>
+    <p>Travel guides, authentic culture, trip tools & curated adventures — all in one place.</p>
+    <a href="explore.html" class="btn-primary">Start Exploring</a>
   </section>
 
-  <div class="featured-content">
-    <h2>Cook Authentic Sri Lankan Dishes 🍛</h2>
-    <p>Join <strong>"Organic Cooking Class Sigiriya (Kumara & Family)"</strong> for a hands-on culinary adventure. Discover age-old recipes and savor the flavors of Sri Lanka. Perfect for foodies and culture lovers!</p>
-    
-    <div class="featured-buttons">
-      <a href="https://g.co/kgs/oq85Nku" target="_blank" class="book-btn">Book Your Experience Now ✨</a>
-    </div>
+<section class="features" aria-label="Main features">
+  <article tabindex="0" class="feature-card">
+    <img src="en.png" alt="Emergency Numbers" class="feature-icon" />
+    <a href="en.html"><h3>Emergency Numbers</h3></a>
+    <p>Essential contacts for safe and smooth travel throughout Sri Lanka.</p>
+  </article>
+  <article tabindex="0" class="feature-card">
+    <img src="trip-planner.png" alt="Trip Planner" class="feature-icon" />
+    <a href="trip-planner.html"><h3>Trip Planner<sup>FOR YOU</sup></h3></a>
+    <p>Plan routes, budgets, and bookings effortlessly.</p>
+  </article>
+  <article tabindex="0" class="feature-card">
+    <img src="weather.png" alt="Weather Updates" class="feature-icon" />
+    <a href="weather.html"><h3>Weather Updates</h3></a>
+    <p>Get the latest daily weather forecasts island-wide.</p>
+  </article>
+  <article tabindex="0" class="feature-card">
+    <img src="customs.png" alt="Customs & Culture" class="feature-icon" />
+    <a href="customs.html"><h3>Customs & Culture</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article>
+    <article tabindex="0" class="feature-card">
+    <img src="language.png" alt="Sihala Language" class="feature-icon" />
+    <a href="laguage.html"><h3>Sinhala Language Basics</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article> 
+   <article tabindex="0" class="feature-card">
+    <img src="str.png" alt="Story Path Generator" class="feature-icon" />
+    <a href="str.html"><h3>Create Your Story Path</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article> 
+   <article tabindex="0" class="feature-card">
+    <img src="price.png" alt="Goods Prices" class="feature-icon" />
+    <a href="price.html"><h3>Average Price List</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article> 
+   <article tabindex="0" class="feature-card">
+    <img src="transportation.png" alt="Transportation Needs" class="feature-icon" />
+    <a href="transportation.html"><h3>Transportation Services</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article>  
+  <article tabindex="0" class="feature-card">
+    <img src="traffic.png" alt="Traffi" class="feature-icon" />
+    <a href="traffic.html"><h3>Traffic Status</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article>
+    <article tabindex="0" class="feature-card">
+    <img src="network.png" alt="Networks" class="feature-icon" />
+    <a href="networks.html"><h3>Networks & Connections</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article>
+</section>
+
+
+<section class="featured-experience" aria-label="Featured Experience">
+  <div class="featured-heading">
+    <h2>🌿 Featured Experience</h2>
+    <span class="sponsored-label">Sponsored</span>
   </div>
-</div>
+  <p>Join an organic cooking class in Sigiriya and savor authentic Sri Lankan flavors!</p>
+  <a href="#">Book Now</a>
+</section>
 
-    <div class="tit">
-        <u>Experience the Beauty</u>
-    </div>
 
-    <div class="row">
-        <div class="column">
-          <img src="2.jpg" alt="Bridge">
-          <p class="image-credit">Image credit: [Neha]</p>
-        </div>
-        <div class="column">
-          <img src="3.jpg" alt="Train">
-          <p class="image-credit">Image credit: [Neha]</p>
-        </div>
-        <div class="column">
-            <img src="6.jpg" alt="Beach">
-            <p class="image-credit">Image credit: [Neha]</p>
-        </div>
-        <div class="column">
-            <img src="5.jpg" alt="Bridge">
-            <p class="image-credit">Image credit: [Neha]</p>
-        </div>
-    </div>
+  <section class="gallery" aria-label="Gallery of Sri Lanka">
+    <img src="beach.jpg" alt="Beach view in Sri Lanka" />
+    <img src="train.jpg" alt="Train passing through lush greenery" />
+    <img src="9arch.jpg" alt="Nine Arches Bridge" />
+    <img src="NuwaraEliya.jpg" alt="Traditional Sri Lankan dish" />
+  </section>
 
-    <div class="row">
-        <div class="column">
-          <img src="beach.jpg" alt="Beach">
-          <p class="image-credit">Image credit: [Pexels]</p>
-        </div>
-        <div class="column">
-          <img src="9arch.jpg" alt="Bridge">
-          <p class="image-credit">Image credit: [Pexels]</p>
-        </div>
-        <div class="column">
-          <img src="train.jpg" alt="Train">
-          <p class="image-credit">Image credit: [Pexels]</p>
-        </div>
-    </div>
+  <footer>
+    &copy; 2025 Everything Lanka | All rights reserved
+  </footer>
 
-    <div class="footer">
-        &copy; 2025 Everything Lanka | All Rights Reserved
-        
-    </div>
-
-      <script>
-    // Image paths array
-    const images = [
-      'myfood.png',
-      'myfood2.png',
-    ];
-
-    let currentIndex = 0;
-    const sliderImage = document.getElementById('sliderImage');
-
-    // Function to change image with fade effect
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % images.length;
-      sliderImage.style.opacity = 0;
-
-      setTimeout(() => {
-        sliderImage.src = images[currentIndex];
-        sliderImage.style.opacity = 1;
-      }, 300); // should match CSS transition duration
-    }, 1500);
-  </script>
-
-<script>
-    function toggleMenu() {
-        const navLinks = document.querySelector(".nav-links");
-        navLinks.classList.toggle("show");
-    }
-</script>
 </body>
 </html>
-
 
 
 
