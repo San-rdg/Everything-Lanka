@@ -3,227 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Everything Lanka – Discover Sri Lanka's best destinations, cultural wonders, travel tips, and local insights. Plan your perfect island adventure today!">
-  <meta name="keywords" content="Sri Lanka travel, Sri Lanka tourism, destinations in Sri Lanka, cultural sites, travel tips, Sinhala language, Tamil translation, island adventure">
-  <meta name="author" content="Everything Lanka">
   <title>Everything You Wanna Know - Everything Lanka</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #141e30, #243b55);
-      color: #f1f1f1;
-      animation: fadeIn 1s ease-in;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
 
-    header {
-      background: #170269;
-      color: white;
-      padding: 20px;
-      font-size: 26px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
 
-    .floating-buttons {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      z-index: 1000;
-    }
-
-    .floating-buttons a {
-      padding: 14px 20px;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: background 0.3s ease;
-    }
-
-    .budget-btn {
-      background: #FFA500;
-    }
-
-    .budget-btn:hover {
-      background: #FF8C00;
-    }
-
-    .nav {
-      background: #1E6091;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px 0;
-    }
-
-    .nav a {
-      color: white;
-      text-decoration: none;
-      margin: 8px 18px;
-      font-size: 18px;
-      font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
-    .nav a:hover {
-      background: rgba(255,255,255,0.2);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: #00A8FF;
-      color: white;
-      font-size: 28px;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      width: 100%;
-      text-align: right;
-    }
-
-    .menu-toggle:focus {
-      outline: none;
-    }
-
-    @media (max-width: 768px) {
-      .nav {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .nav.show {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-    }
-
-    .main-content {
-      padding: 30px;
-      margin: 30px auto;
-      background: #1a1a1a;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
-      max-width: 1100px;
-      animation: fadeIn 1.2s ease-in;
-    }
-
-    .tit h1 {
-      font-size: 48px;
-      color: #ffdd57;
-      margin-bottom: 20px;
-    }
-
-    .destination-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-
-    .destination-buttons a {
-      background-color: #1E6091;
-      color: white;
-      padding: 18px;
-      text-decoration: none;
-      font-size: 20px;
-      font-weight: bold;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
-    }
-
-    .destination-buttons a:hover {
-      background-color: #0c3e72;
-      transform: scale(1.05);
-    }
-
-    .footer {
-      background: #0c3e72;
-      color: white;
-      padding: 12px;
-      font-size: 14px;
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-10px); }
-    }
-  </style>
 </head>
 <body>
 
-  <header>
-    <h1><b>Everything Lanka</b></h1>
-  </header>
+<header>
+  <h1>Everything Lanka</h1>
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+</header>
+  
+<nav>
+  <a href="index.html">Home</a>
+  <a href="EYWK.html">Everything You Wanna Know</a>
+  <a href="destinations.html">Destinations</a>
+  <a href="districts.html">Districts</a>
+  <a href="what-s new.html">What's New</a>
+  <a href="events.html">Events</a>
+  <a href="contact.html">Contact Us</a>
+</nav>
 
-  <div class="floating-buttons">
-    <a href="budget.html" class="budget-btn">Make Your Budget</a>
-    <a href="4test.html" class="budget-btn">Wildlife Tracker!</a>
-  </div>
+  <section class="hero" role="banner">
+    <h2>Things You Would Want to Know</h2>
+    <p>Travel guides, authentic culture, trip tools & curated adventures — all in one place.</p>
 
-  <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
-  <div class="nav" id="navMenu">
-    <a href="index.html">Home</a>
-    <a href="EYWK.html">Everything You Wanna Know</a>
-     <a href="community.html">Community</a>
-    <a href="destinations.html">Destinations</a>
-    <a href="districts.html">Districts</a>
-    <a href="what-s new.html">What's New</a>
-    <a href="events.html">Events</a>
-    <a href="contact.html">Contact Us</a>
-  </div>
+<section class="features" aria-label="Main features">
+  <article tabindex="0" class="feature-card">
+    <img src="en.png" alt="Emergency Numbers" class="feature-icon" />
+    <a href="en.html"><h3>Emergency Numbers</h3></a>
+    <p>Essential contacts for safe and smooth travel throughout Sri Lanka.</p>
+  </article>
+  <article tabindex="0" class="feature-card">
+    <img src="trip-planner.png" alt="Trip Planner" class="feature-icon" />
+    <a href="trip-planner.html"><h3>Trip Planner<sup>FOR YOU</sup></h3></a>
+    <p>Plan routes, budgets, and bookings effortlessly.</p>
+  </article>
+  <article tabindex="0" class="feature-card">
+    <img src="weather.png" alt="Weather Updates" class="feature-icon" />
+    <a href="weather.html"><h3>Weather Updates</h3></a>
+    <p>Get the latest daily weather forecasts island-wide.</p>
+  </article>
+  <article tabindex="0" class="feature-card">
+    <img src="customs.png" alt="Customs & Culture" class="feature-icon" />
+    <a href="customs.html"><h3>Customs & Culture</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article>
+    <article tabindex="0" class="feature-card">
+    <img src="language.png" alt="Sihala Language" class="feature-icon" />
+    <a href="laguage.html"><h3>Sinhala Language Basics</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article> 
+   <article tabindex="0" class="feature-card">
+    <img src="str.png" alt="Story Path Generator" class="feature-icon" />
+    <a href="str.html"><h3>Create Your Story Path</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article> 
+   <article tabindex="0" class="feature-card">
+    <img src="price.png" alt="Goods Prices" class="feature-icon" />
+    <a href="price.html"><h3>Average Price List</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article> 
+   <article tabindex="0" class="feature-card">
+    <img src="transportation.png" alt="Transportation Needs" class="feature-icon" />
+    <a href="transportation.html"><h3>Transportation Services</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article>  
+  <article tabindex="0" class="feature-card">
+    <img src="traffic.png" alt="Traffi" class="feature-icon" />
+    <a href="traffic.html"><h3>Traffic Status</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article>
+    <article tabindex="0" class="feature-card">
+    <img src="network.png" alt="Networks" class="feature-icon" />
+    <a href="networks.html"><h3>Networks & Connections</h3></a>
+    <p>Learn how to travel respectfully and immerse yourself in local traditions.</p>
+  </article>
+</section>
 
-  <div class="main-content">
-    <div class="tit">
-      <h1>Everything You Wanna Know</h1>
-    </div>
-
-    <div class="destination-buttons">
-      <a href="en.html">Emergency Numbers</a>
-      <a href="str.html">Story Travel Routes</a>
-      <a href="strgen.html">Story Path Generator</a>
-      <a href="price.html">Prices</a>
-      <a href="laguage.html">Language</a>
-      <a href="trip-planner.html">Trip Planner</a>
-      <a href="weather.html">Weather</a>
-      <a href="transportation.html">Transportation</a>
-      <a href="traffic.html">Traffic</a>
-      <a href="networks.html">Networks</a>
-      <a href="customs.html">Customs/Culture</a>
-    </div>
-  </div>
-
-  <div class="footer">
+  <footer>
     &copy; 2025 Everything Lanka | Designed with ❤️
-  </div>
+  </footer>
 
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById('navMenu');
-      nav.classList.toggle('show');
-    }
-  </script>
+   <script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+</script>
 
 </body>
 </html>
