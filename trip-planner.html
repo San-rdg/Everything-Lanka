@@ -1,246 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Everything Lanka – Weather</title>
-
-  <!-- Animate.css for subtle entry animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <meta charset="UTF-8">
+  <title>Everything Lanka | Trip Planner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
   <style>
-    /* → Global Styles */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    @keyframes bgAnimation {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
-    }
-
-    .clock {
-      font-size: 4rem;
-      color: var(white);
-      padding: 20px;
-      margin: 20px auto;
-      width: fit-content;
-      background: hsla(0, 0%, 100%, 0.863);
-      border-radius: 12px;
-      box-shadow: 0 0 20px #1b0fc8;
-      animation: glow 2s infinite alternate;
-    }
-
-    @keyframes glow {
-      from { box-shadow: 0 0 10px #1b0fc8; }
-      to { box-shadow: 0 0 30px #ffffff; }
-    }
-   
-
-    /* → Weather Card */
-    .weather-container {
-      background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 20px;
-      max-width: 360px;
-      margin: 30px auto;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      animation: fadeInUp 1s ease;
-    }
-
-    .weather-container h2 {
-      font-size: 1.8rem;
-      margin-bottom: 12px;
-    }
-
-    .weather-container select,
-    .weather-container button {
-      font-size: 1rem;
-      padding: 8px 12px;
-      margin: 8px;
-      border: none;
-      border-radius: 6px;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .weather-container button {
-      background: #1b0fc8;
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-
-    .weather-container button:hover {
-      background: #ffffff;
-      color: #1b0fc8;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.6);
-    }
-
-    .weather-result {
-      margin-top: 20px;
-      background: rgba(246, 246, 246, 0.74);
-      padding: 12px;
-      border-radius: 8px;
-      animation: fadeInRight 0.8s ease;
-    }
-
-    .weather-result p {
-      margin: 6px 0;
-      font-size: 1.1rem;
-      color: black
-    }
-
-    .weather-result .icon {
-      font-size: 2rem;
-      margin-bottom: 8px;
-    }
-
-    /* → Content & Footer */
-
-
-    /* → Responsive */
-    @media(max-width: 480px) {
-      .clock { font-size: 3rem; }
-      .weather-container { margin: 20px 12px; }
-    }
+    .planner-step { display: none; }
+    .planner-step.active { display: block; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .step-buttons { margin-top: 2rem; display: flex; justify-content: space-between; }
+    .trip-summary { background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 14px var(--shadow); }
+    .pdf-download { margin-top: 1.5rem; display: inline-block; background: var(--orange); color: var(--white); padding: 0.75rem 1.5rem; border-radius: 30px; text-decoration: none; font-weight: 600; transition: background 0.3s ease; }
+    .pdf-download:hover { background: #e1893b; }
 
              a {
             color: #ffffff;
             text-decoration: none;
         }
-
-
   </style>
 </head>
 <body>
 
-  <header>
+<header>
   <h1><a href="index.html">Everything Lanka</a></h1>
-  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
 </header>
 
+<div class="main-content">
+  <h2 class="form-heading">Customize Your Dream Trip 🇱🇰</h2>
+  <form id="tripForm">
 
-  <div class="clock" id="clock"></div>
+    <div class="planner-step active" id="step1">
+      <div class="question">
+        <label>What’s your travel vibe?</label>
+        <div class="options">
+          <label><input type="checkbox" value="Relaxing"> Calm & Relaxing</label>
+          <label><input type="checkbox" value="Adventure"> Thrilling & Adventurous</label>
+          <label><input type="checkbox" value="Cultural"> Cultural & Educational</label>
+          <label><input type="checkbox" value="Luxury"> Luxury & Comfort</label>
+        </div>
+      </div>
+      <div class="step-buttons">
+        <button type="button" class="btn-primary" onclick="nextStep(2)">Next →</button>
+      </div>
+    </div>
 
-  <div class="weather-container">
-    <h2>Weather in Sri Lanka</h2>
-    <select id="districts">
-      <option disabled selected>Select District</option>
-      <option>Colombo</option><option>Gampaha</option><option>Kalutara</option>
-      <option>Kandy</option><option>Matale</option><option>Nuwara Eliya</option>
-      <option>Galle</option><option>Matara</option><option>Hambantota</option>
-      <option>Jaffna</option><option>Kilinochchi</option><option>Mannar</option>
-      <option>Vavuniya</option><option>Mullaitivu</option><option>Trincomalee</option>
-      <option>Batticaloa</option><option>Ampara</option><option>Monaragala</option>
-      <option>Badulla</option><option>Ratnapura</option><option>Kegalle</option>
-      <option>Anuradhapura</option><option>Polonnaruwa</option><option>Puttalam</option>
-      <option>Kurunegala</option>
-    </select>
-    <button onclick="getWeather()">Get Weather</button>
-    <div id="weatherResult" class="weather-result"></div>
-  </div>
+    <div class="planner-step" id="step2">
+      <div class="question">
+        <label>Which regions are you interested in?</label>
+        <div class="options">
+          <label><input type="checkbox" value="South"> Southern Coast</label>
+          <label><input type="checkbox" value="Central"> Central Highlands</label>
+          <label><input type="checkbox" value="North"> Northern Province</label>
+          <label><input type="checkbox" value="East"> Eastern Beaches</label>
+        </div>
+      </div>
+      <div class="step-buttons">
+        <button type="button" class="btn-primary" onclick="nextStep(1)">← Back</button>
+        <button type="button" class="btn-primary" onclick="nextStep(3)">Next →</button>
+      </div>
+    </div>
 
-  <div class="main-content">
-    <p>Experience Sri Lanka’s diverse climate, from tropical coastal heat to the crisp highland air of Nuwara Eliya. Our site updates live weather data for all 25 districts — just choose your district and explore.</p>
-    <p>Let the patterns of wind, rain, and sunshine enhance your journey — from the historic heart of Anuradhapura to the seaside calm of Galle.</p>
-  </div>
+    <div class="planner-step" id="step3">
+      <div class="question">
+        <label>How many days is your trip?</label>
+        <div class="options">
+          <label><input type="radio" name="days" value="3"> 3 Days</label>
+          <label><input type="radio" name="days" value="5"> 5 Days</label>
+          <label><input type="radio" name="days" value="7"> 7 Days</label>
+          <label><input type="radio" name="days" value="10"> 10+ Days</label>
+        </div>
+      </div>
+      <div class="step-buttons">
+        <button type="button" class="btn-primary" onclick="nextStep(2)">← Back</button>
+        <button type="button" class="btn-primary" onclick="generateTrip()">Generate Plan 🎉</button>
+      </div>
+    </div>
 
-  <footer>
-    &copy; 2025 Discover Sri Lanka | All Rights Reserved
-  </footer>
+  </form>
 
-  <script>
-// → Live Clock
-function updateClock() {
-  const now = new Date();
-  const hrs = String(now.getHours()).padStart(2,'0'),
-        mins = String(now.getMinutes()).padStart(2,'0'),
-        secs = String(now.getSeconds()).padStart(2,'0');
-  document.getElementById('clock').textContent = `${hrs}:${mins}:${secs}`;
-}
-setInterval(updateClock,1000);
-updateClock();
+  <div id="tripResult" style="display:none; margin-top:3rem;"></div>
 
-// → Weather Fetcher (Inline)
-function getWeather() {
-  const sel = document.getElementById('districts');
-  const district = sel.value;
-  if (!district) return;
+</div>
 
-  const districtMap = {
-    "Colombo": "Colombo",
-    "Gampaha": "Negombo",
-    "Kalutara": "Kalutara",
-    "Kandy": "Kandy",
-    "Matale": "Matale",
-    "Nuwara Eliya": "Nuwara Eliya",
-    "Galle": "Galle",
-    "Matara": "Matara",
-    "Hambantota": "Hambantota",
-    "Jaffna": "Jaffna",
-    "Kilinochchi": "Kilinochchi",
-    "Mannar": "Mannar",
-    "Vavuniya": "Vavuniya",
-    "Mullaitivu": "Mullaitivu",
-    "Trincomalee": "Trincomalee",
-    "Batticaloa": "Batticaloa",
-    "Ampara": "Ampara",
-    "Monaragala": "Monaragala",
-    "Badulla": "Badulla",
-    "Ratnapura": "Ratnapura",
-    "Kegalle": "Kegalle",
-    "Anuradhapura": "Anuradhapura",
-    "Polonnaruwa": "Polonnaruwa",
-    "Puttalam": "Puttalam",
-    "Kurunegala": "Kurunegala"
-  };
-
-  const city = districtMap[district];
-  if (!city) {
-    alert("District not recognized.");
-    return;
-  }
-
-  const url = `https://wttr.in/${encodeURIComponent(city)}?format=j1`;
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      const condition = data.current_condition[0];
-      const temp = condition.temp_C;
-      const desc = condition.weatherDesc[0].value;
-      const feelsLike = condition.FeelsLikeC;
-      const humidity = condition.humidity;
-      const icon = getWeatherIcon(desc);
-
-      const resultDiv = document.getElementById('weatherResult');
-      resultDiv.innerHTML = `
-        <div class="icon">${icon}</div>
-        <p><strong>${district}</strong></p>
-        <p>${desc}</p>
-        <p>🌡️ Temperature: ${temp}°C (Feels like ${feelsLike}°C)</p>
-        <p>💧 Humidity: ${humidity}%</p>
-      `;
-    })
-    .catch(error => {
-      console.error("Failed to fetch weather data:", error);
-      document.getElementById('weatherResult').innerHTML = "<p>Unable to fetch weather. Please try again.</p>";
-    });
+<script>
+let currentStep = 1;
+function nextStep(step) {
+  document.getElementById(`step${currentStep}`).classList.remove('active');
+  document.getElementById(`step${step}`).classList.add('active');
+  currentStep = step;
 }
 
-// → Simple Weather Icon Picker based on description
-function getWeatherIcon(desc) {
-  const lower = desc.toLowerCase();
-  if (lower.includes("sun")) return "☀️";
-  if (lower.includes("cloud")) return "☁️";
-  if (lower.includes("rain")) return "🌧️";
-  if (lower.includes("thunder")) return "⛈️";
-  if (lower.includes("mist") || lower.includes("fog")) return "🌫️";
-  return "🌡️";
+function generateTrip() {
+  const vibes = [...document.querySelectorAll('#step1 input:checked')].map(i=>i.value);
+  const regions = [...document.querySelectorAll('#step2 input:checked')].map(i=>i.value);
+  const days = document.querySelector('input[name="days"]:checked')?.value;
+  if (!days) { alert('Please select a trip duration!'); return; }
+
+  let summary = `<div class='trip-summary'>
+  <h3>Your Custom Trip Plan ✈️</h3>
+  <p><strong>Travel Vibe:</strong> ${vibes.join(", ")}</p>
+  <p><strong>Regions:</strong> ${regions.join(", ")}</p>
+  <p><strong>Duration:</strong> ${days} Days</p>
+  <p>✅ Top suggestions & a personalized printable itinerary will be emailed to you soon!</p>
+  <a href="#" class="pdf-download">📥 Download Premium Itinerary PDF</a>
+  </div>`;
+
+  document.getElementById('tripResult').innerHTML = summary;
+  document.getElementById('tripResult').style.display = 'block';
+  document.getElementById(`step${currentStep}`).classList.remove('active');
 }
-
-
-  </script>
+</script>
 
 </body>
-</html> 
-
+</html>
