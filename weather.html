@@ -7,38 +7,24 @@
 
   <!-- Animate.css for subtle entry animations -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="style.css">
 
   <style>
     /* → Global Styles */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Arial, sans-serif;
-      color: #eee;
-      text-align: center;
-      background: linear-gradient(135deg, #091921, #2c3e50);
-      animation: bgAnimation 15s infinite alternate;
-      overflow-x: hidden;
-    }
 
     @keyframes bgAnimation {
       0% { background-position: 0% 50%; }
       100% { background-position: 100% 50%; }
     }
 
-    header {
-      padding: 20px;
-      background: rgba(23,2,105,0.8);
-      backdrop-filter: blur(5px);
-      font-size: 24px;
-      font-style: italic;
-    }
-
     .clock {
       font-size: 4rem;
+      color: var(white);
       padding: 20px;
       margin: 20px auto;
       width: fit-content;
-      background: rgba(27,15,200,0.6);
+      background: hsla(0, 0%, 100%, 0.863);
       border-radius: 12px;
       box-shadow: 0 0 20px #1b0fc8;
       animation: glow 2s infinite alternate;
@@ -48,29 +34,7 @@
       from { box-shadow: 0 0 10px #1b0fc8; }
       to { box-shadow: 0 0 30px #ffffff; }
     }
-
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      background: rgba(0,168,255,0.8);
-      padding: 10px;
-      backdrop-filter: blur(5px);
-    }
-
-    .nav a {
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 14px;
-      font-weight: bold;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
-
-    .nav a:hover {
-      background: rgba(255,255,255,0.2);
-    }
+   
 
     /* → Weather Card */
     .weather-container {
@@ -114,7 +78,7 @@
 
     .weather-result {
       margin-top: 20px;
-      background: rgba(255,255,255,0.15);
+      background: rgba(246, 246, 246, 0.74);
       padding: 12px;
       border-radius: 8px;
       animation: fadeInRight 0.8s ease;
@@ -123,6 +87,7 @@
     .weather-result p {
       margin: 6px 0;
       font-size: 1.1rem;
+      color: black
     }
 
     .weather-result .icon {
@@ -131,23 +96,7 @@
     }
 
     /* → Content & Footer */
-    .main-content {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 20px;
-      background: rgba(0,0,0,0.2);
-      border-radius: 12px;
-      animation: fadeIn 1s ease;
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
 
-    .footer {
-      padding: 12px;
-      background: rgba(12,62,114,0.9);
-      color: #ddd;
-      font-size: 0.9rem;
-    }
 
     /* → Responsive */
     @media(max-width: 480px) {
@@ -155,22 +104,23 @@
       .weather-container { margin: 20px 12px; }
     }
 
+             a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+
   </style>
 </head>
 <body>
 
-  <header>Everything Lanka</header>
+  <header>
+  <h1><a href="index.html">Everything Lanka</a></h1>
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+</header>
+
 
   <div class="clock" id="clock"></div>
-
-  <div class="nav">
-    <a href="index.html">Home</a>
-    <a href="destinations.html">Destinations</a>
-    <a href="districts.html">Districts</a>
-    <a href="what-s new.html">What's New</a>
-    <a href="events.html">Events</a>
-    <a href="contact.html">Contact Us</a>
-  </div>
 
   <div class="weather-container">
     <h2>Weather in Sri Lanka</h2>
@@ -195,7 +145,9 @@
     <p>Let the patterns of wind, rain, and sunshine enhance your journey — from the historic heart of Anuradhapura to the seaside calm of Galle.</p>
   </div>
 
-  <div class="footer">&copy; 2025 Discover Sri Lanka | All Rights Reserved</div>
+  <footer>
+    &copy; 2025 Discover Sri Lanka | All Rights Reserved
+  </footer>
 
   <script>
 // → Live Clock
@@ -290,4 +242,4 @@ function getWeatherIcon(desc) {
   </script>
 
 </body>
-</html>
+</html> 
