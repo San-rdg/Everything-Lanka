@@ -29,6 +29,7 @@
 
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S823WWMZ9"></script>
+<link rel="stylesheet" href="style.css">
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -39,45 +40,9 @@
     <title>Latest Happenings | News Sri Lanka</title>
 
     <!-- Google Font: Open Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
     <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #141e30, #243b55);
-      color: #f1f1f1;
-      animation: fadeIn 1s ease-in;
-    }
-
-    header {
-      background: #170269;
-      color: white;
-      padding: 20px;
-      font-size: 26px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    .nav {
-      background: #1E6091;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px 0;
-    }
-
-    .nav a {
-      color: white;
-      text-decoration: none;
-      margin: 8px 18px;
-      font-size: 18px;
-      font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
     .nav a:hover {
       background: rgba(255,255,255,0.2);
     }
@@ -189,22 +154,19 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Everything Lanka</h1>
-    </header>
-    
-<div class="nav-container">
-    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
-    <div class="nav" id="navMenu">
+<header>
+  <h1>Everything Lanka</h1>
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+</header>
+    <nav>
       <a href="index.html">Home</a>
       <a href="EYWK.html">Everything You Wanna Know</a>
-      <a href="community.html">Community</a>
       <a href="destinations.html">Destinations</a>
       <a href="districts.html">Districts</a>
       <a href="what-s new.html">What's New</a>
       <a href="events.html">Events</a>
       <a href="contact.html">Contact Us</a>
-    </div>
+    </nav>
   </div>
 
     <div class="main content"> 
@@ -364,16 +326,18 @@ This surge not only signifies a robust recovery from past challenges but also hi
         </p>
     </div>
     
-    <div class="footer">
+    <footer>
         &copy; 2025 Everything Sri Lanka | All Rights Reserved
-    </div>
+    </footer>
 
-    <script>
-        function toggleMenu() {
-          const nav = document.getElementById('navMenu');
-          nav.classList.toggle('show');
-        }
-      </script>
+      <script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+</script>
 </body>
 </html>
 
