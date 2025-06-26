@@ -3,57 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Primary Meta Tags -->
-<title>2025 Sri Lanka Festivals & Events Calendar | Everything Lanka</title>
-<meta name="description" content="Discover all the cultural festivals, religious events, and unique traditions happening across Sri Lanka in 2025. Stay updated and plan your perfect trip with Everything Lanka.">
-<meta name="keywords" content="Sri Lanka Events 2025, Sri Lanka Festivals, Cultural Events Sri Lanka, Sinhala Tamil New Year, Vesak Festival, Poson Poya, Sri Lanka Tourism Calendar">
-<meta name="author" content="Everything Lanka">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:title" content="2025 Sri Lanka Festivals & Events Calendar | Everything Lanka">
-<meta property="og:description" content="Plan your journey with our detailed 2025 Sri Lanka events calendar — covering religious celebrations, cultural festivals, and local traditions.">
-<meta property="og:url" content="https://everythinglanka.wiki/events.html">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/el%20logo.png"> <!-- Replace with your actual OG image URL -->
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="2025 Sri Lanka Festivals & Events Calendar | Everything Lanka">
-<meta name="twitter:description" content="Find the latest festivals and cultural events in Sri Lanka for 2025. Plan your unforgettable adventure with Everything Lanka.">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/el%20logo.png"> <!-- Replace with your actual image -->
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://everythinglanka.wiki/events.html">
-
-  <meta name="author" content="Everything Lanka">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2S823WWMZ9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2S823WWMZ9');
-</script>
     <title>Every Thing Sri Lanka</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
     <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #141e30, #243b55);
-      color: #f1f1f1;
-      animation: fadeIn 1s ease-in;
-    }
-
-    header {
-      background: #170269;
-      color: white;
-      padding: 20px;
-      font-size: 26px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
         .seg a {
             color: rgb(0, 0, 0);
             text-decoration:none;
@@ -129,41 +82,7 @@
             background: #31720c;
             color: white;
         }
-        .tit {
-            font-size: 5ch;
-            color: white;
-            font-family:  Arial;
-            background-color: #faab00;
-        }
-        .footer {
-            background: #0c3e72;
-            color: white;
-            padding: 20px;
-            font-size: 14px;
-            text-align: center;
-        }
-        .nav {
-      background: #1E6091;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px 0;
-    }
-
-    .nav a {
-      color: white;
-      text-decoration: none;
-      margin: 8px 18px;
-      font-size: 18px;
-      font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
-    .nav a:hover {
-      background: rgba(255,255,255,0.2);
-    }
+ 
 
     .menu-toggle {
       display: none;
@@ -196,6 +115,7 @@
         display: block;
       }
     }
+
 
     .main-content {
       padding: 30px;
@@ -239,15 +159,6 @@
       transform: scale(1.05);
     }
 
-    .footer {
-      background: #0c3e72;
-      color: white;
-      padding: 12px;
-      font-size: 14px;
-      text-align: center;
-      margin-top: 50px;
-    }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px);}
       to   { opacity: 1; transform: translateY(0);}
@@ -260,21 +171,24 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Everything Lanka</h1>
-    </header>
-    <div class="nav">
+ <header>
+  <h1>Everything Lanka</h1>
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+</header>
+    <nav>
         <a href="index.html">Home</a>
         <a href="EYWK.html">Everything You Wanna Know</a>
-        <a href="community.html">Community</a>
         <a href="destinations.html">Destinations</a>
         <a href="districts.html">Districts</a>
         <a href="what-s new.html">What's New</a>
         <a href="events.html">Events</a>
         <a href="contact.html">Contact Us</a>
-    </div>
+    </nav>
     
-    <div class="tit">Event Calendar</div>
+     <section class="hero" role="banner">
+    <h2>The Events Calendar for 2025</h2>
+     </section>
+
     <div class="calendar-container">
         <div class="month-navigation">
             <button onclick="prevMonth()">&#10094; Previous</button>
@@ -344,7 +258,6 @@
 
         generateCalendar(currentYear, currentMonth);
     </script>
-
     <div style="text-align:center; margin: 30px;">
   <a href="Sri_Lanka_2025_Events.docx" download>
     <button style="
@@ -363,9 +276,9 @@
   </a>
 </div>
 
-    <div class="tit">
-     <h1>Event Table</h1>
-    </div>
+        <section class="hero" role="banner">
+    <h2>The Events Table</h2>
+     </section>
      <table class="event-table">
          <tr>
              <th>Date</th>
@@ -373,66 +286,68 @@
          </tr>
          <tr>
             <td>January 13, 2025</td>
-            <td><div class="seg a">Duruthu Full Moon Poya Day</td></div>
+            <td><div class="seg a"><a href="duruthu.html">Duruthu Full Moon Poya Day</a></td></div>
         </tr>
         <tr>
             <td>January 14, 2025</td>
-            <td><div class="seg a">Tamil Thai Pongal Day</td></div>
+            <td><div class="seg a"><a href="tpd.html">Tamil Thai Pongal Day</a></td></div>
         </tr>
         <tr>
             <td>February 4, 2025</td>
-            <td><div class="seg a">Independence Day</td></div>
+            <td><div class="seg a"><a href="iday.html">Independence Day</a></td></div>
         </tr>
         <tr>
             <td>February 12, 2025</td>
-            <td><div class="seg a">Navam Full Moon Poya Day</td></div>
+            <td><div class="seg a"><a href="npd.html">Navam Full Moon Poya Day</a></td></div>
         </tr>
         <tr>
             <td>February 26, 2025</td>
-            <td><div class="seg a">Maha Shivarathi</td></div>
+            <td><div class="seg a"><a href="ms.html">Maha Shivarathi</a></td></div>
         </tr>
         <tr>
             <td>March 13, 2025</td>
-            <td><div class="seg a">Madin Full Poya Day</td></div>
+            <td><div class="seg a"><a href="mpd.html">Madin Full Poya Day</a></td></div>
         </tr>
         <tr>
             <td>April 14, 2025</td>
-            <td><div class="seg a">Sinhala and Tamil New Year Day</td></div>
+            <td><div class="seg a"><a href="stny.html">Sinhala and Tamil New Year Day</a></td></div>
         </tr>
         <tr>
             <td>May 1, 2025</td>
-            <td><div class="seg a">Labour Day</td></div>
+            <td><div class="seg a"><a href="ld.html">Labour Day</a></td></div>
         </tr>
          <tr>
              <td>May 12, 2025</td>
-             <td><div class="seg a">Vesak Poya Day</td></div>
+             <td><div class="seg a"><a href="vesak.html">Vesak Poya Day</a></td></div>
          </tr>
          <tr>
             <td>July 10, 2025</td>
-            <td><div class="seg a">Esala Poya Day</td></div>
+            <td><div class="seg a"><a href="epd.html">Esala Poya Day</a></td></div>
         </tr>
         <tr>
             <td>July 30, 2025</td>
-            <td><div class="seg a">Esala Perehara Day</td></div>
+            <td><div class="seg a"><a href="epd.html">Esala Perehara Day</a></td></div>
         </tr>
         <tr>
             <td>November 11, 2025</td>
-            <td><div class="seg a">Remembrance Day (Vetrans Day)</td></div>
+            <td><div class="seg a"><a href="rd.html">Remembrance Day (Vetrans Day)</a></td></div>
         </tr>
         <tr>
             <td>December 25, 2025</td>
-            <td><div class="seg a">Christmas Day</td></div>
+            <td><div class="seg a"><a href="cd.html">Christmas Day</a></td></div>
         </tr>
      </table>
-     <div class="footer">
+     <footer>
         &copy; 2025 Everything Lanka | All Rights Reserved
-    </div>
+     </footer>
 
     <script>
-        function toggleMenu() {
-            const navLinks = document.querySelector(".nav-links");
-            navLinks.classList.toggle("show");
-        }
-    </script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+</script>
 </body>
 </html>
