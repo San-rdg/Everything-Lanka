@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Start Exploring | Everything Lanka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+
+<header>
+  <h1>Everything Lanka</h1>
+</header>
+
+<button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+<nav id="navMenu">
+  <a href="index.html">Home</a>
+  <a href="destinations.html">Destinations</a>
+  <a href="EYWK.html">Info</a>
+</nav>
+
+<div class="main-content">
+  <h2 class="form-heading">Tell Us What You Love 🌴</h2>
+
+  <form class="preferences-form">
+    <!-- Type of Places -->
+    <div class="question">
+      <label>What type of places do you prefer?</label>
+      <div class="options">
+        <label><input type="checkbox" value="nature"> Nature & Wildlife</label>
+        <label><input type="checkbox" value="culture"> Cultural & Historical Sites</label>
+        <label><input type="checkbox" value="beach"> Beautiful Beaches</label>
+        <label><input type="checkbox" value="adventure"> Adventure & Hiking</label>
+      </div>
+    </div>
+
+    <!-- Regions -->
+    <div class="question">
+      <label>Which region of Sri Lanka interests you most?</label>
+      <div class="options">
+        <label><input type="checkbox" value="south"> Southern Coast</label>
+        <label><input type="checkbox" value="central"> Central Highlands</label>
+        <label><input type="checkbox" value="north"> Northern Province</label>
+        <label><input type="checkbox" value="east"> Eastern Beaches</label>
+      </div>
+    </div>
+
+    <!-- Activities -->
+    <div class="question">
+      <label>What kind of activities do you enjoy?</label>
+      <div class="options">
+        <label><input type="checkbox" value="surfing"> Surfing & Water Sports</label>
+        <label><input type="checkbox" value="wildlife"> Wildlife Safaris</label>
+        <label><input type="checkbox" value="hiking"> Hiking & Trekking</label>
+        <label><input type="checkbox" value="photography"> Photography Spots</label>
+      </div>
+    </div>
+
+    <!-- Travel Vibe -->
+    <div class="question">
+      <label>What kind of travel vibe do you prefer?</label>
+      <div class="options">
+        <label><input type="checkbox" value="relax"> Calm & Relaxing</label>
+        <label><input type="checkbox" value="adrenaline"> Thrilling & Adventurous</label>
+        <label><input type="checkbox" value="cultural"> Cultural & Educational</label>
+        <label><input type="checkbox" value="luxury"> Luxury & Comfort</label>
+      </div>
+    </div>
+
+    <button type="button" class="btn-primary" onclick="showResults()">Show Suggestions</button>
+  </form>
+
+  <div class="features" id="results"></div>
+</div>
+
+
+
+<script>
+function toggleMenu() {
+  const nav = document.getElementById('navMenu');
+  nav.classList.toggle('show');
+}
+
+function showResults() {
+  const preferences = [...document.querySelectorAll('input[type="checkbox"]:checked')].map(i => i.value);
+  const results = document.getElementById('results');
+  results.innerHTML = '';
+
+ const destinations = [
+  { name: 'Sigiriya Rock Fortress', img: 'Sigiriya.jpg', desc: 'Ancient fortress with panoramic views.', tags: ['culture','central','photography'] },
+  { name: 'Yala National Park', img: 'Yala.jpg', desc: 'Sri Lanka\'s most famous safari.', tags: ['nature','south','wildlife','adrenaline'] },
+  { name: 'Jungle Beach', img: 'jungle.jpg', desc: 'Hidden tropical beach cove.', tags: ['beach','south','surfing','relax'] },
+  { name: 'Horton Plains', img: 'horton.jpg', desc: 'Misty grasslands and cliffs.', tags: ['adventure','nature','central','hiking','photography'] },
+  { name: 'Arugam Bay', img: 'arugam.jpg', desc: 'Top surfing spot with laid-back vibe.', tags: ['beach','east','surfing','relax'] },
+  { name: 'Ella Rock', img: 'ella.jpg', desc: 'Scenic hike with epic views.', tags: ['adventure','central','hiking','photography'] },
+  { name: 'Galle Fort', img: 'galle.jpg', desc: 'Colonial fort town with history and charm.', tags: ['culture','south','relax','photography'] },
+  { name: 'Trincomalee Beaches', img: 'trinco.jpg', desc: 'Calm turquoise waters and white sands.', tags: ['beach','east','relax','surfing'] },
+];
+
+
+  const matches = destinations.filter(dest => dest.tags.some(tag => preferences.includes(tag)));
+
+  if (matches.length === 0) {
+    results.innerHTML = '<p style="text-align:center; color:var(--white); font-size:1.2rem;">No matches found — try exploring <a href="destinations.html" style="color:#ffdd57;">all destinations</a>.</p>';
+  }
+
+  matches.forEach(dest => {
+    const card = document.createElement('div');
+    card.className = 'feature-card';
+    card.innerHTML = `
+      <img src="${dest.img}" alt="${dest.name}">
+      <h3>${dest.name}</h3>
+      <p>${dest.desc}</p>
+    `;
+    results.appendChild(card);
+  });
+}
+</script>
+
+</body>
+</html>
+
+
