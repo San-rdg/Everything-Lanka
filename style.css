@@ -406,6 +406,40 @@
         ul li {
             margin-bottom: 10px;
         }
+        }
+        .badge-cta {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.badge-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(45deg, #ff8800, #ffcc00);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
+  animation: pulse 1.5s infinite;
+  transition: transform 0.3s ease;
+}
+
+.badge-button:hover {
+  transform: scale(1.08);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 140, 0, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
+  }
+}
     
 
 
