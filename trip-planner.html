@@ -2,115 +2,202 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Everything Lanka | Trip Planner</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <title>Smart Day-by-Day Trip Planner | Everything Lanka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    .planner-step { display: none; }
-    .planner-step.active { display: block; animation: fadeIn 0.5s ease; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    .step-buttons { margin-top: 2rem; display: flex; justify-content: space-between; }
-    .trip-summary { background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 14px var(--shadow); }
-    .pdf-download { margin-top: 1.5rem; display: inline-block; background: var(--orange); color: var(--white); padding: 0.75rem 1.5rem; border-radius: 30px; text-decoration: none; font-weight: 600; transition: background 0.3s ease; }
-    .pdf-download:hover { background: #e1893b; }
-
-             a {
-            color: #ffffff;
-            text-decoration: none;
-        }
+    :root {
+      --primary-green: #34d7e0;
+      --trip-yellow: #FFD700;
+      --charcoal: #2C3E50;
+      --text-dark: #333333;
+      --text-subtle: #666666;
+      --light-bg: #FFFFFF;
+      --card-bg: #F5F5F5;
+      --shadow: rgba(0, 0, 0, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--charcoal);
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem;
+    }
+    h1 { margin: 0; font-size: 2rem; }
+    .container {
+      max-width: 850px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    .step, .result, .loading {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 14px var(--shadow);
+    }
+    .options label {
+      display: block;
+      margin: 0.75rem 0;
+    }
+    .btn {
+      background: var(--primary-green);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+    .btn:hover { background: #28c08d; }
+    .loading-bar {
+      width: 100%;
+      background: #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    .loading-fill {
+      height: 20px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary-green), var(--trip-yellow));
+      transition: width 2.5s ease;
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1><a href="index.html">Everything Lanka</a></h1>
+  <h1>Everything Lanka Trip Planner 🇱🇰</h1>
 </header>
 
-<div class="main-content">
-  <h2 class="form-heading">Customize Your Dream Trip 🇱🇰</h2>
-  <form id="tripForm">
-
-    <div class="planner-step active" id="step1">
-      <div class="question">
-        <label>What’s your travel vibe?</label>
-        <div class="options">
-          <label><input type="checkbox" value="Relaxing"> Calm & Relaxing</label>
-          <label><input type="checkbox" value="Adventure"> Thrilling & Adventurous</label>
-          <label><input type="checkbox" value="Cultural"> Cultural & Educational</label>
-          <label><input type="checkbox" value="Luxury"> Luxury & Comfort</label>
-        </div>
-      </div>
-      <div class="step-buttons">
-        <button type="button" class="btn-primary" onclick="nextStep(2)">Next →</button>
-      </div>
+<div class="container">
+  <div class="step" id="step1">
+    <h2>What's your travel vibe?</h2>
+    <div class="options">
+      <label><input type="checkbox" value="Relaxing"> Relaxing</label>
+      <label><input type="checkbox" value="Adventure"> Adventure</label>
+      <label><input type="checkbox" value="Cultural"> Cultural</label>
+      <label><input type="checkbox" value="Luxury"> Luxury</label>
     </div>
+    <button class="btn" onclick="nextStep(2)">Next →</button>
+  </div>
 
-    <div class="planner-step" id="step2">
-      <div class="question">
-        <label>Which regions are you interested in?</label>
-        <div class="options">
-          <label><input type="checkbox" value="South"> Southern Coast</label>
-          <label><input type="checkbox" value="Central"> Central Highlands</label>
-          <label><input type="checkbox" value="North"> Northern Province</label>
-          <label><input type="checkbox" value="East"> Eastern Beaches</label>
-        </div>
-      </div>
-      <div class="step-buttons">
-        <button type="button" class="btn-primary" onclick="nextStep(1)">← Back</button>
-        <button type="button" class="btn-primary" onclick="nextStep(3)">Next →</button>
-      </div>
+  <div class="step" id="step2" style="display:none;">
+    <h2>Pick regions</h2>
+    <div class="options">
+      <label><input type="checkbox" value="South"> South Coast</label>
+      <label><input type="checkbox" value="Central"> Central Highlands</label>
+      <label><input type="checkbox" value="North"> North</label>
+      <label><input type="checkbox" value="East"> East</label>
     </div>
+    <button class="btn" onclick="nextStep(1)">← Back</button>
+    <button class="btn" onclick="nextStep(3)">Next →</button>
+  </div>
 
-    <div class="planner-step" id="step3">
-      <div class="question">
-        <label>How many days is your trip?</label>
-        <div class="options">
-          <label><input type="radio" name="days" value="3"> 3 Days</label>
-          <label><input type="radio" name="days" value="5"> 5 Days</label>
-          <label><input type="radio" name="days" value="7"> 7 Days</label>
-          <label><input type="radio" name="days" value="10"> 10+ Days</label>
-        </div>
-      </div>
-      <div class="step-buttons">
-        <button type="button" class="btn-primary" onclick="nextStep(2)">← Back</button>
-        <button type="button" class="btn-primary" onclick="generateTrip()">Generate Plan 🎉</button>
-      </div>
+  <div class="step" id="step3" style="display:none;">
+    <h2>Trip duration (days)</h2>
+    <div class="options">
+      <label><input type="radio" name="days" value="3"> 3 Days</label>
+      <label><input type="radio" name="days" value="5"> 5 Days</label>
+      <label><input type="radio" name="days" value="7"> 7 Days</label>
+      <label><input type="radio" name="days" value="10"> 10+ Days</label>
     </div>
+    <button class="btn" onclick="nextStep(2)">← Back</button>
+    <button class="btn" onclick="startLoading()">Create Plan 🎉</button>
+  </div>
 
-  </form>
+  <div class="loading" id="loadingScreen" style="display:none;">
+    <h2>Building your dream plan... 🌴</h2>
+    <div class="loading-bar"><div class="loading-fill" id="loadingBar"></div></div>
+  </div>
 
-  <div id="tripResult" style="display:none; margin-top:3rem;"></div>
-
+  <div class="result" id="result" style="display:none;"></div>
 </div>
 
 <script>
 let currentStep = 1;
 function nextStep(step) {
-  document.getElementById(`step${currentStep}`).classList.remove('active');
-  document.getElementById(`step${step}`).classList.add('active');
+  document.getElementById(`step${currentStep}`).style.display = 'none';
+  document.getElementById(`step${step}`).style.display = 'block';
   currentStep = step;
 }
 
-function generateTrip() {
+function startLoading() {
+  if (!document.querySelector('input[name="days"]:checked')) {
+    alert("Please select a trip duration!");
+    return;
+  }
+  document.getElementById(`step${currentStep}`).style.display = 'none';
+  document.getElementById('loadingScreen').style.display = 'block';
+  document.getElementById('loadingBar').style.width = '0%';
+  setTimeout(() => { document.getElementById('loadingBar').style.width = '100%'; }, 100);
+  setTimeout(() => {
+    document.getElementById('loadingScreen').style.display = 'none';
+    generatePlan();
+  }, 2600);
+}
+
+function generatePlan() {
   const vibes = [...document.querySelectorAll('#step1 input:checked')].map(i=>i.value);
   const regions = [...document.querySelectorAll('#step2 input:checked')].map(i=>i.value);
-  const days = document.querySelector('input[name="days"]:checked')?.value;
-  if (!days) { alert('Please select a trip duration!'); return; }
+  const days = parseInt(document.querySelector('input[name="days"]:checked').value);
+  const result = document.getElementById("result");
 
-  let summary = `<div class='trip-summary'>
-  <h3>Your Custom Trip Plan ✈️</h3>
-  <p><strong>Travel Vibe:</strong> ${vibes.join(", ")}</p>
-  <p><strong>Regions:</strong> ${regions.join(", ")}</p>
-  <p><strong>Duration:</strong> ${days} Days</p>
-  <p>✅ Top suggestions & a personalized printable itinerary will be emailed to you soon!</p>
-  <a href="#" class="pdf-download">📥 Download Premium Itinerary PDF</a>
-  </div>`;
+  const places = {
+    South: ["Galle Fort", "Mirissa Beach", "Tangalle Cove"],
+    Central: ["Ella Rock", "Nuwara Eliya Tea Estate", "Horton Plains"],
+    North: ["Jaffna Fort", "Casuarina Beach"],
+    East: ["Arugam Bay", "Nilaveli Beach", "Batticaloa Lagoon"]
+  };
 
-  document.getElementById('tripResult').innerHTML = summary;
-  document.getElementById('tripResult').style.display = 'block';
-  document.getElementById(`step${currentStep}`).classList.remove('active');
+  const tips = {
+    South: "Visit Galle Fort at sunset for epic views.",
+    Central: "Catch sunrise at Ella Rock — totally worth it.",
+    North: "Try fresh crab curry in Jaffna market.",
+    East: "Arugam Bay’s sunrise surf is unmissable."
+  };
+
+  const travelTimes = {
+    South: "2.5 hrs from Colombo",
+    Central: "4 hrs from Colombo",
+    North: "6 hrs from Colombo",
+    East: "5 hrs from Colombo"
+  };
+
+  let html = `<h2>Your Day-by-Day Plan</h2>`;
+  let selectedPlaces = [];
+
+  for (let d = 1; d <= days; d++) {
+    let region = regions[d % regions.length];
+    let place = places[region][Math.floor(Math.random() * places[region].length)];
+    let tip = tips[region];
+    let time = travelTimes[region];
+    selectedPlaces.push(place);
+
+    html += `<h3>Day ${d}</h3>
+    <p><strong>Destination:</strong> ${place} (${region}, ${time})</p>
+    <p><strong>Activity Suggestion:</strong> ${vibes[Math.floor(Math.random() * vibes.length)] || "Explore freely"}</p>
+    <p><strong>Pro Tip:</strong> ${tip}</p>`;
+  }
+
+  const budget = days * 15000;
+  html += `<h3>Total Budget: Rs. ${budget.toLocaleString()} LKR</h3>
+  <p style="margin-top:1rem;">✨ Safe travels — and enjoy your Everything Lanka adventure!</p>`;
+
+  result.innerHTML = html;
+  result.style.display = 'block';
+  result.scrollIntoView({ behavior: "smooth" });
 }
 </script>
+
 
 </body>
 </html>
