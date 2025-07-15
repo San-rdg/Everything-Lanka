@@ -1,134 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Everything Lanka – Discover Sri Lanka's best destinations, cultural wonders, travel tips, and local insights. Plan your perfect island adventure today!">
-  <meta name="keywords" content="Sri Lanka travel, Sri Lanka tourism, destinations in Sri Lanka, cultural sites, travel tips, Sinhala language, Tamil translation, island adventure">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Moon Rabbit Legend | Dark Tales of Sri Lanka</title>
+  <meta name="description" content="Discover the ancient Sri Lankan legend of the selfless rabbit and how its image came to be on the moon, an inspiring tale of sacrifice and compassion.">
+  <meta name="keywords" content="Sri Lanka myths, Moon Rabbit story, God Sakra, Sri Lankan folklore, Buddhist tales, rabbit on the moon, Lanka legends, dark tales">
   <meta name="author" content="Everything Lanka">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2S823WWMZ9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-2S823WWMZ9');
-</script>
-    <title>Rabbit of the Moon | Sri Lankan Myth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Google Font: Open Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-green: #34d7e0;
+      --trip-yellow: #FFD700;
+      --charcoal: #2C3E50;
+      --text-dark: #333333;
+      --text-subtle: #666666;
+      --light-bg: #FFFFFF;
+      --card-bg: #F5F5F5;
+      --shadow: rgba(0, 0, 0, 0.12);
+    }
 
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a1a;
-            color: white;
-            text-align: center;
-        }
-        header {
-            background: #280000;
-            color: #ff4c00;
-            padding: 20px;
-            font-size: 28px;
-            font-weight: bold;
-            text-shadow: 0 0 10px #ff0000;
-        }
-        .nav {
-            background: #400000;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        .nav a {
-            color: #ffcc00;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-            color: #ff4c00;
-        }
-        .main-content {
-            padding: 30px;
-            margin: 30px;
-            background: #0d0d0d;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
-        }
-        h1 {
-            color: #ff4c00;
-            font-size: 36px;
-            text-shadow: 0 0 10px #ff0000;
-        }
-        .story-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .story-image {
-            width: 80%;
-            max-width: 600px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
-        }
-        .story-text {
-            font-size: 18px;
-            color: #ddd;
-            max-width: 800px;
-            line-height: 1.6;
-            text-align: justify;
-            padding: 20px;
-            background: #2c0000;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
-        }
-        .footer {
-            background: #280000;
-            color: white;
-            padding: 10px;
-            font-size: 14px;
-        }
-        .footer a {
-            color: #ffcc00;
-            text-decoration: none;
-        }
-            a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-    </style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    header {
+      background: var(--charcoal);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: var(--light-bg);
+      box-shadow: 0 2px 8px var(--shadow);
+      gap: 1.5rem;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary-green);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: var(--charcoal);
+    }
+
+    .hero p {
+      color: var(--text-subtle);
+      font-size: 1.25rem;
+    }
+
+    .main-content {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 1rem;
+    }
+
+    .story-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px var(--shadow);
+      transition: transform 0.3s ease;
+      margin-bottom: 3rem;
+    }
+
+    .story-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .story-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+
+    .story-card h2 {
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .story-card p {
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    .faq-section {
+      margin-top: 5rem;
+    }
+
+    .faq-section h2 {
+      font-size: 2rem;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .faq {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px var(--shadow);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .faq:hover {
+      background: #e8fafa;
+    }
+
+    .faq h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: var(--charcoal);
+    }
+
+    .faq p {
+      display: none;
+      margin-top: 0.75rem;
+      color: var(--text-dark);
+    }
+
+    .faq.open p {
+      display: block;
+    }
+
+    footer {
+      background: var(--card-bg);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-subtle);
+      margin-top: 4rem;
+    }
+  </style>
 </head>
+
 <body>
-   <header>
-        <h1><a href="index.html">Everythig Lanka</a></h1>
-    </header>
 
-    <div class="main-content">
-        <h1>Myths & Legends</h1>
-        <div class="story-container">
-            <img src="rabbit.png" alt="Mahasona" class="story-image">
-            <div class="story-text">
-            <p> Once God Sakra (the leader of all gods & heaven) came to earth in a disguise of a hungry man. He then asked for 
-                food from a rabbit. The rabbit not thought not having anything to give, offered himself as a sacrificial source of food
-                by lighting a fire and jumping into it, so that the person can eat him.
-            </p>
-            <p> Honored and anstonished by this selfless act by the rabbit, God Sakra decided to honour the rabbit by carving the 
-                rabbit on to the moon to last forever. Thus to this day we can see the image of the rabbit on the moon...
-            </p>
-        </div>
+  <header>
+    <h1>Everything Lanka</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="EYWK.html">Everything You Wanna Know</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="districts.html">Districts</a>
+    <a href="whats-new.html">What's New</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+
+  <div class="hero">
+    <h1>The Moon Rabbit Legend</h1>
+    <p>An ancient tale of sacrifice and kindness engraved into the heavens.</p>
+  </div>
+
+  <div class="main-content">
+    <div class="story-card">
+      <img src="rabbit.png" alt="Moon Rabbit">
+      <h2>The Tale of the Selfless Rabbit</h2>
+      <p>
+        According to legend, God Sakra — the leader of all heavenly beings — once descended to Earth disguised as a poor, starving traveler. Seeking charity, he approached a kind-hearted rabbit.
+      </p>
+      <p>
+        The rabbit, having no food to offer, heroically leapt into a fire to sacrifice himself as a meal. Deeply moved by the rabbit's selflessness, Sakra saved him and immortalized his image on the moon.
+      </p>
+      <p>
+        To this day, the silhouette of the rabbit is said to grace the lunar surface, a reminder of boundless compassion.
+      </p>
     </div>
 
-    <div class="footer">
-        <p>&copy; 2025 Dark Tales of Sri Lanka. All Rights Reserved.</p>
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq">
+        <h3>Is the Moon Rabbit story part of Buddhist tradition?</h3>
+        <p>Yes — this tale appears in Buddhist Jataka stories, symbolizing generosity and selflessness.</p>
+      </div>
+
+      <div class="faq">
+        <h3>Can the rabbit image actually be seen on the moon?</h3>
+        <p>Many claim to discern a rabbit-like figure in the patterns of lunar craters and shadows when viewed on full-moon nights.</p>
+      </div>
+
+      <div class="faq">
+        <h3>Is this story unique to Sri Lanka?</h3>
+        <p>No — while it's celebrated in Sri Lanka, versions of the Moon Rabbit tale also appear in East Asian folklore with regional variations.</p>
+      </div>
+
     </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Everything Lanka | Dark Tales of Sri Lanka.
+  </footer>
+
+  <script>
+    const faqs = document.querySelectorAll('.faq');
+    faqs.forEach(faq => {
+      faq.addEventListener('click', () => {
+        faq.classList.toggle('open');
+      });
+    });
+  </script>
+
 </body>
 </html>
+
