@@ -195,10 +195,11 @@
       <li><strong>Information Technology:</strong> IT and BPO exports are growing by over 15% annually, becoming a promising growth driver.</li>
     </ul>
 
-    <div class="chart-container" aria-label="Sector Contribution to GDP in Sri Lanka 2025">
-      <div class="chart-placeholder">Chart: Sector-wise GDP Contribution 2025 [Replace with actual pie or bar chart]</div>
-    </div>
-  </section>
+<section aria-label="Sector Contribution to GDP in Sri Lanka 2025">
+  <div class="chart-container" style="max-width: 500px; margin: auto;">
+    <canvas id="gdpSectorChart" aria-label="Pie chart showing sector contribution to GDP in Sri Lanka 2025" role="img"></canvas>
+  </div>
+</section>
 
   <section class="section">
     <h2>Trade and Balance of Payments</h2>
@@ -347,6 +348,52 @@
     }
   });
 </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctxSector = document.getElementById('gdpSectorChart').getContext('2d');
+  const gdpSectorChart = new Chart(ctxSector, {
+    type: 'pie',
+    data: {
+      labels: ['Agriculture', 'Industry', 'Services'],
+      datasets: [{
+        label: 'GDP Contribution (%)',
+        data: [8, 27, 65], // Adjust these numbers with real data if needed
+        backgroundColor: [
+          'rgba(75, 192, 192, 0.7)', // Agriculture - teal
+          'rgba(255, 159, 64, 0.7)', // Industry - orange
+          'rgba(54, 162, 235, 0.7)'  // Services - blue
+        ],
+        borderColor: [
+          'rgba(75, 192, 192, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(54, 162, 235, 1)'
+        ],
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: '#223344',
+            font: { size: 14, weight: '600' }
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: context => `${context.label}: ${context.parsed}%`
+          }
+        }
+      }
+    }
+  });
+</script>
+
 
 
 </body>
