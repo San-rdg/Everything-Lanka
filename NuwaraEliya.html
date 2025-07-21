@@ -3,17 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Everything Lanka - Ella</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-     
- 
+    <title>Nuwara Eliya - Everything Lanka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --primary-green: #34d7e0;
+      --trip-yellow: #FFD700;
+      --charcoal: #2C3E50;
+      --text-dark: #333333;
+      --text-subtle: #666666;
+      --light-bg: #FFFFFF;
+      --card-bg: #F5F5F5;
+      --shadow: rgba(0, 0, 0, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+    header {
+      background-color: var(--charcoal);
+      padding: 1.5rem 2rem;
+      color: var(--light-bg);
+      text-align: center;
+      box-shadow: 0 2px 8px var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 2.25rem;
+      letter-spacing: 1.2px;
+    }
+    nav {
+      background-color: var(--light-bg);
+      box-shadow: 0 2px 6px var(--shadow);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+      position: sticky;
+      top: 68px;
+      z-index: 999;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover, nav a:focus {
+      background-color: var(--primary-green);
+      color: var(--light-bg);
+    }
+    .banner {
+      background: url('https://source.unsplash.com/1600x900/?sigiriya,rock,landscape') no-repeat center center/cover;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(7, 10, 10);
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+    .content {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: var(--card-bg);
+      color: var(--text-dark);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px var(--shadow);
+    }
+    .content img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px var(--shadow);
+    }
+    .image-credit {
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      margin-top: 0.5rem;
+      text-align: right;
+    }
+    h2 {
+      font-size: 2rem;
+      color: var(--charcoal);
+      margin-top: 2.5rem;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    ul li {
+      margin-bottom: 0.75rem;
+    }
+    a {
+      color: var(--primary-green);
+    }
+    footer {
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-subtle);
+      box-shadow: 0 -2px 8px var(--shadow);
+    }
+     header a {
+      color: white;
+      text-decoration: none;
+     }
+  </style>
 </head>
 <body>
     <header>
         <h1><a href="index.html">Everythig Lanka</a></h1>
     </header>
-    
 
     <div class="banner">
         Welcome to Nuwara Eliya
