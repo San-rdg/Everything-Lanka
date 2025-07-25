@@ -57,11 +57,9 @@
 </head>
 <body>
 
-  <div id="welcomeBackPopup" style="display: none;">
-  <div class="popup-box">
-    👋 Welcome back to Everything Lanka! 🌴 Ready for more travel magic?
-    <button onclick="closePopup()">Close</button>
-  </div>
+<div id="dailyPopup" style="display:none; position: fixed; bottom: 30px; right: 30px; background: #1E6091; color: white; padding: 16px 20px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.2); max-width: 300px; z-index: 9999; font-family: sans-serif; animation: fadeIn 0.6s ease-in;">
+  <span id="quoteText"></span>
+  <button onclick="document.getElementById('dailyPopup').style.display='none'" style="background: none; color: white; border: none; font-size: 16px; float: right; margin-left: 10px; cursor: pointer;">✖</button>
 </div>
 
 
@@ -222,6 +220,48 @@
     document.getElementById("welcomeBackPopup").style.display = "none";
   }
 </script>
+
+
+  <script>
+  const quotes = [
+    "Hope you have a great day! 🌞",
+    "Remember to smile today 😄",
+    "You're doing amazing — keep going! 🚀",
+    "One step at a time. You've got this! 🐾",
+    "Breathe deeply. Today is yours. 🌿",
+    "Happiness is a journey, not a destination 🛤️",
+    "Let your dreams be your wings. 🕊️"
+  ];
+
+  function getQuoteOfTheDay() {
+    const today = new Date().getDate(); // Day of the month
+    return quotes[today % quotes.length]; // Rotate by day
+  }
+
+  // Show only if they've visited before
+  if (localStorage.getItem("hasVisitedBefore")) {
+    window.addEventListener("load", () => {
+      const popup = document.getElementById("dailyPopup");
+      const quote = getQuoteOfTheDay();
+      document.getElementById("quoteText").innerText = quote;
+      popup.style.display = "block";
+
+      // Auto-hide after 10 seconds
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 10000);
+    });
+  } else {
+    localStorage.setItem("hasVisitedBefore", "true");
+  }
+</script>
+
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 
   
 
