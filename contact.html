@@ -16,112 +16,114 @@
   <!-- Font Awesome for icons -->
   <script src="https://kit.fontawesome.com/a2e0e6b72e.js" crossorigin="anonymous"></script>
 
-  <!-- Styles -->
-<link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="style.css">
   <style>
-    .main-content {
-      padding: 40px;
-      margin: 40px auto;
-      background: #1a1a1a;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.12);
-      max-width: 900px;
+    .credit-card, .vision-section {
+      background: linear-gradient(135deg, var(--primary-green), var(--trip-yellow));
+      color: var(--charcoal);
+      padding: 2rem;
+      border-radius: 20px;
       text-align: center;
-      animation: fadeIn 1.2s ease-in;
+      max-width: 700px;
+      margin: 3rem auto;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      animation: fadeInUp 1.2s ease;
     }
-    .main-content h1 {
-      font-size: 46px;
-      color: #ffdd57;
-      margin-bottom: 20px;
+    .credit-card h2, .vision-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
-    .main-content p {
-      font-size: 20px;
-      line-height: 1.6;
-      margin: 12px 0;
+    .credit-card p, .vision-section p {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+    .credit-card strong, .vision-section strong {
+      font-weight: 600;
+    }
+    .insta-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      font-size: 1.2rem;
+      margin-top: 2rem;
+    }
+    .insta-icon a {
+      background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
       color: white;
-    }
-    .contact-info {
-      margin-top: 30px;
-      padding: 20px;
-      background: #0c3e72;
-      border-radius: 15px;
-      display: inline-block;
-      font-size: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    }
-    .contact-info a {
-      color: #ffcc00;
-      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
       font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: transform 0.3s ease;
     }
-    .contact-info a:hover {
-      text-decoration: underline;
+    .insta-icon a:hover {
+      transform: scale(1.05);
     }
-    .contact-info i {
-      margin-right: 10px;
-    }
-    .credits {
-      margin-top: 35px;
-      font-size: 16px;
-      color: #cccccc;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px);}
-      to   { opacity: 1; transform: translateY(0);}
-    }
-    @media (max-width: 768px) {
-      .main-content {
-        padding: 25px;
-      }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-
 <body>
-
   <header>
-  <h1>Everything Lanka</h1>
-  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
-</header>
+    <h1>Everything Lanka</h1>
+    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="EYWK.html">Everything You Wanna Know</a>
-  <a href="destinations.html">Destinations</a>
-  <a href="districts.html">Districts</a>
-  <a href="what-s new.html">What's New</a>
-  <a href="events.html">Events</a>
-  <a href="contact.html">Contact Us</a>
-</nav>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="EYWK.html">Everything You Wanna Know</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="districts.html">Districts</a>
+    <a href="what-s new.html">What's New</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
 
-<div class="main-content">
-  <h1>Contact Us</h1>
-  <p>Thank you for visiting <strong>Everything Lanka!</strong> We’re thrilled to be part of your island adventure.</p>
-  <p>Got a question, idea, or feedback? Reach out anytime — we love hearing from fellow travelers!</p>
+  <section class="hero">
+    <h2>Get in Touch</h2>
+    <p>We'd love to hear from you. Share your thoughts, ideas, or just say hi!</p>
+  </section>
 
-  <div class="contact-info">
-    <p><i class="fab fa-instagram"></i> Instagram: <a href="https://www.instagram.com/everything_lanka.wiki/" target="_blank">@everything_lanka</a></p>
-  </div>
+  <section class="features">
+    <div class="insta-icon">
+      <a href="https://www.instagram.com/everything_lanka.wiki/" target="_blank">
+        <i class="fab fa-instagram"></i> @everything_lanka
+      </a>
+    </div>
+  </section>
 
-  <div class="credits">
-    <p>Website Designer — <strong>Everything Lanka</strong></p>
-    <p>Photos — Pexels / Neha Thirumavalawan</p>
-    <p>Birthplace — <strong>Sri Lanka 🇱🇰</strong></p>
-  </div>
-</div>
+  <section class="vision-section">
+    <h2>Our Vision, Mission & Services</h2>
+    <p><strong>Our Vision:</strong> To be the most trusted digital gateway to exploring the rich culture, destinations, and hidden gems of Sri Lanka.</p>
+    <p><strong>Our Mission:</strong> To provide travelers with reliable, beautifully presented, and immersive travel content that reflects the true spirit of our island.</p>
+    <p><strong>What We Offer:</strong> Destination insights, local secrets, cultural knowledge, event highlights, language tips, and personalized travel planning tools — all in one place.</p>
+  </section>
 
-<footer> Made in <strong>Sri Lanka</strong></footer>
-<footer>&copy; 2025 Everything Lanka. All rights reserved.</footer>
+  <section class="credit-card">
+    <h2>Credits & Creators</h2>
+    <p><strong>Website Designer:</strong> Everything Lanka</p>
+    <p><strong>Photos:</strong> Pexels / Neha Thirumavalawan</p>
+    <p><strong>Birthplace:</strong> Sri Lanka 🇱🇰</p>
+  </section>
+
+  <footer>
+    Made in <strong>Sri Lanka</strong><br>
+    &copy; 2025 Everything Lanka. All rights reserved.
+  </footer>
 
   <script>
-  const menuToggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('nav');
-
-  menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('show');
-  });
-</script>
-
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
+
