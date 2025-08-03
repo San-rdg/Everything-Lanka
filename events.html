@@ -1,150 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <link rel="stylesheet" href="style.css">
-    
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sri Lanka Events Calendar 2025 | Everything Lanka</title>
-    <meta name="description" content="Discover upcoming festivals, cultural events, concerts, and more in Sri Lanka. Stay updated with Everything Lanka's comprehensive 2025 events calendar." />
-    <meta name="keywords" content="Sri Lanka events, Sri Lanka festivals 2025, Colombo events, cultural events Sri Lanka, Sri Lanka concerts, events calendar Sri Lanka" />
-    <meta name="author" content="Everything Lanka" />
-    <link rel="canonical" href="https://everythinglanka.wiki/events.html" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Sri Lanka Events Calendar 2025 | Everything Lanka" />
-    <meta property="og:description" content="Discover upcoming festivals, cultural events, concerts, and more in Sri Lanka. Stay updated with Everything Lanka's comprehensive 2025 events calendar." />
-    <meta property="og:url" content="https://everythinglanka.wiki/events.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://everythinglanka.wiki/assets/images/events-banner.jpg" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sri Lanka Events Calendar 2025 | Everything Lanka" />
-    <meta name="twitter:description" content="Discover upcoming festivals, cultural events, concerts, and more in Sri Lanka. Stay updated with Everything Lanka's comprehensive 2025 events calendar." />
-    <meta name="twitter:image" content="https://everythinglanka.wiki/assets/images/events-banner.jpg" />
-
-     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2S823WWMZ9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2S823WWMZ9');
-</script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Event",
-      "name": "Vesak Festival 2025",
-      "startDate": "2025-05-05T18:00:00+05:30",
-      "endDate": "2025-05-06T23:59:00+05:30",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "location": {
-        "@type": "Place",
-        "name": "Colombo",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Colombo city center",
-          "addressLocality": "Colombo",
-          "addressRegion": "Western Province",
-          "postalCode": "00000",
-          "addressCountry": "LK"
-        }
-      },
-      "image": [
-        "https://everythinglanka.wiki/assets/images/vesak-festival.jpg"
-      ],
-      "description": "Celebrate the Vesak Festival in Colombo with colorful lanterns, cultural shows, and traditional rituals. A highlight of Sri Lanka's cultural calendar.",
-      "organizer": {
-        "@type": "Organization",
-        "name": "Everything Lanka",
-        "url": "https://everythinglanka.wiki/"
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sri Lanka Events Calendar 2025 | Everything Lanka</title>
+  <meta name="description" content="View all major public holidays and events in Sri Lanka for 2025. Includes downloadable DOCX calendar, clickable event details, and more." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin: 0; background: #f2f2f2; color: #000; }
+  
+    .hero h2 { text-align: center; color: #1E6091; margin-top: 30px; }
+    .calendar-container { width: 90%; margin: 20px auto; background: white; padding: 10px; border-radius: 8px; }
+    .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; }
+    .day { padding: 12px; border: 1px solid #ccc; font-weight: bold; border-radius: 4px; }
+    .event-day { background: #c10101; color: white; position: relative; cursor: pointer; border-radius: 4px; }
+    .event-day:hover::after {
+      content: attr(data-event);
+      position: absolute;
+      background: black;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 5px;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      z-index: 10;
     }
-    </script>
-   
-    <style>
-        .seg a {
-            color: rgb(0, 0, 0);
-            text-decoration:none;
-            margin: 10px;
-            font-size: 18px;
-        }
-        .calendar-container {
-            width: 90%;
-            margin: 20px auto;
-            background: white;
-            color: black;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .calendar {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-            text-align: center;
-        }
-        .day {
-            padding: 15px;
-            border: 1px solid #ccc;
-            font-weight: bold;
-        }
-        .event-day {
-            background: #c10101;
-            color: white;
-            position: relative;
-            cursor: pointer;
-        }
-        .event-day:hover::after {
-            content: attr(data-event);
-            position: absolute;
-            background: black;
-            color: white;
-            padding: 5px;
-            border-radius: 5px;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-        }
-        .month-navigation {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-        .month-navigation button {
-            padding: 10px;
-            margin: 5px;
-            background: #31720c;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-    
-        .event-table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            background: #e6e2e2;
-            color: black;
-        }
-        .event-table th, .event-table td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: left;
-        }
-        .event-table th {
-            background: #31720c;
-            color: white;
-        }
- 
-
+    .month-navigation { display: flex; justify-content: center; align-items: center; margin: 20px 0; gap: 20px; }
+    .month-navigation button {
+      padding: 10px 20px;
+      background: #31720c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .event-table { width: 90%; margin: 20px auto; border-collapse: collapse; background: white; }
+    .event-table th, .event-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+    .event-table th { background: #31720c; color: white; }
+    .event-table td a { color: #000; text-decoration: none; font-weight: bold; }
+    .event-table td a:hover { text-decoration: underline; }
     .menu-toggle {
       display: none;
       background: #00A8FF;
@@ -156,259 +54,131 @@
       width: 100%;
       text-align: right;
     }
-
-    .menu-toggle:focus {
-      outline: none;
-    }
-
     @media (max-width: 768px) {
-      .nav {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .nav.show {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
+      .nav { display: none; flex-direction: column; align-items: center; }
+      .nav.show { display: flex; }
+      .menu-toggle { display: block; }
     }
-
-
-    .main-content {
-      padding: 30px;
-      margin: 30px auto;
-      background: #1a1a1a;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
-      max-width: 1100px;
-      animation: fadeIn 1.2s ease-in;
-    }
-
-    .tit h1 {
-      font-size: 48px;
-      color: #ffdd57;
-      margin-bottom: 20px;
-      
-    }
-
-    .destination-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-
-    .destination-buttons a {
-      background-color: #1E6091;
-      color: white;
-      padding: 18px;
-      text-decoration: none;
-      font-size: 20px;
-      font-weight: bold;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
-    }
-
-    .destination-buttons a:hover {
-      background-color: #0c3e72;
-      transform: scale(1.05);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px);}
-      to   { opacity: 1; transform: translateY(0);}
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-10px); }
-    }
-    </style>
+  </style>
 </head>
 <body>
- <header>
-  <h1>Everything Lanka</h1>
-  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
-</header>
-    <nav>
-        <a href="https://everythinglanka.wiki/">Home</a>
-        <a href="EYWK.html">Everything You Wanna Know</a>
-        <a href="destinations.html">Destinations</a>
-        <a href="districts.html">Districts</a>
-        <a href="what-s new.html">What's New</a>
-        <a href="events.html">Events</a>
-        <a href="contact.html">Contact Us</a>
-    </nav>
-    
-     <section class="hero" role="banner">
-    <h2>The Events Calendar for 2025</h2>
-     </section>
+  <header>
+    <h1>Everything Lanka</h1>
+    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  </header>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="EYWK.html">Everything You Wanna Know</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="districts.html">Districts</a>
+    <a href="what-s new.html">What's New</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
 
-    <div class="calendar-container">
-        <div class="month-navigation">
-            <button onclick="prevMonth()">&#10094; Previous</button>
-            <h2 id="month-year"></h2>
-            <button onclick="nextMonth()">Next &#10095;</button>
-        </div>
-        <div class="calendar" id="calendar"></div>
-    </div> 
+  <section class="hero" role="banner">
+    <h2>Sri Lanka Events Calendar – 2025</h2>
+  </section>
 
-    <script>
-        const events = {
-            "2025-01-13": "Duruthu Full Moon Poya Day",
-            "2025-01-14": "Tamil Thai Pongal Day",
-            "2025-02-04": "Independence Day",
-            "2025-02-12": "Navam Full Moon Poya Day",
-            "2025-02-26": "Maha Shivarathi",
-            "2025-03-13": "Madin Full Moon Poya Day",
-            "2025-04-14": "Sinhala and Tamil New Year",
-            "2025-05-01": "Labour Day",
-            "2025-05-12": "Vesak Poya Day",
-            "2025-07-10": "Esala Poya Day",
-            "2025-07-30": "Esala Perahera in Kandy",
-            "2025-11-11": "Remembrance Day",
-            "2025-12-25": "Christmas Day"
+  <div class="calendar-container">
+    <div class="month-navigation">
+      <button onclick="prevMonth()">&#10094; Previous</button>
+      <h2 id="month-year"></h2>
+      <button onclick="nextMonth()">Next &#10095;</button>
+    </div>
+    <div class="calendar" id="calendar"></div>
+  </div>
 
-        };
+  <div style="text-align:center; margin: 30px;">
+    <a href="Sri_Lanka_2025_Events.docx" download>
+      <button style="background: #1E6091; color: white; padding: 15px 30px; font-size: 18px; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+        📄 Download 2025 Events Calendar (DOCX)
+      </button>
+    </a>
+  </div>
 
-        let currentYear = 2025;
-        let currentMonth = new Date().getMonth();
+  <section class="hero" role="banner">
+    <h2>Public Holidays & Events Table</h2>
+  </section>
 
-        function generateCalendar(year, month) {
-            const calendar = document.getElementById("calendar");
-            const monthYear = document.getElementById("month-year");
-            calendar.innerHTML = "";
-            monthYear.textContent = new Date(year, month).toLocaleString('en-us', { month: 'long', year: 'numeric' });
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            for (let i = 1; i <= daysInMonth; i++) {
-                let day = document.createElement("div");
-                let date = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
-                day.className = "day";
-                day.textContent = i;
-                if (events[date]) {
-                    day.classList.add("event-day");
-                    day.setAttribute("data-event", events[date]);
-                }
-                calendar.appendChild(day);
-            }
+  <table class="event-table">
+    <tr><th>Date</th><th>Event</th></tr>
+    <tr><td>Jan 13</td><td>Duruthu Full Moon Poya Day</a></td></tr>
+    <tr><td>Jan 14</td><td>Tamil Thai Pongal Day</a></td></tr>
+    <tr><td>Feb 4</td><td>Independence Day</a></td></tr>
+    <tr><td>Feb 12</td><td>Navam Full Moon Poya Day</a></td></tr>
+    <tr><td>Feb 26</td><td>Maha Shivarathi</a></td></tr>
+    <tr><td>Mar 13</td><td>Madin Full Moon Poya Day</a></td></tr>
+    <tr><td>Apr 14</td><td>Sinhala and Tamil New Year</a></td></tr>
+    <tr><td>May 1</td><td>Labour Day</a></td></tr>
+    <tr><td>May 12</td><td>Vesak Poya Day</a></td></tr>
+    <tr><td>Jul 10</td><td>Esala Poya Day</a></td></tr>
+    <tr><td>Jul 30</td><td>Esala Perahera in Kandy</a></td></tr>
+    <tr><td>Nov 11</td><td>Remembrance Day</a></td></tr>
+    <tr><td>Dec 25</td><td>Christmas Day</a></td></tr>
+  </table>
+
+  <footer>
+    &copy; 2025 Everything Lanka | All Rights Reserved
+  </footer>
+
+  <script>
+    const events = {
+      "2025-01-13": "Duruthu Full Moon Poya Day",
+      "2025-01-14": "Tamil Thai Pongal Day",
+      "2025-02-04": "Independence Day",
+      "2025-02-12": "Navam Full Moon Poya Day",
+      "2025-02-26": "Maha Shivarathi",
+      "2025-03-13": "Madin Full Moon Poya Day",
+      "2025-04-14": "Sinhala and Tamil New Year",
+      "2025-05-01": "Labour Day",
+      "2025-05-12": "Vesak Poya Day",
+      "2025-07-10": "Esala Poya Day",
+      "2025-07-30": "Esala Perahera in Kandy",
+      "2025-11-11": "Remembrance Day",
+      "2025-12-25": "Christmas Day"
+    };
+
+    let currentYear = 2025;
+    let currentMonth = new Date().getMonth();
+
+    function generateCalendar(year, month) {
+      const calendar = document.getElementById("calendar");
+      const monthYear = document.getElementById("month-year");
+      calendar.innerHTML = "";
+      monthYear.textContent = new Date(year, month).toLocaleString('en-us', { month: 'long', year: 'numeric' });
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      for (let i = 1; i <= daysInMonth; i++) {
+        let day = document.createElement("div");
+        let date = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+        day.className = "day";
+        day.textContent = i;
+        if (events[date]) {
+          day.classList.add("event-day");
+          day.setAttribute("data-event", events[date]);
         }
+        calendar.appendChild(day);
+      }
+    }
 
-        function prevMonth() {
-            currentMonth--;
-            if (currentMonth < 0) {
-                currentMonth = 11;
-                currentYear--;
-            }
-            generateCalendar(currentYear, currentMonth);
-        }
+    function prevMonth() {
+      currentMonth--;
+      if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+      generateCalendar(currentYear, currentMonth);
+    }
 
-        function nextMonth() {
-            currentMonth++;
-            if (currentMonth > 11) {
-                currentMonth = 0;
-                currentYear++;
-            }
-            generateCalendar(currentYear, currentMonth);
-        }
+    function nextMonth() {
+      currentMonth++;
+      if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+      generateCalendar(currentYear, currentMonth);
+    }
 
-        generateCalendar(currentYear, currentMonth);
-    </script>
-    <div style="text-align:center; margin: 30px;">
-  <a href="Sri_Lanka_2025_Events.docx" download>
-    <button style="
-      background: #1E6091;
-      color: white;
-      padding: 15px 30px;
-      font-size: 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
-    " onmouseover="this.style.background='#0c3e72'" onmouseout="this.style.background='#1E6091'">
-      📄 Download 2025 Events Calendar (DOCX)
-    </button>
-  </a>
-</div>
+    generateCalendar(currentYear, currentMonth);
 
-        <section class="hero" role="banner">
-    <h2>The Events Table</h2>
-     </section>
-     <table class="event-table">
-         <tr>
-             <th>Date</th>
-             <th>Event</th>
-         </tr>
-         <tr>
-            <td>January 13, 2025</td>
-            <td><div class="seg a"><a href="duruthu.html">Duruthu Full Moon Poya Day</a></td></div>
-        </tr>
-        <tr>
-            <td>January 14, 2025</td>
-            <td><div class="seg a"><a href="tpd.html">Tamil Thai Pongal Day</a></td></div>
-        </tr>
-        <tr>
-            <td>February 4, 2025</td>
-            <td><div class="seg a"><a href="iday.html">Independence Day</a></td></div>
-        </tr>
-        <tr>
-            <td>February 12, 2025</td>
-            <td><div class="seg a"><a href="npd.html">Navam Full Moon Poya Day</a></td></div>
-        </tr>
-        <tr>
-            <td>February 26, 2025</td>
-            <td><div class="seg a"><a href="ms.html">Maha Shivarathi</a></td></div>
-        </tr>
-        <tr>
-            <td>March 13, 2025</td>
-            <td><div class="seg a"><a href="mpd.html">Madin Full Poya Day</a></td></div>
-        </tr>
-        <tr>
-            <td>April 14, 2025</td>
-            <td><div class="seg a"><a href="stny.html">Sinhala and Tamil New Year Day</a></td></div>
-        </tr>
-        <tr>
-            <td>May 1, 2025</td>
-            <td><div class="seg a"><a href="ld.html">Labour Day</a></td></div>
-        </tr>
-         <tr>
-             <td>May 12, 2025</td>
-             <td><div class="seg a"><a href="vesak.html">Vesak Poya Day</a></td></div>
-         </tr>
-         <tr>
-            <td>July 10, 2025</td>
-            <td><div class="seg a"><a href="epd.html">Esala Poya Day</a></td></div>
-        </tr>
-        <tr>
-            <td>July 30, 2025</td>
-            <td><div class="seg a"><a href="epd.html">Esala Perehara Day</a></td></div>
-        </tr>
-        <tr>
-            <td>November 11, 2025</td>
-            <td><div class="seg a"><a href="rd.html">Remembrance Day (Vetrans Day)</a></td></div>
-        </tr>
-        <tr>
-            <td>December 25, 2025</td>
-            <td><div class="seg a"><a href="cd.html">Christmas Day</a></td></div>
-        </tr>
-     </table>
-     <footer>
-        &copy; 2025 Everything Lanka | All Rights Reserved
-     </footer>
-
-    <script>
-  const menuToggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('nav');
-
-  menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('show');
-  });
-</script>
+    document.querySelector(".menu-toggle").addEventListener("click", () => {
+      document.querySelector(".nav").classList.toggle("show");
+    });
+  </script>
 </body>
 </html>
+
