@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What to Pack for Your Sri Lanka Trip | Everything Lanka</title>
+  <meta name="description" content="Discover what to pack for your trip to popular destinations in Sri Lanka. Get tailored travel essentials based on where you're headed!" />
+  <meta name="keywords" content="Sri Lanka travel packing list, what to bring to Ella, Sri Lanka tourist checklist, packing for Sri Lanka, Ella, Jaffna, Arugam Bay, Nuwara Eliya, Yala, Sigiriya" />
+  <meta name="author" content="Everything Lanka" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary-green: #34d7e0;
+      --trip-yellow: #FFD700;
+      --charcoal: #2C3E50;
+      --text-dark: #333333;
+      --text-subtle: #666666;
+      --light-bg: #FFFFFF;
+      --card-bg: #F5F5F5;
+      --shadow: rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    header {
+      background-color: var(--charcoal);
+      padding: 1.5rem 2rem;
+      color: var(--light-bg);
+      text-align: center;
+      box-shadow: 0 2px 8px var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 2.25rem;
+      letter-spacing: 1.2px;
+      color: white;
+    }
+
+    nav {
+      background-color: var(--light-bg);
+      box-shadow: 0 2px 6px var(--shadow);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+      position: sticky;
+      top: 68px;
+      z-index: 999;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background-color: var(--primary-green);
+      color: var(--light-bg);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+      }
+      nav.show {
+        display: flex;
+      }
+      nav a {
+        padding: 1rem;
+        border-top: 1px solid var(--charcoal);
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    .hero {
+      max-width: 900px;
+      margin: 4rem auto 3rem auto;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .hero h2 {
+      font-size: 2.75rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary-green);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-subtle);
+      margin-bottom: 2rem;
+    }
+
+    select {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.125rem;
+      padding: 0.75rem 1rem;
+      border-radius: 30px;
+      border: 2px solid var(--primary-green);
+      outline: none;
+      cursor: pointer;
+      color: var(--charcoal);
+      max-width: 320px;
+    }
+    select:hover,
+    select:focus {
+      border-color: var(--trip-yellow);
+      box-shadow: 0 0 10px var(--trip-yellow);
+    }
+
+    .features {
+      max-width: 1100px;
+      margin: 3rem auto 5rem auto;
+      gap: 2rem;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+
+
+    .feature-card h3 {
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.4rem;
+      padding-left: 0;
+    }
+
+.feature-card ul li {
+  background-color: #e0f7fa; /* very light cyan for contrast */
+  color: var(--charcoal);
+  font-size: 1.15rem;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.85rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.feature-card ul li:hover {
+  background-color: #b2ebf2;
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.feature-card ul li::before {
+  content: "✔️";
+  font-size: 1.2rem;
+}
+
+
+    .faq {
+      max-width: 900px;
+      margin: 0 auto 5rem auto;
+      background-color: var(--card-bg);
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px var(--shadow);
+      color: var(--charcoal);
+    }
+
+    .faq h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: var(--primary-green);
+      font-weight: 600;
+      font-size: 2rem;
+    }
+
+    .faq article {
+      margin-bottom: 1.5rem;
+    }
+
+    .faq strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    footer {
+      background-color: var(--card-bg);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      color: var(--text-subtle);
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 8px var(--shadow);
+    }
+
+    .feature-card {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Everything Lanka</h1>
+    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="EYWK.html">Everything You Wanna Know</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="districts.html">Districts</a>
+    <a href="what-s new.html">What's New</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+
+  <section class="hero" role="banner" aria-label="Packing list introduction">
+    <h2>What to Pack for Your Sri Lankan Adventure</h2>
+    <p>Select your destination to get a tailored packing list with helpful reasons for each item.</p>
+    <select id="locationInput" aria-describedby="packing-instructions" aria-required="true" onchange="showPackingList()">
+      <option value="" disabled selected>Select a destination</option>
+      <option value="Ella">Ella</option>
+      <option value="Jaffna">Jaffna</option>
+      <option value="Arugam Bay">Arugam Bay</option>
+      <option value="Nuwara Eliya">Nuwara Eliya</option>
+      <option value="Sigiriya">Sigiriya</option>
+      <option value="Yala">Yala</option>
+      <option value="Colombo">Colombo</option>
+    </select>
+    <p id="packing-instructions" style="color: var(--text-subtle); margin-top: 1rem; font-size: 0.9rem;">
+      Choose a location from above to see your personalized packing essentials.
+    </p>
+  </section>
+
+  <section id="packingList" class="features" aria-live="polite" aria-atomic="true" style="display:none;"></section>
+
+  <section class="faq" aria-label="Frequently Asked Questions about packing for Sri Lanka">
+    <h2>Frequently Asked Questions</h2>
+
+    <article>
+      <strong>Is this list suitable for all seasons?</strong>
+      <p>Yes! Our suggestions are designed for year-round travel, but always check the local weather forecast before packing.</p>
+    </article>
+
+    <article>
+      <strong>Do I need travel insurance?</strong>
+      <p>Absolutely. We strongly recommend travel insurance to cover medical emergencies, trip cancellations, and more.</p>
+    </article>
+
+    <article>
+      <strong>Is Sri Lanka safe for tourists?</strong>
+      <p>Generally, yes. Most areas are safe, but it's always wise to follow common travel precautions and local advice.</p>
+    </article>
+
+    <article>
+      <strong>Can I buy these items locally?</strong>
+      <p>Many essentials like mosquito repellent and sunscreen are available in towns, but bringing your own ensures availability and quality.</p>
+    </article>
+  </section>
+
+  <footer>
+    Made in <strong>Sri Lanka</strong><br />
+    &copy; 2025 Everything Lanka. All rights reserved.
+  </footer>
+
+  <script>
+    const lists = {
+      "Ella": [
+        "👟 Light hiking shoes – For exploring Little Adam's Peak & nature trails.",
+        "🌧️ Rain jacket – Ella sees sudden showers even in dry seasons.",
+        "🦟 Insect repellent – Essential due to mosquitoes near forests and waterfalls.",
+        "📷 Camera – Capture the scenic train ride and Nine Arches Bridge.",
+        "🧥 Warm layers – Early mornings can be chilly in the hill country."
+      ],
+      "Jaffna": [
+        "🧴 Sunblock – Jaffna’s UV index is high and shade is limited.",
+        "☀️ Light cotton clothing – Stay cool and comfortable in dry heat.",
+        "🙏 Respectful temple attire – Shoulders and legs need to be covered at religious sites.",
+        "💧 Refillable water bottle – Stay hydrated in the dry northern climate.",
+        "🗺️ Offline map – Internet access can be spotty in remote areas."
+      ],
+      "Arugam Bay": [
+        "👙 Swimwear – Essential for surfing and beach activities.",
+        "☀️ Sunscreen – Protect your skin under the strong sun.",
+        "🏄 Surfboard rental money – Many spots don’t accept cards.",
+        "🩴 Flip flops – Easy footwear for the beach.",
+        "🏖️ Beach towel – For lounging on the sand."
+      ],
+      "Nuwara Eliya": [
+        "🧥 Jacket or fleece – It’s the coldest city in Sri Lanka.",
+        "☔ Umbrella – Expect unpredictable rain showers.",
+        "👞 Shoes for tea estate walks – Terrain can be muddy and uneven.",
+        "🧦 Warm socks – Floors and nights can be cold.",
+        "🔋 Power bank – Some areas may have power outages."
+      ],
+      "Sigiriya": [
+        "🧢 Hat – Protect yourself from the sun while climbing.",
+        "👟 Sturdy shoes – Ancient stairways are steep and uneven.",
+        "💧 Plenty of water – No vendors during the climb.",
+        "🐦 Binoculars – Spot exotic birds in surrounding gardens.",
+        "🥪 Light snacks – Energy boost after your climb."
+      ],
+      "Yala": [
+        "🔭 Binoculars – Best way to observe wildlife on safari.",
+        "🧢 Hat – Shield yourself from the harsh sun on game drives.",
+        "👖 Neutral-colored clothes – Avoid bright colors that scare animals.",
+        "📷 Camera with zoom – Capture elephants, leopards, and more.",
+        "🚿 Wet wipes – Safaris can be dusty and dirty."
+      ],
+      "Colombo": [
+        "👔 Light casual outfits – Humid but stylish city attire.",
+        "🧴 Sunscreen – Especially for walking near Galle Face Green.",
+        "💳 Debit/credit cards – Widely accepted, but keep some cash.",
+        "📱 SIM card or hotspot – Useful for navigation and rideshares.",
+        "👟 Comfortable shoes – Perfect for walking tours and markets."
+      ]
+    };
+
+    function showPackingList() {
+      const loc = document.getElementById('locationInput').value;
+      const list = lists[loc];
+      if (!list) return;
+
+      const container = document.getElementById('packingList');
+      container.style.display = 'grid';
+
+      container.innerHTML = `
+        <article class="feature-card" role="region" aria-label="Packing list for ${loc}">
+          <h3>Packing List for ${loc}</h3>
+          <ul>
+            ${list.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </article>
+      `;
+    }
+
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('show');
+    });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this list suitable for all seasons?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Our suggestions are designed for year-round travel, but always check the local weather forecast before packing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need travel insurance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. We strongly recommend travel insurance to cover medical emergencies, trip cancellations, and more."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Sri Lanka safe for tourists?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Generally, yes. Most areas are safe, but it's always wise to follow common travel precautions and local advice."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I buy these items locally?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many essentials like mosquito repellent and sunscreen are available in towns, but bringing your own ensures availability and quality."
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
+
