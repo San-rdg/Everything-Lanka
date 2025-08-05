@@ -18,7 +18,7 @@
 
   gtag('config', 'G-2S823WWMZ9');
 </script>
-  
+
   <style>
     :root {
       --primary-green: #34d7e0;
@@ -29,6 +29,8 @@
       --light-bg: #FFFFFF;
       --card-bg: #F5F5F5;
       --shadow: rgba(0, 0, 0, 0.12);
+      --badge-bg: #ff5e57;
+      --badge-text: #fff;
     }
 
     * {
@@ -120,6 +122,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 10px var(--shadow);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
     }
 
     .trend-card:hover {
@@ -138,6 +141,19 @@
       margin-top: 0.5rem;
     }
 
+    .badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 0.3rem 0.6rem;
+      border-radius: 5px;
+      text-transform: uppercase;
+    }
+
     footer {
       background-color: var(--card-bg);
       padding: 1.5rem;
@@ -153,7 +169,7 @@
     <h1>Everything Lanka</h1>
   </header>
 
-<nav>
+ <nav>
   <a href="https://everythinglanka.wiki/">Home</a>
   <a href="EYWK.html">Everything You Wanna Know</a>
   <a href="trending-now.html"># Trending</a>
@@ -167,37 +183,48 @@
   <section class="hero">
     <h2>Trending Now in Sri Lanka</h2>
     <p>Catch up on the latest buzz in Lanka — what’s hot, what’s viral, and what locals & tourists are loving right now!</p>
+    <p style="color: var(--text-subtle); font-size: 0.9rem;">
+      🔄 Last updated: August 5, 2025
+    </p>
   </section>
 
   <section class="trend-section">
     <div class="trend-card">
-      <h3>🔥 *Kurahan Ice Cream Craze*</h3>
-      <p>A new twist on traditional Lankan grains! Street vendors in Kandy are going viral for serving kurakkan (finger millet) ice cream.</p>
+      <span class="badge">Social Trend</span>
+      <h3>📸 #SigiriyaStairShot Challenge</h3>
+      <p>Tourists are daring each other to take dramatic selfies mid-climb at Sigiriya. The tag is blowing up on TikTok!</p>
     </div>
 
     <div class="trend-card">
-      <h3>🏖️ *Arugam Bay Surf Season*</h3>
-      <p>International surfers are flocking to Arugam Bay this August – it's peak swell time with competitions and nightly beach parties.</p>
+      <h3>🔥 Kurahan Ice Cream Craze</h3>
+      <p>Street vendors in Kandy are serving finger millet ice cream with tropical twists. Health meets viral delight!</p>
     </div>
 
     <div class="trend-card">
-      <h3>📸 *Sigiriya Insta Challenge*</h3>
-      <p>#SigiriyaStairShot is the new trend – travelers compete to take the most daring selfie mid-climb. (Careful though!)</p>
+      <h3>🎉 Esala Perahera 2025</h3>
+      <p>Kandy’s grand procession is in full swing with larger-than-ever tuskers, digital lanterns, and 3D projections.</p>
     </div>
 
     <div class="trend-card">
-      <h3>🎬 *Local Cinema Boom*</h3>
-      <p>Sinhala thriller *"Kadira"* is dominating theaters. Catch it now before spoilers flood TikTok!</p>
+      <h3>🏖️ Arugam Bay Surf Season</h3>
+      <p>Wave after wave — the bay is booming with surf competitions, yoga on the sand, and music till dawn.</p>
     </div>
 
     <div class="trend-card">
-      <h3>🎉 *Esala Perahera 2025*</h3>
-      <p>Kandy’s iconic procession is back with larger floats and digital lantern displays – it’s a can't-miss experience this August.</p>
+      <span class="badge">Social Trend</span>
+      <h3>🎥 Lankan Food Vlogs</h3>
+      <p>Local TikTok chefs and street food reviewers are gaining millions of views—try #LankaEats to see the best.</p>
     </div>
 
     <div class="trend-card">
-      <h3>🛍️ *Lankan Marketplace Picks*</h3>
-      <p>Handloom tops and palm hats are the top-selling souvenirs this season. Get yours in Galle or at Pettah market.</p>
+      <h3>🛍️ Lankan Marketplace Picks</h3>
+      <p>Handloom tops, rattan bags, and king coconut candles are topping souvenir wishlists — especially in Galle.</p>
+    </div>
+
+    <div class="trend-card">
+      <span class="badge">Social Trend</span>
+      <h3>🎬 "Kadira" Fan Theories</h3>
+      <p>The thriller *Kadira* is not just a box-office hit — TikTok is exploding with theories. #KadiraTwist is trending!</p>
     </div>
   </section>
 
@@ -207,4 +234,5 @@
   </footer>
 </body>
 </html>
+
 
