@@ -8,9 +8,8 @@
   <meta name="keywords" content="Sri Lanka trends 2025, trending now Sri Lanka, viral Sri Lanka, popular in Sri Lanka, events, culture, food, destinations" />
   <meta name="author" content="Everything Lanka" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
 
-  <!-- Open Graph for Social Sharing -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Trending in Sri Lanka 2025 | Viral News, Events & Culture" />
   <meta property="og:description" content="Stay updated with Sri Lanka’s hottest trends — from viral food and fashion to events and travel." />
   <meta property="og:image" content="https://everythinglanka.wiki/images/trending-sri-lanka.jpg" />
@@ -33,10 +32,140 @@
   </script>
 
   <style>
-    /* Your existing CSS stays the same */
+    :root {
+      --blue: #1E6091;
+      --orange: #F4A259;
+      --light-gray: #f5f5f5;
+      --dark-gray: #222;
+      --white: #fff;
+      --shadow: rgba(0,0,0,0.1);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-gray);
+      color: var(--dark-gray);
+    }
+
+    header {
+      background: var(--blue);
+      color: var(--white);
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      background: var(--white);
+      box-shadow: 0 2px 6px var(--shadow);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 0.8rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--blue);
+      font-weight: 500;
+    }
+    nav a[aria-current="page"] {
+      border-bottom: 2px solid var(--orange);
+      padding-bottom: 2px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: linear-gradient(135deg, var(--blue), var(--orange));
+      color: var(--white);
+    }
+    .hero h2 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .hero p {
+      margin-top: 0.5rem;
+    }
+    .hero small {
+      display: block;
+      margin-top: 0.5rem;
+      opacity: 0.85;
+    }
+
+    .trend-section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .trend-card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px var(--shadow);
+      padding: 1.2rem;
+      transition: transform 0.2s ease;
+    }
+    .trend-card:hover {
+      transform: translateY(-4px);
+    }
+    .trend-card h3 {
+      margin-top: 0.5rem;
+    }
+    .badge {
+      background: var(--orange);
+      color: var(--white);
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 8px;
+    }
+
+    .share-links {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+    }
+    .share-links a {
+      margin-right: 0.6rem;
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .share-links a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--blue);
+      color: var(--white);
+      margin-top: 3rem;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      padding: 12px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 3px 8px var(--shadow);
+      display: none;
+    }
   </style>
 
-  <!-- Structured Data for Article/Collection -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,21 +173,19 @@
     "name": "Trending in Sri Lanka 2025",
     "description": "Latest viral trends, events, food, and culture in Sri Lanka.",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "#SigiriyaStairShot Challenge" },
-      { "@type": "ListItem", "position": 2, "name": "Kurahan Ice Cream Craze" },
-      { "@type": "ListItem", "position": 3, "name": "Esala Perahera 2025" },
-      { "@type": "ListItem", "position": 4, "name": "Arugam Bay Surf Season" },
-      { "@type": "ListItem", "position": 5, "name": "Lankan Food Vlogs" },
-      { "@type": "ListItem", "position": 6, "name": "Lankan Marketplace Picks" },
-      { "@type": "ListItem", "position": 7, "name": "\"Kadira\" Fan Theories" }
+      { "@type": "ListItem", "position": 1, "name": "#SigiriyaStairShot Challenge", "url": "https://everythinglanka.wiki/trending-now.html#sigiriya" },
+      { "@type": "ListItem", "position": 2, "name": "Kurahan Ice Cream Craze", "url": "https://everythinglanka.wiki/trending-now.html#kurahan" },
+      { "@type": "ListItem", "position": 3, "name": "Esala Perahera 2025", "url": "https://everythinglanka.wiki/trending-now.html#perahera" },
+      { "@type": "ListItem", "position": 4, "name": "Arugam Bay Surf Season", "url": "https://everythinglanka.wiki/trending-now.html#arugam" },
+      { "@type": "ListItem", "position": 5, "name": "Lankan Food Vlogs", "url": "https://everythinglanka.wiki/trending-now.html#foodvlogs" },
+      { "@type": "ListItem", "position": 6, "name": "Lankan Marketplace Picks", "url": "https://everythinglanka.wiki/trending-now.html#marketplace" },
+      { "@type": "ListItem", "position": 7, "name": "Kadira Fan Theories", "url": "https://everythinglanka.wiki/trending-now.html#kadira" }
     ]
   }
   </script>
 </head>
 <body>
-  <header>
-    <h1>Everything Lanka</h1>
-  </header>
+  <header>Everything Lanka</header>
 
   <nav>
     <a href="https://everythinglanka.wiki/">Home</a>
@@ -74,37 +201,48 @@
   <section class="hero">
     <h2>Trending Now in Sri Lanka 2025</h2>
     <p>Catch up on the latest buzz in Lanka — what’s hot, what’s viral, and what locals & tourists are loving right now!</p>
-    <p style="color: var(--text-subtle); font-size: 0.9rem;">🔄 Last updated: August 5, 2025</p>
+    <small id="lastUpdated">🔄 Last updated: August 16, 2025</small>
   </section>
 
   <section class="trend-section">
-    <div class="trend-card">
+    <div class="trend-card" id="sigiriya">
       <span class="badge">Social Trend</span>
       <h3>📸 #SigiriyaStairShot Challenge</h3>
       <p>Tourists are daring each other to take dramatic selfies mid-climb at Sigiriya. The tag is blowing up on TikTok!</p>
+      <div class="share-links">
+        Share: 
+        <a href="https://twitter.com/intent/tweet?text=Check+out+the+%23SigiriyaStairShot+Challenge+in+Sri+Lanka!&url=https://everythinglanka.wiki/trending-now.html#sigiriya">Twitter</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://everythinglanka.wiki/trending-now.html#sigiriya">Facebook</a>
+      </div>
     </div>
-    <div class="trend-card">
+
+    <div class="trend-card" id="kurahan">
       <h3>🔥 Kurahan Ice Cream Craze</h3>
       <p>Street vendors in Kandy are serving finger millet ice cream with tropical twists. Health meets viral delight!</p>
     </div>
-    <div class="trend-card">
+
+    <div class="trend-card" id="perahera">
       <h3>🎉 Esala Perahera 2025</h3>
       <p>Kandy’s grand procession is in full swing with larger-than-ever tuskers, digital lanterns, and 3D projections.</p>
     </div>
-    <div class="trend-card">
+
+    <div class="trend-card" id="arugam">
       <h3>🏖️ Arugam Bay Surf Season</h3>
       <p>Wave after wave — the bay is booming with surf competitions, yoga on the sand, and music till dawn.</p>
     </div>
-    <div class="trend-card">
+
+    <div class="trend-card" id="foodvlogs">
       <span class="badge">Social Trend</span>
       <h3>🎥 Lankan Food Vlogs</h3>
       <p>Local TikTok chefs and street food reviewers are gaining millions of views—try #LankaEats to see the best.</p>
     </div>
-    <div class="trend-card">
+
+    <div class="trend-card" id="marketplace">
       <h3>🛍️ Lankan Marketplace Picks</h3>
       <p>Handloom tops, rattan bags, and king coconut candles are topping souvenir wishlists — especially in Galle.</p>
     </div>
-    <div class="trend-card">
+
+    <div class="trend-card" id="kadira">
       <span class="badge">Social Trend</span>
       <h3>🎬 "Kadira" Fan Theories</h3>
       <p>The thriller <em>Kadira</em> is not just a box-office hit — TikTok is exploding with theories. #KadiraTwist is trending!</p>
@@ -115,6 +253,25 @@
     Made in <strong>Sri Lanka</strong><br />
     &copy; 2025 Everything Lanka. All rights reserved.
   </footer>
+
+  <button id="backToTop">↑</button>
+
+  <script>
+    // Auto-update last updated date
+    document.getElementById("lastUpdated").innerText =
+      "🔄 Last updated: " + new Date().toLocaleDateString("en-US", {
+        year: "numeric", month: "long", day: "numeric"
+      });
+
+    // Back to top button
+    const btn = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      btn.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
 </body>
 </html>
 
