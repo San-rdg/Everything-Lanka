@@ -1,55 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Privacy Policy | EverythingLanka</title>
-  <link rel="stylesheet" href="styles.css"> <!-- your existing CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy | Everything Lanka</title>
+  <meta name="description" content="Privacy Policy for Everything Lanka. We don’t collect emails or personal profiles. Most features run locally in your browser using session/local storage." />
+  <style>
+    :root {
+      --blue: #1E6091;
+      --orange: #F4A259;
+      --dark-gray: #222;
+      --light-gray: #cfc7c7e1;
+      --white: #f7f1f1f3;
+      --shadow: rgba(0,0,0,0.12);
+      --accent: #ffdd57;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--light-gray); color: var(--dark-gray);}  
+    a { color: #1e90ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 980px; margin: 0 auto; padding: 24px; }
+    header { position: sticky; top: 0; z-index: 5; backdrop-filter: saturate(120%) blur(6px); background: linear-gradient(135deg, rgba(20,30,48,.9), rgba(36,59,85,.9)); box-shadow: 0 10px 30px var(--shadow); }
+    header .wrap { max-width: 980px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+    header h1 { margin: 0; font-size: 1.5rem; color: var(--accent); letter-spacing: .3px; }
+    header .meta { font-size: .9rem; color: #e9e9e9; }
 
+    h2 { color: var(--accent); margin-top: 28px; }
+    h3 { margin-top: 22px; }
+    p { line-height: 1.75; }
+    ul { padding-left: 1.15rem; }
+    .card { background: var(--white); border-radius: 16px; box-shadow: 0 10px 30px var(--shadow); padding: 20px; }
+    .toc { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 10px; margin: 18px 0 12px; }
+    .toc a { background: white; border-radius: 12px; padding: 10px 12px; box-shadow: 0 6px 14px var(--shadow); display: block; color: var(--blue); font-weight: 600; }
+    .badge { display: inline-flex; align-items: center; gap: 6px; background: #fff; color: #111; border-radius: 999px; padding: 6px 12px; box-shadow: 0 6px 14px var(--shadow); font-size: .85rem; }
+    .notice { background: #fffbe6; border-left: 4px solid var(--accent); padding: 12px 14px; border-radius: 8px; }
+    .muted { color: #555; }
+    .grid { display: grid; gap: 16px; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    button, .btn { cursor: pointer; border: none; border-radius: 12px; padding: 10px 14px; font-weight: 600; box-shadow: 0 6px 14px var(--shadow); transition: transform .05s ease; }
+    button:active, .btn:active { transform: translateY(1px); }
+    .btn-primary { background: var(--blue); color: white; }
+    .btn-ghost { background: white; color: var(--blue); }
+    code { background: #f0f0f0; padding: 2px 6px; border-radius: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+    footer { margin-top: 28px; padding: 24px; text-align: center; color: #666; }
+  </style>
+  <script>
+    function clearSiteData() {
+      try {
+        // Clear storages
+        localStorage.clear();
+        sessionStorage.clear();
+        // Clear cookies for current domain (best-effort; only non-HttpOnly)
+        const cookies = document.cookie.split(';');
+        for (const c of cookies) {
+          const eq = c.indexOf('=');
+          const name = eq > -1 ? c.slice(0, eq).trim() : c.trim();
+          if (name) document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+        }
+        if (navigator.serviceWorker) {
+          navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
+        }
+        alert('Your Everything Lanka data on this browser has been cleared.');
+      } catch (e) {
+        alert('Tried to clear local data, but the browser blocked the action. You can also clear site data from your browser settings.');
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy | Everything Lanka",
+    "about": "Privacy practices of Everything Lanka",
+    "isPartOf": { "@type": "WebSite", "name": "Everything Lanka", "url": "https://everythinglanka.wiki/" },
+    "datePublished": "2025-06-21",
+    "dateModified": "2025-08-16",
+    "mainEntity": {
+      "@type": "PrivacyPolicy",
+      "name": "Everything Lanka Privacy Policy",
+      "publisher": { "@type": "Organization", "name": "Everything Lanka" },
+      "inLanguage": "en"
+    }
+  }
+  </script>
 </head>
 <body>
-
   <header>
-    <h1>Privacy Policy</h1>
+    <div class="wrap">
+      <h1>Privacy Policy</h1>
+      <span class="meta">Effective: <strong>16 August 2025</strong> · <span class="badge" title="We don’t collect emails">No email collection</span></span>
+    </div>
   </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="EYWK.html">Everything You Wanna Know</a>
-  <a href="destinations.html">Destinations</a>
-  <a href="districts.html">Districts</a>
-  <a href="what-s new.html">What's New</a>
-  <a href="events.html">Events</a>
-  <a href="contact.html">Contact Us</a>
-</nav>
+  <main class="container">
+    <p class="notice"><strong>Quick summary:</strong> Everything Lanka does <em>not</em> require accounts, does <em>not</em> collect emails, and does <em>not</em> sell or rent your data. Most features run locally in your browser using session/local storage that you control.</p>
 
-  <div class="hero">
-    <h2>Your Privacy Matters to Us</h2>
-    <p>This page explains how EverythingLanka.wiki handles your personal information and privacy.</p>
-  </div>
+    <nav class="toc card" aria-label="Contents">
+      <div class="grid grid-2">
+        <a href="#scope">1. Scope</a>
+        <a href="#data-we-dont-collect">2. Data we do <em>not</em> collect</a>
+        <a href="#data-we-process">3. What runs locally in your browser</a>
+        <a href="#logs-security">4. Hosting, security & logs</a>
+        <a href="#cookies">5. Cookies & local storage</a>
+        <a href="#third-parties">6. Third‑party services & links</a>
+        <a href="#ugc">7. Uploaded media & meme creator</a>
+        <a href="#ads-affiliates">8. Ads, sponsorships & affiliates</a>
+        <a href="#google-ads">9. Google Ads & third‑party cookies</a>
+        <a href="#your-controls">10. Your controls</a>
+        <a href="#legal">11. Legal bases & your rights</a>
+        <a href="#children">12. Children’s privacy</a>
+        <a href="#changes">13. Changes to this policy</a>
+        <a href="#contact">14. Contact us</a>
+      </div>
+    </nav>
 
-  <section>
-    <h2>Information We Collect</h2>
- <p>When you visit EverythingLanka.wiki, we automatically collect non-personal information such as your IP address, browser type, and general location (city/country level) through cookies and analytics tools. This data helps us improve the website and better understand how visitors use our services.</p>
+    <section id="scope" class="card">
+      <h2>1) Scope</h2>
+      <p>This Privacy Policy applies to <strong>everythinglanka.wiki</strong> and any tools or pages we host under this domain. It explains what we do (and don’t do) with information when you browse our site and use features like the trip planner, story paths, quizzes, badges, weather, and other travel tools.</p>
+    </section>
 
-<p>We do not collect personal information like your name or email address unless you voluntarily provide it through a contact form or similar feature.</p>
+    <section id="data-we-dont-collect" class="card">
+      <h2>2) Data we do <em>not</em> collect</h2>
+      <ul>
+        <li><strong>No accounts, no logins.</strong> We do not run user accounts and we do not create personal profiles.</li>
+        <li><strong>No email collection.</strong> We do not ask for, store, or require your email address to use the site.</li>
+        <li><strong>No payment details.</strong> We do not process payments on this site.</li>
+        <li><strong>No advertising trackers.</strong> We do not use behavioral ad networks or cross‑site tracking beacons.</li>
+      </ul>
+    </section>
 
-    <h2>Cookies</h2>
-    <p>Our site uses cookies to personalize content and track site analytics. You can choose to disable cookies in your browser at any time.</p>
+    <section id="data-we-process" class="card">
+      <h2>3) What runs locally in your browser</h2>
+      <p>Most of our interactive features work <em>client‑side</em> (on your device) and store lightweight preferences using your browser’s <code>localStorage</code> or <code>sessionStorage</code>. Examples include:</p>
+      <ul>
+        <li>Trip Planner selections (vibe, regions, duration) until you generate a plan.</li>
+        <li>Story Path choices, progress badges, and confetti moments.</li>
+        <li>Quiz answers and score history.</li>
+        <li>Weather district preferences and recently viewed districts.</li>
+        <li>Language preferences (Sinhala/Tamil translations toggled on pages).</li>
+      </ul>
+      <p>These values are stored <em>only on your device</em> and are <em>not sent to our servers</em>. You can clear them anytime using the button below or via your browser settings.</p>
+      <div class="actions"><button class="btn-primary" onclick="clearSiteData()">Clear my Everything Lanka data</button><a class="btn btn-ghost" href="#your-controls">How to clear via browser settings →</a></div>
+    </section>
 
-    <h2>Use of Google AdSense</h2>
-    <p>We use Google AdSense to display relevant ads. Google may use cookies to personalize these ads based on your preferences. Learn more from <a href="https://policies.google.com/technologies/ads" target="_blank">Google's advertising policies</a>.</p>
+    <section id="logs-security" class="card">
+      <h2>4) Hosting, security & request logs</h2>
+      <p>Our website is served through common web infrastructure (hosting + CDN). For security and performance, these providers typically keep <em>standard web server logs</em> (for example: IP address, URLs requested, timestamps, and basic device/browser info). We use these logs to operate the site, prevent fraud or abuse, and understand high‑level traffic patterns. We do not use them to identify you personally, and we purge or aggregate them after a short period.</p>
+    </section>
 
-    <h2>Your Rights</h2>
-    <p>You can request to view, modify, or delete your personal information by contacting us at <strong>info@everythinglanka.wiki</strong>.</p>
+    <section id="cookies" class="card">
+      <h2>5) Cookies & local storage</h2>
+      <ul>
+        <li><strong>Cookies:</strong> We aim to avoid setting cookies. If a small, essential cookie is ever used (for example to remember a preference), it will not be used for advertising or cross‑site tracking.</li>
+        <li><strong>Local/session storage:</strong> Used for on‑device features like planners, badges, quizzes, and language toggles. You can clear these anytime (see controls below).</li>
+        <li><strong>No analytics beacons by default:</strong> We currently do not run third‑party analytics scripts that track you across sites.</li>
+      </ul>
+    </section>
 
-    <h2>Updates to This Policy</h2>
-    <p>This Privacy Policy may be updated periodically. All changes will be reflected on this page with a revised date.</p>
-  </section>
+    <section id="third-parties" class="card">
+      <h2>6) Third‑party services & links</h2>
+      <p>Our pages may link out to third‑party sites (e.g., Instagram, booking partners, official information pages) or load content like images and videos hosted elsewhere. When you interact with those services, their own privacy terms apply. If a page in your browser calls a public API (for example, to fetch weather or scores), your IP address may be visible to that API provider.</p>
+    </section>
+
+    <section id="ugc" class="card">
+      <h2>7) Uploaded media & meme creator</h2>
+      <p>Our "Lankan Meme Creator" and similar tools are designed to work locally in your browser. Images you upload are processed on your device and are <strong>not</strong> uploaded to our servers unless we clearly say otherwise on that page. If you choose to download or share a meme, the file stays with you and any sharing is under your control.</p>
+    </section>
+
+    <section id="ads-affiliates" class="card">
+      <h2>8) Ads, sponsorships & affiliates</h2>
+      <p>From time to time, we may feature sponsored experiences or affiliate links. Sponsorships will be labeled (e.g., “Sponsored”). Clicking an external offer takes you to the partner’s site where their privacy policy applies. We do not share your personal data with sponsors.</p>
+    </section>
+
+    <section id="google-ads" class="card">
+      <h2>9) Google Ads & third‑party cookies</h2>
+      <p>When we display Google Ads on this site:</p>
+      <ul>
+        <li>Third‑party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites.</li>
+        <li>Google’s use of advertising cookies enables it and its partners to serve ads based on your visit to <strong>Everything Lanka</strong> and/or other sites on the Internet.</li>
+        <li>You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads">Google Ads Settings</a>. Alternatively, you can opt out of a third‑party vendor’s use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/">www.aboutads.info</a>.</li>
+      </ul>
+    </section>
+
+    <section id="your-controls" class="card">
+      <h2>10) Your controls</h2>
+      <ul>
+        <li><strong>Instant reset:</strong> Use the <em>Clear my Everything Lanka data</em> button above to wipe local/session storage and non‑critical cookies for this site.</li>
+        <li><strong>Browser settings:</strong> You can also clear site data via your browser: <em>Settings → Privacy → Clear browsing data</em> (choose “Cookies and other site data” and “Cached images and files”).</li>
+        <li><strong>Feedback removal:</strong> If you’ve ever sent us feedback that includes personal information and want it deleted, email us and we’ll erase it.</li>
+      </ul>
+    </section>
+
+    <section id="legal" class="card">
+      <h2>11) Legal bases & your rights</h2>
+      <p>We design Everything Lanka to minimize personal data processing. Where standard request logs or essential preferences are processed, we rely on our <em>legitimate interests</em> to operate a secure, reliable website. If Sri Lankan data protection law (PDPA) or other laws grant you additional rights (such as access, correction, objection, or deletion), you can exercise them by contacting us. We will honor valid requests and explain anything we don’t control (for example, data that lives only on your device).</p>
+    </section>
+
+    <section id="children" class="card">
+      <h2>12) Children’s privacy</h2>
+      <p>Our content is suitable for a general audience. We do not knowingly collect personal information from children. If you believe a child has provided us with personal information via feedback, please contact us and we’ll delete it.</p>
+    </section>
+
+    <section id="changes" class="card">
+      <h2>13) Changes to this policy</h2>
+      <p>We may update this page to reflect new features or legal requirements. We’ll revise the <em>Effective</em> date at the top and keep changes reasonable and transparent.</p>
+      <p class="muted">Previous version: 21 June 2025.</p>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>14) Contact us</h2>
+      <p>Questions or requests? Reach us at 
+        <a href="mailto:everythinglanka@gmail.com">luminaofficial206@gmail.com</a>.
+      </p>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 EverythingLanka.wiki | <a href="privacy-policy.html">Privacy Policy</a>
-  </footer>
+    <a class="btn btn-ghost" href="index.html">← Back to Home</a><br>
+  </footer>  
 
-</body>
-</html>
+
