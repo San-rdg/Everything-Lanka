@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economy of Sri Lanka | Everything Lanka</title>
+<meta name="description" content="Comprehensive real-time overview of Sri Lanka's economy, including GDP, inflation, CSE stock performance, crypto, and growth trends.">
+<meta name="keywords" content="Sri Lanka economy, CSE stock market, Sri Lanka GDP, inflation rate, remittances, Colombo Stock Exchange, Sri Lanka crypto, economic growth">
+<link rel="canonical" href="https://everythinglanka.wiki/economy">
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root {
+  --primary-green: #34d7e0;
+  --trip-yellow: #FFD700;
+  --charcoal: #2C3E50;
+  --text-dark: #333333;
+  --text-subtle: #666666;
+  --light-bg: #FFFFFF;
+  --card-bg: #F5F5F5;
+  --shadow: rgba(0, 0, 0, 0.12);
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Poppins', sans-serif; background-color: var(--light-bg); color: var(--text-dark); line-height: 1.5; }
+header { background-color: var(--charcoal); padding: 1.5rem 2rem; color: var(--light-bg); text-align: center; box-shadow: 0 2px 8px var(--shadow); position: sticky; top: 0; z-index: 1000; }
+header h1 { margin: 0; font-weight: 600; font-size: 2.25rem; letter-spacing: 1.2px; color: white; }
+nav { background-color: var(--light-bg); box-shadow: 0 2px 6px var(--shadow); display: flex; justify-content: center; gap: 2rem; padding: 1rem 0; position: sticky; top: 68px; z-index: 999; }
+nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 1.1rem; padding: 0.25rem 0.5rem; border-radius: 4px; transition: background-color 0.3s ease; }
+nav a:hover { background-color: var(--primary-green); color: var(--light-bg); }
+.container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.card { background-color: var(--card-bg); border-radius: 12px; padding: 2rem; box-shadow: 0 4px 14px var(--shadow); }
+.card h2 { color: var(--charcoal); margin-bottom: 1rem; }
+.card table { width: 100%; border-collapse: collapse; }
+.card th, .card td { padding: 0.5rem; border-bottom: 1px solid #ddd; text-align: left; color: var(--text-dark); }
+.last-updated { text-align: right; font-size: 0.9rem; color: var(--text-subtle); margin-top: 1rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Economy of Sri Lanka</h1>
+</header>
+
+<nav>
+  <a href="https://everythinglanka.wiki/">Home</a>
+  <a href="#">Economy</a>
+  <a href="#">CSE</a>
+  <a href="#">Crypto</a>
+</nav>
+
+<div class="container">
+
+  <div class="card">
+    <h2>National Economic Indicators</h2>
+    <canvas id="gdpChart"></canvas>
+    <canvas id="inflationChart" style="margin-top:1rem;"></canvas>
+    <table>
+      <tr><th>Indicator</th><th>Value</th></tr>
+      <tr><td>GDP Growth</td><td>4.8%</td></tr>
+      <tr><td>Inflation Rate</td><td>3.1%</td></tr>
+      <tr><td>Exports</td><td>$12.4B</td></tr>
+      <tr><td>Remittances</td><td>$8B</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>International Economic Context</h2>
+    <canvas id="globalGrowthChart"></canvas>
+    <table>
+      <tr><th>Country/Region</th><th>GDP Growth</th></tr>
+      <tr><td>Global Avg</td><td>3.3%</td></tr>
+      <tr><td>India</td><td>5.7%</td></tr>
+      <tr><td>China</td><td>4.5%</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Colombo Stock Exchange Top Performers</h2>
+    <table>
+      <tr><th>Company</th><th>Price (LKR)</th><th>% Change</th></tr>
+      <tr><td>John Keells Holdings</td><td>186.50</td><td>+2.3%</td></tr>
+      <tr><td>Dialog Axiata</td><td>9.80</td><td>+1.7%</td></tr>
+      <tr><td>Hayleys</td><td>49.20</td><td>+1.5%</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Popular Cryptocurrencies in Sri Lanka</h2>
+    <canvas id="cryptoChart"></canvas>
+    <table>
+      <tr><th>Crypto</th><th>Price (USD)</th><th>% Change</th></tr>
+      <tr><td>Bitcoin</td><td>28,500</td><td>+1.8%</td></tr>
+      <tr><td>Ethereum</td><td>1,950</td><td>+2.2%</td></tr>
+      <tr><td>BNB</td><td>320</td><td>+1.1%</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<div class="container">
+  <p class="last-updated">Last Updated: <span id="lastUpdated"></span></p>
+</div>
+
+<script>
+document.getElementById('lastUpdated').innerText = new Date().toLocaleString();
+
+const gdpCtx = document.getElementById('gdpChart').getContext('2d');
+new Chart(gdpCtx, {
+    type: 'line',
+    data: {
+        labels: ['2019','2020','2021','2022','2023','2024','2025'],
+        datasets: [{ label: 'GDP Growth (%)', data: [3.2,-3.1,-1.7,3.6,4.0,4.5,4.8], borderColor: '#34d7e0', backgroundColor: 'rgba(52,215,224,0.2)', fill:true, tension:0.3 }]
+    },
+    options: { responsive:true, plugins:{legend:{labels:{color:'#333'}}}, scales:{y:{ticks:{color:'#333'}},x:{ticks:{color:'#333'}}} }
+});
+
+const inflationCtx = document.getElementById('inflationChart').getContext('2d');
+new Chart(inflationCtx, {
+    type:'bar',
+    data:{ labels:['2020','2021','2022','2023','2024','2025'], datasets:[{ label:'Inflation (%)', data:[4.5,5.2,6.8,4.0,3.2,3.1], backgroundColor:'#34d7e0' }]},
+    options:{responsive:true, plugins:{legend:{labels:{color:'#333'}}}, scales:{y:{ticks:{color:'#333'}},x:{ticks:{color:'#333'}}}}
+});
+
+const globalCtx = document.getElementById('globalGrowthChart').getContext('2d');
+new Chart(globalCtx, {
+    type:'line',
+    data:{ labels:['2020','2021','2022','2023','2024','2025'], datasets:[{ label:'Global GDP Growth (%)', data:[-3.1,5.0,3.2,3.0,3.2,3.3], borderColor:'#FFD700', backgroundColor:'rgba(255,215,0,0.2)', fill:true, tension:0.3 }]},
+    options:{responsive:true, plugins:{legend:{labels:{color:'#333'}}}, scales:{y:{ticks:{color:'#333'}},x:{ticks:{color:'#333'}}}}
+});
+
+const cryptoCtx = document.getElementById('cryptoChart').getContext('2d');
+new Chart(cryptoCtx, {
+    type:'bar',
+    data:{ labels:['Bitcoin','Ethereum','BNB'], datasets:[{ label:'Price USD', data:[28500,1950,320], backgroundColor:['#f7931a','#627eea','#f3ba2f'] }]},
+    options:{responsive:true, plugins:{legend:{labels:{color:'#333'}}}, scales:{y:{ticks:{color:'#333'}},x:{ticks:{color:'#333'}}}}
+});
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Economy of Sri Lanka",
+  "url": "https://everythinglanka.wiki/economy",
+  "description": "Comprehensive real-time overview of Sri Lanka's economy, including GDP, inflation, CSE stock performance, crypto, and growth trends.",
+  "publisher": {"@type": "Organization","name": "Everything Lanka","url": "https://everythinglanka.wiki"}
+}
+</script>
+
+</body>
+</html>
