@@ -306,7 +306,35 @@ footer {
     box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
   }
 }
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.share-buttons span {
+  font-weight: 600;
+  color: #333;
+}
+
+.share-buttons a {
+  background: #1E6091;
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.share-buttons a:hover {
+  background: #0c3e72;
+}
+
     
+
 
 
 
