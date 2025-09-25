@@ -665,9 +665,7 @@ paymentMethodEl.addEventListener('change', ()=>{
   const v = paymentMethodEl.value;
   if(v === 'cod'){
     paymentNoteEl.textContent = 'Cash on Delivery requires minimum 10 patches. For smaller orders choose Bank Deposit.';
-  } else {
-    paymentNoteEl.textContent = 'Bank Deposit allows any quantity. Account details will be provided when we contact you.';
-  }
+  } 
 });
 
 function countPiecesInCart(){
@@ -732,4 +730,5 @@ updateCartSummary();
 </script>
 </body>
 </html>
+
 
