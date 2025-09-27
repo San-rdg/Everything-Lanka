@@ -86,11 +86,44 @@
   .chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:.45rem .8rem;border-radius:999px;cursor:pointer;user-select:none}
   .chip.active{background:var(--nav);border-color:transparent}
 
-  /* Product grid */
-  .grid {
+/* Make forms mobile-friendly */
+input, select, textarea, button {
+  width: 100%;
+  max-width: 100%;
+  font-size: 1rem;
+  padding: 0.75em;
+  margin-bottom: 1em;
+  border-radius: 8px;
+}
+
+/* Fix product grid for narrow screens */
+.grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* instead of 250px */
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* Checkout floating bar - avoid overlap */
+.cart-bar {
+  position: sticky; /* instead of fixed */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1e6091;
+  color: #fff;
+  text-align: center;
+  padding: 1em;
+  font-size: 1rem;
+}
+
+/* Improve banner readability */
+.banner {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 10px;
 }
 
 @media (max-width: 600px) {
@@ -790,6 +823,7 @@ updateCartSummary();
 </script>
 </body>
 </html>
+
 
 
 
