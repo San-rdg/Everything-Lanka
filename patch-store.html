@@ -1,826 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Phone Deco Patches | EverythingLanka Market</title>
-<style>
-  /* =========================================================
-     THEME — EverythingLanka x Temu-inspired dark aesthetic
-     ========================================================= */
-  :root{
-    --bg-top:#141e30;           /* site-wide gradient start */
-    --bg-bottom:#243b55;        /* gradient end */
-    --header:#170269;           /* header bar */
-    --nav:#1E6091;              /* primary buttons/nav */
-    --nav-hover:#0c3e72;        /* hover state */
-    --accent:#ffdd57;           /* highlight */
-    --card:#0e1525;             /* card surface */
-    --card-2:#101a2f;           /* alt surface */
-    --text:#e6f1ff;             /* main text */
-    --muted:#9fb3c8;            /* muted text */
-    --ok:#1db954;
-    --error:#e55353;
-    --shadow: 0 10px 30px rgba(0,0,0,.35);
-    --radius: 18px;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
-    color:var(--text);
-    background: linear-gradient(160deg,var(--bg-top),var(--bg-bottom)) fixed;
-  }
-  a{color:inherit}
-  /* Header / Topbar */
-  .topbar{position:sticky;top:0;z-index:40;background:linear-gradient(90deg,var(--header),#1a0a7f);box-shadow:var(--shadow)}
-  .topbar-inner{max-width:1100px;margin:0 auto;display:flex;gap:.8rem;align-items:center;padding:.8rem 1rem}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;   /* slightly smaller gap */
-  font-weight: 800;
-  letter-spacing: 0.3px;
-}
-
-.brand .logo {
-  width: 32px;       /* smaller */
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle at 30% 30%, #ffef99, var(--accent));
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.brand .logo img {
-  width: 80%;       /* scale image inside logo */
-  height: 80%;
-  object-fit: contain;
-  display: block;
-}
-
-.brand span {
-  font-size: 0.95rem;  /* slightly smaller */
-}
-
-  .search{flex:1;display:flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:.5rem .7rem;border-radius:999px}
-  .search input{flex:1;background:transparent;border:0;outline:0;color:var(--text)}
-  .nav-actions{display:flex;gap:.5rem}
-  .btn{background:var(--nav);border:0;color:#fff;padding:.6rem 1rem;border-radius:999px;cursor:pointer;font-weight:600;transition:transform .18s ease, background .18s ease}
-  .btn:hover{background:var(--nav-hover);transform:translateY(-1px)}
-
-  /* Hero */
-  .hero{max-width:1100px;margin:1.2rem auto 1rem;display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;align-items:center;padding:0 1rem}
-  .hero-card{background:linear-gradient(135deg,rgba(255,221,87,.14),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12);padding:1.2rem;border-radius:var(--radius);box-shadow:var(--shadow)}
-  .hero h1{margin:.2rem 0 .4rem;font-size:1.8rem}
-  .hero p{color:var(--muted);margin:.2rem 0}
-  .hero-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
-  .badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:var(--accent);padding:.35rem .6rem;border-radius:999px;font-weight:700;font-size:.85rem}
-  .deal{display:flex;align-items:center;justify-content:center;background:conic-gradient(from 120deg at 20% 40%, #ffe984, #ffd34d, #ffcc33, #ffe984); color:#1e293b;border-radius:var(--radius);min-height:140px;border:1px solid rgba(0,0,0,.2)}
-  .deal h2{margin:0;font-size:1.3rem}
-
-  /* Filters */
-  .filters{max-width:1100px;margin:0 auto;padding:0 1rem .5rem;display:flex;gap:.5rem;flex-wrap:wrap}
-  .chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:.45rem .8rem;border-radius:999px;cursor:pointer;user-select:none}
-  .chip.active{background:var(--nav);border-color:transparent}
-
-/* Make forms mobile-friendly */
-input, select, textarea, button {
-  width: 100%;
-  max-width: 100%;
-  font-size: 1rem;
-  padding: 0.75em;
-  margin-bottom: 1em;
-  border-radius: 8px;
-}
-
-/* Fix product grid for narrow screens */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* instead of 250px */
-  gap: 1rem;
-}
-
-/* Checkout floating bar - avoid overlap */
-.cart-bar {
-  position: sticky; /* instead of fixed */
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #1e6091;
-  color: #fff;
-  text-align: center;
-  padding: 1em;
-  font-size: 1rem;
-}
-
-/* Improve banner readability */
-.banner {
-  display: block;
-  text-align: center;
-  font-weight: bold;
-  padding: 1em;
-  margin: 1em 0;
-  border-radius: 10px;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-  .card{background:linear-gradient(180deg,var(--card),var(--card-2));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;transition:transform .22s ease;cursor:pointer}
-  .card:hover{transform:translateY(-3px)}
-  .thumb{position:relative;aspect-ratio: 1 / 1;background:linear-gradient(135deg,#0b1222,#0e1831);display:grid;place-items:center}
-  .thumb img{width:100%;height:100%;object-fit:cover}
-  .pill{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);backdrop-filter: blur(6px);-webkit-backdrop-filter: blur(6px);color:#fff;padding:.25rem .5rem;border-radius:999px;font-size:.78rem}
-  .content{padding:.9rem}
-  .title{font-weight:800;font-size:1.02rem;margin:0 0 .15rem}
-  .sub{color:var(--muted);font-size:.9rem;margin:0}
-  .price-row{display:flex;align-items:center;justify-content:space-between;margin:.6rem 0 .2rem}
-  .price{font-weight:800}
-  .pack{display:flex;gap:.4rem;margin:.45rem 0}
-  .pack select{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:var(--text);padding:.5rem;border-radius:10px}
-  .qty{display:flex;align-items:center;gap:.5rem;margin-top:.4rem}
-.card button, .card select {
-  font-size: 1rem;
-  padding: 0.75rem;
-  border-radius: 12px;
-}
-
-.qty-ctrl button {
-  width: 44px;
-  height: 44px;
-  font-size: 1.4rem;
-}
-
-  .qty span{min-width:1.4rem;text-align:center}
-  .add{margin-top:.6rem}
-  .add .btn{width:100%}
-
-  /* Sticky Cart Bar */
-  .cartbar{position:fixed;left:0;right:0;bottom:0;background:linear-gradient(90deg,var(--nav),#317db0);display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;box-shadow:0 -8px 20px rgba(0,0,0,.25);z-index:50}
-  .cartbar .sum{flex:1;font-weight:700}
-  .cartbar .btn{background:#ffb703;color:#111}
-  .cartbar .btn:hover{background:#f4a261}
-  .cartbar .mini{font-size:.9rem;opacity:.9}
-
-  /* Order form */
-  .order{max-width:900px;margin:1rem auto 2rem;padding:0 1rem}
-  .formcard{background:linear-gradient(180deg,var(--card),var(--card-2));border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);box-shadow:var(--shadow);padding:1rem}
-  .formcard h3{margin:.2rem 0 1rem;color:var(--accent)}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
-  .row-1{display:grid;grid-template-columns:1fr;gap:.8rem}
-  label{font-size:.9rem;color:var(--muted)}
-  input,textarea,select{width:100%;padding:.8rem;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:var(--text)}
-  textarea{min-height:96px}
-  .note{margin-top:.6rem;color:var(--muted);font-size:.9rem}
-  .success{display:none;margin-top:.8rem;padding:.8rem;border-radius:12px;background:rgba(29,185,84,.15);border:1px solid rgba(29,185,84,.35);color:#c9ffd7}
-  .error{display:none;margin-top:.8rem;padding:.8rem;border-radius:12px;background:rgba(229,83,83,.15);border:1px solid rgba(229,83,83,.35);color:#ffd4d4}
-
-  /* Modal / Lightbox */
-  .modal{display:none;position:fixed;inset:0;z-index:120;align-items:center;justify-content:center}
-  .modal.open{display:flex}
-  .modal-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,12,22,.6),rgba(4,12,22,.8));backdrop-filter:blur(6px)}
-  .modal-inner{position:relative;max-width:1000px;width:calc(100% - 32px);background:linear-gradient(180deg,var(--card),var(--card-2));border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.6);padding:18px;display:flex;gap:1rem;z-index:121}
-  .modal-close{position:absolute;right:14px;top:12px;background:transparent;border:0;color:var(--muted);font-size:1.2rem;cursor:pointer}
-  .modal-body{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start}
-  .modal-gallery{display:flex;flex-direction:column;gap:.6rem;align-items:center}
-  .modal-image-wrap{width:100%;height:360px;background:linear-gradient(135deg,#0b1222,#0e1831);display:grid;place-items:center;border-radius:12px;overflow:hidden}
-  .modal-image-wrap img{max-width:100%;max-height:100%;object-fit:contain}
-  .modal-prev,.modal-next{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);padding:.5rem .8rem;border-radius:10px;cursor:pointer}
-  .modal-thumbs{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
-  .modal-thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent}
-  .modal-thumbs img.active{border-color:var(--accent)}
-  .modal-info{padding:4px 8px}
-  .modal-title{margin:0 0 .4rem}
-  .modal-desc{color:var(--muted);margin:0 0 .8rem}
-  .modal-price{font-weight:800;margin-bottom:.6rem}
-  .modal-controls{display:flex;flex-direction:column;gap:.6rem}
-  .modal-pack{width:100%;padding:.6rem;border-radius:10px}
-  .modal-qty-box{display:flex;align-items:center;gap:.4rem}
-  .modal-qty-box button{width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:var(--text);cursor:pointer}
-  .modal-qty{width:64px;padding:.5rem;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--text);text-align:center}
-
-  footer{max-width:1100px;margin:2rem auto 3rem;color:var(--muted);text-align:center;padding:0 1rem}
-
-  /* Responsive */
-  @media (max-width: 900px){
-    .hero{grid-template-columns:1fr;}
-    .deal{min-height:110px}
-    .row{grid-template-columns:1fr}
-    .modal-body{grid-template-columns:1fr}
-    .modal-image-wrap{height:260px}
-  }
-  .modal-content {
-  width: 95%;
-  max-width: 400px;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: 16px;
-}
-.cart-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #1e6091;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  font-size: 1rem;
-  z-index: 2000;
-}
-
-body {
-  padding-bottom: 60px; /* avoid cart bar overlap */
-}
-
-
-  .out-of-stock {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  color: #ff5555;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  border-radius: var(--radius);
-  z-index: 10;
-  text-transform: uppercase;
-}
-  form input, form select, form button {
-  width: 100%;
-  padding: 0.9rem;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-}
-.card img {
-  max-height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trezi Patches | EverythingLanka Market</title>
+  <style>
+    :root {
+      --bg-top:#141e30;
+      --bg-bottom:#243b55;
+      --primary:#1e6091;
+      --primary-hover:#0c3e72;
+      --accent:#ffdd57;
+      --text:#fff;
+      --danger:#ff4d4d;
+    }
+    body {
+      margin:0;
+      font-family:sans-serif;
+      background:linear-gradient(to bottom,var(--bg-top),var(--bg-bottom));
+      color:var(--text);
+      line-height:1.5;
+    }
+    header {
+      background:var(--primary);
+      padding:1rem;
+      text-align:center;
+      font-size:1.2rem;
+      font-weight:bold;
+    }
+    .banner {
+      background:var(--accent);
+      color:#000;
+      text-align:center;
+      padding:1rem;
+      margin:1rem;
+      border-radius:10px;
+      font-weight:bold;
+    }
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+      gap:1rem;
+      padding:1rem;
+    }
+    .card {
+      background:rgba(255,255,255,0.05);
+      padding:1rem;
+      border-radius:12px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      position:relative;
+    }
+    .card img {
+      max-width:100%;
+      border-radius:8px;
+      cursor:pointer;
+    }
+    .card h3 {
+      margin:0.5rem 0;
+      font-size:1rem;
+      color:var(--accent);
+    }
+    .out-stock {
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background:rgba(0,0,0,0.7);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:12px;
+      font-weight:bold;
+      color:var(--danger);
+      font-size:1.1rem;
+    }
+    .controls {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:0.5rem;
+      margin-top:0.5rem;
+    }
+    button {
+      background:var(--primary);
+      color:#fff;
+      border:none;
+      padding:0.5rem 0.75rem;
+      border-radius:8px;
+      font-size:0.9rem;
+    }
+    button:hover {
+      background:var(--primary-hover);
+    }
+    .cart-bar {
+      position:sticky;
+      bottom:0;
+      width:100%;
+      background:var(--primary);
+      padding:1rem;
+      text-align:center;
+      font-weight:bold;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .cart-bar button {
+      background:var(--accent);
+      color:#000;
+      font-weight:bold;
+      padding:0.6rem 1rem;
+    }
+    form {
+      padding:1rem;
+      background:rgba(255,255,255,0.05);
+      margin:1rem;
+      border-radius:10px;
+    }
+    form h2 {
+      color:var(--accent);
+    }
+    input, textarea, select {
+      width:100%;
+      padding:0.75rem;
+      margin:0.5rem 0;
+      border-radius:8px;
+      border:none;
+      font-size:1rem;
+    }
+    /* Modal styles */
+    .modal {
+      display:none;
+      position:fixed;
+      top:0; left:0; right:0; bottom:0;
+      background:rgba(0,0,0,0.9);
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      z-index:1000;
+    }
+    .modal img {
+      max-width:90%;
+      max-height:70vh;
+      border-radius:10px;
+    }
+    .modal-controls {
+      margin-top:1rem;
+      display:flex;
+      gap:1rem;
+    }
+    .modal button {
+      background:var(--accent);
+      color:#000;
+      font-weight:bold;
+      padding:0.5rem 1rem;
+    }
+    @media(min-width:768px){
+      header { font-size:1.5rem; }
+      .grid { grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); }
+    }
+  </style>
 </head>
 <body>
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="file:///C:/Users/ASEL/Desktop/Everything%20Lanka/trezi.png">
-     <div class="logo">
-  <img src="trezi.png" alt="Trezi Logo">
+
+<header>Welcome to Trezi Patches</header>
+
+<div class="banner">
+  Purchase 10 Patches for Rs.300 and save Rs.50
 </div>
 
-        <span><i>Trezi</i> Patches <sup>A page by EverythingLanka.WiKi</sup></span>
-      </a>
-      <div class="search" role="search">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="10.5" cy="10.5" r="7.5" stroke="currentColor" stroke-width="2"/></svg>
-        <input id="searchInput" placeholder="Search designs (fruit, animal, emoji...)" aria-label="Search patches" />
-      </div>
-      <div class="nav-actions">
-        <button class="btn" id="viewCartBtn" type="button">View Cart</button>
-      </div>
-    </div>
+<div class="grid" id="productGrid"></div>
+
+<div class="cart-bar">
+  <span id="cartTotal">0 item(s) • Rs.0</span>
+  <button id="checkoutScroll">Checkout</button>
+</div>
+
+<form id="orderForm" action="https://formspree.io/f/mzzjdvjk" method="POST">
+  <h2>Checkout • Place your order</h2>
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="tel" name="phone" placeholder="Phone Number" required>
+  <textarea name="address" placeholder="Delivery Address" required></textarea>
+  <input type="hidden" name="orderDetails" id="orderDetails">
+  <input type="hidden" name="orderTotal" id="orderTotal">
+  <button type="submit">Confirm Order</button>
+</form>
+
+<!-- Modal -->
+<div class="modal" id="imgModal">
+  <img id="modalImg" src="" alt="">
+  <div class="modal-controls">
+    <button id="prevImg">◀ Prev</button>
+    <button id="nextImg">Next ▶</button>
+    <button id="closeModal">✖ Close</button>
   </div>
-
-  <!-- Hero -->
-  <section class="hero" aria-label="Intro">
-    <div class="hero-card">
-      <h1>Welcome To <i>Trezi</i></h1>
-      <p>The best place to purchase small items from <strong>Home Busine</strong>.</p>
-      <div class="hero-badges">
-        <span class="badge">Sri Lanka shipping</span>
-        <span class="badge">Final shipping cost communicated after contact</span>
-      </div>
-    </div>
-    <div class="deal">
-      <h2>Purchase 10 Patches for Rs.300 and <strong>save Rs.50</strong></h2>
-      <br>
-    </div>
-  </section>
-
-  <!-- Filters -->
-  <div class="filters" role="tablist" aria-label="Filters">
-    <div class="chip active" data-filter="all">All</div>
-  </div>
-
-  <!-- Product Grid (cards are rendered by JS) -->
-  <section class="grid" id="grid" aria-live="polite"></section>
-
-  <!-- Sticky Cart Bar -->
-  <div class="cartbar" id="cartbar" aria-live="polite">
-    <div class="sum"><span id="cartCount">0</span> item(s) • <span id="cartTotal">Rs. 0</span> <span class="mini" id="cartHint">(best value: 10‑pack — Rs.50 off)</span></div>
-    <button class="btn" id="checkoutScroll" type="button">Checkout</button>
-  </div>
-
-  <!-- Product Modal (lightbox) -->
-  <div id="productModal" class="modal" aria-hidden="true">
-    <div class="modal-overlay" data-close></div>
-    <div class="modal-inner" role="dialog" aria-modal="true" aria-label="Product details">
-      <button class="modal-close" aria-label="Close">✕</button>
-      <div class="modal-body">
-        <div class="modal-gallery">
-          <div style="display:flex;gap:.6rem;align-items:center">
-            <button class="modal-prev" aria-label="Previous image">‹</button>
-            <div class="modal-image-wrap"><img class="modal-main-img" src="" alt=""></div>
-            <button class="modal-next" aria-label="Next image">›</button>
-          </div>
-          <div class="modal-thumbs" aria-hidden="false"></div>
-        </div>
-        <div class="modal-info">
-          <h2 class="modal-title"></h2>
-          <p class="modal-desc"></p>
-          <div class="modal-price"></div>
-
-          <div class="modal-controls">
-            <select class="modal-pack">
-              <option value="single">Single • Rs. 0</option>
-              <option value="ten">10‑Pack • Rs. 0</option>
-            </select>
-
-            <div class="modal-qty-box">
-              <button class="modal-qty-dec" type="button">−</button>
-              <input class="modal-qty" type="number" min="1" value="1" />
-              <button class="modal-qty-inc" type="button">+</button>
-            </div>
-
-            <button class="btn modal-add-button" type="button">Add to cart</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Order Form -->
-  <section class="order" id="order">
-    <form id="orderForm" class="formcard" action="https://formspree.io/f/mdkzyrwa" method="POST">
-      <h3>Checkout • Place your order</h3>
-
-      <input type="hidden" id="orderDetails" name="order_details">
-      <input type="hidden" id="orderTotalField" name="order_total">
-
-      <div class="row">
-        <div>
-          <label for="custName">Your Name</label>
-          <input id="custName" name="name" type="text" placeholder="e.g., Nimal Perera" required />
-        </div>
-        <div>
-          <label for="custPhone">Phone Number</label>
-          <input id="custPhone" name="phone" type="tel" pattern="[0-9]{10}" placeholder="07XXXXXXXX" required />
-        </div>
-      </div>
-
-      <div class="row">
-        <div>
-          <label for="custEmail">Email (optional)</label>
-          <input id="custEmail" name="email" type="email" placeholder="name@example.com" />
-        </div>
-        <div>
-          <label for="delivery">Delivery Method</label>
-          <select id="delivery" name="delivery">
-            <option>Home Delivery ( Cash on Delivery)</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div>
-          <label for="paymentMethod">Payment Method</label>
-          <select id="paymentMethod" name="payment_method">
-            <option value="cod">Cash on Delivery (minimum 10 patches)</option>
-            <option value="bank">Bank Deposit (any quantity — details after contact)</option>
-          </select>
-        </div>
-        <div id="paymentNoteWrap" style="display:flex;align-items:flex-end;">
-          <div class="note" id="paymentNote">Cash on Delivery requires minimum 10 patches. For smaller orders choose Bank Deposit.</div>
-        </div>
-      </div>
-
-      <div class="row-1">
-        <div>
-          <label for="custAddress">Delivery Address</label>
-          <textarea id="custAddress" name="address" placeholder="House No, Street, City" required></textarea>
-        </div>
-        <div>
-          <label for="notes">Order Notes (optional)</label>
-          <textarea id="notes" name="notes" placeholder="Colour preference, gift wrap, etc."></textarea>
-        </div>
-      </div>
-
-      <button class="btn" type="submit">Submit Order</button>
-      <div class="note">By submitting, you agree to be contacted to confirm your order. We never share your data.</div>
-      <div class="note" style="margin-top:.4rem;">Final cost including shipping will be communicated via message after we contact you. If you choose Bank Deposit we will share account details when we contact you.</div>
-
-      <div class="success" id="successMsg">✅ Order sent! We’ll text you shortly.</div>
-      <div class="error" id="errorMsg">❌ Something went wrong. Please try again.</div>
-    </form>
-  </section>
-
-  <footer>
-    Page by <strong>EverythingLanka</strong>
-  </footer>
+</div>
 
 <script>
-/*************************************************
- * DATA & RENDERING (with multiple images + long desc)
- *************************************************/
-const FORM_ENDPOINT = document.getElementById('orderForm').action; // easy to change later
-
 const PRODUCTS = [
-  {
-    id: "cute-bites",
-    name: "Cute Bites",
-    cat: "Fruit",
-    images: [
-      "https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch1.webp",
-      "https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch%202.webp",
-      "https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patches1.jpg",
-      "https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patches2.jpg",
-      "https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patches3.jpg"
-    ],
-    priceSingle: 35, // price10 = priceSingle * 10 - 50
-    blurb: "Juicy mini fruit & character patch pals for bright vibes.",
-    longBlurb: "A small pack of fruity patch pals — soft 3D rubber, strong adhesive, and bright colour. Ideal for decorating phone cases, pencil boxes, and small gifts. Each piece is approx 2–3 cm.",
-    inStock: true  // <-- NEW
-  },
-  {
-    id: "stitch-friends",
-    name: "Stitch & Friends",
-    cat: "Characters",
-    images: [
-      "https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch2%20stich.webp",
-      "https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch3%20stich.webp"
-    ],
-    priceSingle: 35,
-    blurb: "Silly Stitch patches for all and his friends.",
-    longBlurb: "Cute character patches inspired by a classic cheeky blue friend. Soft, colourful, and perfect for playful cases. Note: ensure correct licensing if selling copyrighted characters.",
-     inStock: false // <-- NEW
-  }
+  {id:'p1', name:'Cute Cat', images:[
+    'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch1.webp',
+    'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch%202.webp'
+  ], priceSingle:35, price10:300, inStock:true},
+  {id:'p2', name:'Fruit Patch', images:[
+    'https://via.placeholder.com/300?text=Fruit1',
+    'https://via.placeholder.com/300?text=Fruit2',
+    'https://via.placeholder.com/300?text=Fruit3'
+  ], priceSingle:35, price10:300, inStock:false},
+  {id:'p3', name:'Stitch', images:[
+    'https://via.placeholder.com/300?text=Stitch1'
+  ], priceSingle:35, price10:300, inStock:true}
 ];
 
-// enforce the Rs.50-off rule for every product's 10-pack
-PRODUCTS.forEach(p => p.price10 = (p.priceSingle * 10) - 50);
+const grid=document.getElementById('productGrid');
+const state={cart:{}, modal:{images:[], index:0}};
 
-const state = {
-  filter:'all',
-  query:'',
-  cart:{} // key: productId + '|' + pack => {name, pack, unitPrice, qty}
-};
+function formatRs(v){return 'Rs.'+v;}
 
-const grid = document.getElementById('grid');
-const searchInput = document.getElementById('searchInput');
-
-function formatRs(n){ return 'Rs. ' + (n||0).toLocaleString('en-LK'); }
-
-function render(){
-  grid.innerHTML = '';
-  const list = PRODUCTS.filter(p => (state.filter==='all' || p.cat===state.filter) && p.name.toLowerCase().includes(state.query));
-list.forEach(p => {
-  const card = document.createElement('article');
-  card.className = 'card';
-  
-  // Add an overlay if out of stock
-  const outOfStockHTML = p.inStock ? '' : `<div class="out-of-stock">Out of Stock</div>`;
-  
-  card.innerHTML = `
-    <div class="thumb">
-      <span class="pill">10 pcs = ${formatRs(p.price10)} (Rs.50 off)</span>
-      <img loading="lazy" alt="${p.name}" src="${p.images && p.images[0] ? p.images[0] : p.img}">
-      ${outOfStockHTML}
-    </div>
-    <div class="content">
-      <h3 class="title">${p.name}</h3>
-      <p class="sub">${p.blurb}</p>
-      <div class="price-row"><div class="price">${formatRs(p.priceSingle)} <span style="opacity:.7;font-weight:600;font-size:.92rem">/ pc</span></div></div>
-      <div class="pack">
-        <label class="sr-only" for="pack-${p.id}">Pack size</label>
-        <select id="pack-${p.id}" data-id="${p.id}" ${p.inStock ? '' : 'disabled'}>
-          <option value="single">Single • ${formatRs(p.priceSingle)}</option>
-          <option value="ten">10‑Pack • ${formatRs(p.price10)}</option>
-        </select>
-      </div>
-      <div class="qty">
-        <button type="button" data-act="dec" data-id="${p.id}" ${p.inStock ? '' : 'disabled'}>−</button>
+function renderProducts(){
+  grid.innerHTML='';
+  PRODUCTS.forEach(p=>{
+    const card=document.createElement('div');
+    card.className='card';
+    card.innerHTML=`
+      <img src="${p.images[0]}" alt="${p.name}" data-id="${p.id}" class="preview">
+      <h3>${p.name}</h3>
+      <p>${formatRs(p.priceSingle)} each</p>
+      <div class="controls">
+        <button data-id="${p.id}" data-act="dec">-</button>
         <span id="qty-${p.id}">0</span>
-        <button type="button" data-act="inc" data-id="${p.id}" ${p.inStock ? '' : 'disabled'}>+</button>
+        <button data-id="${p.id}" data-act="inc">+</button>
       </div>
-      <div class="add">
-        <button class="btn" type="button" data-act="add" data-id="${p.id}" ${p.inStock ? '' : 'disabled'}>Add to cart</button>
-      </div>
-    </div>`;
-    
-  grid.appendChild(card);
-});
-
-}
-
-render();
-
-/*************************************************
- * FILTERS & SEARCH
- *************************************************/
-const chips = document.querySelectorAll('.chip');
-chips.forEach(ch => ch.addEventListener('click', () => {
-  chips.forEach(c=>c.classList.remove('active'));
-  ch.classList.add('active');
-  state.filter = ch.dataset.filter;
-  render();
-}));
-
-searchInput.addEventListener('input', e => {
-  state.query = e.target.value.trim().toLowerCase();
-  render();
-});
-
-/*************************************************
- * CART LOGIC
- *************************************************/
-const cartCount = document.getElementById('cartCount');
-const cartTotal = document.getElementById('cartTotal');
-const cartHint  = document.getElementById('cartHint');
-
-
-
-function getUnitPrice(pId, pack){
-  const p = PRODUCTS.find(x=>x.id===pId);
-  return pack==='ten' ? p.price10 : p.priceSingle;
-}
-
-function key(pId, pack){ return `${pId}|${pack}`; }
-
-function updateCartSummary(){
-  let items = 0, total = 0, singles = 0, tens = 0;
-  Object.values(state.cart).forEach(line => {
-    items += line.qty;
-    total += line.qty * line.unitPrice;
-    if(line.pack==='ten') tens += line.qty; else singles += line.qty;
-  });
-  cartCount.textContent = items;
-  cartTotal.textContent = formatRs(total);
-  cartHint.textContent = singles>0 ? '(tip: 10‑pack saves Rs.50)' : '(best value: 10‑pack — Rs.50 off)';
-}
-
-function adjustQtyUI(pId, delta){
-  const el = document.getElementById(`qty-${pId}`);
-  const v = Math.max(0, parseInt(el.textContent||'0') + delta);
-  el.textContent = v;
-}
-
-/*************************************************
- * GRID CLICK DELEGATION — supports opening modal on card click
- *************************************************/
-grid.addEventListener('click', e => {
-  const btn = e.target.closest('button');
-  if(!btn){
-    // not a button — open product modal if clicking on the card
-    const card = e.target.closest('.card');
-    if(!card) return;
-    const select = card.querySelector('select[data-id]');
-    const pId = select ? select.dataset.id : card.querySelector('.title')?.textContent;
-    if(pId) openProductModal(pId);
-    return;
-  }
-  const id = btn.dataset.id;
-  const act = btn.dataset.act;
-  if(!id || !act) return;
-
-  if(act==='inc') adjustQtyUI(id, +1);
-  if(act==='dec') adjustQtyUI(id, -1);
-
-  if(act==='add'){
-    const qty = parseInt(document.getElementById(`qty-${id}`).textContent||'0');
-    if(qty<=0){
-      // assume 1 if user presses Add with 0 qty
-      document.getElementById(`qty-${id}`).textContent = 1;
+      <button data-id="${p.id}" data-act="add">Add to Cart</button>
+    `;
+    if(!p.inStock){
+      const overlay=document.createElement('div');
+      overlay.className='out-stock';
+      overlay.textContent='Out of Stock';
+      card.appendChild(overlay);
     }
-    const packSelect = document.getElementById(`pack-${id}`);
-    const pack = packSelect.value; // 'single' or 'ten'
-    const unit = getUnitPrice(id, pack);
-    const k = key(id, pack);
-    const name = PRODUCTS.find(p=>p.id===id).name + (pack==='ten'?' (10‑pack)':' (single)');
-    state.cart[k] = state.cart[k] || { name, pack, unitPrice: unit, qty:0 };
-    state.cart[k].qty += parseInt(document.getElementById(`qty-${id}`).textContent);
-    document.getElementById(`qty-${id}`).textContent = '0';
-    updateCartSummary();
+    grid.appendChild(card);
+  });
+}
+
+function updateCart(){
+  let total=0,count=0;
+  for(const k in state.cart){
+    const it=state.cart[k];
+    total+=it.unitPrice*it.qty;
+    count+=it.qty;
   }
-});
-
-/*************************************************
- * PRODUCT MODAL: open, gallery, add-to-cart from modal
- *************************************************/
-const modal = document.getElementById('productModal');
-const modalOverlay = modal.querySelector('.modal-overlay');
-const modalClose = modal.querySelector('.modal-close');
-const modalTitle = modal.querySelector('.modal-title');
-const modalDesc = modal.querySelector('.modal-desc');
-const modalPrice = modal.querySelector('.modal-price');
-const modalMainImg = modal.querySelector('.modal-main-img');
-const modalThumbs = modal.querySelector('.modal-thumbs');
-const modalPrev = modal.querySelector('.modal-prev');
-const modalNext = modal.querySelector('.modal-next');
-const modalPack = modal.querySelector('.modal-pack');
-const modalQtyInput = modal.querySelector('.modal-qty');
-const modalQtyDec = modal.querySelector('.modal-qty-dec');
-const modalQtyInc = modal.querySelector('.modal-qty-inc');
-const modalAddButton = modal.querySelector('.modal-add-button');
-
-let currentModalProduct = null;
-let currentImageIndex = 0;
-
-function openProductModal(pId){
-  const p = PRODUCTS.find(x=>x.id===pId);
-  if(!p) return;
-  currentModalProduct = p;
-  currentImageIndex = 0;
-
-  modalTitle.textContent = p.name;
-  modalDesc.textContent = p.longBlurb || p.blurb || '';
-  modalPrice.textContent = formatRs(p.priceSingle) + ' / pc';
-
-  // update pack options prices
-  modalPack.innerHTML = `\n    <option value="single">Single • ${formatRs(p.priceSingle)}</option>\n    <option value="ten">10‑Pack • ${formatRs(p.price10)}</option>\n  `;
-
-  // images
-  const imgs = (p.images && p.images.length) ? p.images : [p.img || ''];
-  modalThumbs.innerHTML = '';
-  imgs.forEach((src, i) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = p.name + ' ' + (i+1);
-    img.dataset.index = i;
-    img.addEventListener('click', () => changeModalImage(i));
-    modalThumbs.appendChild(img);
-  });
-  changeModalImage(0);
-
-  modal.classList.add('open');
-  modal.setAttribute('aria-hidden','false');
-  // reset qty
-  modalQtyInput.value = 1;
+  document.getElementById('cartTotal').textContent=`${count} item(s) • ${formatRs(total)}`;
 }
 
-function closeModal(){
-  modal.classList.remove('open');
-  modal.setAttribute('aria-hidden','true');
-  currentModalProduct = null;
-}
-
-function changeModalImage(i){
-  const imgs = (currentModalProduct && currentModalProduct.images && currentModalProduct.images.length) ? currentModalProduct.images : [currentModalProduct.img || ''];
-  currentImageIndex = Math.max(0, Math.min(i, imgs.length - 1));
-  modalMainImg.src = imgs[currentImageIndex] || '';
-  modalMainImg.alt = `${currentModalProduct.name} (${currentImageIndex+1})`;
-  // highlight thumb
-  modalThumbs.querySelectorAll('img').forEach(img => img.classList.toggle('active', parseInt(img.dataset.index,10)===currentImageIndex));
-}
-
-modalPrev.addEventListener('click', ()=>{
-  if(!currentModalProduct) return; changeModalImage(currentImageIndex - 1);
-});
-modalNext.addEventListener('click', ()=>{
-  if(!currentModalProduct) return; changeModalImage(currentImageIndex + 1);
-});
-modalClose.addEventListener('click', closeModal);
-modalOverlay.addEventListener('click', closeModal);
-
-modalQtyDec.addEventListener('click', ()=>{ modalQtyInput.value = Math.max(1, parseInt(modalQtyInput.value||'1') - 1); });
-modalQtyInc.addEventListener('click', ()=>{ modalQtyInput.value = Math.max(1, parseInt(modalQtyInput.value||'1') + 1); });
-
-modalAddButton.addEventListener('click', ()=>{
-  if(!currentModalProduct) return;
-  const pId = currentModalProduct.id;
-  const pack = modalPack.value;
-  const qty = Math.max(1, parseInt(modalQtyInput.value||'1'));
-  const unit = getUnitPrice(pId, pack);
-  const k = key(pId, pack);
-  const name = currentModalProduct.name + (pack==='ten'?' (10‑pack)':' (single)');
-  state.cart[k] = state.cart[k] || { name, pack, unitPrice: unit, qty:0 };
-  state.cart[k].qty += qty;
-  updateCartSummary();
-  closeModal();
-});
-
-// keyboard support
-document.addEventListener('keydown', e => {
-  if(modal.classList.contains('open')){
-    if(e.key==='Escape') closeModal();
-    if(e.key==='ArrowLeft') modalPrev.click();
-    if(e.key==='ArrowRight') modalNext.click();
-  }
-});
-
-/*************************************************
- * CHECKOUT SCROLL & CART VIEW
- *************************************************/
-const checkoutScroll = document.getElementById('checkoutScroll');
-checkoutScroll.addEventListener('click', () => {
-  document.getElementById('order').scrollIntoView({behavior:'smooth'});
-});
-
-// Optional: show a simple alert of cart on View Cart
-const viewCartBtn = document.getElementById('viewCartBtn');
-viewCartBtn.addEventListener('click', () => {
-  if(Object.keys(state.cart).length===0){ alert('Your cart is empty.'); return; }
-  let msg = 'Your Cart\n\n';
-  let total = 0;
-  Object.values(state.cart).forEach(line => {
-    total += line.qty * line.unitPrice;
-    msg += `• ${line.name} × ${line.qty} = ${formatRs(line.qty*line.unitPrice)}\n`;
-  });
-  msg += `\nTotal: ${formatRs(total)}`;
-  alert(msg);
-});
-
-/*************************************************
- * FORMSPREE SUBMIT
- * Additional logic:
- * - Enforce minimum 10 patches when payment_method === 'cod'
- * - Add payment method & shipping note to order details
- *************************************************/
-const orderForm = document.getElementById('orderForm');
-const paymentMethodEl = document.getElementById('paymentMethod');
-const paymentNoteEl = document.getElementById('paymentNote');
-
-paymentMethodEl.addEventListener('change', ()=>{
-  const v = paymentMethodEl.value;
-  if(v === 'cod'){
-    paymentNoteEl.textContent = 'Cash on Delivery requires minimum 10 patches. For smaller orders choose Bank Deposit.';
-  } 
-});
-
-function countPiecesInCart(){
-  let pieces = 0;
-  Object.values(state.cart).forEach(line => {
-    pieces += (line.pack === 'ten') ? (line.qty * 10) : (line.qty);
-  });
-  return pieces;
-}
-
-orderForm.addEventListener('submit', async (e)=>{
-  e.preventDefault();
-  // Prepare order summary
-  if(Object.keys(state.cart).length===0){ alert('Please add at least one product to cart.'); return; }
-
-  const paymentMethod = paymentMethodEl.value;
-  const pieces = countPiecesInCart();
-
-  // Enforce COD minimum rule
-  if(paymentMethod === 'cod' && pieces < 10){
-    alert('Cash on Delivery requires a minimum order of 10 patches. Please add more items to reach 10 patches or choose Bank Deposit.');
-    return;
-  }
-
-  let lines = [], total = 0;
-  let piecesEst = 0;
-  Object.values(state.cart).forEach(line => {
-    total += line.qty * line.unitPrice;
-    piecesEst += line.pack==='ten' ? line.qty*10 : line.qty;
-    lines.push(`${line.name} x ${line.qty} @ ${formatRs(line.unitPrice)} = ${formatRs(line.qty*line.unitPrice)}`);
-  });
-  lines.push(`TOTAL = ${formatRs(total)}`);
-  lines.push(`Pieces (approx.) = ${piecesEst}`);
-  lines.push(`Payment method: ${paymentMethod === 'cod' ? 'Cash on Delivery' : 'Bank Deposit (we will provide account details after contact)'} `);
-  lines.push('Shipping: Final shipping cost will be communicated via message after we contact you.');
-
-  document.getElementById('orderDetails').value = lines.join('\n');
-  document.getElementById('orderTotalField').value = total;
-
-  // Submit to Formspree
-  const formData = new FormData(orderForm);
-  try{
-    const res = await fetch(FORM_ENDPOINT, { method:'POST', headers:{'Accept':'application/json'}, body: formData });
-    if(res.ok){
-      orderForm.reset();
-      state.cart = {}; updateCartSummary();
-      document.getElementById('successMsg').style.display='block';
-      document.getElementById('errorMsg').style.display='none';
-      window.scrollTo({ top: orderForm.offsetTop - 80, behavior:'smooth' });
-    } else {
-      throw new Error('Network error');
+// --- Product grid actions ---
+grid.addEventListener('click',e=>{
+  const btn=e.target.closest('button');
+  if(btn){
+    const id=btn.dataset.id;
+    const act=btn.dataset.act;
+    const prod=PRODUCTS.find(x=>x.id===id);
+    if(!prod || !prod.inStock) return;
+    const qtySpan=document.getElementById('qty-'+id);
+    let qty=parseInt(qtySpan.textContent);
+    if(act==='inc') qty++;
+    if(act==='dec'&&qty>0) qty--;
+    qtySpan.textContent=qty;
+    if(act==='add'&&qty>0){
+      if(!state.cart[id]) state.cart[id]={name:prod.name,unitPrice:prod.priceSingle,qty:0};
+      state.cart[id].qty+=qty;
+      qtySpan.textContent=0;
+      updateCart();
     }
-  } catch(err){
-    document.getElementById('errorMsg').style.display='block';
-    document.getElementById('successMsg').style.display='none';
+  }
+  if(e.target.classList.contains('preview')){
+    const id=e.target.dataset.id;
+    const prod=PRODUCTS.find(x=>x.id===id);
+    state.modal.images=prod.images;
+    state.modal.index=0;
+    showModal();
   }
 });
 
-// initialize cart summary on load
-updateCartSummary();
+// --- Modal functions ---
+const modal=document.getElementById('imgModal');
+const modalImg=document.getElementById('modalImg');
+document.getElementById('closeModal').onclick=()=>modal.style.display='none';
+document.getElementById('prevImg').onclick=()=>{changeImg(-1)};
+document.getElementById('nextImg').onclick=()=>{changeImg(1)};
+
+function showModal(){
+  modal.style.display='flex';
+  modalImg.src=state.modal.images[state.modal.index];
+}
+function changeImg(step){
+  state.modal.index=(state.modal.index+step+state.modal.images.length)%state.modal.images.length;
+  showModal();
+}
+
+// --- Checkout ---
+document.getElementById('checkoutScroll').addEventListener('click',()=>{
+  document.getElementById('orderForm').scrollIntoView({behavior:'smooth'});
+});
+document.getElementById('orderForm').addEventListener('submit',e=>{
+  const details=Object.values(state.cart).map(i=>`${i.name} x${i.qty} = ${formatRs(i.unitPrice*i.qty)}`).join('\n');
+  const total=Object.values(state.cart).reduce((s,i)=>s+i.unitPrice*i.qty,0);
+  document.getElementById('orderDetails').value=details;
+  document.getElementById('orderTotal').value=total;
+});
+
+renderProducts();
+updateCart();
+
 
 </script>
+
 </body>
 </html>
 
