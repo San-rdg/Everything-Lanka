@@ -1,273 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trezi Patches | EverythingLanka Market</title>
-  <style>
-
-    .card .description {
-  font-size: 0.85rem;
-  margin: 0.3rem 0;
-  color: #ddd;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trezi Patches | EverythingLanka Market</title>
+<style>
+:root {
+  --bg-top:#141e30;
+  --bg-bottom:#243b55;
+  --primary:#1e6091;
+  --primary-hover:#0c3e72;
+  --accent:#ffdd57;
+  --text:#fff;
+  --danger:#ff4d4d;
 }
 
-.card .seller {
-  font-size: 0.8rem;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
+html, body { height: 100%; margin: 0; }
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(to bottom,var(--bg-top),var(--bg-bottom));
+  color: var(--text);
+  line-height: 1.5;
+  overflow: hidden;
 }
-
-    :root {
-      --bg-top:#141e30;
-      --bg-bottom:#243b55;
-      --primary:#1e6091;
-      --primary-hover:#0c3e72;
-      --accent:#ffdd57;
-      --text:#fff;
-      --danger:#ff4d4d;
-    }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-      font-family: system-ui, sans-serif;
-      background: linear-gradient(to bottom,var(--bg-top),var(--bg-bottom));
-      color: var(--text);
-      line-height: 1.5;
-      overflow: hidden; /* prevent whole-page scrolling */
-    }
 
 header {
   display: flex;
   align-items: center;
-  justify-content: center; /* optional, keeps text centered with logo */
-  gap: 0.6rem; /* space between logo and text */
+  justify-content: center;
+  gap: 0.6rem;
   background: var(--primary);
   padding: 1rem;
   font-size: 1.3rem;
   font-weight: bold;
   flex-shrink: 0;
 }
+header .logo { height: 32px; width: auto; }
 
-header .logo {
-  height: 32px; /* adjust size as needed */
-  width: auto;  /* keep original aspect ratio */
+main {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 6rem;
 }
 
+.banner {
+  background: var(--accent);
+  color: #000;
+  text-align: center;
+  padding: 0.8rem;
+  margin: 1rem;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
 
-    main {
-      flex: 1;
-      overflow-y: auto; /* only this scrolls */
-      padding-bottom: 6rem; /* space above cart bar */
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
 
-    .banner {
-      background: var(--accent);
-      color: #000;
-      text-align: center;
-      padding: 0.8rem;
-      margin: 1rem;
-      border-radius: 10px;
-      font-weight: bold;
-      font-size: 0.95rem;
-    }
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      padding: 1rem;
-    }
+.card img {
+  max-width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  object-fit: cover;
+}
 
-    .card {
-      background: rgba(255,255,255,0.05);
-      padding: 1rem;
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-    }
+.card h3 { margin:0.5rem 0; color: var(--accent); }
+.card .description { font-size:0.85rem; color:#ddd; margin:0.3rem 0; display:none; }
+.card .seller { font-size:0.8rem; color:var(--accent); margin-bottom:0.5rem; display:none; }
 
-    .card img {
-      max-width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      object-fit: cover;
-    }
+.out-stock {
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:12px;
+  font-weight: bold;
+  color: var(--danger);
+}
 
-    .card h3 {
-      margin: 0.5rem 0;
-      font-size: 1rem;
-      color: var(--accent);
-    }
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+.controls button {
+  width:2.2rem; height:2.2rem; border-radius:50%; font-size:1rem; padding:0;
+}
 
-    .out-stock {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      font-weight: bold;
-      color: var(--danger);
-      font-size: 1rem;
-    }
+button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size:0.95rem;
+  cursor:pointer;
+}
+button:hover { background: var(--primary-hover); }
 
-    .controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.6rem;
-      margin-top: 0.5rem;
-    }
+.cart-bar {
+  position: fixed;
+  bottom:0; left:0; right:0;
+  background: var(--primary);
+  padding:0.8rem 1rem;
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  font-weight:bold;
+  font-size:0.95rem;
+  z-index:900;
+}
+.cart-bar button { background: var(--accent); color:#000; font-weight:bold; padding:0.6rem 1rem; border-radius:8px; }
 
-    .controls button {
-      width: 2.2rem;
-      height: 2.2rem;
-      border-radius: 50%;
-      font-size: 1rem;
-      padding: 0;
-    }
+form {
+  padding:1rem;
+  background: rgba(255,255,255,0.05);
+  margin:1rem;
+  border-radius:10px;
+}
+form h2 { color: var(--accent); margin-bottom:0.5rem; }
+input, textarea { width:100%; padding:0.75rem; margin:0.5rem 0; border-radius:8px; border:none; font-size:1rem; }
+textarea { resize: vertical; }
 
-    button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 0.6rem 1rem;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      cursor: pointer;
-    }
+/* Modal */
+.modal {
+  display:none;
+  position:fixed; top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:1000;
+  padding:1rem;
+}
+.modal img { max-width:100%; max-height:70vh; border-radius:10px; margin-bottom:1rem; }
+.modal-controls { display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center; }
+.modal button { background: var(--accent); color:#000; font-weight:bold; padding:0.5rem 1rem; border-radius:6px; flex:1; }
 
-    button:hover {
-      background: var(--primary-hover);
-    }
+/* Details modal */
+#detailsModal .content {
+  max-width:600px;
+  background:#fff;
+  color:#000;
+  padding:1rem;
+  border-radius:10px;
+  text-align:left;
+}
+#detailsModal h2 { color: var(--primary); margin-top:0; }
+#detailsModal button { margin-top:1rem; background: var(--primary); color:#fff; }
 
-    .cart-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--primary);
-      padding: 0.8rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: bold;
-      font-size: 0.95rem;
-      z-index: 900;
-    }
-
-    .cart-bar button {
-      background: var(--accent);
-      color: #000;
-      font-weight: bold;
-      padding: 0.6rem 1rem;
-      border-radius: 8px;
-      font-size: 0.95rem;
-    }
-
-    form {
-      padding: 1rem;
-      background: rgba(255,255,255,0.05);
-      margin: 1rem;
-      border-radius: 10px;
-    }
-
-    form h2 {
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin: 0.5rem 0;
-      border-radius: 8px;
-      border: none;
-      font-size: 1rem;
-    }
-
-    textarea { resize: vertical; }
-
-    /* Modal styles */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.9);
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 1000;
-      padding: 1rem;
-    }
-
-    .modal img {
-      max-width: 100%;
-      max-height: 70vh;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-    }
-
-    .modal-controls {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .modal button {
-      background: var(--accent);
-      color: #000;
-      font-weight: bold;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      flex: 1;
-    }
-
-    /* Tablet & desktop */
-    @media(min-width:600px){
-      .grid { grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
-    }
-    @media(min-width:900px){
-      header { font-size:1.5rem; }
-      .grid { grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
-    }
-
-        /* Details modal */
-    #detailsModal .content {
-      max-width: 600px;
-      background: #fff;
-      color: #000;
-      padding: 1rem;
-      border-radius: 10px;
-      text-align: left;
-    }
-
-    #detailsModal h2 {
-      color: var(--primary);
-      margin-top: 0;
-    }
-
-    #detailsModal button {
-      margin-top: 1rem;
-      background: var(--primary);
-      color: #fff;
-    }
-  </style>
+@media(min-width:900px){ header{font-size:1.5rem;} .grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));} }
+</style>
 </head>
 <body>
 
@@ -276,11 +180,8 @@ header .logo {
   Welcome to Trezi Listings
 </header>
 
-
 <main>
-  <div class="banner">
-    Purchase 10 Patches for Rs.300 and save Rs.50
-  </div>
+  <div class="banner">Purchase 10 Patches for Rs.300 and save Rs.50</div>
 
   <div class="grid" id="productGrid"></div>
 
@@ -300,7 +201,7 @@ header .logo {
   <button id="checkoutScroll">Checkout</button>
 </div>
 
-<!-- Modal -->
+<!-- Image modal -->
 <div class="modal" id="imgModal">
   <img id="modalImg" src="" alt="">
   <div class="modal-controls">
@@ -310,36 +211,21 @@ header .logo {
   </div>
 </div>
 
+<!-- Details modal -->
+<div class="modal" id="detailsModal">
+  <div class="content">
+    <h2 id="detailsName"></h2>
+    <p id="detailsDesc"></p>
+    <p><strong>Seller:</strong> <span id="detailsSeller"></span></p>
+    <button id="closeDetails">Close</button>
+  </div>
+</div>
+
 <script>
 const PRODUCTS = [
-  {
-    id:'p1',
-    name:'Cute Cat',
-    images:[
-      'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch%202.webp',
-      'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch1.webp'
-    ],
-    priceSingle:35,
-    price10:300,
-    inStock:true,
-    description:'A cute cat patch perfect for phone covers, bags, and clothing.dfdcscdcdc dccscsscscscscs tgrfefgrv gbfvvdcr fvcded',
-    seller:'Trezi Official'
-  },
-  {
-    id:'p2',
-    name:'Fruit Patch',
-    images:[
-      'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch2%20stich.webp',
-      'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch3%20stich.webp'
-    ],
-    priceSingle:35,
-    price10:300,
-    inStock:false,
-    description:'Bright and colorful fruit design patch to add a fresh look.',
-    seller:'Trezi Official'
-  }
+  {id:'p1',name:'Cute Cat',images:['https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch%202.webp','https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch1.webp'],priceSingle:35,price10:300,inStock:true,description:'A cute cat patch perfect for phone covers, bags, and clothing.',seller:'Trezi Official'},
+  {id:'p2',name:'Fruit Patch',images:['https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch2%20stich.webp','https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch3%20stich.webp'],priceSingle:35,price10:300,inStock:false,description:'Bright and colorful fruit design patch to add a fresh look.',seller:'Trezi Official'}
 ];
-
 
 const grid=document.getElementById('productGrid');
 const state={cart:{}, modal:{images:[], index:0}};
@@ -351,20 +237,18 @@ function renderProducts(){
   PRODUCTS.forEach(p=>{
     const card=document.createElement('div');
     card.className='card';
-card.innerHTML=`
-  <img src="${p.images[0]}" alt="${p.name}" data-id="${p.id}" class="preview">
-  <h3>${p.name}</h3>
-  <p>${formatRs(p.priceSingle)} each</p>
-  <p class="description">${p.description}</p>
-  <p class="seller">Sold by: ${p.seller}</p>
-  <div class="controls">
-    <button data-id="${p.id}" data-act="dec">-</button>
-    <span id="qty-${p.id}">0</span>
-    <button data-id="${p.id}" data-act="inc">+</button>
-  </div>
-  <button data-id="${p.id}" data-act="add">Add to Cart</button>
-`;
-
+    card.innerHTML=`
+      <img src="${p.images[0]}" alt="${p.name}" data-id="${p.id}" class="preview">
+      <h3>${p.name}</h3>
+      <p>${formatRs(p.priceSingle)} each</p>
+      <div class="controls">
+        <button data-id="${p.id}" data-act="dec">-</button>
+        <span id="qty-${p.id}">0</span>
+        <button data-id="${p.id}" data-act="inc">+</button>
+      </div>
+      <button data-id="${p.id}" data-act="add">Add to Cart</button>
+      <button data-id="${p.id}" data-act="details">View Details</button>
+    `;
     if(!p.inStock){
       const overlay=document.createElement('div');
       overlay.className='out-stock';
@@ -392,19 +276,28 @@ grid.addEventListener('click',e=>{
     const id=btn.dataset.id;
     const act=btn.dataset.act;
     const prod=PRODUCTS.find(x=>x.id===id);
-    if(!prod || !prod.inStock) return;
+    if(!prod) return;
     const qtySpan=document.getElementById('qty-'+id);
     let qty=parseInt(qtySpan.textContent);
-    if(act==='inc') qty++;
-    if(act==='dec'&&qty>0) qty--;
+    if(act==='inc' && prod.inStock) qty++;
+    if(act==='dec' && qty>0) qty--;
     qtySpan.textContent=qty;
-    if(act==='add'&&qty>0){
+
+    if(act==='add' && qty>0 && prod.inStock){
       if(!state.cart[id]) state.cart[id]={name:prod.name,unitPrice:prod.priceSingle,qty:0};
       state.cart[id].qty+=qty;
       qtySpan.textContent=0;
       updateCart();
     }
+
+    if(act==='details'){
+      document.getElementById('detailsName').textContent = prod.name;
+      document.getElementById('detailsDesc').textContent = prod.description;
+      document.getElementById('detailsSeller').textContent = prod.seller;
+      document.getElementById('detailsModal').style.display = 'flex';
+    }
   }
+
   if(e.target.classList.contains('preview')){
     const id=e.target.dataset.id;
     const prod=PRODUCTS.find(x=>x.id===id);
@@ -414,26 +307,20 @@ grid.addEventListener('click',e=>{
   }
 });
 
-// --- Modal functions ---
+// --- Image modal functions ---
 const modal=document.getElementById('imgModal');
 const modalImg=document.getElementById('modalImg');
 document.getElementById('closeModal').onclick=()=>modal.style.display='none';
 document.getElementById('prevImg').onclick=()=>{changeImg(-1)};
 document.getElementById('nextImg').onclick=()=>{changeImg(1)};
+function showModal(){ modal.style.display='flex'; modalImg.src=state.modal.images[state.modal.index]; }
+function changeImg(step){ state.modal.index=(state.modal.index+step+state.modal.images.length)%state.modal.images.length; showModal(); }
 
-function showModal(){
-  modal.style.display='flex';
-  modalImg.src=state.modal.images[state.modal.index];
-}
-function changeImg(step){
-  state.modal.index=(state.modal.index+step+state.modal.images.length)%state.modal.images.length;
-  showModal();
-}
+// --- Details modal close ---
+document.getElementById('closeDetails').onclick=()=>document.getElementById('detailsModal').style.display='none';
 
 // --- Checkout ---
-document.getElementById('checkoutScroll').addEventListener('click',()=>{
-  document.getElementById('orderForm').scrollIntoView({behavior:'smooth'});
-});
+document.getElementById('checkoutScroll').addEventListener('click',()=>{ document.getElementById('orderForm').scrollIntoView({behavior:'smooth'}); });
 document.getElementById('orderForm').addEventListener('submit',e=>{
   const details=Object.values(state.cart).map(i=>`${i.name} x${i.qty} = ${formatRs(i.unitPrice*i.qty)}`).join('\n');
   const total=Object.values(state.cart).reduce((s,i)=>s+i.unitPrice*i.qty,0);
@@ -444,8 +331,11 @@ document.getElementById('orderForm').addEventListener('submit',e=>{
 renderProducts();
 updateCart();
 </script>
+
 </body>
 </html>
+
+
 
 
 
