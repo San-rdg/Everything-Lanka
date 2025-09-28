@@ -351,18 +351,20 @@ function renderProducts(){
   PRODUCTS.forEach(p=>{
     const card=document.createElement('div');
     card.className='card';
-    card.innerHTML=`
-      <img src="${p.images[0]}" alt="${p.name}" data-id="${p.id}" class="preview">
-      <h3>${p.name}</h3>
-      <p>${formatRs(p.priceSingle)} each</p>
-      <div class="controls">
-        <button data-id="${p.id}" data-act="dec">-</button>
-        <span id="qty-${p.id}">0</span>
-        <button data-id="${p.id}" data-act="inc">+</button>
-      </div>
-      <button data-id="${p.id}" data-act="add">Add to Cart</button>
-      <button data-id="${p.id}" data-act="details">View Details</button>
-    `;
+card.innerHTML=`
+  <img src="${p.images[0]}" alt="${p.name}" data-id="${p.id}" class="preview">
+  <h3>${p.name}</h3>
+  <p>${formatRs(p.priceSingle)} each</p>
+  <p class="description">${p.description}</p>
+  <p class="seller">Sold by: ${p.seller}</p>
+  <div class="controls">
+    <button data-id="${p.id}" data-act="dec">-</button>
+    <span id="qty-${p.id}">0</span>
+    <button data-id="${p.id}" data-act="inc">+</button>
+  </div>
+  <button data-id="${p.id}" data-act="add">Add to Cart</button>
+`;
+
     if(!p.inStock){
       const overlay=document.createElement('div');
       overlay.className='out-stock';
@@ -444,6 +446,7 @@ updateCart();
 </script>
 </body>
 </html>
+
 
 
 
