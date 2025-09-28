@@ -239,7 +239,7 @@ header .logo {
 
 <header>
   <img src="https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/Trezi.png" alt="Logo" class="logo">
-  Welcome to Trezi Patches
+  Welcome to Trezi Listings
 </header>
 
 
@@ -278,19 +278,34 @@ header .logo {
 
 <script>
 const PRODUCTS = [
-  {id:'p1', name:'Cute Cat', images:[
-    'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch%202.webp',
-    'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch1.webp'
-  ], priceSingle:35, price10:300, inStock:true},
-  {id:'p2', name:'Fruit Patch', images:[
-    'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch2%20stich.webp',
-    'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch3%20stich.webp'
-  ], priceSingle:35, price10:300, inStock:false},
-  {id:'p3', name:'Head Phones', images:[
-    'file:///C:/Users/ASEL/Desktop/Everything%20Lanka/earphones.jpg',
-    'file:///C:/Users/ASEL/Pictures/Screenshots/Screenshot%202025-09-27%20224702.png'
-  ], priceSingle:700, inStock:true}
+  {
+    id:'p1',
+    name:'Cute Cat',
+    images:[
+      'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch%202.webp',
+      'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch1.webp'
+    ],
+    priceSingle:35,
+    price10:300,
+    inStock:true,
+    description:'A cute cat patch perfect for phone covers, bags, and clothing.dfdcscdcdc dccscsscscscscs tgrfefgrv gbfvvdcr fvcded',
+    seller:'Trezi Official'
+  },
+  {
+    id:'p2',
+    name:'Fruit Patch',
+    images:[
+      'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch2%20stich.webp',
+      'https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/patch3%20stich.webp'
+    ],
+    priceSingle:35,
+    price10:300,
+    inStock:false,
+    description:'Bright and colorful fruit design patch to add a fresh look.',
+    seller:'Trezi Official'
+  },
 ];
+
 
 const grid=document.getElementById('productGrid');
 const state={cart:{}, modal:{images:[], index:0}};
@@ -394,6 +409,7 @@ updateCart();
 </script>
 </body>
 </html>
+
 
 
 
