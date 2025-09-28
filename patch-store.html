@@ -348,6 +348,7 @@ function renderProducts(){
         <button data-id="${p.id}" data-act="inc">+</button>
       </div>
       <button data-id="${p.id}" data-act="add">Add to Cart</button>
+      <button data-id="${p.id}" data-act="details">View Details</button>
     `;
     if(!p.inStock){
       const overlay=document.createElement('div');
@@ -430,6 +431,7 @@ updateCart();
 </script>
 </body>
 </html>
+
 
 
 
