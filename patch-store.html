@@ -30,14 +30,23 @@
       overflow: hidden; /* prevent whole-page scrolling */
     }
 
-    header {
-      background: var(--primary);
-      padding: 1rem;
-      text-align: center;
-      font-size: 1.3rem;
-      font-weight: bold;
-      flex-shrink: 0;
-    }
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* optional, keeps text centered with logo */
+  gap: 0.6rem; /* space between logo and text */
+  background: var(--primary);
+  padding: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+header .logo {
+  height: 32px; /* adjust size as needed */
+  width: auto;  /* keep original aspect ratio */
+}
+
 
     main {
       flex: 1;
@@ -228,7 +237,11 @@
 </head>
 <body>
 
-<header>Welcome to Trezi Patches</header>
+<header>
+  <img src="https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/Trezi.png" alt="Logo" class="logo">
+  Welcome to Trezi Patches
+</header>
+
 
 <main>
   <div class="banner">
@@ -381,6 +394,7 @@ updateCart();
 </script>
 </body>
 </html>
+
 
 
 
