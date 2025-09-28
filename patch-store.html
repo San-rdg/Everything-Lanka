@@ -233,6 +233,27 @@ header .logo {
       header { font-size:1.5rem; }
       .grid { grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
     }
+
+        /* Details modal */
+    #detailsModal .content {
+      max-width: 600px;
+      background: #fff;
+      color: #000;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    #detailsModal h2 {
+      color: var(--primary);
+      margin-top: 0;
+    }
+
+    #detailsModal button {
+      margin-top: 1rem;
+      background: var(--primary);
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -409,6 +430,7 @@ updateCart();
 </script>
 </body>
 </html>
+
 
 
 
