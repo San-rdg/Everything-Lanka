@@ -8,10 +8,40 @@
   --card-bg: #F5F5F5;
   --shadow: rgba(0, 0, 0, 0.12);
 }
+.ad-slot {
+  background: rgba(30, 96, 145, 0.2);
+  border: 1px solid #1E6091;
+  border-radius: 1rem;
+  padding: 1.2rem;
+  margin: 1rem 0;
+  text-align: center;
+  color: #ffdd57;
+  transition: all 0.3s ease;
+}
+.ad-slot:hover {
+  background: rgba(12, 62, 114, 0.4);
+  transform: scale(1.02);
+}
+.ad-contact {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #ffdd57;
+  font-weight: bold;
+  text-decoration: none;
+}
+.ad-contact:hover {
+  text-decoration: underline;
+}
+
 
 * {
   box-sizing: border-box;
 }
+
+        footer a {
+          color: var(--text-subtle);
+          text-decoration: none;
+        }
 
         h1 {
             color: var(#000000);
@@ -306,6 +336,7 @@ footer {
     box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
   }
 }
+
 .share-buttons {
   margin-top: 1rem;
   display: flex;
@@ -332,8 +363,33 @@ footer {
 .share-buttons a:hover {
   background: #0c3e72;
 }
+.float-ad-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #1E6091;
+  color: #ffdd57;
+  font-weight: bold;
+  padding: 0.8rem 1.2rem;
+  border-radius: 2rem;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+.float-ad-btn:hover {
+  background: #0c3e72;
+  transform: scale(1.05);
+}
+
+
 
     
+
+
+
+  
+
 
 
 
