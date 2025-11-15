@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Everything Lanka GO — Travel Planner | Everything Lanka</title>
+<meta name="description" content="Everything Lanka GO — your AI-powered Sri Lanka travel planner: enriched guides for top destinations, activities, food, transport, packing, and insider tips." />
+<link rel="canonical" href="https://everythinglanka.wiki/everything-lanka-go.html" />
+
+<style>
+:root{
+  --primary: #1E6091;
+  --accent: #ffdd57;
+  --dark: #0b0c10;
+  --card: #1c1f27;
+  --text: #e1e1e1;
+  --muted: #888;
+  --chat-user: #2a2d35;
+  font-family: Poppins, system-ui, sans-serif;
+}
+body{
+  background: var(--dark);
+  margin: 0;
+  padding: 24px;
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+header{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+}
+header h1{
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+.hero{
+  background: var(--card);
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #222;
+  position: sticky;
+  top: 24px;
+  z-index: 100;
+  background: var(--dark);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+.af-row{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 12px;
+}
+input[type="search"]{
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  font-size: 1.1rem;
+  background: #0b0c10;
+  color: var(--text);
+}
+input[type="search"]::placeholder{
+  color: var(--muted);
+}
+button.af-go{
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+button.af-go:hover{background: #144b73}
+.examples{
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* --- Chat UI Styles --- */
+.af-results{
+  margin-top: 25px;
+}
+.chat-user-prompt {
+  padding: 14px 18px;
+  background: var(--chat-user);
+  border-radius: 10px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  border-left: 3px solid var(--primary);
+}
+.chat-ai-response {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #333;
+}
+.af-typing{
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 10px;
+  padding-left: 4px;
+}
+.af-typing span{animation: blink 1s infinite;}
+@keyframes blink{0%,50%,100%{opacity:1}25%,75%{opacity:0}}
+
+/* --- Card & Animation Styles --- */
+.af-card{
+  background: var(--card);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  margin-bottom: 14px;
+  border: 1px solid #222;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease-out;
+}
+.af-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.af-card.is-closing {
+  transform: scale(0.95);
+  opacity: 0;
+}
+.af-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8);
+}
+.af-card.is-closing:hover {
+  transform: scale(0.95);
+}
+.af-card-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--muted);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+.af-card-close:hover {
+  background: rgba(255, 0, 0, 0.7);
+  color: #fff;
+  opacity: 1;
+  transform: scale(1.1);
+}
+.af-card h4{
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+  color: var(--accent);
+  padding-right: 20px;
+}
+.af-meta{font-size: 1rem;color: var(--text);margin-bottom: 6px;}
+.af-list{margin: 0;padding-left: 18px;color: var(--text);font-size: 1rem;}
+.af-empty {
+  color: var(--muted);
+  padding: 10px;
+  font-style: italic;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease-out;
+  font-size: 1rem;
+}
+.af-empty.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.insider-tip{font-style: italic;color: #ffdd57;margin-top: 6px;}
+img.activity-img{
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 6px;
+  object-fit: cover;
+  height: 180px;
+  border: 1px solid #333;
+}
+
+/* Follow-Up Action Styles for Smart Linking */
+.af-follow-ups {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #333;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.af-follow-ups button {
+  background: #333;
+  color: var(--text);
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+.af-follow-ups button:hover {
+  background: var(--primary);
+  color: #fff;
+}
+</style>
+</head>
+<body>
+<header>
+  <img src="https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/Everything%20Lanka.Wiki%20Homepage.png" alt="Everything Lanka" style="width:56px;height:56px;border-radius:8px;object-fit:cover">
+  <h1>Everything Lanka GO — Travel Planner</h1>
+</header>
+
+<section class="hero">
+  <h2>Explore Sri Lanka — Ask & Get Instant Advice!</h2>
+  <p>Type what you want: activities, food, transport, beaches, hikes, or festivals. The Page will return detailed, insider travel guidance.</p>
+  
+  <div class="af-row">
+    <input id="lankaInput" type="search" placeholder="e.g., surf, hike Ella Rock, kottu Colombo, train to Ella">
+    <button class="af-go" id="lankaGo">Go</button>
+  </div>
+  <div class="examples">Example queries: "Yala safari", "Climb Sigiriya", "Whale watching", "Tea factory", "Best beach to swim"</div>
+</section>
+
+<div class="af-results" id="lankaResults" aria-live="polite"></div>
+
+<script>
+// --- EXPANDED SITE DATA (NOW INCLUDING NINE ARCHES BRIDGE) ---
+const siteData = [
+  {
+    type:"activity",
+    title:"Surfing in Hikkaduwa & Weligama",
+    tags:["surf","surfing","waves","hikkaduwa","weligama","arugam bay","beach","water sport","beginners"],
+    description:"Hikkaduwa and Weligama offer beginner-friendly waves and vibrant beach scenes. Surf early morning for calm seas and golden sunrise views. Arugam Bay is best for experienced surfers in the East Coast season.",
+    places:[{ name:"Hikkaduwa Beach", best:"Nov–Apr", region:"South West Coast", url:"#"}, { name:"Weligama Beach", best:"Nov–Apr", region:"South Coast", url:"#"}, { name:"Arugam Bay (Main Point)", best:"May–Oct", region:"East Coast", url:"#"}],
+    bestTime:"Early morning (6:30 AM – 9:00 AM) or late afternoon.",
+    duration:"2–4 hours per session",
+    difficulty:"Beginner to intermediate",
+    cost:"Board rental ~ Rs. 1000/day. Lesson: Rs. 3000-5000/hr.",
+    season:"Nov–Apr (South/West), May–Oct (East)",
+    gear:["Surfboard","Rash guard/UV shirt","Sunscreen (high SPF)","Water bottle"],
+    tips:["Check rip currents and tide times.","Avoid reef areas if you are a beginner.","Ask local instructors for a short lesson."],
+    nearby:["Hikkaduwa Coral Sanctuary","Galle Fort (near Weligama)","Whale watching"],
+    insiderTip:"Rent boards from local schools for better prices and support community. Always negotiate the price first.",
+    photo:"https://images.pexels.com/photos/34714739/pexels-photo-34714739.jpeg"
+  },
+  {
+    type:"activity",
+    title:"Hike Ella Rock",
+    // 💡 UPDATED: Added 'little adam's peak' to tags for searchability
+    tags:["hike","ella rock","ella","trek","mountain","viewpoint","sunrise","nature","outdoors", "little adam's peak"], 
+    description:"Ella Rock hike offers stunning panoramic views of tea plantations, forests, and surrounding mountains. It's a moderate trek involving train tracks and steep paths. Best done early morning to avoid the heat and catch the sunrise.",
+    places:[{ name:"Ella Town", best:"Start before 6 AM", region:"Hill Country", url:"#"}, { name:"Ella Rock Summit", best:"Sunrise–8 AM", region:"Hill Country", url:"#"}],
+    bestTime:"Pre-dawn (4:30 AM start) to catch the sunrise at the top.",
+    duration:"2–3 hours round trip (excluding breaks)",
+    difficulty:"Moderate (some steep sections)",
+    cost:"Free (Guide tip: Rs. 500-1000, optional)",
+    season:"Jan–Apr (dry season) is ideal, but possible year-round.",
+    gear:["2L Water","Good walking shoes","Snacks","Hat","Camera","Leech socks (wet season)"],
+    tips:["Avoid the wet season due to slippery paths and leeches.","Follow the train tracks out of Ella towards Kithalella station.","Don't rely solely on Google Maps, the path can be confusing."],
+    // 💡 UPDATED: Simplified nearby names to exact searchable terms
+    nearby:["Little Adam's Peak", "Nine Arches Bridge", "train to Ella"], 
+    insiderTip:"Local kids sometimes guide hikers for a small tip; they know secret, less-crowded viewpoints and shortcuts.",
+    photo:"https://images.pexels.com/photos/34714753/pexels-photo-34714753.jpeg"
+  },
+  {
+    type:"activity",
+    title:"Visit the Nine Arches Bridge",
+    // 💡 NEW ENTRY: Dedicated card for Nine Arches Bridge
+    tags:["nine arches bridge","ella","train","iconic view","photo spot","hill country"],
+    description:"A spectacular viaduct and one of the most iconic sights in Ella. Best seen when a blue train crosses it (check the train schedule!). It's a short, easy walk from Ella town.",
+    places:[{ name:"Nine Arches Bridge", best:"Train time (midday/late afternoon)", region:"Hill Country", url:"#"}],
+    bestTime:"Around 9:30 AM or 3:30 PM (approximate train crossing times).",
+    duration:"1–2 hours",
+    difficulty:"Easy walk",
+    cost:"Free",
+    season:"All year",
+    gear:["Camera","Comfortable shoes"],
+    tips:["Walk along the train tracks from Ella station (but be careful of trains!).","The best viewpoint is from the surrounding hillsides."],
+    nearby:["Ella Rock","Little Adam's Peak","food"],
+    insiderTip:"The early morning light is beautiful, even without a train crossing. Grab a fresh juice from one of the small cafes overlooking the bridge.",
+    photo:"https://images.pexels.com/photos/34714757/pexels-photo-34714757.jpeg"
+  },
+  {
+    type:"activity",
+    title:"Scenic Train Ride: Colombo → Ella",
+    tags:["train","ella train","colombo to ella","railway","scenic train","hill country","transport","nuwara eliya","kandy"],
+    description:"A world-famous scenic train journey through Sri Lanka’s Hill Country, passing lush tea plantations, towering mountains, and stunning waterfalls. The segment from Nanu Oya to Ella is considered the most picturesque. Book well in advance!",
+    places:[{ name:"Colombo Fort → Kandy", best:"Morning departure", region:"Hill Country Entry", url:"#"}, { name:"Kandy → Nanu Oya (Nuwara Eliya)", best:"Midday views", region:"Tea Country Heart", url:"#"}, { name:"Nanu Oya → Ella", best:"Morning/afternoon", region:"Best Views", url:"#"}],
+    bestTime:"6:00 AM – 8:30 AM departures offer the best light and less delay risk.",
+    duration:"Approx. 9 hours end-to-end (Colombo to Ella)",
+    difficulty:"Easy (comfortable, but long train ride)",
+    cost:"1st class A/C: Rs. 2000+. 2nd class reserved: Rs. 800+. Unreserved is cheaper but crowded.",
+    season:"All year, though views are clearer in the dry season.",
+    gear:["Snacks & drinks","Camera (for iconic door shots)","Light shawl (gets chilly in the hill country)"],
+    tips:["Book tickets at least a month in advance, especially 1st/2nd class reserved.","Sit on the left side when going from Kandy to Ella for the best scenery."],
+    nearby:["Nuwara Eliya","Tea factory"],
+    insiderTip:"Reserve 2nd-class window seats early; 1st-class sells out fastest. Unreserved 3rd class is an authentic but extremely crowded experience.",
+    photo:"https://images.pexels.com/photos/34714748/pexels-photo-34714748.jpeg"
+  },
+  {
+    type:"activity",
+    title:"Eat Local Sri Lankan Food: Kottu & Hoppers",
+    tags:["food","local food","street food","kottu","hopper","rice & curry","jaffna crab","restaurant","cuisine","dinner","colombo food"],
+    description:"Discover the vibrant flavors of Sri Lanka. Must-try dishes include savory Rice & Curry, the iconic egg/plain **Hoppers**, the diced Roti stir-fry **Kottu**, and rich **Jaffna Crab Curry**. Street food markets are best in the evening.",
+    places:[{ name:"Galle Face Green — Street Food", best:"Evening (4 PM onwards)", region:"Colombo", url:"#"}, { name:"Pilawoos / Hotel de Pilawoos — Kottu", best:"Late night", region:"Colombo", url:"#"}, { name:"The best Rice & Curry shops", best:"Lunch/Dinner", region:"All over", url:"#"}],
+    bestTime:"Lunch for Rice & Curry; Dinner for Kottu/Hoppers/Street Food",
+    duration:"1–2 hours per meal",
+    difficulty:"Easy",
+    cost:"Street Food/Local Meal: Rs. 300–800 per person. Restaurant meal: Rs. 1500+.",
+    season:"All year",
+    gear:["Cash (many street stalls don't take card)","Water bottle"],
+    tips:["Try hoppers and chicken kottu first.","Look for busy, clean-looking stalls or shops; high turnover means fresh food."],
+    nearby:["Galle Fort","tuk-tuk"],
+    insiderTip:"Ask for 'extra spicy' (*miris wadi*) if you love heat, or 'non-spicy' (*miris nethi*) if you prefer mild food. Try 'string hoppers' for breakfast!",
+    photo:"https://images.pexels.com/photos/10682991/pexels-photo-10682991.jpeg"
+  },
+  {
+    type:"activity",
+    title:"Yala National Park Safari",
+    tags:["safari","yala","leopard","wildlife","national park","elephant","jeep tour","tissamaharama"],
+    description:"Experience a thrilling jeep safari in Yala, known for having one of the highest densities of **leopards** in the world. Also expect to see elephants, sloth bears, water buffalo, and a variety of birds. Book a morning or evening slot for the best animal sightings.",
+    places:[{ name:"Yala National Park (Block I)", best:"Morning or Evening", region:"South East Coast", url:"#"}, { name:"Bundala National Park", best:"Best for birds", region:"South Coast", url:"#"}],
+    bestTime:"Morning (5:30 AM start) or Evening (2:30 PM start).",
+    duration:"Half-day (6 hours) or Full-day (12 hours)",
+    difficulty:"Easy (riding in a comfortable safari jeep)",
+    cost:"Park entry: ~USD 25-35 per person. Jeep rental: ~USD 40-70 per half-day.",
+    season:"Feb to July is peak dry season for best viewing. Avoid closures in Sept/Oct.",
+    gear:["Hat & sunglasses","Binoculars","Camera with zoom lens","Water and snacks"],
+    tips:["Hire a reputable driver/guide who knows the animal spots.","Dress in muted colors (khaki, brown) to blend in.","Be patient; sightings aren't guaranteed."],
+    nearby:["food","whale watching"],
+    insiderTip:"If Yala is too crowded or closed, consider Udawalawe National Park for guaranteed large elephant herds.",
+    photo:"https://images.pexels.com/photos/14845112/pexels-photo-14845112.jpeg"
+  },
+  {
+    type:"culture",
+    title:"Kandy Esala Perahera Festival",
+    tags:["festival","kandy","perahera","esala","buddhist","culture","procession","temple tooth","annual"],
+    description:"The grandest cultural festival in Sri Lanka, held annually in Kandy (usually July/August). It features a spectacular procession of decorated elephants, traditional dancers, drummers, and fire-breathers, paying homage to the Sacred Tooth Relic.",
+    places:[{ name:"Temple of the Sacred Tooth Relic", best:"Night time procession", region:"Kandy (Hill Country)", url:"#"}],
+    bestTime:"The final night ('Randoli Perahera') is the grandest.",
+    duration:"10 nights and 11 days (the procession length increases nightly).",
+    difficulty:"Crowded but highly rewarding experience.",
+    cost:"Free (Street viewing). Reserved seating: USD 30-100 per person.",
+    season:"Typically held in the month of Esala (July/August); dates vary based on the lunar calendar.",
+    gear:["Small cushion (for sitting)","Water","Rain gear (it might drizzle)","Camera"],
+    tips:["Book accommodation in Kandy far in advance.","Arrive very early (by 3 PM) to secure a good viewing spot on the street.","Reserved seating is worth the price for comfort and view."],
+    nearby:["train","Tea factory"],
+    insiderTip:"The procession usually starts near the Temple of the Tooth and circles the Kandy Lake. Check the route beforehand.",
+    photo:"https://images.pexels.com/photos/18260799/pexels-photo-18260799.jpeg"
+  },
+  {
+    type:"culture",
+    title:"Climb Sigiriya (Lion Rock)",
+    tags:["sigiriya","lion rock","cultural triangle","dambulla","history","climb","unesco","ancient city"],
+    description:"Climb the iconic **Sigiriya Rock Fortress**, a UNESCO World Heritage site. This ancient palace stands on a massive 200m high rock, featuring frescoes, the 'Mirror Wall', and the giant Lion's Paw gateway. The summit offers breathtaking 360-degree views.",
+    places:[{ name:"Sigiriya Rock Fortress", best:"Morning (7 AM)", region:"Cultural Triangle", url:"#"}, { name:"Pidurangala Rock", best:"Sunrise/Sunset", region:"Cultural Triangle", url:"#"}],
+    bestTime:"Early morning (7 AM) to avoid crowds and intense heat. Or late afternoon (4 PM) for sunset.",
+    duration:"2-3 hours round trip (for the climb and summit)",
+    difficulty:"Moderate (approx. 1200 steps, some steep)",
+    cost:"Entry: ~USD 30-36 per person (foreign adult).",
+    season:"Jan-Apr (dry season) is best. Possible year-round.",
+    gear:["1-2L Water","Good shoes","Hat","Sunscreen","Camera"],
+    tips:["Start exactly at 7 AM when it opens.","Bring water, as it's not sold on the rock.","Be mindful of hornets; stay quiet and avoid bright colors if they are active."],
+    nearby:["Dambulla Cave Temple","food"],
+    insiderTip:"For a budget-friendly view *of* Sigiriya, climb Pidurangala Rock at sunrise. The view is arguably more spectacular.",
+    photo:"https://images.pexels.com/photos/1070034/pexels-photo-1070034.jpeg"
+  },
+  {
+    type:"activity",
+    title:"Whale Watching in Mirissa",
+    tags:["whale","whale watching","mirissa","dolphin","boat tour","ocean","south coast","wildlife"],
+    description:"Mirissa is the top spot in Sri Lanka for whale watching. Join a boat tour in the early morning to spot majestic **Blue Whales** (the largest animal on Earth), as well as Sperm Whales, Fin Whales, and pods of dolphins.",
+    places:[{ name:"Mirissa Harbour", best:"Morning departure", region:"South Coast", url:"#"}],
+    bestTime:"6:00 AM – 7:00 AM departure.",
+    duration:"3-5 hours depending on sightings",
+    difficulty:"Easy (boat ride, but can be choppy)",
+    cost:"~USD 40-60 per person (negotiable, check for safety-certified operators).",
+    season:"Peak season is **November to April** when the seas are calm.",
+    gear:["Seasickness tablets","Sunscreen","Hat & sunglasses","Camera","Light breakfast/water"],
+    tips:["Choose a reputable company that follows international whale-watching guidelines (doesn't chase or crowd the animals).","Take seasickness medication *before* you board, even if you don't normally get sick."],
+    nearby:["Mirissa Beach","surf","food"],
+    insiderTip:"The chances of sightings are very high (90%+) in peak season, but never 100%. Go on one of your first days in Mirissa in case you need to re-book (some operators offer a free second trip if no whales are seen).",
+    photo:"https://images.pexels.com/photos/167664/pexels-photo-167664.jpeg"
+  },
+  {
+    type:"activity",
+    title:"Relaxing Beaches: Unawatuna & Mirissa",
+    tags:["beach","swim","relax","unawatuna","mirissa","bentota","south coast","galle","sunbathe","turtle"],
+    description:"For swimming, sunbathing, and relaxing, the South Coast beaches are ideal. **Unawatuna** offers calm, protected waters perfect for swimming, while **Mirissa Beach** is a beautiful crescent bay with beachside restaurants and a lively vibe.",
+    places:[{ name:"Unawatuna Main Beach", best:"All day", region:"South Coast (near Galle)", url:"#"}, { name:"Mirissa Beach", best:"All day", region:"South Coast", url:"#"}, { name:"Wijaya Beach (Dalawella)", best:"Daytime", region:"South Coast", url:"#"}],
+    bestTime:"All day. Water is calmest in the morning.",
+    duration:"As long as you want!",
+    difficulty:"Easy",
+    cost:"Free (Sunbed rental ~Rs. 1000 or free with restaurant purchase).",
+    season:"November to April (peak South Coast season).",
+    gear:["Swimsuit","Towel","Sunscreen","Book","Sunglasses"],
+    tips:["Be aware of currents, especially in off-season.","Many beach bars offer free use of their sunbeds if you buy food or drinks."],
+    nearby:["Galle Fort","surf","food"],
+    insiderTip:"Visit the small beach at **Wijaya (Dalawella)** to swim with giant sea turtles that feed on the seaweed near the shore (mornings are best).",
+    photo:"https://images.pexels.com/photos/1032650/pexels-photo-1032650.jpeg"
+  },
+  {
+    type:"culture",
+    title:"Visit a Tea Plantation & Factory",
+    tags:["tea","tea factory","plantation","nuwara eliya","hill country","ceylon tea","ella","kandy"],
+    description:"No trip to Sri Lanka's Hill Country is complete without visiting a tea plantation. Take a guided tour of a working factory to see the full process from leaf-plucking to sorting and drying. Most tours end with a tasting of fresh Ceylon tea.",
+    places:[{ name:"Pedro Tea Estate", best:"Morning tour", region:"Nuwara Eliya", url:"#"}, { name:"Heritance Tea Factory (Hotel)", best:"High Tea", region:"Nuwara Eliya", url:"#"}, { name:"Lipton's Seat", best:"Sunrise view", region:"Haputale (near Ella)", url:"#"}],
+    bestTime:"Morning (plucking and factory activity is highest).",
+    duration:"1-2 hours for a factory tour and tasting.",
+    difficulty:"Easy (walking tour)",
+    cost:"Tour cost: Rs. 500 - 1500 per person.",
+    season:"All year, but driest from Jan to Apr.",
+    gear:["Light jacket (it's cool)","Camera","Comfortable shoes"],
+    tips:["Photography inside the factories is sometimes restricted; always ask first.","Buy tea from the factory shop for the freshest, highest-quality product."],
+    nearby:["train to Ella","food"],
+    insiderTip:"Pedro Tea Estate is very close to Nuwara Eliya town and offers excellent tours. For a more historic experience, visit the Dambatenne factory near Lipton's Seat.",
+    photo:"https://images.pexels.com/photos/2280927/pexels-photo-2280927.jpeg"
+  },
+  {
+    type:"guide",
+    title:"Getting Around: Transport Guide (Tuk-tuk, Bus, Car)",
+    tags:["transport","tuk-tuk","bus","car","driver","getting around","how to travel","pickme"],
+    description:"Navigating Sri Lanka involves a mix of options. **Tuk-tuks** are great for short distances. **Local buses** are very cheap but can be crowded and fast. **Private drivers** are best for comfort, convenience, and long-distance travel with luggage.",
+    places:[{ name:"Tuk-tuk (Auto Rickshaw)", best:"Short trips (<10km)", region:"All towns", url:"#"}, { name:"Local Bus", best:"Budget travel (city-to-city)", region:"All routes", url:"#"}, { name:"Private Car/Driver", best:"Long distance / airport", region:"All Island", url:"#"}],
+    bestTime:"N/A",
+    duration:"N/A",
+    difficulty:"Varies (Bus = medium, Driver = easy)",
+    cost:"Tuk-tuk (PickMe/Uber): ~Rs. 100/km. Driver: ~USD 50-70/day.",
+    season:"All year",
+    gear:["Cash (small notes for bus/tuk-tuk)","PickMe or Uber app (in major cities)"],
+    tips:["**Tuk-tuk:** Always agree on the price *before* you get in, or insist on the meter. In Colombo/Kandy, use the PickMe app for fair pricing.","**Bus:** Have small change ready. Tell the conductor your stop.","**Driver:** Book in advance. Confirm the price includes fuel, tolls, and driver's food/accommodation."],
+    nearby:[],
+    insiderTip:"For journeys like Colombo to the South Coast, a private car or airport highway bus is much faster than the train. For the Hill Country, the train is the most scenic.",
+    photo:"https://images.pexels.com/photos/1609995/pexels-photo-1609995.jpeg"
+  }
+];
+
+// Global Context State for "Memory"
+let currentContext = {
+  regions: new Set(),
+  types: new Set()
+};
+
+const resultsRoot = document.getElementById("lankaResults");
+const inputField = document.getElementById("lankaInput");
+
+/* 🧠 MODIFIED MATCH QUERY FUNCTION (Handles Context) */
+function matchQuery(q){
+  q = q.toLowerCase();
+  
+  // 1. Initial Match based on tags
+  let matchedItems = siteData.filter(item => item.tags.some(tag => q.includes(tag)));
+
+  // 2. Update Context (if we found relevant items)
+  if (matchedItems.length > 0) {
+    matchedItems.forEach(item => {
+      // Capture the region from the item's places
+      if (item.places && item.places.length > 0) {
+        item.places.forEach(p => currentContext.regions.add(p.region));
+      }
+      // Capture the type of activity
+      currentContext.types.add(item.type);
+    });
+  }
+
+  // 3. Contextual Filtering (If the query is generic, filter by known region)
+  if (currentContext.regions.size > 0 && q.length < 7 && q !== "transport") { 
+    let regionArray = Array.from(currentContext.regions);
+    
+    // Check if any matched item is in one of the current regions
+    let contextFilteredItems = matchedItems.filter(item => 
+      item.places && item.places.some(p => regionArray.includes(p.region))
+    );
+
+    // Only use the filtered list if it actually returns results, otherwise keep the broader list
+    if (contextFilteredItems.length > 0) {
+        matchedItems = contextFilteredItems;
+    }
+  }
+
+  return matchedItems;
+}
+
+/* RENDER RESULTS (Updated for animations and follow-up buttons) */
+function renderResults(items, container, contextInfo = "") {
+  container.innerHTML = "";
+
+  if (items.length === 0) {
+    const emptyEl = document.createElement('div');
+    emptyEl.className = 'af-empty';
+    emptyEl.textContent = `No matches found. Try: "surf", "hike", "sigiriya", "whale", "tea", "transport", "temple".`;
+    container.appendChild(emptyEl);
+    
+    setTimeout(() => {
+      emptyEl.classList.add('is-visible');
+    }, 50);
+    return;
+  }
+  
+  // Optional: Display context filter information
+  if (currentContext.regions.size > 0) {
+    const contextEl = document.createElement('div');
+    contextEl.className = 'af-meta';
+    contextEl.style.color = 'var(--primary)';
+    contextEl.style.marginBottom = '10px';
+    contextEl.textContent = `🔍 Filtering by regions: ${Array.from(currentContext.regions).join(', ')}`;
+    container.appendChild(contextEl);
+  }
+
+
+  items.forEach((item, index) => {
+    const card = document.createElement("div");
+    card.className = "af-card";
+    
+    const placesList = item.places && item.places.length > 0 ? `<div class="af-meta">Top places:</div>
+      <ul class="af-list">${item.places.map(p=>`<li><strong>${p.name}</strong> — ${p.best} (<strong>${p.region}</strong>)</li>`).join("")}</ul>` : "";
+
+    // 🔗 Deep Data Linking: Generate follow-up buttons
+    let followUpHTML = "";
+    if (item.nearby && item.nearby.length > 0) {
+        const buttons = item.nearby.map(place => 
+            `<button class="af-follow-up-btn" data-query="${place}">${place}</button>`
+        ).join('');
+        followUpHTML = `<div class="af-follow-ups">Next logical steps: ${buttons}</div>`;
+    }
+
+    card.innerHTML = `
+      <button class="af-card-close" title="Dismiss">&times;</button>
+      <h4>${item.title}</h4>
+      ${item.photo ? `<img src="${item.photo}" class="activity-img" alt="${item.title}">` : ""}
+      <div class="af-meta"><strong>Description:</strong> ${item.description}</div>
+      <div class="af-meta"><strong>Best time:</strong> ${item.bestTime}</div>
+      <div class="af-meta"><strong>Duration:</strong> ${item.duration}</div>
+      <div class="af-meta"><strong>Difficulty:</strong> ${item.difficulty}</div>
+      <div class="af-meta"><strong>Estimated Cost:</strong> ${item.cost}</div>
+      ${placesList}
+      <div class="af-meta"><strong>Recommended Gear:</strong> ${item.gear.join(", ")}</div>
+      <div class="af-meta"><strong>Key Tips:</strong> ${item.tips.join(" · ")}</div>
+      ${item.nearby && item.nearby.length > 0 ? `<div class="af-meta"><strong>Nearby attractions:</strong> ${item.nearby.join(", ")}</div>` : ""}
+      ${item.insiderTip ? `<div class="insider-tip">💡 Insider tip: ${item.insiderTip}</div>` : ""}
+      ${followUpHTML}
+    `;
+    container.appendChild(card);
+
+    // Staggered reveal animation
+    setTimeout(() => {
+      card.classList.add('is-visible');
+    }, index * 150);
+  });
+}
+
+/* RUN QUERY WITH DELAY */
+function runQuery(q){
+  if (!q.trim()) return; 
+
+  const userPrompt = document.createElement("div");
+  userPrompt.className = "chat-user-prompt";
+  userPrompt.textContent = q;
+  resultsRoot.appendChild(userPrompt);
+
+  const aiResponse = document.createElement("div");
+  aiResponse.className = "chat-ai-response";
+  aiResponse.innerHTML = `<div class="af-typing">Thinking <span>.</span><span>.</span><span>.</span></div>`;
+  resultsRoot.appendChild(aiResponse);
+
+  userPrompt.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  inputField.value = "";
+
+  setTimeout(() => {
+    const results = matchQuery(q);
+    renderResults(results, aiResponse);
+  }, 700);
+}
+
+/* EVENTS (Modified to handle new follow-up buttons) */
+document.getElementById("lankaGo").onclick = () => runQuery(inputField.value);
+inputField.addEventListener("keydown", e => { 
+  if(e.key==="Enter") runQuery(e.target.value); 
+});
+
+// Event Delegation for Close Buttons AND Follow-Up Buttons
+resultsRoot.addEventListener('click', e => {
+  // 1. Close Button Logic
+  if (e.target.classList.contains('af-card-close')) {
+    const card = e.target.closest('.af-card');
+    if (card) {
+      card.classList.add('is-closing'); 
+      setTimeout(() => {
+        card.remove();
+      }, 400); 
+    }
+  }
+
+  // 2. Follow-Up Button Logic
+  if (e.target.classList.contains('af-follow-up-btn')) {
+    const query = e.target.getAttribute('data-query');
+    if (query) {
+      runQuery(query);
+    }
+  }
+});
+</script>
+
+<footer>
+<p>Everything Lanka GO — DB powered travel assistant with detailed guides, insider tips, and enriched answers for Sri Lanka tourists.</p>
+<p>&copy; 2025 Everything Lanka</p>
+</footer>
+</body>
+</html>
