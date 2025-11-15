@@ -144,6 +144,25 @@
 
 <a href="https://www.instagram.com/everything_lanka.wiki/" target="_blank" class="float-ad-btn">📢 Advertise</a>
 
+  <section id="activityFinder">
+  <h3>What do you wanna do today in Sri Lanka?</h3>
+
+  <div class="af-row">
+    <input id="afInput" type="search" placeholder="e.g. surf, hike, ella train, waterfalls…">
+    <button class="af-go" id="afGo">Go</button>
+  </div>
+
+  <div class="suggestions">
+    <button data-s="surf">Surf</button>
+    <button data-s="hike">Hike / Trek</button>
+    <button data-s="train">Train trip (Colombo → Ella)</button>
+    <button data-s="food">Eat local food</button>
+    <button data-s="wildlife">Wildlife / Safari</button>
+  </div>
+
+  <div class="af-results" id="afResults"></div>
+</section>
+
   <script>
 /* ============================
    FIXED: Hike + Food responses
@@ -879,6 +898,7 @@ document.querySelectorAll(".suggestions button").forEach(b=>{
 
 </body>
 </html>
+
 
 
 
