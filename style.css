@@ -8,6 +8,20 @@
   --card-bg: #F5F5F5;
   --shadow: rgba(0, 0, 0, 0.12);
 }
+    .emergency-banner {
+      background: #d40000;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
 .ad-slot {
   background: rgba(30, 96, 145, 0.2);
   border: 1px solid #1E6091;
@@ -389,6 +403,7 @@ footer {
 
 
   
+
 
 
 
