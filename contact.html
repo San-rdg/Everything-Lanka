@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - Everything Lanka</title>
 
+  <!-- Emergency Red Banner Styles -->
+  <style>
+    .emergency-banner {
+      background: #d40000;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    body {
+      padding-top: 80px; /* To prevent content from hiding under banner */
+    }
+  </style>
+
   <!-- Meta Tags -->
   <meta name="description" content="Everything Lanka – Discover Sri Lanka's best destinations, cultural wonders, travel tips, and local insights. Plan your perfect island adventure today!">
   <meta name="keywords" content="Sri Lanka travel, Sri Lanka tourism, destinations in Sri Lanka, cultural sites, travel tips, Sinhala language, Tamil translation, island adventure">
@@ -19,15 +40,15 @@
 
   <link rel="stylesheet" href="style.css">
 
-      <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2S823WWMZ9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S823WWMZ9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}    
+    gtag('js', new Date());
+    gtag('config', 'G-2S823WWMZ9');
+  </script>
 
-  gtag('config', 'G-2S823WWMZ9');
-</script>
   <style>
     .credit-card, .vision-section {
       background: linear-gradient(135deg, var(--primary-green), var(--trip-yellow));
@@ -81,6 +102,12 @@
   </style>
 </head>
 <body>
+
+  <!-- Emergency Banner -->
+  <div class="emergency-banner">
+    ⚠️ EXTREME WEATHER ALERT — Emergency Contacts: Disaster Management Centre: 117 | Police Emergency: 119 | Ambulance & Fire: 110 | Coast Guard: 1175
+  </div>
+
   <header>
     <h1>Everything Lanka</h1>
     <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
@@ -138,6 +165,7 @@
   </script>
 </body>
 </html>
+
 
 
 
