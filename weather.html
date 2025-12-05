@@ -3,443 +3,342 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="google-adsense-account" content="ca-pub-2989049114911399">
-  <meta name="description" content="Check live weather updates for every district in Sri Lanka – current temperature, forecast, humidity, and more with Everything Lanka.">
-<meta property="og:title" content="Sri Lanka Live Weather – Everything Lanka">
-<meta property="og:description" content="Accurate, real-time weather for all 25 districts of Sri Lanka.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://everythinglanka.wiki/assets/weather-preview.jpg">
-<meta property="og:url" content="https://everythinglanka.wiki/weather.html">
-<meta name="twitter:card" content="summary_large_image">
+  <meta name="description" content="Premium Live Weather Dashboard for Sri Lanka">
+  <title>Everything Lanka – Weather Enhanced</title>
 
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WeatherForecast",
-  "name": "Sri Lanka Weather – Everything Lanka",
-  "provider": {
-    "@type": "Organization",
-    "name": "Everything Lanka",
-    "url": "https://everythinglanka.wiki"
-  },
-  "areaServed": "Sri Lanka",
-  "datePublished": "2025-10-28",
-  "description": "Live and forecast weather data for all Sri Lankan districts, including temperature, humidity, and rainfall predictions."
-}
-</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
 
-  <title>Everything Lanka – Weather (Enhanced)</title>
-
-  <!-- Animate.css for subtle entry animations -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S823WWMZ9"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} 
-    gtag('js', new Date());
-    gtag('config', 'G-2S823WWMZ9');
-  </script>
 
   <style>
-    /* → Global Styles */
+    /* --- 1. CORE VARIABLES --- */
+    :root {
+      --glass: rgba(255, 255, 255, 0.12);
+      --glass-hover: rgba(255, 255, 255, 0.2);
+      --border: rgba(255, 255, 255, 0.3);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      --accent: #ffd700; /* Yellow for high contrast */
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    :root{
-      --primary:#1b0fc8; --accent:#ffdd57; --glass: rgba(255,255,255,0.08);
-      --card-bg: rgba(246,246,246,0.92); --muted:#c7c7c7;
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      min-height: 100vh;
+      color: #fff;
+      overflow-x: hidden;
+      background: #0f2027; 
+      transition: background 1.5s ease-in-out;
     }
 
-    @keyframes bgAnimation { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+    /* --- 2. DYNAMIC BACKGROUND THEMES --- */
+    body.theme-clear { 
+      background: linear-gradient(135deg, #2980b9, #6dd5fa, #ffffff); 
+      background-size: 400% 400%; animation: gradientMove 15s ease infinite; 
+    }
+    body.theme-night { background: linear-gradient(to bottom, #000000, #0f2027, #2c5364); }
+    body.theme-cloudy { background: linear-gradient(to bottom, #304352, #859398); }
+    body.theme-rain { background: linear-gradient(to bottom, #203a43, #2c5364); }
+    body.theme-thunder { background: #141E30; }
 
-    body{
-      min-height:100vh;
-      background: linear-gradient(135deg,#141e30 0%, #243b55 100%);
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      color:#fff; padding:28px 20px 60px;
-      background-size:300% 300%; animation: bgAnimation 20s linear infinite;
+    /* Moving Clouds Overlay */
+    body.theme-cloudy::before {
+      content: ''; position: fixed; top: 0; left: 0; width: 200%; height: 100%;
+      background: url('https://raw.githubusercontent.com/basmilius/weather-icons/master/design/fill/animation-ready/cloudy.svg'); 
+      background-size: contain; opacity: 0.1; animation: drift 60s linear infinite; pointer-events: none; z-index: 0;
     }
 
-    header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px; }
-    header h1 a{ color:var(--accent); text-decoration:none; font-weight:700; letter-spacing:0.4px; }
-    .menu-toggle{ background:transparent; color:#fff; border:2px solid rgba(255,255,255,0.08); padding:8px 10px; border-radius:8px }
-
-    .clock {
-      font-size: 3.4rem; color: var(--primary); padding: 12px 22px; margin: 12px auto; width: fit-content;
-      background: rgba(255,255,255,0.92); color: #0b0b3a; border-radius: 12px; box-shadow: 0 6px 22px rgba(11,11,58,0.35);
-      animation: glow 2s infinite alternate; font-weight:700;
+    /* Rain Overlay */
+    body.theme-rain::after {
+      content: ""; position: fixed; inset: 0; z-index: 0;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCI+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSJyd2hhKDI1NSwyNTUsMjU1LDAuNCkiIGQ9Ik0wIDBsNSA4Ii8+PC9zdmc+');
+      animation: rainFall 0.4s linear infinite; opacity: 0.7; pointer-events: none;
     }
 
-    @keyframes glow { from { box-shadow: 0 0 8px #1b0fc8; } to { box-shadow: 0 0 30px #ffffff; } }
-
-    /* → Main layout */
-    .grid{ display:grid; grid-template-columns: 1fr 420px; gap:20px; align-items:start; max-width:1100px; margin: 16px auto; }
-    @media(max-width:920px){ .grid{ grid-template-columns: 1fr; padding:0 12px } }
-
-    /* → Weather Card */
-    .weather-container {
-      background: var(--glass); border-radius: 12px; padding: 18px; box-shadow: 0 12px 36px rgba(0,0,0,0.45); 
-      backdrop-filter: blur(6px);
+    /* Thunder Overlay */
+    body.theme-thunder::before {
+      content: ""; position: fixed; inset: 0; background: #fff;
+      opacity: 0; animation: lightning 5s infinite; z-index: 1; pointer-events: none;
     }
-    .weather-header{ display:flex; align-items:center; justify-content:space-between; gap:12px }
-    .weather-header h2{ font-size:1.4rem; color:var(--accent); }
 
-    .controls{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
-    select, button, .small-btn{ font-size:0.98rem; padding:8px 12px; border-radius:8px; border:none }
-    select{ background:rgba(255,255,255,0.9); min-width:170px }
-    button{ background:var(--primary); color:#fff; cursor:pointer; box-shadow: 0 6px 18px rgba(0,0,0,0.4) }
-    button:hover{ transform:translateY(-3px); background:#ffffff; color:var(--primary); }
-    .small-btn{ background:rgba(255,255,255,0.95); color:#0b0b3a }
+    @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes rainFall { from { background-position: 0 0; } to { background-position: -5px 20px; } }
+    @keyframes lightning { 0%, 95% { opacity: 0; } 96% { opacity: 0.3; } 97% { opacity: 0; } 98% { opacity: 0.1; } 100% { opacity: 0; } }
 
-    .meta-row{ display:flex; gap:8px; margin-top:8px; color:var(--muted); font-size:0.95rem }
+    /* --- 3. LAYOUT --- */
+    .container {
+      max-width: 1100px; margin: 0 auto; padding: 30px 20px;
+      position: relative; z-index: 2; display: flex; flex-direction: column; gap: 30px;
+    }
 
-    .weather-result{ margin-top:14px; background:var(--card-bg); color:#0b0b3a; padding:14px; border-radius:10px }
-    .weather-top{ display:flex; gap:12px; align-items:center }
-    .icon{ font-size:2.4rem }
-    .temp{ font-size:2rem; font-weight:700 }
-    .desc{ font-weight:600; color:#333 }
-    .extra{ margin-top:10px; display:flex; gap:12px; flex-wrap:wrap }
-    .pill{ background:rgba(11,11,58,0.06); padding:6px 10px; border-radius:8px; font-weight:600 }
+    header { text-align: center; margin-bottom: 20px; }
+    h1 { 
+      font-size: 3.5rem; font-weight: 800; letter-spacing: -1.5px;
+      background: linear-gradient(to right, #fff, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-bottom: 5px;
+    }
+    .subtitle { font-size: 1.1rem; opacity: 0.8; font-weight: 300; letter-spacing: 1px; }
 
-    .forecast{ margin-top:12px }
-    .day{ display:flex; align-items:center; justify-content:space-between; padding:10px; border-radius:8px; background:rgba(11,11,58,0.03); margin-bottom:8px }
+    .glass-card {
+      background: var(--glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border); border-radius: 24px; padding: 30px;
+      box-shadow: var(--shadow); transition: transform 0.3s ease;
+    }
+    
+    .controls-bar { display: flex; gap: 12px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
+    select, button { padding: 14px 24px; border-radius: 50px; border: none; font-size: 1rem; cursor: pointer; }
+    select { background: rgba(255,255,255,0.9); font-weight: 600; min-width: 200px; outline: none; }
+    .btn-primary { background: var(--accent); color: #222; font-weight: 700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+    .btn-primary:hover { transform: scale(1.05); background: #fff; }
+    .btn-icon { background: rgba(255,255,255,0.2); color: #fff; backdrop-filter: blur(5px); }
 
-    .sparkline{ width:100%; height:60px; display:block; margin-top:8px }
+    .weather-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; display: none; }
+    @media(max-width: 800px) { .weather-grid { grid-template-columns: 1fr; } }
 
-    /* → Sidebar info */
-    .info-card{ background:rgba(255,255,255,0.04); padding:16px; border-radius:12px; }
-    .info-card h3{ color:var(--accent); margin-bottom:8px }
+    /* HERO SECTION */
+    .weather-hero { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .live-badge { background: #ff4757; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; }
+    .weather-icon { font-size: 6rem; margin: 10px 0; filter: drop-shadow(0 0 20px rgba(255,255,255,0.4)); }
+    .temp-large { font-size: 5.5rem; font-weight: 800; line-height: 1; margin-left: 15px; }
+    
+    /* WEATHER DESCRIPTION TEXT (FIXED) */
+    .condition-text { 
+      font-size: 2rem; /* Bigger */
+      font-weight: 700; /* Bolder */
+      color: var(--accent); /* Yellow */
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Shadow for readability */
+      margin-top: 10px;
+      text-transform: capitalize;
+    }
 
-    footer{ text-align:center; color:var(--muted); margin-top:24px }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .stat-box { background: rgba(0,0,0,0.2); border-radius: 16px; padding: 15px; display: flex; flex-direction: column; justify-content: center; }
+    .stat-label { font-size: 0.85rem; opacity: 0.7; margin-bottom: 5px; }
+    .stat-val { font-size: 1.25rem; font-weight: 700; }
 
-    a{ color: #ffffff; text-decoration: none }
+    .chart-container { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); }
+    svg.sparkline { width: 100%; height: 80px; overflow: visible; }
+    .spark-line { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; filter: drop-shadow(0 0 8px var(--accent)); }
+    .spark-fill { fill: rgba(255, 215, 0, 0.1); stroke: none; }
+    footer { text-align: center; margin-top: 40px; opacity: 0.6; font-size: 0.9rem; }
   </style>
 </head>
 <body>
 
-  <header>
-     <h1><a href="https://everythinglanka.wiki/">Everything Lanka</a></h1>
-     <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-  </header>
+  <div class="container">
+    <header class="animate__animated animate__fadeInDown">
+      <h1>Everything Lanka</h1>
+      <div class="subtitle">Live Weather Intelligence Center</div>
+      <div id="clock" style="margin-top:10px; font-weight:700; opacity:0.8">--:--:--</div>
+    </header>
 
-  <div class="clock" id="clock" aria-live="polite"></div>
+    <div class="controls-bar animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+      <select id="districts">
+        <option disabled selected>Select District</option>
+        <option>Colombo</option><option>Gampaha</option><option>Kalutara</option>
+        <option>Kandy</option><option>Matale</option><option>Nuwara Eliya</option>
+        <option>Galle</option><option>Matara</option><option>Hambantota</option>
+        <option>Jaffna</option><option>Kilinochchi</option><option>Mannar</option>
+        <option>Vavuniya</option><option>Mullaitivu</option><option>Trincomalee</option>
+        <option>Batticaloa</option><option>Ampara</option><option>Monaragala</option>
+        <option>Badulla</option><option>Ratnapura</option><option>Kegalle</option>
+        <option>Anuradhapura</option><option>Polonnaruwa</option><option>Puttalam</option>
+        <option>Kurunegala</option>
+      </select>
+      <button class="btn-primary" id="getWeatherBtn">Get Weather</button>
+      <button class="btn-icon" id="geoBtn" title="Use My Location">📍</button>
+    </div>
 
-  <main class="grid">
-    <section class="weather-container animate__animated animate__fadeInUp">
-      <div class="weather-header">
-        <h2>Live Weather — Sri Lanka (District level)</h2>
-        <div style="font-size:0.9rem;color:var(--muted)">Timezone: Asia/Colombo</div>
-      </div>
+    <main id="weatherContainer" class="glass-card animate__animated animate__zoomIn" style="display:none">
+      <div class="weather-grid" style="display:grid;">
+        <div class="weather-hero">
+          <span class="live-badge">Live Report</span>
+          <div id="wIcon" class="weather-icon animate__animated animate__rubberBand">🌤️</div>
+          <div class="temp-large"><span id="wTemp">--</span>°</div>
+          <div class="condition-text" id="wDesc">Loading...</div>
+          <div style="margin-top:5px; font-size:0.9rem; opacity:0.7" id="wLoc">--</div>
+        </div>
 
-      <div class="controls">
-        <select id="districts" aria-label="Select district">
-          <option disabled selected>Select District</option>
-          <option>Colombo</option><option>Gampaha</option><option>Kalutara</option>
-          <option>Kandy</option><option>Matale</option><option>Nuwara Eliya</option>
-          <option>Galle</option><option>Matara</option><option>Hambantota</option>
-          <option>Jaffna</option><option>Kilinochchi</option><option>Mannar</option>
-          <option>Vavuniya</option><option>Mullaitivu</option><option>Trincomalee</option>
-          <option>Batticaloa</option><option>Ampara</option><option>Monaragala</option>
-          <option>Badulla</option><option>Ratnapura</option><option>Kegalle</option>
-          <option>Anuradhapura</option><option>Polonnaruwa</option><option>Puttalam</option>
-          <option>Kurunegala</option>
-        </select>
-
-        <button id="getWeatherBtn">Get Weather</button>
-        <button id="geoBtn" class="small-btn" title="Use my location">Use my location</button>
-        <button id="shareBtn" class="small-btn" title="Share current report">Share</button>
-        <button id="downloadBtn" class="small-btn" title="Download JSON">Download</button>
-      </div>
-
-      <div class="meta-row" id="metaRow">
-        <div id="lastUpdated">Not yet requested</div>
-        <div id="unitsToggle" style="margin-left:auto">
-          <label style="font-weight:600; margin-right:8px">°C</label>
-          <input type="checkbox" id="unitSwitch" aria-label="Toggle Fahrenheit"/>
-          <label style="margin-left:8px">°F</label>
+        <div class="stats-grid">
+          <div class="stat-box"><span class="stat-label">Feels Like</span><span class="stat-val" id="wFeels">--°</span></div>
+          <div class="stat-box"><span class="stat-label">Humidity</span><span class="stat-val" id="wHum">--%</span></div>
+          <div class="stat-box"><span class="stat-label">Rain Chance</span><span class="stat-val" id="wRain">--%</span></div>
+          <div class="stat-box"><span class="stat-label">Wind Speed</span><span class="stat-val" id="wWind">-- <small>km/h</small></span></div>
+          <div class="stat-box"><span class="stat-label">Sunrise</span><span class="stat-val" id="wSunrise">--:--</span></div>
+          <div class="stat-box"><span class="stat-label">Sunset</span><span class="stat-val" id="wSunset">--:--</span></div>
         </div>
       </div>
 
-      <div id="weatherResult" class="weather-result" aria-live="polite">
-        <p style="color:#666">Choose a district and click <strong>Get Weather</strong> or press <strong>Use my location</strong> to fetch a live, on-demand report with a 3-day forecast and hourly sparkline.</p>
+      <div class="chart-container">
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px; opacity:0.8; font-size:0.85rem">
+          <span>24 Hour Temperature Trend</span>
+          <span>Next Day &rarr;</span>
+        </div>
+        <svg id="sparkline" class="sparkline" viewBox="0 0 100 30" preserveAspectRatio="none"></svg>
       </div>
-    </section>
+    </main>
 
-    <aside class="info-card animate__animated animate__fadeInRight">
-      <h3>Tips & Features</h3>
-      <ul style="color:var(--muted); margin-left:14px; margin-top:8px">
-        <li>Accurate, on-demand reports from Open-Meteo (with a wttr.in fallback).</li>
-        <li>Toggle units to view Celsius or Fahrenheit.</li>
-        <li>Share quick weather snapshot with your phone or download the raw JSON.</li>
-        <li>Session caching: if you request the same district within 10 minutes we'll use the cached report to save API calls.</li>
-      </ul>
+    <div id="placeholder" class="glass-card animate__animated animate__fadeIn" style="text-align:center; padding:50px;">
+      <h3 style="font-weight:300; font-size:1.5rem">Welcome to Everything Lanka Weather</h3>
+      <p style="opacity:0.7; margin-top:10px">Select a district above or use your location to see the magic.</p>
+    </div>
 
-      <h3 style="margin-top:12px">Local quick-links</h3>
-      <p style="color:var(--muted)">Click a district to open it in Google Maps for directions and live road views.</p>
-      <div id="quickLinks" style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-top:8px"></div>
-
-      <h3 style="margin-top:12px">Helpful notes</h3>
-      <p style="color:var(--muted); font-size:0.95rem">Highland districts (e.g. Nuwara Eliya, Badulla) typically run several degrees cooler. Coastal districts can experience sudden showers — check hourly precipitation in the sparkline.</p>
-    </aside>
-  </main>
-
-  <footer>&copy; 2025 Discover Sri Lanka | All Rights Reserved</footer>
+    <footer>© 2025 Everything Lanka | Powered by Open-Meteo</footer>
+  </div>
 
   <script>
-  // → Live Clock
-  function updateClock(){
-    const now = new Date();
-    const hrs = String(now.getHours()).padStart(2,'0'), mins = String(now.getMinutes()).padStart(2,'0'), secs = String(now.getSeconds()).padStart(2,'0');
-    document.getElementById('clock').textContent = `${hrs}:${mins}:${secs}`;
-  }
-  setInterval(updateClock,1000); updateClock();
+    // --- CONFIGURATION ---
+    const districts = {
+      "Colombo": [6.9271,79.8612], "Gampaha": [7.0843,79.9400], "Kalutara": [6.5858,79.9680],
+      "Kandy": [7.2906,80.6337], "Matale": [7.4667,80.6333], "Nuwara Eliya": [6.9497,80.7895],
+      "Galle": [6.0535,80.2210], "Matara": [5.9488,80.5357], "Hambantota": [6.1240,81.1180],
+      "Jaffna": [9.6615,80.0255], "Kilinochchi": [9.3833,80.4167], "Mannar": [8.9833,79.9333],
+      "Vavuniya": [8.7578,80.5036], "Mullaitivu": [9.2667,80.7667], "Trincomalee": [8.5877,81.2152],
+      "Batticaloa": [7.7240,81.6780], "Ampara": [7.2906,81.6675], "Monaragala": [6.8929,81.3407],
+      "Badulla": [6.9933,81.0555], "Ratnapura": [6.6828,80.3996], "Kegalle": [7.3386,80.3410],
+      "Anuradhapura": [8.3114,80.4037], "Polonnaruwa": [7.9407,81.0010], "Puttalam": [8.0368,79.8200], "Kurunegala": [7.4869,80.3633]
+    };
 
-  // → District coordinates (approx.)
-  const districtCoords = {
-    "Colombo": [6.9271,79.8612], "Gampaha": [7.0843,79.9400], "Kalutara": [6.5858,79.9680],
-    "Kandy": [7.2906,80.6337], "Matale": [7.4667,80.6333], "Nuwara Eliya": [6.9497,80.7895],
-    "Galle": [6.0535,80.2210], "Matara": [5.9488,80.5357], "Hambantota": [6.1240,81.1180],
-    "Jaffna": [9.6615,80.0255], "Kilinochchi": [9.3833,80.4167], "Mannar": [8.9833,79.9333],
-    "Vavuniya": [8.7578,80.5036], "Mullaitivu": [9.2667,80.7667], "Trincomalee": [8.5877,81.2152],
-    "Batticaloa": [7.7240,81.6780], "Ampara": [7.2906,81.6675], "Monaragala": [6.8929,81.3407],
-    "Badulla": [6.9933,81.0555], "Ratnapura": [6.6828,80.3996], "Kegalle": [7.3386,80.3410],
-    "Anuradhapura": [8.3114,80.4037], "Polonnaruwa": [7.9407,81.0010], "Puttalam": [8.0368,79.8200], "Kurunegala": [7.4869,80.3633]
-  };
+    const el = id => document.getElementById(id);
+    setInterval(() => { el('clock').textContent = new Date().toLocaleTimeString(); }, 1000);
 
-  // → Helpers
-  const el = id => document.getElementById(id);
-  const unitsCheckbox = el('unitSwitch');
-  const cacheTTL = 10 * 60 * 1000; // 10 minutes
+    // --- BUTTONS ---
+    el('getWeatherBtn').addEventListener('click', () => {
+      const dist = el('districts').value;
+      if(districts[dist]) fetchWeather(districts[dist][0], districts[dist][1], dist);
+    });
 
-  // → Build quick links
-  const quickLinks = el('quickLinks');
-  Object.keys(districtCoords).forEach(d => {
-    const a = document.createElement('a');
-    const [lat,lon] = districtCoords[d];
-    a.href = `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    a.textContent = d;
-    a.style.cssText = 'background:rgba(255,255,255,0.04); padding:8px; border-radius:8px; text-align:center; color:var(--accent); font-weight:600; display:block'
-    quickLinks.appendChild(a);
-  });
+    el('geoBtn').addEventListener('click', () => {
+      if(navigator.geolocation) {
+        el('geoBtn').innerHTML = '⏳';
+        navigator.geolocation.getCurrentPosition(pos => {
+          fetchWeather(pos.coords.latitude, pos.coords.longitude, "Your Location");
+          el('geoBtn').innerHTML = '📍';
+        }, () => { alert("Location denied."); el('geoBtn').innerHTML = '📍'; });
+      } else alert("Geo not supported");
+    });
 
-  // → Event listeners
-  el('getWeatherBtn').addEventListener('click', fetchWeatherForSelected);
-  el('geoBtn').addEventListener('click', useGeolocation);
-  el('shareBtn').addEventListener('click', shareReport);
-  el('downloadBtn').addEventListener('click', downloadJSON);
-
-  function fetchWeatherForSelected(){
-    const sel = el('districts');
-    const district = sel.value;
-    if(!district || district === 'Select District') { alert('Please choose a district.'); return; }
-    const coords = districtCoords[district];
-    if(!coords) return alert('Coordinates missing for ' + district);
-    fetchWeather(coords[0], coords[1], district);
-  }
-
-  function useGeolocation(){
-    if(!navigator.geolocation) return alert('Geolocation is not supported in this browser.');
-    navigator.geolocation.getCurrentPosition(pos=>{
-      const {latitude,longitude} = pos.coords;
-      // Reverse-guess nearest district (simple nearest by distance)
-      let nearest=null, distMin=Infinity;
-      Object.entries(districtCoords).forEach(([d,[lat,lon]])=>{
-        const d2 = (lat-lat)*(lat-lat) + (lon-longitude)*(lon-longitude);
-        // simple squared-distance using lon from current, note small inaccuracies but fine for UX
-      });
-      // We'll just call weather with user's coords and label as 'Your location'
-      fetchWeather(latitude, longitude, 'Your location');
-    }, err=>{ alert('Unable to access location: ' + err.message); });
-  }
-
-  function fetchWeather(lat, lon, label){
-    const cacheKey = `weather_${lat.toFixed(3)}_${lon.toFixed(3)}`;
-    const cached = sessionStorage.getItem(cacheKey);
-    if(cached){
-      try{
-        const parsed = JSON.parse(cached);
-        if((Date.now() - parsed._ts) < cacheTTL){
-          renderWeather(parsed.data, label, parsed.rawFetchUrl);
-          el('lastUpdated').textContent = `Cached: ${new Date(parsed._ts).toLocaleTimeString()}`;
-          return;
-        }
-      }catch(e){ /* ignore */ }
+    // --- FETCH ---
+    async function fetchWeather(lat, lon, label) {
+      el('placeholder').style.display = 'none';
+      el('weatherContainer').style.display = 'block';
+      el('wDesc').textContent = 'Loading...';
+      
+      try {
+        // Request strict variables
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m&hourly=temperature_2m,precipitation_probability&daily=sunrise,sunset&timezone=Asia%2FColombo&forecast_days=1`;
+        
+        const res = await fetch(url);
+        if(!res.ok) throw new Error("API Error");
+        const data = await res.json();
+        
+        updateUI(data, label);
+      } catch (e) {
+        console.error(e);
+        el('wDesc').textContent = 'Connection Error';
+      }
     }
 
-    const units = unitsCheckbox.checked ? 'fahrenheit' : 'celsius';
-    // Open-Meteo API (hourly + current + 3-day forecast), timezone set to Asia/Colombo
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,precipitation&current_weather=true&forecast_days=3&timezone=Asia%2FColombo`;
-    el('weatherResult').innerHTML = `<p style="color:#666">Fetching live data…</p>`;
+    // --- UPDATE UI ---
+    function updateUI(data, label) {
+      const curr = data.current; 
+      const hourly = data.hourly;
+      const daily = data.daily;
+      
+      el('wTemp').textContent = Math.round(curr.temperature_2m);
+      el('wLoc').textContent = label;
+      el('wWind').innerHTML = `${curr.wind_speed_10m} <small>km/h</small>`;
+      el('wFeels').textContent = `${Math.round(curr.apparent_temperature)}°`;
+      el('wHum').textContent = `${curr.relative_humidity_2m}%`;
+      el('wRain').textContent = `${hourly.precipitation_probability[0]}%`;
 
-    fetch(url).then(r=>{
-      if(!r.ok) throw new Error('Open-Meteo not available');
-      return r.json();
-    }).then(data=>{
-      // Save to cache
-      sessionStorage.setItem(cacheKey, JSON.stringify({ _ts: Date.now(), data, rawFetchUrl: url }));
-      renderWeather(data, label, url);
-      el('lastUpdated').textContent = `Updated: ${new Date().toLocaleString()}`;
-    }).catch(err=>{
-      console.warn('Open-Meteo failed, trying wttr.in fallback', err);
-      // fallback to wttr.in (json)
-      const wttrUrl = `https://wttr.in/${encodeURIComponent(label==='Your location' ? `${lat},${lon}` : label)}?format=j1`;
-      fetch(wttrUrl).then(r=>r.json()).then(data=>{
-        // Note: wttr.in structure differs, but we'll adapt
-        sessionStorage.setItem(cacheKey, JSON.stringify({ _ts: Date.now(), data, rawFetchUrl: wttrUrl }));
-        renderWttr(data, label, wttrUrl);
-        el('lastUpdated').textContent = `Updated (wttr): ${new Date().toLocaleString()}`;
-      }).catch(e=>{
-        console.error('Fallback failed', e);
-        el('weatherResult').innerHTML = `<p>Unable to fetch weather. Please try again later.</p>`;
-      });
-    });
-  }
+      const formatTime = (iso) => {
+        if(!iso) return '--:--';
+        return new Date(iso).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      };
+      el('wSunrise').textContent = formatTime(daily.sunrise[0]);
+      el('wSunset').textContent = formatTime(daily.sunset[0]);
 
-  // → Renderers
-  function renderWeather(data, label, sourceUrl){
-    try{
-      const cur = data.current_weather || {};
-      const tempC = cur.temperature;
-      const wind = cur.windspeed;
-      const weathercode = cur.weathercode;
-      const timezone = data.timezone || 'Asia/Colombo';
+      // SAFE CODE EXTRACTION
+      const code = curr.weather_code !== undefined ? curr.weather_code : 0;
+      const isDay = curr.is_day;
 
-      // Build a human-friendly description from weathercode (simple mapping)
-      const desc = weatherCodeToText(weathercode);
+      // GET TEXT
+      const details = getWeatherDetails(code);
+      el('wDesc').textContent = details.t; // Should show "Clear Sky", "Rain", etc.
+      el('wIcon').textContent = details.i;
+      
+      // ANIMATE ICON
+      el('wIcon').classList.remove('animate__rubberBand');
+      void el('wIcon').offsetWidth; 
+      el('wIcon').classList.add('animate__rubberBand');
 
-      // build 3-day summary using daily or hourly
-      let dailySummary = [];
-      if(data.hourly && data.hourly.time){
-        // compute day buckets
-        const times = data.hourly.time.map(t=>new Date(t));
-        const temps = data.hourly.temperature_2m;
-        const precip = data.hourly.precipitation;
-        // group by date
-        const days = {}; for(let i=0;i<times.length;i++){ const d = times[i].toISOString().split('T')[0]; if(!days[d]) days[d]={temps:[],prec:[]}; days[d].temps.push(temps[i]); days[d].prec.push(precip[i]); }
-        dailySummary = Object.entries(days).slice(0,3).map(([d,vals])=>({ date:d, min:Math.min(...vals.temps), max:Math.max(...vals.temps), precip: vals.prec.reduce((a,b)=>a+b,0) }));
-      }
+      setTheme(code, isDay);
+      drawSparkline(hourly.temperature_2m);
+    }
 
-      // Build hourly sparkline for next 24 hours
-      let sparkData = [];
-      if(data.hourly && data.hourly.temperature_2m){
-        const t = data.hourly.temperature_2m; const times = data.hourly.time;
-        const nowIdx = times.findIndex(x=> new Date(x) > new Date());
-        const start = Math.max(0, nowIdx===-1?0:nowIdx);
-        for(let i=start;i<Math.min(start+24, t.length); i++){ sparkData.push({time:times[i], temp:t[i], prec: data.hourly.precipitation ? data.hourly.precipitation[i] : 0}); }
-      }
+    // --- THEME ---
+    function setTheme(code, isDay) {
+      document.body.className = ''; 
+      if (isDay === 0 && code < 50) return document.body.classList.add('theme-night');
+      
+      if (code <= 3) document.body.classList.add(isDay ? 'theme-clear' : 'theme-night');
+      else if (code <= 48) document.body.classList.add('theme-cloudy');
+      else if (code >= 95) document.body.classList.add('theme-thunder');
+      else document.body.classList.add('theme-rain');
+    }
 
-      const tempDisplay = unitsCheckbox.checked ? cToF(tempC) + '°F' : tempC + '°C';
-      const feelsLike = tempDisplay; // open-meteo doesn't provide feels-like in this simple call
+    // --- FULL WMO MAPPING (FIXED) ---
+    function getWeatherDetails(code) {
+      const map = {
+        0: {t:'Clear Sky', i:'☀️'},
+        1: {t:'Mainly Clear', i:'🌤️'},
+        2: {t:'Partly Cloudy', i:'⛅'},
+        3: {t:'Overcast', i:'☁️'},
+        45: {t:'Foggy', i:'🌫️'},
+        48: {t:'Rime Fog', i:'🌫️'},
+        51: {t:'Light Drizzle', i:'🌦️'},
+        53: {t:'Drizzle', i:'🌦️'},
+        55: {t:'Heavy Drizzle', i:'🌧️'},
+        56: {t:'Freezing Drizzle', i:'❄️'},
+        57: {t:'Freezing Drizzle', i:'❄️'},
+        61: {t:'Slight Rain', i:'🌧️'},
+        63: {t:'Rainy', i:'🌧️'},
+        65: {t:'Heavy Rain', i:'🌧️'},
+        66: {t:'Freezing Rain', i:'❄️'},
+        67: {t:'Freezing Rain', i:'❄️'},
+        71: {t:'Snow Fall', i:'❄️'},
+        73: {t:'Snow Fall', i:'❄️'},
+        75: {t:'Heavy Snow', i:'❄️'},
+        77: {t:'Snow Grains', i:'❄️'},
+        80: {t:'Showers', i:'🌦️'},
+        81: {t:'Heavy Showers', i:'🌧️'},
+        82: {t:'Violent Showers', i:'⛈️'},
+        85: {t:'Snow Showers', i:'❄️'},
+        86: {t:'Snow Showers', i:'❄️'},
+        95: {t:'Thunderstorm', i:'⛈️'},
+        96: {t:'Thunderstorm & Hail', i:'⛈️'},
+        99: {t:'Thunderstorm & Hail', i:'⛈️'}
+      };
+      return map[code] || {t:'Unknown Weather', i:'🌡️'};
+    }
 
-      const html = `
-        <div class="weather-top">
-          <div>
-            <div class="icon">${weatherEmoji(desc)}</div>
-          </div>
-          <div>
-            <div class="temp">${tempDisplay}</div>
-            <div class="desc">${label} — ${desc}</div>
-            <div style="color:#555; font-size:0.92rem">Wind: ${wind} km/h • Source: Open-Meteo</div>
-          </div>
-        </div>
-        <div class="extra">
-          <div class="pill">Feels like: ${feelsLike}</div>
-          <div class="pill">Timezone: ${timezone}</div>
-          <div class="pill">Data source: <a href="#" onclick="window.open('${sourceUrl}','_blank')">Open-Meteo</a></div>
-        </div>
-        <div class="forecast">
-          ${dailySummary.map(d=>`<div class="day"><div>${new Date(d.date).toLocaleDateString()}</div><div>${Math.round(d.min)}° / ${Math.round(d.max)}°</div><div>${Math.round(d.precip)} mm</div></div>`).join('')}
-          <svg class="sparkline" viewBox="0 0 100 30" preserveAspectRatio="none">${buildSparklineSVG(sparkData)}</svg>
-        </div>
-      `;
-
-      el('weatherResult').innerHTML = html;
-      // store for share/download
-      el('weatherResult').dataset._last = JSON.stringify({ source: 'open-meteo', label, data, fetchedAt: new Date().toISOString(), sourceUrl });
-    }catch(e){ console.error(e); el('weatherResult').innerHTML = `<p>Failed to render weather.</p>` }
-  }
-
-  function renderWttr(data, label, sourceUrl){
-    try{
-      const cur = data.current_condition && data.current_condition[0] ? data.current_condition[0] : {};
-      const tempC = cur.temp_C || '—';
-      const desc = (cur.weatherDesc && cur.weatherDesc[0] && cur.weatherDesc[0].value) || 'Weather';
-      const feels = cur.FeelsLikeC || tempC;
-      const humidity = cur.humidity || '—';
-      const html = `
-        <div class="weather-top">
-          <div class="icon">${getWeatherIcon(desc)}</div>
-          <div>
-            <div class="temp">${tempC}°C</div>
-            <div class="desc">${label} — ${desc}</div>
-            <div style="color:#555; font-size:0.92rem">Humidity: ${humidity}% • Source: wttr.in</div>
-          </div>
-        </div>
-        <div class="extra">
-          <div class="pill">Feels like: ${feels}°C</div>
-          <div class="pill">Data source: wttr.in</div>
-        </div>
-      `;
-      el('weatherResult').innerHTML = html;
-      el('weatherResult').dataset._last = JSON.stringify({ source: 'wttr', label, data, fetchedAt: new Date().toISOString(), sourceUrl });
-    }catch(e){ console.error(e); el('weatherResult').innerHTML = `<p>Failed to render wttr data.</p>` }
-  }
-
-  // → Utilities
-  function weatherCodeToText(code){
-    // minimal mapping from Open-Meteo weathercode
-    const map = {0:'Clear', 1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Depositing rime fog',51:'Light drizzle',53:'Moderate drizzle',55:'Dense drizzle',61:'Slight rain',63:'Moderate rain',65:'Heavy rain',71:'Slight snow',80:'Rain showers',95:'Thunderstorm'};
-    return map[code] || 'Weather';
-  }
-  function weatherEmoji(text){ const t = (text||'').toLowerCase(); if(t.includes('clear')) return '☀️'; if(t.includes('cloud')) return '☁️'; if(t.includes('rain')||t.includes('shower')) return '🌧️'; if(t.includes('thunder')) return '⛈️'; if(t.includes('fog')||t.includes('mist')) return '🌫️'; return '🌤️'; }
-  function getWeatherIcon(desc){ const lower = (desc||'').toLowerCase(); if(lower.includes('sun')) return '☀️'; if(lower.includes('cloud')) return '☁️'; if(lower.includes('rain')) return '🌧️'; if(lower.includes('thunder')) return '⛈️'; if(lower.includes('mist')||lower.includes('fog')) return '🌫️'; return '🌡️'; }
-  function cToF(c){ return Math.round((c*9/5)+32); }
-
-  function buildSparklineSVG(points){
-    if(!points || points.length===0) return '';
-    const vals = points.map(p=>Number(p.temp));
-    const min = Math.min(...vals), max = Math.max(...vals);
-    const w = 100, h = 30;
-    const step = w / Math.max(1, vals.length-1);
-    const pts = vals.map((v,i)=>{ const x = (i*step).toFixed(2); const y = ((1 - (v - min) / (max - min || 1)) * (h-4) + 2).toFixed(2); return `${x},${y}` }).join(' ');
-    const poly = `<polyline fill="none" stroke="#1b0fc8" stroke-width="1.5" points="${pts}" />`;
-    const circles = vals.map((v,i)=>{ const x = (i*step).toFixed(2); const y = ((1 - (v - min) / (max - min || 1)) * (h-4) + 2).toFixed(2); return `<circle cx="${x}" cy="${y}" r="0.8"></circle>` }).join('');
-    return poly + circles;
-  }
-
-  // Share / Download
-  function shareReport(){
-    const last = el('weatherResult').dataset._last;
-    if(!last) return alert('No report to share. Fetch a weather report first.');
-    const obj = JSON.parse(last);
-    const text = `Weather snapshot for ${obj.label} — fetched ${new Date(obj.fetchedAt).toLocaleString()}\nSource: ${obj.source}`;
-    if(navigator.share){ navigator.share({ title:'Weather – Everything Lanka', text, url: location.href }).catch(()=>{}); }
-    else{ prompt('Copy this snapshot text:', text); }
-  }
-
-  function downloadJSON(){
-    const last = el('weatherResult').dataset._last; if(!last) return alert('No report to download.');
-    const blob = new Blob([last], { type:'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a'); a.href = url; a.download = 'weather_snapshot.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-  }
-
-  // Simple fallback icon logic used earlier (kept for compatibility)
-  function getWeatherIconFallback(desc){ return getWeatherIcon(desc); }
-
-  // Keyboard: Enter triggers get
-  el('districts').addEventListener('keydown', e=>{ if(e.key==='Enter'){ fetchWeatherForSelected(); } });
-
-  // Accessibility: ensure focus style
-  document.addEventListener('keydown', function(e){ if(e.key==='Tab'){ document.body.classList.add('user-is-tabbing'); } });
-
+    // --- SPARKLINE ---
+    function drawSparkline(temps) {
+      if(!temps || !temps.length) return;
+      const data = temps.slice(0, 24);
+      const min = Math.min(...data), max = Math.max(...data), range = max - min || 1;
+      const points = data.map((t, i) => `${(i/23)*100},${30 - ((t-min)/range)*30}`).join(' ');
+      el('sparkline').innerHTML = `<polyline class="spark-line" points="${points}" /><polygon class="spark-fill" points="${points} 100,35 0,35" />`;
+    }
   </script>
 </body>
 </html>
  
+
 
 
 
