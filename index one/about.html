@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Index One | The Data Utility</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        brand: { 50: '#eff4ff', 500: '#3b82f6', 600: '#2563eb', 900: '#1e3a8a' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-brand-500 selection:text-white">
+
+    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+    </div>
+
+    <nav class="fixed w-full z-40 glass-panel">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="deals.html" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold group-hover:scale-105 transition-transform">I</div>
+                    <span class="text-lg font-bold tracking-tight text-slate-900">index<span class="font-normal text-slate-500">one</span></span>
+                </a>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="deals.html" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Deal Engine</a>
+                    <a href="#" class="text-sm font-medium text-brand-600">About Us</a>
+                    <a href="deals.html" class="px-5 py-2 text-sm font-semibold text-white bg-slate-900 rounded-full hover:bg-slate-800 transition-all">Launch App</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-brand-700 text-xs font-bold uppercase tracking-wider mb-6 border border-blue-100">
+            Our Mission
+        </div>
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 max-w-4xl mx-auto leading-tight">
+            We are organizing <br class="hidden md:block" />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-600">Sri Lanka’s chaos.</span>
+        </h1>
+        <p class="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+            Data in Sri Lanka is trapped in messy Facebook groups and blurry PDFs. We are building the tools to index it, verify it, and make it useful.
+        </p>
+    </section>
+
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">The "Information Gap"</h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Why is it easier to find a hotel in New York than a boarding place in Gangodawila? Why do you have to scroll through 50 irrelevant bank flyers just to find one offer for your specific credit card?
+                    </p>
+                    <p class="text-slate-600 leading-relaxed mt-4">
+                        If you don't have the right "contacts" or aren't in the right WhatsApp group, you miss out. We believe that is fundamentally broken.
+                    </p>
+                </div>
+                
+                <div class="pl-6 border-l-4 border-brand-200">
+                    <p class="text-lg font-medium text-slate-900 italic">
+                        "We don't generate content; we index it. We take the messy, unstructured data of daily Sri Lankan life and turn it into clean, searchable tools."
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xl shadow-brand-500/5">
+                    <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center text-red-600 mb-4">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900">Verified Data</h3>
+                    <p class="text-sm text-slate-500 mt-2">An expired offer is worse than no offer. We timestamp and manually verify our index.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xl shadow-brand-500/5 mt-8">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 mb-4">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900">Local First</h3>
+                    <p class="text-sm text-slate-500 mt-2">We operate out of Nugegoda. We know the difference between High Level Rd and Old Kesbewa Rd.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12">Our Ecosystem</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <a href="deals.html" class="group block p-8 rounded-3xl bg-slate-50 hover:bg-brand-50 transition-colors border border-slate-100 hover:border-brand-200">
+                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">💳</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Deal Engine</h3>
+                    <p class="text-slate-500 text-sm">The only financial tool in Sri Lanka that filters offers based on the cards in your actual wallet.</p>
+                    <span class="inline-block mt-4 text-sm font-semibold text-brand-600 group-hover:translate-x-1 transition-transform">Live Now &rarr;</span>
+                </a>
+
+                <div class="p-8 rounded-3xl bg-white border border-slate-100 opacity-75 grayscale hover:grayscale-0 transition-all">
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-2xl mb-6">🏠</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Boarding Index</h3>
+                    <p class="text-slate-500 text-sm">Safety-rated, verified listings for university students. No more sketchy landlords.</p>
+                    <span class="inline-block mt-4 text-xs font-bold px-2 py-1 bg-slate-100 rounded text-slate-500">Coming Soon</span>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-white border border-slate-100 opacity-75 grayscale hover:grayscale-0 transition-all">
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-2xl mb-6">🎓</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Scholarship Watch</h3>
+                    <p class="text-slate-500 text-sm">Tracking foreign education grants (India, China, Japan) that usually fly under the radar.</p>
+                    <span class="inline-block mt-4 text-xs font-bold px-2 py-1 bg-slate-100 rounded text-slate-500">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 text-center">
+        <div class="max-w-2xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-slate-900 mb-6">Stop searching. Start Indexing.</h2>
+            <p class="text-slate-500 mb-8">Join the first 500 Nugegoda users saving money today.</p>
+            <a href="deals.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-brand-600 rounded-full hover:bg-brand-700 transition-all shadow-lg shadow-brand-500/30 hover:-translate-y-1">
+                Open Deal Engine
+            </a>
+            <p class="mt-8 text-xs text-slate-400">
+                &copy; 2025 Index One. A subsidiary of Everything Lanka.<br>
+                Based in Nugegoda, Sri Lanka.
+            </p>
+        </div>
+    </section>
+
+</body>
+</html>
