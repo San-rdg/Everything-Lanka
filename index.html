@@ -203,6 +203,46 @@
             .hero h2 { font-size: 1.8rem; }
         }
 
+        /* Container styling to match your site's rounded aesthetic */
+.ad-banner-container {
+    width: 100%;
+    max-width: 1200px; /* Keeps it from getting too wide on huge screens */
+    margin: 20px auto; /* Centers the ad and adds vertical spacing */
+    border-radius: 16px; /* Matches the rounded corners in your screenshot */
+    overflow: hidden; /* Ensures the image doesn't spill out of the rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Adds a subtle pop */
+    transition: transform 0.2s ease; /* Smooth hover effect */
+    background-color: #f0f4f8; /* Fallback color while image loads */
+}
+
+/* Hover effect to make it clickable */
+.ad-banner-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Responsive Image Styling */
+.ad-banner-img {
+    width: 100%;
+    height: auto;
+    display: block; /* Removes bottom whitespace typical with inline images */
+    aspect-ratio: 4 / 1; /* Enforces the rectangular banner shape */
+    object-fit: cover; /* Ensures image fills the space without stretching */
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .ad-banner-container {
+        border-radius: 12px; /* Slightly smaller radius for mobile */
+        margin: 15px auto;
+    }
+    
+    .ad-banner-img {
+        /* On mobile, we might want it slightly taller/squarer to be visible */
+        aspect-ratio: 2.5 / 1; 
+    }
+}
+
         @keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     </style>
 </head>
@@ -228,9 +268,12 @@
 
     <main class="container">
         
-        <div class="ad-slot" style="background-color: #ffebee; border-color: #ffcdd2; color: #c62828;">
-            <strong>⚠️ Weather Alert:</strong> <a href="sri-lanka-rain-weather-emergency.html" style="text-decoration: underline;">Read the Emergency Guide</a> | <a href="sri-lankan-flood-donation-links-all.html" style="text-decoration: underline;">Donation Links</a>
-        </div>
+        
+<div class="ad-banner-container">
+    <a href="index one/deals.html" title="Visit Index One">
+        <img src="https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/indexone%20banner.png" alt="Index One - Travel Insights for Sri Lanka" class="ad-banner-img">
+    </a>
+</div>
 
         <section class="grid-wrapper" aria-label="Travel Articles">
 
@@ -390,6 +433,7 @@
 
 </body>
 </html>
+
 
 
 
