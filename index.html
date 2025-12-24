@@ -48,6 +48,8 @@
             --shadow: 0 10px 30px rgba(0,0,0,0.08);
             --radius: 16px;
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            /* --- NEW XMAS VARIABLE --- */
+            --xmas-red: #D32F2F;
         }
 
         /* --- RESET & BASE --- */
@@ -58,9 +60,94 @@
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative; /* Needed for snow container positioning */
         }
         a { text-decoration: none; color: inherit; }
         img { max-width: 100%; height: auto; display: block; }
+
+        /* =========================================
+           CHRISTMAS DECORATIONS STYLES START
+        ========================================= */
+        
+        /* 1. The Snow Container */
+        #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Ensures you can click through the snow */
+            z-index: 99999; /* On top of everything */
+            overflow: hidden;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            opacity: 0.8;
+            user-select: none;
+            animation-name: fall, sway;
+            animation-timing-function: linear, ease-in-out;
+            animation-iteration-count: infinite, infinite;
+        }
+
+        @keyframes fall {
+            to { top: 105vh; }
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(20px); }
+        }
+
+        /* 2. Top Garland Decoration */
+        .xmas-garland-top {
+            position: fixed;
+            top: -10px; /* Slight overlap */
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-image: url('https://cdn.pixabay.com/photo/2016/11/14/21/49/christmas-1824884_1280.png');
+            background-repeat: repeat-x;
+            background-size: contain;
+            z-index: 1001; /* Above nav */
+            pointer-events: none;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
+        }
+
+        /* 3. Santa Hat on Hero Title */
+        .hero h2 {
+            position: relative;
+            display: inline-block; /* Needed for positioning the hat */
+        }
+        .hero h2::after {
+            content: '';
+            position: absolute;
+            top: -35px;
+            left: -30px;
+            width: 60px;
+            height: 60px;
+            /* Free Santa Hat Icon PNG */
+            background-image: url('https://cdn-icons-png.flaticon.com/512/744/744546.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: rotate(-15deg);
+            z-index: 1;
+        }
+
+        /* 4. Festive Card Hovers */
+        .feature-card:hover {
+            /* Adding a subtle red glow for Christmas */
+             box-shadow: 0 15px 40px rgba(211, 47, 47, 0.2) !important; /* Using xmas red */
+             border-bottom: 3px solid var(--xmas-red);
+        }
+
+        /* =========================================
+           CHRISTMAS DECORATIONS STYLES END
+        ========================================= */
+
 
         /* --- NAVIGATION (Glassmorphism) --- */
         nav {
@@ -74,6 +161,7 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            margin-top: 30px; /* Pushed down slightly for the garland */
         }
         .nav-logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
         .nav-links { display: flex; gap: 20px; }
@@ -128,7 +216,8 @@
             flex-direction: column;
             position: relative;
         }
-        .feature-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+        /* Note: .feature-card:hover is modified above in the Christmas section */
+
         .card-image-container {
             width: 100%;
             aspect-ratio: 16/9; /* Prevents layout shift */
@@ -158,7 +247,14 @@
         }
         .badge-cta { text-align: center; margin: 40px 0; }
         .badge-button {
-            background: var(--primary); color: white; padding: 10px 25px; border-radius: 30px; font-weight: 600;
+            /* Changed to Xmas Red for festive pop */
+            background: var(--xmas-red); color: white; padding: 10px 25px; border-radius: 30px; font-weight: 600;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+            transition: var(--transition);
+        }
+        .badge-button:hover {
+             box-shadow: 0 8px 20px rgba(211, 47, 47, 0.5);
+             transform: translateY(-2px);
         }
 
         /* --- FEATURED EXPERIENCE --- */
@@ -170,7 +266,20 @@
             max-width: 900px;
             text-align: center;
             border: 1px solid #b2ebf2;
+            position: relative;
+            overflow: hidden;
         }
+        /* Adding a little festive corner decoration to the featured block */
+        .featured-experience::before {
+            content: '🎄';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 3rem;
+            opacity: 0.2;
+            transform: rotate(20deg);
+        }
+
         .featured-heading h2 { color: var(--primary); }
 
         /* --- POPUPS --- */
@@ -209,6 +318,8 @@
             .nav-links.show { display: flex; }
             .menu-toggle { display: block; }
             .hero h2 { font-size: 1.8rem; }
+            /* Adjust Santa Hat for smaller mobile screens */
+            .hero h2::after { width: 40px; height: 40px; top: -25px; left: -20px; }
         }
 
         /* Container styling to match your site's rounded aesthetic */
@@ -256,6 +367,10 @@
 </head>
 <body>
 
+    <div id="snow-container"></div>
+
+    <div class="xmas-garland-top"></div>
+
     <nav>
         <div class="nav-logo">Everything Lanka</div>
         <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
@@ -277,17 +392,20 @@
 
     <a href="https://wishes.everythinglanka.wiki" target="_blank" style="
     display: inline-block;
-    background-color: #ff4757;
+    background-color: var(--xmas-red); /* Changed from #ff4757 */
     color: white;
     padding: 12px 24px;
     text-decoration: none;
     border-radius: 50px;
     font-weight: bold;
     font-family: sans-serif;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4); /* Red shadow */
     transition: transform 0.2s;
+    text-align: center;
+    margin: 20px auto; /* Centered it */
+    display: block; width: fit-content; /* Centered it */
 ">
-    ✨ Create a Wishing Card
+    ✨ Create a Christmas Wishing Card 🎄
 </a>
 
     <main class="container">
@@ -406,7 +524,7 @@
 
         <section class="featured-experience">
             <div class="featured-heading">
-                <h2>🌿 Featured Experience</h2>
+                <h2>🌿 Featured Experience 🎄</h2>
                 <span style="background:#e3f2fd; color:#1565c0; padding:4px 8px; border-radius:4px; font-size:0.8rem; margin-left:10px;">Sponsored</span>
             </div>
             <p style="margin: 15px 0;">Join an organic cooking class in Sigiriya and savor authentic Sri Lankan flavors! A must-do for foodies.</p>
@@ -414,7 +532,7 @@
         </section>
 
         <div class="badge-cta">
-            <a href="partner-with-us.html" class="badge-button">🎖️ Partner With Us!</a>
+            <a href="partner-with-us.html" class="badge-button">🎁 Partner With Us!</a>
         </div>
 
     </main>
@@ -425,7 +543,7 @@
 
     <div id="unifiedPopup" class="popup-box">
         <button class="popup-close" onclick="closePopup()">×</button>
-        <h4 id="popupTitle" style="margin-bottom:8px; color:var(--primary);">Hello!</h4>
+        <h4 id="popupTitle" style="margin-bottom:8px; color:var(--primary);">Happy Holidays! 🎅</h4>
         <p id="popupMessage">Welcome to Everything Lanka.</p>
     </div>
 
@@ -444,19 +562,23 @@
             const msg = document.getElementById("popupMessage");
             const hasVisited = localStorage.getItem("hasVisitedBefore");
 
+            // XMAS: Updated quotes to be festive
             const quotes = [
-                "Hope you have a great day! 🌞", "Remember to smile today 😄", "Happiness is a journey 🛤️", "Hakuna Matata 🦁"
+                "Wishing you warm island vibes this Christmas! 🌴🎅", 
+                "May your travels be merry and bright! ✨", 
+                "Give the gift of travel this year 🎁", 
+                "Sunny Christmas greetings from Sri Lanka! ☀️🎄"
             ];
             const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
             if (hasVisited) {
                 // Returning user - Show Quote
-                title.innerText = "Quote of the Day";
+                title.innerText = "Holiday Quote";
                 msg.innerText = randomQuote;
             } else {
                 // New user - Show Welcome
-                title.innerText = "Welcome Traveler! 🌴";
-                msg.innerText = "Check out our packing guide before you start!";
+                title.innerText = "Merry Christmas, Traveler! 🌴🎅";
+                msg.innerText = "Explore Sri Lanka with a festive spirit!";
                 localStorage.setItem("hasVisitedBefore", "true");
             }
 
@@ -469,6 +591,38 @@
         function closePopup() {
             document.getElementById("unifiedPopup").style.display = "none";
         }
+
+        // =========================================
+        // XMAS: FALLING SNOW SCRIPT
+        // =========================================
+        document.addEventListener("DOMContentLoaded", function () {
+            const snowContainer = document.getElementById("snow-container");
+            const maxSnowflakes = 50; // Limit flakes for performance
+
+            function createSnowflake() {
+                if (snowContainer.childElementCount >= maxSnowflakes) return;
+
+                const snowflake = document.createElement("div");
+                snowflake.classList.add("snowflake");
+                snowflake.innerHTML = "❄"; // You can also use "❅" or "❆"
+                
+                // Randomize start position and animation properties
+                snowflake.style.left = Math.random() * 100 + "vw";
+                snowflake.style.animationDuration = Math.random() * 3 + 5 + "s"; // between 5s and 8s fall time
+                snowflake.style.opacity = Math.random();
+                snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
+                
+                snowContainer.appendChild(snowflake);
+
+                // Remove snowflake after it falls to keep DOM clean
+                setTimeout(() => {
+                    snowflake.remove();
+                }, 8000);
+            }
+
+            // Create a new snowflake every few hundred ms
+            setInterval(createSnowflake, 400);
+        });
     </script>
     
     <script type="text/javascript">
