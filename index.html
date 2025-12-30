@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Your ultimate Sri Lanka travel guide for 2025. Discover top attractions, local tips, itineraries, and hidden gems." />
 
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ulqunepjak");
-</script>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "ulqunepjak");
+    </script>
     
     <link rel="canonical" href="https://everythinglanka.wiki/" />
     <meta property="og:title" content="Sri Lanka Travel Guide 2025 — Everything Lanka" />
@@ -34,7 +34,6 @@
       gtag('js', new Date());
       gtag('config', 'G-2S823WWMZ9');
     </script>
-    <script>(function(s){s.dataset.zone='10253077',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 
     <style>
         /* --- CORE VARIABLES --- */
@@ -48,7 +47,6 @@
             --shadow: 0 10px 30px rgba(0,0,0,0.08);
             --radius: 16px;
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            /* --- NEW XMAS VARIABLE --- */
             --xmas-red: #D32F2F;
         }
 
@@ -60,7 +58,7 @@
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative; /* Needed for snow container positioning */
+            position: relative; 
         }
         a { text-decoration: none; color: inherit; }
         img { max-width: 100%; height: auto; display: block; }
@@ -68,16 +66,14 @@
         /* =========================================
            CHRISTMAS DECORATIONS STYLES START
         ========================================= */
-        
-        /* 1. The Snow Container */
         #snow-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; /* Ensures you can click through the snow */
-            z-index: 99999; /* On top of everything */
+            pointer-events: none;
+            z-index: 99999;
             overflow: hidden;
         }
 
@@ -102,25 +98,23 @@
             50% { transform: translateX(20px); }
         }
 
-        /* 2. Top Garland Decoration */
         .xmas-garland-top {
             position: fixed;
-            top: -10px; /* Slight overlap */
+            top: -10px;
             left: 0;
             width: 100%;
             height: 80px;
             background-image: url('https://cdn.pixabay.com/photo/2016/11/14/21/49/christmas-1824884_1280.png');
             background-repeat: repeat-x;
             background-size: contain;
-            z-index: 1001; /* Above nav */
+            z-index: 1001;
             pointer-events: none;
             filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
         }
 
-        /* 3. Santa Hat on Hero Title */
         .hero h2 {
             position: relative;
-            display: inline-block; /* Needed for positioning the hat */
+            display: inline-block;
         }
         .hero h2::after {
             content: '';
@@ -129,7 +123,6 @@
             left: -30px;
             width: 60px;
             height: 60px;
-            /* Free Santa Hat Icon PNG */
             background-image: url('https://cdn-icons-png.flaticon.com/512/744/744546.png');
             background-size: contain;
             background-repeat: no-repeat;
@@ -137,19 +130,12 @@
             z-index: 1;
         }
 
-        /* 4. Festive Card Hovers */
         .feature-card:hover {
-            /* Adding a subtle red glow for Christmas */
-             box-shadow: 0 15px 40px rgba(211, 47, 47, 0.2) !important; /* Using xmas red */
+             box-shadow: 0 15px 40px rgba(211, 47, 47, 0.2) !important; 
              border-bottom: 3px solid var(--xmas-red);
         }
 
-        /* =========================================
-           CHRISTMAS DECORATIONS STYLES END
-        ========================================= */
-
-
-        /* --- NAVIGATION (Glassmorphism) --- */
+        /* --- NAVIGATION --- */
         nav {
             position: sticky;
             top: 0;
@@ -161,7 +147,7 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-            margin-top: 30px; /* Pushed down slightly for the garland */
+            margin-top: 30px; 
         }
         .nav-logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
         .nav-links { display: flex; gap: 20px; }
@@ -169,12 +155,12 @@
         .nav-links a:hover { color: var(--primary); }
         .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
 
-        /* --- HERO SECTION --- */
+        /* --- UPDATED HERO SECTION --- */
         .hero {
             position: relative;
             height: 60vh;
-            min-height: 400px;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/3223554/pexels-photo-3223554.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') center/cover no-repeat;
+            min-height: 450px; /* Slight increase for search bar space */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/3223554/pexels-photo-3223554.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -185,16 +171,85 @@
             margin-bottom: 40px;
         }
         .hero h2 { font-size: 2.5rem; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .btn-primary {
-            background: var(--accent);
-            color: #000;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(255, 221, 87, 0.4);
+        
+        /* New Hero Content Wrapper */
+        .hero-content {
+            z-index: 2;
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 221, 87, 0.6); }
+
+        /* Search Bar Styles */
+        .search-container {
+            width: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 24px;
+            padding-right: 60px; 
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .search-btn-icon {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            height: 46px; 
+            width: 46px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .search-btn-icon:hover { transform: scale(1.1); background: var(--accent); color: black; }
+
+        /* Quick Category Pills */
+        .category-pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .pill {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 8px 18px;
+            border-radius: 30px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .pill:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
 
         /* --- GRID LAYOUT --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
@@ -216,11 +271,9 @@
             flex-direction: column;
             position: relative;
         }
-        /* Note: .feature-card:hover is modified above in the Christmas section */
-
         .card-image-container {
             width: 100%;
-            aspect-ratio: 16/9; /* Prevents layout shift */
+            aspect-ratio: 16/9;
             overflow: hidden;
             background: #eee;
         }
@@ -234,20 +287,31 @@
         .card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
         .feature-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--primary); line-height: 1.3; }
         .feature-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 15px; }
-        .feature-card a.card-link { margin-top: auto; font-weight: 600; color: var(--primary); font-size: 0.9rem; }
         
         /* --- ADS & SPONSORED --- */
-        .ad-slot {
-            background: #edf2f7;
-            padding: 20px;
-            border-radius: var(--radius);
-            text-align: center;
-            margin: 30px 0;
-            border: 1px dashed #cbd5e0;
+        .ad-banner-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+            background-color: #f0f4f8;
+        }
+        .ad-banner-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+        .ad-banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 4 / 1;
+            object-fit: cover;
         }
         .badge-cta { text-align: center; margin: 40px 0; }
         .badge-button {
-            /* Changed to Xmas Red for festive pop */
             background: var(--xmas-red); color: white; padding: 10px 25px; border-radius: 30px; font-weight: 600;
             box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
             transition: var(--transition);
@@ -269,7 +333,6 @@
             position: relative;
             overflow: hidden;
         }
-        /* Adding a little festive corner decoration to the featured block */
         .featured-experience::before {
             content: '🎄';
             position: absolute;
@@ -279,8 +342,17 @@
             opacity: 0.2;
             transform: rotate(20deg);
         }
-
         .featured-heading h2 { color: var(--primary); }
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 221, 87, 0.4);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 221, 87, 0.6); }
 
         /* --- POPUPS --- */
         .popup-box {
@@ -296,7 +368,7 @@
             max-width: 320px;
             border-left: 5px solid var(--accent);
             animation: slideIn 0.5s ease-out;
-            display: none; /* Hidden by default */
+            display: none; 
         }
         .popup-close {
             position: absolute; top: 10px; right: 10px; cursor: pointer; background: none; border: none; font-size: 1.2rem;
@@ -318,49 +390,15 @@
             .nav-links.show { display: flex; }
             .menu-toggle { display: block; }
             .hero h2 { font-size: 1.8rem; }
-            /* Adjust Santa Hat for smaller mobile screens */
             .hero h2::after { width: 40px; height: 40px; top: -25px; left: -20px; }
+            
+            .hero-content { width: 95%; }
+            .category-pills { gap: 8px; }
+            .pill { font-size: 0.8rem; padding: 6px 14px; }
+            
+            .ad-banner-container { border-radius: 12px; margin: 15px auto; }
+            .ad-banner-img { aspect-ratio: 2.5 / 1; }
         }
-
-        /* Container styling to match your site's rounded aesthetic */
-.ad-banner-container {
-    width: 100%;
-    max-width: 1200px; /* Keeps it from getting too wide on huge screens */
-    margin: 20px auto; /* Centers the ad and adds vertical spacing */
-    border-radius: 16px; /* Matches the rounded corners in your screenshot */
-    overflow: hidden; /* Ensures the image doesn't spill out of the rounded corners */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Adds a subtle pop */
-    transition: transform 0.2s ease; /* Smooth hover effect */
-    background-color: #f0f4f8; /* Fallback color while image loads */
-}
-
-/* Hover effect to make it clickable */
-.ad-banner-container:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-}
-
-/* Responsive Image Styling */
-.ad-banner-img {
-    width: 100%;
-    height: auto;
-    display: block; /* Removes bottom whitespace typical with inline images */
-    aspect-ratio: 4 / 1; /* Enforces the rectangular banner shape */
-    object-fit: cover; /* Ensures image fills the space without stretching */
-}
-
-/* Mobile Optimization */
-@media (max-width: 768px) {
-    .ad-banner-container {
-        border-radius: 12px; /* Slightly smaller radius for mobile */
-        margin: 15px auto;
-    }
-    
-    .ad-banner-img {
-        /* On mobile, we might want it slightly taller/squarer to be visible */
-        aspect-ratio: 2.5 / 1; 
-    }
-}
 
         @keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     </style>
@@ -368,7 +406,6 @@
 <body>
 
     <div id="snow-container"></div>
-
     <div class="xmas-garland-top"></div>
 
     <nav>
@@ -384,44 +421,54 @@
     </nav>
 
     <section class="hero" role="banner">
-        <h2>Discover Sri Lanka's Best Kept Secrets</h2>
-        <p style="margin-bottom: 20px; font-size: 1.1rem; max-width: 600px;">Plan your perfect trip with our 2025 guides, itineraries, and essential tips.</p>
-        <a href="packing-by-location.html" class="btn-primary">Check Packing List</a>
-    </section>
+        <div class="hero-content">
+            <h2>Discover Sri Lanka's Best Kept Secrets</h2>
+            <p style="font-size: 1.1rem; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">Plan your 2025 trip instantly.</p>
+            
+            <div class="search-container">
+                <input type="text" id="heroSearch" class="search-input" placeholder="Search destinations, visa, buses...">
+                <button class="search-btn-icon" aria-label="Search">🔍</button>
+            </div>
 
+            <div class="category-pills">
+                <a href="sl-travel-visa-passport.html" class="pill">🛂 Visa Info</a>
+                <a href="destinations.html" class="pill">🏝️ Beaches</a>
+                <a href="sri-lanka-train-ticket-booking-guide-2025.html" class="pill">🚆 Trains</a>
+                <a href="Ultimate-10-day-Sri-Lanka-Itinerary.html" class="pill">🗺️ Itineraries</a>
+                <a href="packing-by-location.html" class="pill">🎒 Packing</a>
+            </div>
+        </div>
+    </section>
 
     <a href="https://wishes.everythinglanka.wiki" target="_blank" style="
     display: inline-block;
-    background-color: var(--xmas-red); /* Changed from #ff4757 */
+    background-color: var(--xmas-red);
     color: white;
     padding: 12px 24px;
     text-decoration: none;
     border-radius: 50px;
     font-weight: bold;
     font-family: sans-serif;
-    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4); /* Red shadow */
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
     transition: transform 0.2s;
     text-align: center;
-    margin: 20px auto; /* Centered it */
-    display: block; width: fit-content; /* Centered it */
-">
+    margin: 20px auto;
+    display: block; width: fit-content;
+    ">
     ✨ Create a Christmas Wishing Card 🎄
-</a>
+    </a>
 
     <main class="container">
-
-
         
-        
-<div class="ad-banner-container">
-    <a href="index one/deals.html" title="Visit Index One">
-        <img src="https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/indexone%20banner.png" alt="Index One - Travel Insights for Sri Lanka" class="ad-banner-img">
-    </a>
-</div>
+        <div class="ad-banner-container">
+            <a href="index one/deals.html" title="Visit Index One">
+                <img src="https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/indexone%20banner.png" alt="Index One - Travel Insights for Sri Lanka" class="ad-banner-img">
+            </a>
+        </div>
 
         <section class="grid-wrapper" aria-label="Travel Articles">
 
-                                   <article class="feature-card">
+            <article class="feature-card">
                 <div class="card-image-container">
                     <img src="https://images.pexels.com/photos/8382611/pexels-photo-8382611.jpeg" loading="lazy" alt="Kids in Sri Lanka" width="600" height="338">
                 </div>
@@ -431,7 +478,7 @@
                 </div>
             </article>
 
-                        <article class="feature-card">
+            <article class="feature-card">
                 <div class="card-image-container">
                     <img src="https://images.pexels.com/photos/39691/family-pier-man-woman-39691.jpeg" loading="lazy" alt="Kids in Sri Lanka" width="600" height="338">
                 </div>
@@ -510,7 +557,7 @@
                     <p>A full guide on licenses, costs, and tips for driving yourself.</p>
                 </div>
             </article>
-             <article class="feature-card">
+            <article class="feature-card">
                 <div class="card-image-container">
                     <img src="https://images.pexels.com/photos/60259/sri-lanka-buddhism-buddha-culture-60259.jpeg?auto=compress&cs=tinysrgb&w=600" loading="lazy" alt="Culture" width="600" height="338">
                 </div>
@@ -555,6 +602,32 @@
             navLinks.classList.toggle('show');
         });
 
+        // Search Functionality
+        const searchInput = document.getElementById('heroSearch');
+        const cards = document.querySelectorAll('.feature-card');
+
+        if(searchInput) {
+            searchInput.addEventListener('keyup', function(e) {
+                const term = e.target.value.toLowerCase();
+
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const desc = card.querySelector('p').textContent.toLowerCase();
+                    
+                    if(title.includes(term) || desc.includes(term)) {
+                        card.style.display = "flex";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+                
+                // Optional: Scroll to results on Enter
+                if (e.key === 'Enter') {
+                    document.querySelector('.grid-wrapper').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+
         // Unified Popup Logic
         window.addEventListener('load', () => {
             const popup = document.getElementById("unifiedPopup");
@@ -562,7 +635,6 @@
             const msg = document.getElementById("popupMessage");
             const hasVisited = localStorage.getItem("hasVisitedBefore");
 
-            // XMAS: Updated quotes to be festive
             const quotes = [
                 "Wishing you warm island vibes this Christmas! 🌴🎅", 
                 "May your travels be merry and bright! ✨", 
@@ -572,17 +644,14 @@
             const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
             if (hasVisited) {
-                // Returning user - Show Quote
                 title.innerText = "Holiday Quote";
                 msg.innerText = randomQuote;
             } else {
-                // New user - Show Welcome
                 title.innerText = "Merry Christmas, Traveler! 🌴🎅";
                 msg.innerText = "Explore Sri Lanka with a festive spirit!";
                 localStorage.setItem("hasVisitedBefore", "true");
             }
 
-            // Delay popup by 2 seconds
             setTimeout(() => {
                 popup.style.display = "block";
             }, 2000);
@@ -592,35 +661,30 @@
             document.getElementById("unifiedPopup").style.display = "none";
         }
 
-        // =========================================
-        // XMAS: FALLING SNOW SCRIPT
-        // =========================================
+        // Snow Script
         document.addEventListener("DOMContentLoaded", function () {
             const snowContainer = document.getElementById("snow-container");
-            const maxSnowflakes = 50; // Limit flakes for performance
+            const maxSnowflakes = 50;
 
             function createSnowflake() {
                 if (snowContainer.childElementCount >= maxSnowflakes) return;
 
                 const snowflake = document.createElement("div");
                 snowflake.classList.add("snowflake");
-                snowflake.innerHTML = "❄"; // You can also use "❅" or "❆"
+                snowflake.innerHTML = "❄"; 
                 
-                // Randomize start position and animation properties
                 snowflake.style.left = Math.random() * 100 + "vw";
-                snowflake.style.animationDuration = Math.random() * 3 + 5 + "s"; // between 5s and 8s fall time
+                snowflake.style.animationDuration = Math.random() * 3 + 5 + "s"; 
                 snowflake.style.opacity = Math.random();
                 snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
                 
                 snowContainer.appendChild(snowflake);
 
-                // Remove snowflake after it falls to keep DOM clean
                 setTimeout(() => {
                     snowflake.remove();
                 }, 8000);
             }
 
-            // Create a new snowflake every few hundred ms
             setInterval(createSnowflake, 400);
         });
     </script>
@@ -633,6 +697,7 @@
 
 </body>
 </html>
+
 
 
 
