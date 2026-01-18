@@ -3,194 +3,400 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-2989049114911399">
-  <title>Sri Lanka Events Calendar 2025 | Everything Lanka</title>
-  <meta name="description" content="View all major public holidays and events in Sri Lanka for 2025. Includes downloadable DOCX calendar, clickable event details, and more." />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body { font-family: 'Poppins', sans-serif; margin: 0; background: #f2f2f2; color: #000; }
+  <meta name="description" content="Official Sri Lanka Events Calendar 2026. View public holidays, Poya days, and cultural festivals for the year 2026.">
+  <title>Sri Lanka Events Calendar 2026 | Everything Lanka</title>
   
-    .hero h2 { text-align: center; color: #1E6091; margin-top: 30px; }
-    .calendar-container { width: 90%; margin: 20px auto; background: white; padding: 10px; border-radius: 8px; }
-    .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; }
-    .day { padding: 12px; border: 1px solid #ccc; font-weight: bold; border-radius: 4px; }
-    .event-day { background: #c10101; color: white; position: relative; cursor: pointer; border-radius: 4px; }
-    .event-day:hover::after {
-      content: attr(data-event);
-      position: absolute;
-      background: black;
-      color: white;
-      padding: 6px 10px;
-      border-radius: 5px;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      z-index: 10;
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #00695c;
+      --secondary: #e0f2f1;
+      --accent: #ff6f00;
+      --text: #333;
+      --bg: #f9f9f9;
+      --white: #ffffff;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --radius: 12px;
     }
-    .month-navigation { display: flex; justify-content: center; align-items: center; margin: 20px 0; gap: 20px; }
-    .month-navigation button {
-      padding: 10px 20px;
-      background: #31720c;
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 50px; }
+
+    /* Header */
+    header { background: var(--white); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+    header h1 { font-size: 1.5rem; color: var(--primary); font-weight: 700; }
+    
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--text); }
+    
+    nav { display: flex; gap: 20px; }
+    nav a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+    nav a:hover { color: var(--primary); }
+
+    /* Main Container */
+    .container { max-width: 1000px; margin: 2rem auto; padding: 0 20px; }
+
+    .hero-title { text-align: center; margin-bottom: 2rem; }
+    .hero-title h2 { font-size: 2rem; color: var(--primary); }
+    .hero-title p { color: #666; font-size: 0.9rem; }
+
+    /* "Next Up" Card */
+    .next-event-card {
+      background: linear-gradient(135deg, var(--primary), #004d40);
       color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
+      padding: 2rem;
+      border-radius: var(--radius);
+      margin-bottom: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
-    .event-table { width: 90%; margin: 20px auto; border-collapse: collapse; background: white; }
-    .event-table th, .event-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-    .event-table th { background: #31720c; color: white; }
-    .event-table td a { color: #000; text-decoration: none; font-weight: bold; }
-    .event-table td a:hover { text-decoration: underline; }
-    .menu-toggle {
-      display: none;
-      background: #00A8FF;
-      color: white;
-      font-size: 28px;
+    .next-info h3 { font-size: 0.9rem; text-transform: uppercase; opacity: 0.8; letter-spacing: 1px; margin-bottom: 5px; }
+    .next-info h2 { font-size: 1.8rem; margin-bottom: 5px; }
+    .next-date { background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; }
+    
+    /* Calendar Wrapper */
+    .calendar-wrapper {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin-bottom: 3rem;
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .calendar-header h3 { font-size: 1.5rem; color: var(--text); }
+    
+    .nav-btn {
+      background: var(--secondary);
+      color: var(--primary);
       border: none;
-      padding: 10px 20px;
+      padding: 8px 16px;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .nav-btn:hover { background: var(--primary); color: white; }
+
+    /* Calendar Grid */
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      text-align: center;
+    }
+
+    .day-name { font-weight: 600; color: #888; font-size: 0.9rem; padding-bottom: 10px; }
+    
+    .day {
+      height: 80px; /* Tall cells */
+      border: 1px solid #eee;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 8px;
+      font-size: 0.9rem;
+      position: relative;
+      transition: 0.2s;
+    }
+    
+    .day:hover { background: #fafafa; }
+    
+    .today { border: 2px solid var(--primary); }
+
+    /* Event Dot & Tooltip */
+    .event-marker {
+      margin-top: auto;
       width: 100%;
-      text-align: right;
+      background: #ffe0b2;
+      color: #e65100;
+      font-size: 0.7rem;
+      padding: 2px 5px;
+      border-radius: 4px;
+      text-align: left;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-weight: 600;
+      cursor: pointer;
     }
+
+    .event-marker.poya { background: #e0f2f1; color: var(--primary); }
+    .event-marker.special { background: #f3e5f5; color: #7b1fa2; }
+
+    /* Download Button */
+    .dl-btn {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 3rem auto;
+      background: var(--text);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      box-shadow: var(--shadow);
+    }
+    .dl-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+
+    /* List View (Table Replacement) */
+    .event-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    
+    .event-card {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border-left: 5px solid var(--primary);
+    }
+    .event-card h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .event-card span { font-size: 0.85rem; color: #666; display: block; margin-bottom: 0.5rem; }
+    .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+    .tag.holiday { background: #ffebee; color: #c62828; }
+    .tag.poya { background: #e0f2f1; color: var(--primary); }
+
+    /* Mobile */
     @media (max-width: 768px) {
-      .nav { display: none; flex-direction: column; align-items: center; }
-      .nav.show { display: flex; }
       .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; padding: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+      nav.show { display: flex; }
+      .calendar-grid { gap: 5px; }
+      .day { height: 60px; font-size: 0.8rem; }
+      .event-marker { font-size: 0.6rem; padding: 1px 3px; }
+      .next-event-card { flex-direction: column; text-align: center; gap: 15px; }
     }
   </style>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2989049114911399" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-    <h1>Everything Lanka</h1>
-    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
-  </header>
 
+<header>
+  <h1>Everything Lanka</h1>
+  <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
   <nav>
-  <a href="https://everythinglanka.wiki/">Home</a>
-  <a href="https://everythinglanka.wiki/EYWK.html">Everything You Wanna Know</a>
-  <a href="https://everythinglanka.wiki/ape-un.html">අපේ un</a>
-  <a href="https://everythinglanka.wiki/destinations.html">Destinations</a>
-  <a href="https://everythinglanka.wiki/districts.html">Districts</a>
-  <a href="https://everythinglanka.wiki/what-s%20new.html">What's New</a>
-  <a href="https://everythinglanka.wiki/events.html">Events</a>
-  <a href="https://everythinglanka.wiki/contact.html">Contact Us</a>
-</nav>
+    <a href="https://everythinglanka.wiki/">Home</a>
+    <a href="https://everythinglanka.wiki/destinations.html">Destinations</a>
+    <a href="https://everythinglanka.wiki/events.html" style="color: var(--primary); font-weight:700;">Events</a>
+    <a href="https://everythinglanka.wiki/contact.html">Contact</a>
+  </nav>
+</header>
 
-  <section class="hero" role="banner">
-    <h2>Sri Lanka Events Calendar – 2025</h2>
-  </section>
+<main class="container">
 
-  <div class="calendar-container">
-    <div class="month-navigation">
-      <button onclick="prevMonth()">&#10094; Previous</button>
-      <h2 id="month-year"></h2>
-      <button onclick="nextMonth()">Next &#10095;</button>
+  <div class="hero-title">
+    <h2>📅 2026 Calendar</h2>
+    <p>Plan your long weekends and cultural adventures.</p>
+  </div>
+
+  <div class="next-event-card">
+    <div class="next-info">
+      <h3>Next Upcoming Holiday 🇱🇰</h3>
+      <h2 id="next-event-name">Loading...</h2>
+      <div class="next-date" id="next-event-date">...</div>
     </div>
-    <div class="calendar" id="calendar"></div>
+    <div style="font-size: 3rem;">🎉</div>
   </div>
 
-  <div style="text-align:center; margin: 30px;">
-    <a href="Sri_Lanka_2025_Events.docx" download>
-      <button style="background: #1E6091; color: white; padding: 15px 30px; font-size: 18px; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-        📄 Download 2025 Events Calendar (DOCX)
-      </button>
-    </a>
+  <div class="calendar-wrapper">
+    <div class="calendar-header">
+      <button class="nav-btn" onclick="changeMonth(-1)">&#10094; Prev</button>
+      <h3 id="month-display">January 2026</h3>
+      <button class="nav-btn" onclick="changeMonth(1)">Next &#10095;</button>
+    </div>
+    
+    <div class="calendar-grid">
+      <div class="day-name">Sun</div>
+      <div class="day-name">Mon</div>
+      <div class="day-name">Tue</div>
+      <div class="day-name">Wed</div>
+      <div class="day-name">Thu</div>
+      <div class="day-name">Fri</div>
+      <div class="day-name">Sat</div>
+    </div>
+    <div class="calendar-grid" id="calendar-days">
+      </div>
   </div>
 
-  <section class="hero" role="banner">
-    <h2>Public Holidays & Events Table</h2>
-  </section>
+  <a href="Sri_Lanka_2026_Events.docx" class="dl-btn" download>
+    📥 Download 2026 Calendar (DOCX)
+  </a>
 
-  <table class="event-table">
-    <tr><th>Date</th><th>Event</th></tr>
-    <tr><td>Jan 13</td><td>Duruthu Full Moon Poya Day</a></td></tr>
-    <tr><td>Jan 14</td><td>Tamil Thai Pongal Day</a></td></tr>
-    <tr><td>Feb 4</td><td>Independence Day</a></td></tr>
-    <tr><td>Feb 12</td><td>Navam Full Moon Poya Day</a></td></tr>
-    <tr><td>Feb 26</td><td>Maha Shivarathi</a></td></tr>
-    <tr><td>Mar 13</td><td>Madin Full Moon Poya Day</a></td></tr>
-    <tr><td>Apr 14</td><td>Sinhala and Tamil New Year</a></td></tr>
-    <tr><td>May 1</td><td>Labour Day</a></td></tr>
-    <tr><td>May 12</td><td>Vesak Poya Day</a></td></tr>
-    <tr><td>Jul 10</td><td>Esala Poya Day</a></td></tr>
-    <tr><td>Jul 30</td><td>Esala Perahera in Kandy</a></td></tr>
-    <tr><td>Nov 11</td><td>Remembrance Day</a></td></tr>
-    <tr><td>Dec 25</td><td>Christmas Day</a></td></tr>
-  </table>
+  <div class="hero-title" style="margin-top: 4rem;">
+    <h3>All 2026 Events & Holidays</h3>
+  </div>
 
-  <footer>
-    &copy; 2025 Everything Lanka | All Rights Reserved
-  </footer>
+  <div class="event-list" id="event-list-container">
+    </div>
 
-  <script>
-    const events = {
-      "2025-01-13": "Duruthu Full Moon Poya Day",
-      "2025-01-14": "Tamil Thai Pongal Day",
-      "2025-02-04": "Independence Day",
-      "2025-02-12": "Navam Full Moon Poya Day",
-      "2025-02-26": "Maha Shivarathi",
-      "2025-03-13": "Madin Full Moon Poya Day",
-      "2025-04-14": "Sinhala and Tamil New Year",
-      "2025-05-01": "Labour Day",
-      "2025-05-12": "Vesak Poya Day",
-      "2025-07-10": "Esala Poya Day",
-      "2025-07-30": "Esala Perahera in Kandy",
-      "2025-11-11": "Remembrance Day",
-      "2025-12-25": "Christmas Day"
-    };
+</main>
 
-    let currentYear = 2025;
-    let currentMonth = new Date().getMonth();
+<footer>
+  <p style="text-align: center; color: #999; font-size: 0.9rem;">&copy; 2026 Everything Lanka | All Rights Reserved</p>
+</footer>
 
-    function generateCalendar(year, month) {
-      const calendar = document.getElementById("calendar");
-      const monthYear = document.getElementById("month-year");
-      calendar.innerHTML = "";
-      monthYear.textContent = new Date(year, month).toLocaleString('en-us', { month: 'long', year: 'numeric' });
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
-      for (let i = 1; i <= daysInMonth; i++) {
-        let day = document.createElement("div");
-        let date = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
-        day.className = "day";
-        day.textContent = i;
-        if (events[date]) {
-          day.classList.add("event-day");
-          day.setAttribute("data-event", events[date]);
-        }
-        calendar.appendChild(day);
-      }
-    }
+<script>
+  // Menu Toggle
+  document.querySelector('.menu-toggle').addEventListener('click', () => {
+    document.querySelector('nav').classList.toggle('show');
+  });
 
-    function prevMonth() {
-      currentMonth--;
-      if (currentMonth < 0) { currentMonth = 11; currentYear--; }
-      generateCalendar(currentYear, currentMonth);
-    }
+  // OFFICIAL 2026 DATA
+  const eventsData = {
+    "2026-01-02": { title: "Duruthu Full Moon Poya", type: "poya" },
+    "2026-01-14": { title: "Thai Pongal Day", type: "holiday" },
+    "2026-02-01": { title: "Navam Full Moon Poya", type: "poya" },
+    "2026-02-04": { title: "Independence Day", type: "holiday" },
+    "2026-02-15": { title: "Maha Shivaratri", type: "holiday" },
+    "2026-03-03": { title: "Medin Full Moon Poya", type: "poya" },
+    "2026-03-21": { title: "Eid-al-Fitr (Ramazan)", type: "holiday" },
+    "2026-04-01": { title: "Bak Full Moon Poya", type: "poya" },
+    "2026-04-03": { title: "Good Friday", type: "holiday" },
+    "2026-04-13": { title: "New Year's Eve", type: "holiday" },
+    "2026-04-14": { title: "Sinhala & Tamil New Year", type: "holiday" },
+    "2026-05-01": { title: "May Day & Vesak Poya", type: "poya" }, // Double Holiday!
+    "2026-05-02": { title: "Day Following Vesak", type: "holiday" },
+    "2026-05-27": { title: "Eid-al-Adha (Hajj)", type: "holiday" },
+    "2026-05-30": { title: "Adhi Poson Full Moon Poya", type: "poya" },
+    "2026-06-29": { title: "Poson Full Moon Poya", type: "poya" },
+    "2026-07-29": { title: "Esala Full Moon Poya", type: "poya" },
+    "2026-08-27": { title: "Nikini Full Moon Poya", type: "poya" },
+    "2026-09-26": { title: "Binara Full Moon Poya", type: "poya" },
+    "2026-10-25": { title: "Vap Full Moon Poya", type: "poya" },
+    "2026-11-08": { title: "Deepavali Festival", type: "holiday" },
+    "2026-11-24": { title: "Il Full Moon Poya", type: "poya" },
+    "2026-12-23": { title: "Unduvap Full Moon Poya", type: "poya" },
+    "2026-12-25": { title: "Christmas Day", type: "holiday" }
+  };
 
-    function nextMonth() {
-      currentMonth++;
-      if (currentMonth > 11) { currentMonth = 0; currentYear++; }
-      generateCalendar(currentYear, currentMonth);
-    }
-
-    generateCalendar(currentYear, currentMonth);
-
-    document.querySelector(".menu-toggle").addEventListener("click", () => {
-      document.querySelector(".nav").classList.toggle("show");
-    });
-  </script>
-
-  <script type="text/javascript">
-   var uid = '497236';
-   var wid = '748801';
-   var pop_tag = document.createElement('script');pop_tag.src='//cdn.popcash.net/show.js';document.body.appendChild(pop_tag);
-   pop_tag.onerror = function() {pop_tag = document.createElement('script');pop_tag.src='//cdn2.popcash.net/show.js';document.body.appendChild(pop_tag)};
-</script>
-
+  // Calendar Logic
+  let currentYear = 2026;
+  let currentMonth = 0; // Start at January 2026
   
+  // Important: We simulate "Today" as Jan 1st 2026 for the initial view
+  // If you want real-time accuracy for visitors visiting IN 2026, 
+  // uncomment the line below:
+  // let currentMonth = new Date().getMonth(); 
+
+  const today = new Date(); // Current real-world date
+
+  // 1. Logic to find the "Next Event" relative to user's real time
+  function updateNextEvent() {
+    const sortedDates = Object.keys(eventsData).sort();
+    const todayStr = today.toISOString().split('T')[0];
+    
+    // Find first event strictly after today
+    let nextDate = sortedDates.find(date => date >= todayStr);
+    
+    // Fallback: If year is over, show first event of 2026 (for users viewing in late 2025)
+    if (!nextDate) nextDate = sortedDates[0]; 
+
+    const evt = eventsData[nextDate];
+    
+    // Formatting date
+    const d = new Date(nextDate);
+    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+    
+    document.getElementById('next-event-name').textContent = evt.title;
+    document.getElementById('next-event-date').textContent = d.toLocaleDateString('en-US', options);
+  }
+
+  // 2. Render Calendar Grid
+  function renderCalendar(year, month) {
+    const daysContainer = document.getElementById('calendar-days');
+    const monthDisplay = document.getElementById('month-display');
+    daysContainer.innerHTML = "";
+    
+    const date = new Date(year, month, 1);
+    monthDisplay.textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+    // Pad empty days at start
+    const startDay = date.getDay(); // 0 is Sunday
+    for(let i=0; i<startDay; i++) {
+      const empty = document.createElement('div');
+      daysContainer.appendChild(empty);
+    }
+
+    // Fill days
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    
+    for (let i = 1; i <= daysInMonth; i++) {
+      const dayEl = document.createElement('div');
+      dayEl.classList.add('day');
+      
+      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+      
+      dayEl.innerHTML = `<span>${i}</span>`; // Date number
+
+      // Check for event
+      if (eventsData[dateStr]) {
+        const evt = eventsData[dateStr];
+        const marker = document.createElement('div');
+        marker.className = `event-marker ${evt.type}`;
+        marker.textContent = evt.title;
+        marker.title = evt.title; // Tooltip
+        dayEl.appendChild(marker);
+      }
+      
+      daysContainer.appendChild(dayEl);
+    }
+  }
+
+  // 3. Render List View
+  function renderListView() {
+    const listContainer = document.getElementById('event-list-container');
+    listContainer.innerHTML = "";
+
+    const sortedDates = Object.keys(eventsData).sort();
+
+    sortedDates.forEach(date => {
+      const evt = eventsData[date];
+      const d = new Date(date);
+      
+      const card = document.createElement('div');
+      card.className = "event-card";
+      
+      card.innerHTML = `
+        <span>${d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</span>
+        <h4>${evt.title}</h4>
+        <div class="tag ${evt.type}">${evt.type === 'poya' ? 'Full Moon Poya' : 'Public Holiday'}</div>
+      `;
+      
+      listContainer.appendChild(card);
+    });
+  }
+
+  function changeMonth(dir) {
+    currentMonth += dir;
+    
+    // Handle Year Wraps if sticking strictly to 2026
+    if (currentMonth < 0) { currentMonth = 0; }
+    if (currentMonth > 11) { currentMonth = 11; }
+    
+    renderCalendar(currentYear, currentMonth);
+  }
+
+  // Init
+  updateNextEvent();
+  renderCalendar(currentYear, currentMonth);
+  renderListView();
+
+</script>
 </body>
 </html>
 
