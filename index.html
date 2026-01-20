@@ -26,7 +26,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2989049114911399" crossorigin="anonymous"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S823WWMZ9"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -219,37 +218,31 @@
         .feature-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--primary); line-height: 1.3; }
         .feature-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 15px; }
         
-        /* --- ADS & SPONSORED --- */
-        .ad-banner-container {
+        /* --- SUPPORT BANNER (Replaces Ad Banner) --- */
+        .support-banner-container {
             width: 100%;
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 20px auto 40px auto; /* Added bottom margin */
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: transform 0.2s ease;
-            background-color: #f0f4f8;
+            background: linear-gradient(to right, #ffffff, #fffdf2); /* Subtle gold tint */
+            border: 2px solid #FFDD00; /* Gold border to match Coffee button */
+            text-align: center;
+            padding: 30px 20px;
         }
-        .ad-banner-container:hover {
+        .support-banner-container:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 20px rgba(255, 221, 0, 0.15);
         }
-        .ad-banner-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            aspect-ratio: 4 / 1;
-            object-fit: cover;
+        .support-text {
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 1.05rem;
         }
-        .badge-cta { text-align: center; margin: 40px 0; }
-        .badge-button {
-            background: var(--primary); color: white; padding: 10px 25px; border-radius: 30px; font-weight: 600;
-            box-shadow: 0 4px 15px rgba(30, 96, 145, 0.3);
-            transition: var(--transition);
-        }
-        .badge-button:hover {
-             box-shadow: 0 8px 20px rgba(30, 96, 145, 0.5);
-             transform: translateY(-2px);
+        .support-text strong {
+            color: var(--primary);
         }
 
         /* --- FEATURED EXPERIENCE --- */
@@ -317,8 +310,7 @@
             .category-pills { gap: 8px; }
             .pill { font-size: 0.8rem; padding: 6px 14px; }
             
-            .ad-banner-container { border-radius: 12px; margin: 15px auto; }
-            .ad-banner-img { aspect-ratio: 2.5 / 1; }
+            .support-banner-container { border-radius: 12px; margin: 15px auto; padding: 20px 10px; }
         }
 
         @keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -360,9 +352,13 @@
 
     <main class="container">
         
-        <div class="ad-banner-container">
-            <a href="index one/deals.html" title="Visit Index One">
-                <img src="https://raw.githubusercontent.com/San-rdg/Everything-Lanka/refs/heads/main/indexone%20banner.png" alt="Index One - Travel Insights for Sri Lanka" class="ad-banner-img">
+        <div class="support-banner-container">
+            <h3 style="color: var(--primary); margin-bottom: 8px;">❤️ Keep Everything Lanka Alive</h3>
+            <p class="support-text">
+                We are a community-run wiki. If our guides helped you, please consider donating a few dollars to help us cover our <strong>server costs</strong>.
+            </p>
+            <a href="https://www.buymeacoffee.com/createwishes" target="_blank">
+                <img src="https://img.buymeacoffee.com/button-api/?text=Help Run the Servers?&emoji=&slug=createwishes&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" alt="Buy Me A Coffee" style="display:inline-block; height: 50px;" />
             </a>
         </div>
 
@@ -562,14 +558,9 @@
         }
     </script>
     
-    <script type="text/javascript">
-        var uid = '497236'; var wid = '748801';
-        var pop_tag = document.createElement('script');pop_tag.src='//cdn.popcash.net/show.js';document.body.appendChild(pop_tag);
-        pop_tag.onerror = function() {pop_tag = document.createElement('script');pop_tag.src='//cdn2.popcash.net/show.js';document.body.appendChild(pop_tag)};
-    </script>
-
-</body>
+    </body>
 </html>
+
 
 
 
